@@ -1,0 +1,33 @@
+{
+  "id": "choo-le-mujhe",
+  "title": "Choo Le Mujhe",
+  "artist": "Dr. Mahima John Arul",
+  "church": "ICM",
+  "album": "ICM Worship",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Chhu Le Mujhe\nChhu Le Mujhe\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nHaan Bann Jaaun Tera",
+      "verse1": "Teri Laad Mein, Tere Pyaar Mein\nTeri Rok Mein, Teri Tok Mein\nGhar Hai Mera, Ghar Hai Mera\nGhar Hai Mera, Ghar Hai Mera",
+      "chorus2": "Chhu Le Mujhe\nChhu Le Mujhe\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera\nKi Bann Jaaun Tera",
+      "verse2": "Tu Aag Hai, Tu Saans Hai\nTu Rooh Hai, Tu Paak Hai\nVedi Meri Taiyaar Hai\nVedi Meri Taiyaar Hai\nTaiyaar Hai",
+      "bridge": "Bann Aag Baras Jaa Meri Vedi Pe\nLaakad Meri Geeli Hai, Jalaa\nTaakat Ye Meri Na, Ye Teri Hai\nDikha De Tera Jalaal\nDikha De Tera Jalaal\nDikha De Tera Jalaal"
+    },
+    "hindi": {
+      "chorus": "छू ले मुझे\nछू ले मुझे\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nहाँ बन जाऊं तेरा",
+      "verse1": "तेरी लाड में, तेरे प्यार में\nतेरी रोक में, तेरी टोक में\nघर है मेरा, घर है मेरा\nघर है मेरा, घर है मेरा",
+      "chorus2": "छू ले मुझे\nछू ले मुझे\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा\nकि बन जाऊं तेरा",
+      "verse2": "तू आग है, तू सांस है\nतू रूह है, तू पाक है\nवेदी मेरी तैयार है\nवेदी मेरी तैयार है\nतैयार है",
+      "bridge": "बन आग बरस जा मेरी वेदी पे\nलकड़ मेरी गीली है, जला\nताकत ये मेरी ना, ये तेरी है\nदिखा दे तेरा जलाल\nदिखा दे तेरा जलाल\nदिखा दे तेरा जलाल"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "prayer", "surrender", "icm"],
+  "seo_description": "Choo Le Mujhe lyrics in Hindi and Hinglish by Dr. Mahima John Arul and ICM Church worship team",
+  "added_by": "Gaurav | Vandana"
+}

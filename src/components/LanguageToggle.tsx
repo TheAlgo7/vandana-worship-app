@@ -1,0 +1,51 @@
+"use client";
+
+import type { Language } from "@/lib/getSongs";
+
+interface LanguageToggleProps {
+  available: Language[];
+  current: Language;
+  onChange: (lang: Language) => void;
+}
+
+export default function LanguageToggle({
+  available,
+  current,
+  onChange,
+}: LanguageToggleProps) {
+  if (available.length < 2) return null;
+
+  return (
+    <div
+      style={{
+        display: "inline-flex",
+        borderRadius: "var(--radius-full)",
+        border: "1px solid var(--border)",
+        overflow: "hidden",
+      }}
+    >
+      {available.map((lang) => (
+        <button
+          key={lang}
+          onClick={() => onChange(lang)}
+          style={{
+            padding: "var(--space-xs) var(--space-md)",
+            fontSize: "var(--font-size-sm)",
+            fontWeight: current === lang ? 600 : 400,
+            background:
+              current === lang ? "var(--primary)" : "transparent",
+            color:
+              current === lang
+                ? "var(--primary-foreground)"
+                : "var(--text-muted)",
+            border: "none",
+            cursor: "pointer",
+            transition: "background 0.15s, color 0.15s",
+          }}
+        >
+          {lang === "hinglish" ? "Hinglish" : "Hindi"}
+        </button>
+      ))}
+    </div>
+  );
+}

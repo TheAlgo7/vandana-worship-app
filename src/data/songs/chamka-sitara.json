@@ -1,0 +1,29 @@
+{
+  "id": "chamka-sitara",
+  "title": "Chamka Sitara",
+  "artist": "Br. Ankur Masih & Ps. Bharat",
+  "church": "ICM",
+  "album": "ICM Church 2025",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Chamka chamka ek sitara, janma janma Yeshu pyara\nChamka chamka ek sitara, janma janma Yeshu pyara\n\nDuniya mein dhoom macha do\nSoe huo ko jaga do\nDuniya mein dhoom macha do (macha do)\nSoe huo ko jaga do (jaga do)\n\nDharti jhoome Hallelujah, ambar jhoome Hallelujah\nDharti jhoome Hallelujah, jhoome yeh jag saara\n\nChamka chamka ek sitara, janma janma Yeshu pyara\nChamka chamka ek sitara, janma janma Yeshu pyara",
+      "verse1": "Janma hai aaj Yeshu pyara pyara\nRoshan hua hai jag saara saara\nJanma hai aaj Yeshu pyara pyara\nRoshan hua hai jag saara saara\n\nTum bhi nacho Hallelujah, hum bhi naache Hallelujah\nTum bhi nacho Hallelujah, naache Delhi saara\n\nChamka chamka ek sitara, janma janma Yeshu pyara\nChamka chamka ek sitara, janma janma Yeshu pyara",
+      "verse2": "Dooton ne saath milke gaaya gaaya\nDekho charni mein Masih aaya aaya\nDooton ne saath milke gaaya gaaya\nDekho charni mein Masih aaya aaya\n\nTum bhi gaao Hallelujah, hum bhi gaaye Hallelujah\nTum bhi gaao Hallelujah, gaaye India saara\n\nChamka chamka ek sitara, janma janma Yeshu pyara\nChamka chamka ek sitara, janma janma Yeshu pyara"
+    },
+    "hindi": {
+      "chorus": "चमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा\n\nदुनिया में धूम मचा दो\nसोए हुओ को जगा दो\nदुनिया में धूम मचा दो (मचा दो)\nसोए हुओ को जगा दो (जगा दो)\n\nधरती झूमे हालेलुया, अंबर झूमे हालेलुया\nधरती झूमे हालेलुया, झूमे ये जग सारा\n\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा",
+      "verse1": "जन्मा है आज येशु प्यारा प्यारा\nरोशन हुआ है जग सारा सारा\nजन्मा है आज येशु प्यारा प्यारा\nरोशन हुआ है जग सारा सारा\n\nतुम भी नाचो हालेलुया, हम भी नाचे हालेलुया\nतुम भी नाचो हालेलुया, नाचे दिल्ली सारा\n\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा",
+      "verse2": "दूतों ने साथ मिलके गाया गाया\nदेखो चरनी में मसीह आया आया\nदूतों ने साथ मिलके गाया गाया\nदेखो चरनी में मसीह आया आया\n\nतुम भी गाओ हालेलुया, हम भी गाए हालेलुया\nतुम भी गाओ हालेलुया, गाए इंडिया सारा\n\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा\nचमका चमका एक सितारा, जन्मा जन्मा येशु प्यारा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["christmas", "praise", "celebration", "icm", "2025"],
+  "seo_description": "Chamka Sitara lyrics in Hindi and Hinglish by Br. Ankur Masih and Ps. Bharat, released by ICM Church 2025",
+  "added_by": "Gaurav | Vandana"
+}
