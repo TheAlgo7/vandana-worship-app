@@ -1,31 +1,36 @@
 "use client";
 
 import { ThemeProvider, useTheme } from "next-themes";
-import { AnimatePresence, motion } from "framer-motion";
+import { useRef, useEffect } from "react";
 import RouteTransition from "@/components/RouteTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 function ThemeFadeOverlay() {
   const { resolvedTheme } = useTheme();
-  if (!resolvedTheme) return null;
+  const ref = useRef<HTMLDivElement>(null);
+  const prevTheme = useRef(resolvedTheme);
+
+  useEffect(() => {
+    if (prevTheme.current && prevTheme.current !== resolvedTheme && ref.current) {
+      ref.current.classList.remove("theme-flash");
+      void ref.current.offsetWidth;
+      ref.current.classList.add("theme-flash");
+    }
+    prevTheme.current = resolvedTheme;
+  }, [resolvedTheme]);
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
-      <motion.div
-        key={`theme-${resolvedTheme}`}
-        initial={{ opacity: 0.38 }}
-        animate={{ opacity: 0 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.45, ease: "easeOut" }}
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 999,
-          pointerEvents: "none",
-          background: "var(--color-bg)",
-        }}
-      />
-    </AnimatePresence>
+    <div
+      ref={ref}
+      style={{
+        position: "fixed",
+        inset: 0,
+        zIndex: 999,
+        pointerEvents: "none",
+        background: "var(--color-bg)",
+        opacity: 0,
+      }}
+    />
   );
 }
 

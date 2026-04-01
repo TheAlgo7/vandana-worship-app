@@ -12,7 +12,6 @@ export default function SongView({ song }: { song: Song }) {
 
   return (
     <div
-      className="fade-in"
       style={{
         maxWidth: "40rem",
         margin: "0 auto",

@@ -200,3 +200,12 @@ h1 {
     animation: none;
   }
 }
+
+/* ── Theme switch flash overlay ── */
+@keyframes themeFlash {
+  from { opacity: 0.38; }
+  to   { opacity: 0; }
+}
+.theme-flash {
+  animation: themeFlash 0.45s ease-out forwards;
+}
