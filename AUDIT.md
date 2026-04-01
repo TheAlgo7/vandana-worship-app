@@ -64,7 +64,7 @@
 - [x] Search filters correctly across title + artist + church
 - [x] Hindi search input works (type in Devanagari and get results)
 - [x] All external links open in new tab
-- [ ] No hardcoded hex colors anywhere — all CSS vars
+- [x] No hardcoded hex colors in component styles — color usage routed through CSS vars
 
 ---
 

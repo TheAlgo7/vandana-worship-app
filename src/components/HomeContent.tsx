@@ -132,7 +132,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
               cursor: "pointer",
               transition: "all var(--transition-fast)",
               background: !activeChurch ? "var(--color-primary)" : "var(--color-surface)",
-              color: !activeChurch ? "#fff" : "var(--color-text-muted)",
+              color: !activeChurch ? "var(--color-text-inverse)" : "var(--color-text-muted)",
             }}
           >
             All
@@ -151,7 +151,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 cursor: "pointer",
                 transition: "all var(--transition-fast)",
                 background: activeChurch === ch ? "var(--color-primary)" : "var(--color-surface)",
-                color: activeChurch === ch ? "#fff" : "var(--color-text-muted)",
+                color: activeChurch === ch ? "var(--color-text-inverse)" : "var(--color-text-muted)",
               }}
             >
               {ch}

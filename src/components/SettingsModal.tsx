@@ -139,7 +139,7 @@ export default function SettingsModal({
                   width: "1.35rem",
                   height: "1.35rem",
                   borderRadius: "50%",
-                  background: "#fff",
+                  background: "var(--color-control-thumb)",
                   transition: "left var(--transition-fast)",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.2)",
                 }}

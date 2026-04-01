@@ -97,8 +97,8 @@ export default function PresentView({ song }: { song: Song }) {
       ref={scrollRef}
       onClick={handleTap}
       style={{
-        background: "#000",
-        color: "#fff",
+        background: "var(--color-present-bg)",
+        color: "var(--color-present-fg)",
         minHeight: "100dvh",
         overflowY: "auto",
         WebkitOverflowScrolling: "touch",
@@ -127,7 +127,7 @@ export default function PresentView({ song }: { song: Song }) {
         <Link
           href={`/song/${song.id}`}
           style={{
-            color: "#fff",
+            color: "var(--color-present-fg)",
             textDecoration: "none",
             fontSize: "var(--font-size-sm)",
             padding: "var(--space-xs) var(--space-sm)",
@@ -222,7 +222,7 @@ export default function PresentView({ song }: { song: Song }) {
             background: "rgba(255,255,255,0.15)",
             border: "none",
             borderRadius: "var(--radius-full)",
-            color: "#fff",
+            color: "var(--color-present-fg)",
             width: "2.5rem",
             height: "2.5rem",
             display: "flex",
@@ -248,7 +248,7 @@ export default function PresentView({ song }: { song: Song }) {
               background: "rgba(255,255,255,0.15)",
               border: "none",
               borderRadius: "var(--radius-full)",
-              color: "#fff",
+              color: "var(--color-present-fg)",
               padding: "var(--space-xs) var(--space-md)",
               height: "2.5rem",
               display: "flex",
@@ -275,7 +275,7 @@ export default function PresentView({ song }: { song: Song }) {
             background: autoScroll ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.15)",
             border: "none",
             borderRadius: "var(--radius-full)",
-            color: "#fff",
+            color: "var(--color-present-fg)",
             width: "2.5rem",
             height: "2.5rem",
             display: "flex",
