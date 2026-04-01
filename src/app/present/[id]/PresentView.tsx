@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import type { Song, Language } from "@/lib/getSongs";
+import { formatBlock } from "@/lib/formatLyrics";
 
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
 const FONT_LABELS = ["A", "A", "A"] as const;
@@ -185,7 +186,7 @@ export default function PresentView({ song }: { song: Song }) {
                 transition: "font-size var(--transition-fast) ease",
               }}
             >
-              {text}
+              {formatBlock(text)}
             </p>
           </section>
         ))}

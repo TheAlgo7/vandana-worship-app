@@ -5,15 +5,14 @@ export default function SongCard({ song }: { song: SongMeta }) {
   return (
     <Link
       href={`/song/${song.id}`}
+      className="song-card"
       style={{
         display: "flex",
         alignItems: "center",
         minHeight: 72,
         padding: "14px 0",
-        borderBottom: "1px solid var(--border)",
         textDecoration: "none",
         color: "inherit",
-        transition: "background var(--transition-fast)",
       }}
     >
       {/* Left: title + artist */}

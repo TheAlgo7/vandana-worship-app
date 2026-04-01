@@ -1,16 +1,17 @@
 import type { Metadata, Viewport } from "next";
 import {
-  Cormorant_Garamond,
+  Lora,
   Plus_Jakarta_Sans,
   Noto_Sans_Devanagari,
 } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
 
-const heading = Cormorant_Garamond({
+const heading = Lora({
   variable: "--font-display",
   subsets: ["latin"],
-  weight: ["300", "600", "700"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 

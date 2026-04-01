@@ -2,33 +2,30 @@
 
 import { useState, useCallback, useEffect } from "react";
 
-const MIN = 0.875; // 14px
-const MAX = 2.5; // 40px
-const STEP = 0.125; // 2px
-const STORAGE_KEY = "vandana-font-size-lyrics";
+const SIZES = [14, 17, 21] as const; // Small, Medium, Large (px)
+const STORAGE_KEY = "vandana-font-size";
+
+function applySize(px: number) {
+  document.documentElement.style.setProperty("--lyrics-size", `${px}px`);
+}
 
 export default function FontSizeControl() {
-  const [size, setSize] = useState(() => {
-    if (typeof window === "undefined") return 1.25;
+  const [index, setIndex] = useState(() => {
+    if (typeof window === "undefined") return 1;
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    const parsed = raw ? Number(raw) : 1.25;
-    if (!Number.isFinite(parsed)) return 1.25;
-    return Math.min(MAX, Math.max(MIN, parsed));
+    if (raw === "0" || raw === "1" || raw === "2") return Number(raw);
+    return 1; // default Medium
   });
 
-  const update = useCallback((next: number) => {
-    const clamped = Math.min(MAX, Math.max(MIN, next));
-    setSize(clamped);
-    document.documentElement.style.setProperty(
-      "--font-size-lyrics",
-      `${clamped}rem`
-    );
-    window.localStorage.setItem(STORAGE_KEY, String(clamped));
-  }, []);
-
   useEffect(() => {
-    document.documentElement.style.setProperty("--font-size-lyrics", `${size}rem`);
-  }, [size]);
+    applySize(SIZES[index]);
+  }, [index]);
+
+  const pick = useCallback((i: number) => {
+    setIndex(i);
+    applySize(SIZES[i]);
+    window.localStorage.setItem(STORAGE_KEY, String(i));
+  }, []);
 
   return (
     <div
@@ -39,19 +36,18 @@ export default function FontSizeControl() {
       }}
     >
       <button
-        onClick={() => update(size - STEP)}
-        disabled={size <= MIN}
-        aria-label="Decrease font size"
+        onClick={() => pick(0)}
+        aria-label="Small font size"
         style={{
           width: 30,
           height: 30,
           borderRadius: "var(--radius-pill)",
-          border: "1px solid var(--border)",
-          background: "transparent",
-          color: "var(--text-primary)",
-          fontSize: "var(--text-sm)",
-          cursor: size <= MIN ? "not-allowed" : "pointer",
-          opacity: size <= MIN ? 0.4 : 1,
+          border: "1px solid",
+          borderColor: index === 0 ? "var(--accent)" : "var(--border)",
+          background: index === 0 ? "var(--accent)" : "transparent",
+          color: index === 0 ? "var(--bg-base)" : "var(--text-primary)",
+          fontSize: "var(--text-xs)",
+          cursor: "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
@@ -60,30 +56,40 @@ export default function FontSizeControl() {
       >
         A−
       </button>
-      <span
-        style={{
-          fontSize: "var(--text-xs)",
-          color: "var(--text-muted)",
-          minWidth: 28,
-          textAlign: "center",
-        }}
-      >
-        Aa
-      </span>
       <button
-        onClick={() => update(size + STEP)}
-        disabled={size >= MAX}
-        aria-label="Increase font size"
+        onClick={() => pick(1)}
+        aria-label="Medium font size"
         style={{
           width: 30,
           height: 30,
           borderRadius: "var(--radius-pill)",
-          border: "1px solid var(--border)",
-          background: "transparent",
-          color: "var(--text-primary)",
+          border: "1px solid",
+          borderColor: index === 1 ? "var(--accent)" : "var(--border)",
+          background: index === 1 ? "var(--accent)" : "transparent",
+          color: index === 1 ? "var(--bg-base)" : "var(--text-primary)",
+          fontSize: "var(--text-xs)",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontWeight: 600,
+        }}
+      >
+        Aa
+      </button>
+      <button
+        onClick={() => pick(2)}
+        aria-label="Large font size"
+        style={{
+          width: 30,
+          height: 30,
+          borderRadius: "var(--radius-pill)",
+          border: "1px solid",
+          borderColor: index === 2 ? "var(--accent)" : "var(--border)",
+          background: index === 2 ? "var(--accent)" : "transparent",
+          color: index === 2 ? "var(--bg-base)" : "var(--text-primary)",
           fontSize: "var(--text-sm)",
-          cursor: size >= MAX ? "not-allowed" : "pointer",
-          opacity: size >= MAX ? 0.4 : 1,
+          cursor: "pointer",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 
@@ -8,6 +8,12 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const [defaultLang, setDefaultLang] = useState("hinglish");
+
+  useEffect(() => {
+    const stored = localStorage.getItem("vandana-default-lang");
+    if (stored === "hindi" || stored === "hinglish") setDefaultLang(stored);
+  }, []);
 
   const churches = Array.from(
     new Set(songs.map((s) => s.church).filter(Boolean))
@@ -27,9 +33,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       {/* ── Header ── */}
       <header
         style={{
-          display: "flex",
-          alignItems: "baseline",
-          justifyContent: "space-between",
           padding: "24px 20px 0",
           maxWidth: "40rem",
           margin: "0 auto",
@@ -37,24 +40,27 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       >
         <h1
           style={{
-            fontFamily: "var(--font-display)",
+            fontFamily: defaultLang === "hindi" ? "var(--font-devanagari)" : "var(--font-display)",
             fontSize: "var(--text-2xl)",
             fontWeight: 600,
             color: "var(--accent)",
             letterSpacing: "-0.02em",
+            marginBottom: 2,
           }}
         >
-          वंदना
+          {defaultLang === "hindi" ? "वंदना" : "Vandana"}
         </h1>
-        <span
+        <p
           style={{
-            fontSize: "var(--text-xs)",
-            color: "var(--text-muted)",
-            letterSpacing: "0.04em",
+            fontFamily: "var(--font-body)",
+            fontSize: "var(--text-sm)",
+            fontWeight: 400,
+            color: "var(--text-secondary)",
+            letterSpacing: "var(--tracking-wide)",
           }}
         >
-          Worship Lyrics
-        </span>
+          Worship in your language
+        </p>
       </header>
 
       {/* ── Search Bar ── */}

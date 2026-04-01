@@ -72,6 +72,18 @@
 - [x] All hex colors routed through CSS custom properties — zero Tailwind color classes
 - [x] Build verified: TypeScript clean, 17 pages generated
 
+### Post-Revamp Fixes
+- [x] Header stripped to 2 lines: language-aware app name (वंदना / Vandana) + tagline "Worship in your language". "Worship Lyrics" text removed.
+- [x] Font size toggle fixed: 3 discrete levels (14px / 17px / 21px), correct CSS var `--lyrics-size`, correct localStorage key `vandana-font-size`, active-state highlighting on selected button.
+- [x] Build verified after fixes: 17 pages, zero errors.
+
+## DEPTH & CHARACTER — Phase 2.7
+- [x] SongCard rows: flat `border-bottom` replaced with `--border-subtle`, neumorphic inset shadow on press/active state
+- [x] Controls toolbar (lyrics page): wrapped in neumorphic container with `--bg-surface`, `--radius-lg`, inner highlight shadow
+- [x] Active language toggle pill: accent glow `box-shadow: 0 2px 8px rgba(196,170,126,0.25)`
+- [x] Skeuomorphic 4-pointed star SVG (16×16, `--accent` stroke, 0.4 opacity) above song title on lyrics page
+- [x] Typography: Lora replaced Cormorant Garamond — warmer, calligraphic roots, devotional feel
+
 ---
 
 ## PHASE 3 — Polish & Interactions

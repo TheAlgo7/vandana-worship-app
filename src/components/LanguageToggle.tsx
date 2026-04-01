@@ -38,7 +38,8 @@ export default function LanguageToggle({
             color: current === lang ? "var(--bg-base)" : "var(--text-muted)",
             border: "none",
             cursor: "pointer",
-            transition: "color var(--transition-fast), background var(--transition-fast)",
+            boxShadow: current === lang ? "0 2px 8px rgba(196,170,126,0.25)" : "none",
+            transition: "color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast)",
           }}
         >
           <span

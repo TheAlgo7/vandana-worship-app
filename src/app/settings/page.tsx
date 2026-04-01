@@ -211,9 +211,9 @@ export default function SettingsPage() {
               Vandana
             </p>
             <p style={{ marginBottom: 12 }}>
-              A worship lyrics companion for the Catholic community. Browse,
-              search, and present hymns and praise songs used during Mass and
-              prayer gatherings across parishes and church communities.
+              Vandana — Worship in your language.
+              <br />
+              A free worship lyrics app for the Indian church.
             </p>
             <p style={{ marginBottom: 12 }}>
               Built with ❤️ by{" "}

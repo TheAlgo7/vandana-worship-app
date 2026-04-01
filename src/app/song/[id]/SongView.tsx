@@ -3,12 +3,16 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import type { Song, Language } from "@/lib/getSongs";
+import { formatBlock, formatLyricsAudit } from "@/lib/formatLyrics";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 
 export default function SongView({ song }: { song: Song }) {
   const [lang, setLang] = useState<Language>(song.language_default);
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
+
+  // Dev-only audit: log problematic lines on first render
+  useEffect(() => { formatLyricsAudit(song); }, [song]);
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
@@ -115,6 +119,21 @@ export default function SongView({ song }: { song: Song }) {
 
       {/* Header */}
       <header style={{ marginBottom: 24, marginTop: 8 }}>
+        {/* Skeuomorphic 4-pointed star */}
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          style={{ opacity: 0.4, marginBottom: 12 }}
+        >
+          <path
+            d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
+            stroke="var(--accent)"
+            strokeWidth="1"
+            fill="none"
+          />
+        </svg>
         <h1
           style={{
             fontFamily: "var(--font-display)",
@@ -146,6 +165,10 @@ export default function SongView({ song }: { song: Song }) {
           gap: 12,
           marginBottom: 28,
           flexWrap: "wrap",
+          background: "var(--bg-surface)",
+          borderRadius: "var(--radius-lg)",
+          padding: "8px 12px",
+          boxShadow: "0 2px 8px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset",
         }}
       >
         <LanguageToggle
@@ -161,7 +184,7 @@ export default function SongView({ song }: { song: Song }) {
         {Object.entries(sections).map(([key, text]) => (
           <section key={key} style={{ marginBottom: 28 }}>
             <span className="section-label">{formatLabel(key)}</span>
-            <p style={{ whiteSpace: "pre-line" }}>{text}</p>
+            <p style={{ whiteSpace: "pre-line" }}>{formatBlock(text)}</p>
           </section>
         ))}
       </div>
