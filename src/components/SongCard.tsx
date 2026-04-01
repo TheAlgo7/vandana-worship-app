@@ -20,6 +20,7 @@ export default function SongCard({ song }: { song: SongMeta }) {
     >
       <h2
         style={{
+          fontFamily: "var(--font-heading)",
           fontSize: "var(--font-size-lg)",
           fontWeight: 600,
           marginBottom: "var(--space-xs)",

@@ -43,6 +43,15 @@
 
 ---
 
+## DESIGN POLISH — Phase 2.5
+- [x] Accent color replaced: purple → warm gold (#D4A853 dark / #9A6F20 light)
+- [x] Cormorant Garamond heading font applied to all h1 elements
+- [x] Lyrics wrapping fixed: word-break keep-all + overflow-wrap break-word + side padding
+- [x] Subtitle changed to "Worship in your language"
+- [x] Church pills, tag pills, nav, toggle all use gold accent via CSS variables
+
+---
+
 ## PHASE 3 — Polish & Interactions
 - [ ] Framer Motion: SongCard staggered entrance on home
 - [ ] Framer Motion: language toggle crossfade (300ms)

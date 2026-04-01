@@ -35,7 +35,7 @@ export default function Home() {
             color: "var(--color-text-muted)",
           }}
         >
-          Worship songs for your congregation
+          Worship in your language
         </p>
       </header>
 

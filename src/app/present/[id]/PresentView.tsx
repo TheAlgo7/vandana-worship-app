@@ -176,6 +176,10 @@ export default function PresentView({ song }: { song: Song }) {
             <p
               style={{
                 whiteSpace: "pre-line",
+                wordBreak: "keep-all",
+                overflowWrap: "break-word",
+                paddingLeft: "20px",
+                paddingRight: "20px",
                 fontSize: `${FONT_SIZES[fontIdx]}rem`,
                 lineHeight: 1.7,
                 transition: "font-size 0.2s ease",
