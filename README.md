@@ -86,7 +86,7 @@ vandana/
 | Language | TypeScript 5 |
 | Theming | next-themes 0.4.6 (dark/light, `data-theme`) |
 | Animations | Framer Motion 12 |
-| PWA | next-pwa 5.6.0 |
+| PWA | Web App Manifest (public/manifest.json) |
 | Fonts | Cormorant Garamond · Plus Jakarta Sans · Noto Sans Devanagari |
 | Deployment | Vercel (SSG + Edge) |
 

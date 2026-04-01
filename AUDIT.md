@@ -7,11 +7,11 @@
 ## PHASE 1 — Foundation (Do First)
 - [x] Next.js project created with TypeScript + Tailwind + App Router
 - [x] Folder structure created (app/, components/, data/songs/, lib/, styles/)
-- [x] Dependencies installed: next-themes, framer-motion, next-pwa
+- [x] Dependencies installed: next-themes, framer-motion
 - [x] globals.css — all CSS variables for dark + light theme
 - [x] Google Fonts loaded: Cormorant Garamond + Plus Jakarta Sans + Noto Sans Devanagari
 - [x] layout.tsx — ThemeProvider wrapped, font classes applied, PWA meta tags
-- [x] next.config.ts — next-pwa configured
+- [x] next.config.ts — production headers configured
 - [x] public/manifest.json — PWA manifest complete
 - [x] First song JSON added: chamka-sitara.json + choo-le-mujhe.json (ICM)
 - [x] getSongs.ts helper working (getSongs + getSongById)
