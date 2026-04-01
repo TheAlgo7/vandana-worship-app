@@ -15,7 +15,7 @@
 - [x] public/manifest.json — PWA manifest complete
 - [x] First song JSON added: chamka-sitara.json + choo-le-mujhe.json (ICM)
 - [x] getSongs.ts helper working (getSongs + getSongById)
-- [ ] Vercel deployment live at vandanaapp.vercel.app (manual — later)
+- [x] Vercel deployment live at vandanaapp.vercel.app
 
 ---
 
