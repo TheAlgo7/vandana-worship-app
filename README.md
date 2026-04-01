@@ -37,39 +37,46 @@ Install it on your phone — tap **Share → Add to Home Screen** (iOS) or the i
 ```
 vandana/
 ├── public/
-│   └── manifest.json          # PWA manifest
+│   └── manifest.json            # PWA manifest
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx         # Root layout (fonts, theme, meta)
-│   │   ├── page.tsx           # Home — song list with search
-│   │   ├── globals.css        # Tailwind v4 entry
+│   │   ├── globals.css           # Sacred Noir design tokens & theme variables
+│   │   ├── layout.tsx            # Root layout (fonts, theme, meta)
+│   │   ├── loading.tsx           # Global loading state
+│   │   ├── page.tsx              # Home — song list with search
+│   │   ├── settings/
+│   │   │   └── page.tsx          # Standalone settings page
 │   │   ├── song/
 │   │   │   └── [id]/
-│   │   │       ├── page.tsx       # SSG song page
-│   │   │       └── SongView.tsx   # Client: lyrics, font size, language
+│   │   │       ├── page.tsx      # SSG song page
+│   │   │       └── SongView.tsx  # Client: lyrics, font size, language
 │   │   └── present/
 │   │       └── [id]/
-│   │           ├── page.tsx       # SSG present page
+│   │           ├── page.tsx      # SSG present page
 │   │           └── PresentView.tsx # Client: fullscreen auto-scroll
 │   ├── components/
-│   │   ├── BottomNav.tsx      # Fixed bottom navigation
-│   │   ├── FontSizeControl.tsx # Pinch-free font scaling
-│   │   ├── HomeContent.tsx    # Song list + search + filters
-│   │   ├── LanguageToggle.tsx # Hinglish ↔ Hindi switch
-│   │   ├── Providers.tsx      # ThemeProvider wrapper
-│   │   ├── SearchBar.tsx      # Instant search
-│   │   ├── SettingsModal.tsx  # Bottom sheet settings
-│   │   └── SongCard.tsx       # Song list item
+│   │   ├── BottomNav.tsx         # Glass-effect bottom navigation
+│   │   ├── FontSizeControl.tsx   # A−/Aa/A+ font scaling
+│   │   ├── HomeContent.tsx       # Song list + search + filter chips
+│   │   ├── LanguageToggle.tsx    # Pill segmented Hinglish ↔ Hindi
+│   │   ├── Providers.tsx         # ThemeProvider wrapper
+│   │   ├── SearchBar.tsx         # Instant search
+│   │   ├── SongCard.tsx          # 72px song list row
+│   │   ├── SongCardSkeleton.tsx  # Song card loading skeleton
+│   │   └── SongSkeleton.tsx      # Full page loading skeleton
 │   ├── data/
 │   │   └── songs/
 │   │       ├── chamka-sitara.json
-│   │       └── choo-le-mujhe.json
+│   │       ├── choo-le-mujhe.json
+│   │       ├── ek-mahima-ka-baadal.json
+│   │       ├── paak-ruh-tu.json
+│   │       └── teri-ore-jab-masih.json
 │   ├── lib/
-│   │   └── getSongs.ts       # File-system song loader
+│   │   └── getSongs.ts          # File-system song loader
 │   └── styles/
-│       └── globals.css        # Design tokens & theme variables
+│       └── globals.css           # Tailwind v4 import bridge
 ├── next.config.ts
-├── tailwind.config.ts (v4 — CSS-first)
+├── postcss.config.mjs
 ├── tsconfig.json
 └── package.json
 ```
@@ -85,16 +92,17 @@ vandana/
 | Styling | Tailwind CSS v4 (CSS-first config) |
 | Language | TypeScript 5 |
 | Theming | next-themes 0.4.6 (dark/light, `data-theme`) |
-| Animations | Framer Motion 12 |
+| Animations | CSS @keyframes (fadeUp, shimmer, pulse) |
 | PWA | Web App Manifest (public/manifest.json) |
 | Fonts | Cormorant Garamond · Plus Jakarta Sans · Noto Sans Devanagari |
 | Deployment | Vercel (SSG + Edge) |
 
 ---
 
-## 🎨 Design Philosophy
+## 🎨 Design Philosophy — Sacred Noir
 
-- **Dark-first** — worship happens in dim rooms. The dark theme isn't an afterthought, it's the default.
+- **Dark-first** — worship happens in dim rooms. The dark theme (`#0F0F13` base) isn't an afterthought, it's the default. Light mode (`#F4F0E8`) is the override.
+- **Desaturated gold accent** — `#C4AA7E` — warm but restrained, like candlelight on old paper.
 - **Typography is the UI** — lyrics are the content. Cormorant Garamond for headings, Plus Jakarta Sans for body, Noto Sans Devanagari for Hindi. Every font chosen with intent.
 - **Zero-distraction reading** — no ads, no popups, no tracking. Just words on screen.
 - **Church-native** — features like Present Mode exist because someone actually projects lyrics from a phone. This isn't a generic app with a worship skin.
@@ -126,7 +134,7 @@ vandana/
 | Feature | Description |
 |---------|------------|
 | Dark / Light Theme | System-aware with manual override |
-| Settings Modal | Bottom-sheet with theme, language defaults, about |
+| Settings Page | Standalone settings with theme toggle, language defaults, about |
 | PWA Install | Add to home screen, works offline |
 | Static Generation | Every song page pre-rendered at build time |
 
@@ -195,8 +203,8 @@ Rebuild. That's it. No CMS, no database, no deploy pipeline to configure.
 ---
 
 <p align="center">
-  <code>v0.1.0</code> · July 2025<br/>
-  © 2025 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
+  <code>v0.2.0</code> · Sacred Noir · April 2026<br/>
+  © 2025–2026 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
 </p>
 
 ## Deploy on Vercel
