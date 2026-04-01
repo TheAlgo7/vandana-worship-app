@@ -65,6 +65,9 @@
 - [x] Hindi search input works (type in Devanagari and get results)
 - [x] All external links open in new tab
 - [x] No hardcoded hex colors in component styles — color usage routed through CSS vars
+- [x] Skeleton UI for song lyrics page load
+- [x] Skeleton UI for home page song cards
+- [x] Song not found state handled gracefully
 
 ---
 
