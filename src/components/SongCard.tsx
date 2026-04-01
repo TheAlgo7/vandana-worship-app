@@ -9,18 +9,31 @@ export default function SongCard({ song }: { song: SongMeta }) {
       style={{
         display: "flex",
         alignItems: "center",
-        minHeight: 72,
-        padding: "14px 0",
+        minHeight: 76,
+        padding: "16px 0",
         textDecoration: "none",
         color: "inherit",
       }}
     >
+      {/* Accent pill */}
+      <div
+        style={{
+          width: 3,
+          height: 28,
+          borderRadius: 2,
+          background: "var(--accent)",
+          flexShrink: 0,
+          marginRight: 14,
+          opacity: 0.45,
+        }}
+      />
+
       {/* Left: title + artist */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <h2
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "var(--text-base)",
+            fontSize: "17px",
             fontWeight: 600,
             color: "var(--text-primary)",
             lineHeight: 1.3,
@@ -33,7 +46,7 @@ export default function SongCard({ song }: { song: SongMeta }) {
         </h2>
         <p
           style={{
-            fontSize: "var(--text-xs)",
+            fontSize: "var(--text-sm)",
             color: "var(--text-secondary)",
             marginTop: 2,
             overflow: "hidden",
@@ -64,6 +77,7 @@ export default function SongCard({ song }: { song: SongMeta }) {
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
+              letterSpacing: "0.08em",
             }}
           >
             {song.church}

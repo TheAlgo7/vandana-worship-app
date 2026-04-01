@@ -40,8 +40,7 @@ export const metadata: Metadata = {
     default: "Vandana – Worship Lyrics",
     template: "%s | Vandana",
   },
-  description:
-    "Browse worship song lyrics in Hindi and Hinglish. Present lyrics full-screen during church worship.",
+  description: "Worship in your language",
   manifest: "/manifest.json",
   icons: {
     icon: [

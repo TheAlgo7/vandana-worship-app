@@ -84,6 +84,19 @@
 - [x] Skeuomorphic 4-pointed star SVG (16×16, `--accent` stroke, 0.4 opacity) above song title on lyrics page
 - [x] Typography: Lora replaced Cormorant Garamond — warmer, calligraphic roots, devotional feel
 
+## PREMIUM POLISH — Phase 2.8
+- [x] Kill double header: `overscroll-behavior: none` on html, title trimmed to "Vandana"
+- [x] Home header redesign: top bar (22px Lora wordmark + gear icon → /settings) + greeting section (time-based greeting + "What would you like to worship?")
+- [x] Dark bg vars deepened: `--bg-base: #0A0A0E`, `--bg-surface: #141418`, `--bg-elevated: #1E1E26`
+- [x] BottomNav glass upgrade: `rgba(14,14,18,0.92)` bg, `blur(24px) saturate(180%)`, subtle white border-top
+- [x] Search bar inset shadow: `inset 0 1px 3px rgba(0,0,0,0.4)`
+- [x] SongCard accent pill: 3×28px gold bar, row height → 76, title → 17px, artist → `--text-sm`, church letter-spacing → 0.08em
+- [x] Lyrics star SVG: 16→14px, opacity 0.4→0.3
+- [x] Lyrics title: `28px → 34px`, letter-spacing → `-0.03em`
+- [x] Lyrics artist: `11px → 14px` + `<hr>` divider (accent-dim, marginTop 16)
+- [x] Radial accent glow: HomeContent (200px, 0.08 opacity) + SongView (300px, 0.07 opacity)
+- [x] Link import added to HomeContent for settings gear icon navigation
+
 ---
 
 ## PHASE 3 — Polish & Interactions

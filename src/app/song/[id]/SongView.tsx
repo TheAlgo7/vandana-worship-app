@@ -117,15 +117,34 @@ export default function SongView({ song }: { song: Song }) {
       {/* Scroll sentinel */}
       <div ref={sentinelRef} style={{ height: 1 }} />
 
+      {/* Radial accent glow */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: -60,
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: 300,
+          height: 300,
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
+          opacity: 0.07,
+          pointerEvents: "none",
+          zIndex: -1,
+        }}
+      />
+
       {/* Header */}
       <header style={{ marginBottom: 24, marginTop: 8 }}>
         {/* Skeuomorphic 4-pointed star */}
         <svg
-          width="16"
-          height="16"
+          width="14"
+          height="14"
           viewBox="0 0 16 16"
           fill="none"
-          style={{ opacity: 0.4, marginBottom: 12 }}
+          style={{ opacity: 0.3, marginBottom: 12 }}
         >
           <path
             d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
@@ -137,10 +156,11 @@ export default function SongView({ song }: { song: Song }) {
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "var(--text-2xl)",
+            fontSize: "34px",
             fontWeight: 700,
             color: "var(--text-primary)",
             lineHeight: 1.2,
+            letterSpacing: "-0.03em",
             marginBottom: 4,
           }}
         >
@@ -148,13 +168,21 @@ export default function SongView({ song }: { song: Song }) {
         </h1>
         <p
           style={{
-            fontSize: "var(--text-xs)",
+            fontSize: "14px",
             color: "var(--text-muted)",
           }}
         >
           {song.artist}
           {song.church ? ` · ${song.church}` : ""}
         </p>
+        <hr
+          style={{
+            border: "none",
+            borderTop: "1px solid var(--accent-dim)",
+            marginTop: 16,
+            marginBottom: 0,
+          }}
+        />
       </header>
 
       {/* Controls toolbar */}
