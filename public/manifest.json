@@ -3,9 +3,10 @@
   "short_name": "Vandana",
   "description": "Hindi & English worship lyrics for your church service",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
-  "background_color": "#0C0C10",
-  "theme_color": "#7c3aed",
+  "background_color": "#0c0a09",
+  "theme_color": "#9A6F20",
   "orientation": "portrait",
   "icons": [
     {

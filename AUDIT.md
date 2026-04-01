@@ -69,13 +69,13 @@
 ---
 
 ## PHASE 4 — PWA & Offline
-- [ ] Service worker registered
+- [x] Service worker registered
 - [ ] App installable on Android (Add to Home Screen)
 - [ ] App installable on iOS (Add to Home Screen)
-- [ ] Lyrics load offline after first visit
-- [ ] Home screen loads offline
-- [ ] PWA icon 192x192 created
-- [ ] PWA icon 512x512 created
+- [x] Lyrics load offline after first visit
+- [x] Home screen loads offline
+- [x] PWA icon 192x192 created
+- [x] PWA icon 512x512 created
 - [ ] Splash screen configured
 - [ ] Lighthouse PWA score > 90
 

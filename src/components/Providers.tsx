@@ -3,6 +3,7 @@
 import { ThemeProvider, useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
 import RouteTransition from "@/components/RouteTransition";
+import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 
 function ThemeFadeOverlay() {
   const { resolvedTheme } = useTheme();
@@ -31,6 +32,7 @@ function ThemeFadeOverlay() {
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
+      <ServiceWorkerRegistration />
       <RouteTransition>{children}</RouteTransition>
       <ThemeFadeOverlay />
     </ThemeProvider>

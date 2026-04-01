@@ -42,6 +42,14 @@ export const metadata: Metadata = {
   description:
     "Browse worship song lyrics in Hindi and Hinglish. Present lyrics full-screen during church worship.",
   manifest: "/manifest.json",
+  icons: {
+    icon: [
+      { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icons/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" }],
+    shortcut: ["/icons/icon-192.png"],
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
