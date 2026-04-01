@@ -1,0 +1,29 @@
+{
+  "id": "paak-ruh-tu",
+  "title": "Paak Tu Paak Ruh Tu",
+  "artist": "ICM Worship",
+  "church": "ICM",
+  "album": "ICM Worship",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Chaaha jo itna, mujhe khoobhi kya dekhi mujh mein\nAadar jo itna diya, yogyata kya thi mujh mein\nChaaha jo itna, mujhe khoobhi kya dekhi mujh mein\nAadar itna diya, yogyata kya thi mujh mein",
+      "chorus": "Paak tu, paak ruh tu\nJeevan ka jal hai tu, meetha madhur hai tu\nPaak tu, paak ruh tu\nJeevan ka jal hai tu, meetha madhur hai tu\nJeevan ka jal hai tu, meetha madhur hai tu",
+      "bridge": "Mujhse itni mohabbat ki tune\nKya dekhkar daldal ke beech se\nMujhe nikaala hai apne prem se"
+    },
+    "hindi": {
+      "verse1": "चाहा जो इतना, मुझे खूबी क्या देखी मुझ में\nआदर जो इतना दिया, योग्यता क्या थी मुझ में\nचाहा जो इतना, मुझे खूबी क्या देखी मुझ में\nआदर इतना दिया, योग्यता क्या थी मुझ में",
+      "chorus": "पाक तू, पाक रूह तू\nजीवन का जल है तू, मीठा मधुर है तू\nपाक तू, पाक रूह तू\nजीवन का जल है तू, मीठा मधुर है तू\nजीवन का जल है तू, मीठा मधुर है तू",
+      "bridge": "मुझसे इतनी मोहब्बत की तूने\nक्या देखकर दलदल के बीच से\nमुझे निकाला है अपने प्रेम से"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "holy spirit", "prayer", "icm"],
+  "seo_description": "Paak Tu Paak Ruh Tu lyrics in Hindi and Hinglish by ICM Worship — ICM Church",
+  "added_by": "Gaurav | Vandana"
+}

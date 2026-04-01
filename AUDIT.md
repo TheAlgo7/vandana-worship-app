@@ -82,9 +82,9 @@
 ---
 
 ## PHASE 5 — Content (Songs Database)
-- [ ] 1 song added (ICM) — for UI testing only
+- [x] 1 song added (ICM) — for UI testing only
 - [ ] UI complete and approved before adding more songs
-- [ ] 10 ICM songs added
+- [ ] 10 ICM songs added (5/10)
 - [ ] 5 FOLJ songs added
 - [ ] 5 Nation of Worship songs added
 - [ ] 5 Sheldon Bangera songs added
@@ -147,6 +147,9 @@
 | Song Title | Artist | Church | Language | Added On | Verified |
 |---|---|---|---|---|---|
 | Yeshu Mera Gawah | ICM Worship | ICM | HI + Hinglish | — | No |
+| Teri Ore Jab Masih | Pastor Arul Thomas | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
+| Ek Mahima Ka Baadal | ICM Worship | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
+| Paak Tu Paak Ruh Tu | ICM Worship | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
 
 ---
 

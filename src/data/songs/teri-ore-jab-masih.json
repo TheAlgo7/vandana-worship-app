@@ -1,0 +1,29 @@
+{
+  "id": "teri-ore-jab-masih",
+  "title": "Teri Ore Jab Masih",
+  "artist": "Pastor Arul Thomas",
+  "church": "ICM",
+  "album": "Grace Music India",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Teri ore jab Masih, meri aankhen uthe\nZindagi dard mein muskuraane lagi\nTeri ore jab Masih, meri aankhen uthe\nZindagi dard mein muskuraane lagi",
+      "verse1": "Kaante raahon mein the saare, hatte gaye\nPyaas dil ki meri ab, mitne lagi\nKaante raahon mein the saare, hatte gaye\nPyaas dil ki meri ab, mitne lagi",
+      "verse2": "Na thi manzil koi, na koi saath tha\nJaa raha tha kahaan, na mujhe tha pata\nNa thi manzil koi, na koi saath tha\nJaa raha tha kahaan, na mujhe tha pata\n\nThaam kar haath wo, le gaya us jagah\nJis jagah par mujhe, saari khushiyaan mili\nThaam kar haath wo, le gaya us jagah\nJis jagah par mujhe, saari khushiyaan mili"
+    },
+    "hindi": {
+      "chorus": "तेरी ओर जब मसीह, मेरी आँखें उठे\nज़िंदगी दर्द में मुस्कराने लगी\nतेरी ओर जब मसीह, मेरी आँखें उठे\nज़िंदगी दर्द में मुस्कराने लगी",
+      "verse1": "काँटें राहों में थे सारे, हटते गए\nप्यास दिल की मेरी अब, मिटने लगी\nकाँटें राहों में थे सारे, हटते गए\nप्यास दिल की मेरी अब, मिटने लगी",
+      "verse2": "ना थी मंज़िल कोई, ना कोई साथ था\nजा रहा था कहाँ, ना मुझे था पता\nना थी मंज़िल कोई, ना कोई साथ था\nजा रहा था कहाँ, ना मुझे था पता\n\nथाम कर हाथ वो, ले गया उस जगह\nजिस जगह पर मुझे, सारी ख़ुशियाँ मिलीं\nथाम कर हाथ वो, ले गया उस जगह\nजिस जगह पर मुझे, सारी ख़ुशियाँ मिलीं"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/@GraceMusicIndia",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "surrender", "hope", "icm", "original"],
+  "seo_description": "Teri Ore Jab Masih lyrics in Hindi and Hinglish — original composition by Pastor Arul Thomas, ICM Church",
+  "added_by": "Gaurav | Vandana"
+}

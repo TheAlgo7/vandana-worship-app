@@ -1,0 +1,31 @@
+{
+  "id": "ek-mahima-ka-baadal",
+  "title": "Ek Mahima Ka Baadal",
+  "artist": "ICM Worship",
+  "church": "ICM",
+  "album": "ICM Worship",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Ek mahima ka baadal, is ghar pe odh de\nEk mahima ka baadal, tere logon pe gher de\nEk mahima ka baadal, is ghar pe odh de\nEk mahima ka baadal, tere logon pe gher de",
+      "verse1": "Tu sang rehta hai, tu aage chalta hai\nTu sang rehta hai, tu aage chalta hai\nTu sang rehta hai, tu aage chalta hai\nTu sang rehta hai, tu aage chalta hai",
+      "bridge": "Pavitra Aatma, pyaare Pavitra Aatma\nBasa le Pavitra Aatma, mere Pavitra Aatma\nPavitra Aatma, pyaare Pavitra Aatma\nBasa le Pavitra Aatma, mere Pavitra Aatma",
+      "verse2": "Humko apni, aag se bhar de\nHumko apni, aag se bhar de\nPavitra Aatma, pyaare Pavitra Aatma\nBasa le Pavitra Aatma, mere Pavitra Aatma"
+    },
+    "hindi": {
+      "chorus": "एक महिमा का बादल, इस घर पे ओढ़ दे\nएक महिमा का बादल, तेरे लोगों पे घेर दे\nएक महिमा का बादल, इस घर पे ओढ़ दे\nएक महिमा का बादल, तेरे लोगों पे घेर दे",
+      "verse1": "तू संग रहता है, तू आगे चलता है\nतू संग रहता है, तू आगे चलता है\nतू संग रहता है, तू आगे चलता है\nतू संग रहता है, तू आगे चलता है",
+      "bridge": "पवित्र आत्मा, प्यारे पवित्र आत्मा\nबसा ले पवित्र आत्मा, मेरे पवित्र आत्मा\nपवित्र आत्मा, प्यारे पवित्र आत्मा\nबसा ले पवित्र आत्मा, मेरे पवित्र आत्मा",
+      "verse2": "हमको अपनी, आग से भर दे\nहमको अपनी, आग से भर दे\nपवित्र आत्मा, प्यारे पवित्र आत्मा\nबसा ले पवित्र आत्मा, मेरे पवित्र आत्मा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "holy spirit", "anointing", "icm"],
+  "seo_description": "Ek Mahima Ka Baadal lyrics in Hindi and Hinglish by ICM Worship — ICM Church",
+  "added_by": "Gaurav | Vandana"
+}
