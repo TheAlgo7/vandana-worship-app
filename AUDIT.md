@@ -96,6 +96,9 @@
 - [x] Lyrics artist: `11px → 14px` + `<hr>` divider (accent-dim, marginTop 16)
 - [x] Radial accent glow: HomeContent (200px, 0.08 opacity) + SongView (300px, 0.07 opacity)
 - [x] Link import added to HomeContent for settings gear icon navigation
+- [x] Hydration mismatch fixed (Greeting component)
+- [x] Duplicate header removed
+- [x] CSS preload warning resolved
 
 ---
 

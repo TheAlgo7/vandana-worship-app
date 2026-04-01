@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
+import Greeting from "@/components/Greeting";
 import Link from "next/link";
 
 export default function HomeContent({ songs }: { songs: SongMeta[] }) {
@@ -47,7 +48,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "22px",
-            fontWeight: 600,
+            fontWeight: 500,
             color: "var(--accent)",
             letterSpacing: "-0.02em",
           }}
@@ -84,20 +85,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           position: "relative",
         }}
       >
-        <p
-          style={{
-            fontFamily: "var(--font-body)",
-            fontSize: "var(--text-sm)",
-            color: "var(--text-secondary)",
-            marginBottom: 4,
-          }}
-        >
-          {new Date().getHours() < 12
-            ? "Good morning"
-            : new Date().getHours() < 17
-              ? "Good afternoon"
-              : "Good evening"}
-        </p>
+        <Greeting />
         <h1
           style={{
             fontFamily: "var(--font-display)",
