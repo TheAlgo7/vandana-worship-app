@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 import type { Song, Language } from "@/lib/getSongs";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -12,10 +11,8 @@ export default function SongView({ song }: { song: Song }) {
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
+    <div
+      className="fade-in"
       style={{
         maxWidth: "40rem",
         margin: "0 auto",
@@ -148,7 +145,7 @@ export default function SongView({ song }: { song: Song }) {
           )}
         </div>
       )}
-    </motion.div>
+    </div>
   );
 }
 
