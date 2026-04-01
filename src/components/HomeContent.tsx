@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { motion, useReducedMotion } from "framer-motion";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 
@@ -9,7 +8,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const prefersReducedMotion = useReducedMotion();
 
   /* derive unique churches */
   const churches = Array.from(new Set(songs.map((s) => s.church).filter(Boolean)));
@@ -24,25 +22,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
     const searchable = `${s.title} ${s.artist} ${s.church}`;
     return normalize(searchable).includes(q);
   });
-
-  const listVariants = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: prefersReducedMotion ? 0 : 0.06,
-        delayChildren: prefersReducedMotion ? 0 : 0.04,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: prefersReducedMotion ? 0 : 0.28, ease: "easeOut" as const },
-    },
-  };
 
   return (
     <>
@@ -161,10 +140,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       )}
 
       {/* ── Song Grid ── */}
-      <motion.main
-        variants={listVariants}
-        initial="hidden"
-        animate="show"
+      <main
         style={{
           maxWidth: "40rem",
           margin: "0 auto",
@@ -185,16 +161,12 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           </p>
         ) : (
           filtered.map((song) => (
-            <motion.div
-              key={song.id}
-              variants={itemVariants}
-              whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
-            >
+            <div key={song.id}>
               <SongCard song={song} />
-            </motion.div>
+            </div>
           ))
         )}
-      </motion.main>
+      </main>
     </>
   );
 }

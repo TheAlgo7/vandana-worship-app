@@ -190,3 +190,13 @@ h1 {
 .fade-in {
   animation: fadeIn 0.3s ease forwards;
 }
+
+/* ── Route transition fade ── */
+.route-fade {
+  animation: fadeIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .route-fade {
+    animation: none;
+  }
+}
