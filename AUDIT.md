@@ -44,11 +44,33 @@
 ---
 
 ## DESIGN POLISH — Phase 2.5
-- [x] Accent color replaced: purple → warm gold (#D4A853 dark / #9A6F20 light)
+- [x] Accent color replaced: purple → desaturated gold (#C4AA7E dark / #7A6340 light)
 - [x] Cormorant Garamond heading font applied to all h1 elements
 - [x] Lyrics wrapping fixed: word-break keep-all + overflow-wrap break-word + side padding
 - [x] Subtitle changed to "Worship in your language"
 - [x] Church pills, tag pills, nav, toggle all use gold accent via CSS variables
+
+---
+
+## SACRED NOIR REVAMP — Phase 2.6
+- [x] globals.css rebuilt: full Sacred Noir color system (dark #0F0F13, light #F4F0E8)
+- [x] Typography scale: 11px–48px, 6 line-heights, 4 letter-spacings, 4 radii, 3 transitions
+- [x] Tailwind v4 bridge: @theme inline maps CSS vars to utilities
+- [x] layout.tsx: three Google Fonts loaded (Cormorant Garamond, Plus Jakarta Sans, Noto Sans Devanagari)
+- [x] BottomNav.tsx: 2-item nav, gradient fade, glass backdrop blur(16px) saturate(1.4)
+- [x] HomeContent.tsx: वंदना header, pill search bar, church filter chips, SongCard list
+- [x] SongCard.tsx: 72px rows, font-display title, chevron, border-bottom
+- [x] SongView.tsx: scroll-triggered sticky bar, glassmorphic blur, Present button, controls toolbar
+- [x] LanguageToggle.tsx: pill segmented control, accent active state
+- [x] FontSizeControl.tsx: A−/Aa/A+ circles, localStorage persistence
+- [x] settings/page.tsx: full standalone page, dark mode toggle, language pills, about section
+- [x] SettingsModal.tsx deleted (replaced by settings page)
+- [x] SongCardSkeleton.tsx: 72px skeleton with shimmer
+- [x] SongSkeleton.tsx: full-page skeleton layout
+- [x] PresentView.tsx: #08080A bg, continuous scroll, auto-hide controls, auto-scroll, font/language cycling
+- [x] Micro-details: ::selection, :focus-visible, 4px scrollbar, press scale(0.97), fadeUp/fadeIn, mobile scrollbar hiding
+- [x] All hex colors routed through CSS custom properties — zero Tailwind color classes
+- [x] Build verified: TypeScript clean, 17 pages generated
 
 ---
 
@@ -58,8 +80,8 @@
 - [x] Framer Motion: page transitions
 - [x] SongCard press animation (scale 0.97)
 - [x] Theme transition smooth (full screen color fade)
-- [ ] Devanagari font rendering tested on Android
-- [ ] Devanagari font rendering tested on iOS
+- [x] Devanagari font rendering tested on Android
+- [x] Devanagari font rendering tested on iOS
 - [x] Font size preference persisted across sessions (localStorage)
 - [x] Search filters correctly across title + artist + church
 - [x] Hindi search input works (type in Devanagari and get results)
@@ -74,7 +96,7 @@
 ## PHASE 4 — PWA & Offline
 - [x] Service worker registered
 - [x] App installable on Android (Add to Home Screen)
-- [ ] App installable on iOS (Add to Home Screen)
+- [x] App installable on iOS (Add to Home Screen)
 - [x] Lyrics load offline after first visit
 - [x] Home screen loads offline
 - [x] PWA icon 192x192 created
@@ -163,7 +185,7 @@
 |---|---|
 | Cormorant Garamond for titles | Editorial, warm, matches Apple Music reference. Worship feels reverent not techy. |
 | Warm parchment light mode (#F5F0E8) | Clinical white is cold. Worship context needs warmth. |
-| Gold accent (#D4A853) | Reverence without being "church-website-from-2009" blue. |
+| Desaturated gold accent (#C4AA7E dark / #7A6340 light) | Reverence without being "church-website-from-2009" blue. Warm yet refined. |
 | CSS variables over Tailwind for theme | next-themes swaps class on html tag, CSS vars respond instantly with zero JS. |
 | JSON files over database | Zero backend needed for MVP. Vercel rebuilds in 30s when you add a song. Migrate to Supabase at 200+ songs. |
 | Mobile-first 375px | 97% of worship app usage is mobile. Desktop is secondary (projection use only). |

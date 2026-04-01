@@ -1,31 +1,31 @@
 export default function SongSkeleton() {
   return (
-    <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "var(--space-lg) var(--space-md)" }}>
+    <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "24px 16px" }}>
       {/* Back link placeholder */}
-      <div className="skeleton-block" style={{ width: "4rem", height: "1rem", marginBottom: "var(--space-md)" }} />
+      <div className="skeleton-block" style={{ width: "4rem", height: "1rem", marginBottom: 16 }} />
 
       {/* Title + artist */}
-      <div style={{ marginBottom: "var(--space-lg)" }}>
-        <div className="skeleton-block" style={{ width: "60%", height: "36px", marginBottom: "var(--space-sm)" }} />
-        <div className="skeleton-block" style={{ width: "40%", height: "16px" }} />
+      <div style={{ marginBottom: 24 }}>
+        <div className="skeleton-block" style={{ width: "60%", height: 36, marginBottom: 10 }} />
+        <div className="skeleton-block" style={{ width: "40%", height: 16 }} />
       </div>
 
-      {/* Language toggle bar */}
-      <div className="skeleton-block" style={{ width: "100%", height: "40px", marginBottom: "var(--space-lg)" }} />
+      {/* Controls toolbar */}
+      <div className="skeleton-block" style={{ width: "100%", height: 40, marginBottom: 24, borderRadius: "var(--radius-md)" }} />
 
       {/* Section 1 */}
-      <div style={{ marginBottom: "var(--space-lg)" }}>
-        <div className="skeleton-block" style={{ width: "25%", height: "12px", marginBottom: "var(--space-sm)" }} />
+      <div style={{ marginBottom: 24 }}>
+        <div className="skeleton-block" style={{ width: "25%", height: 12, marginBottom: 10 }} />
         {["90%", "75%", "85%", "60%"].map((w, i) => (
-          <div key={i} className="skeleton-block" style={{ width: w, height: "18px", marginBottom: "var(--space-sm)" }} />
+          <div key={i} className="skeleton-block" style={{ width: w, height: 18, marginBottom: 10 }} />
         ))}
       </div>
 
       {/* Section 2 */}
       <div>
-        <div className="skeleton-block" style={{ width: "25%", height: "12px", marginBottom: "var(--space-sm)" }} />
+        <div className="skeleton-block" style={{ width: "25%", height: 12, marginBottom: 10 }} />
         {["85%", "70%", "80%"].map((w, i) => (
-          <div key={i} className="skeleton-block" style={{ width: w, height: "18px", marginBottom: "var(--space-sm)" }} />
+          <div key={i} className="skeleton-block" style={{ width: w, height: 18, marginBottom: 10 }} />
         ))}
       </div>
     </div>

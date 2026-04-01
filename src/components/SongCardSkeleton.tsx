@@ -2,19 +2,19 @@ export default function SongCardSkeleton() {
   return (
     <div
       style={{
-        background: "var(--color-surface)",
-        border: "1px solid var(--color-border)",
-        borderRadius: "var(--radius-md)",
-        padding: "var(--space-lg)",
-        boxShadow: "var(--shadow-card)",
+        display: "flex",
+        alignItems: "center",
+        gap: 14,
+        height: 72,
+        padding: "0 20px",
+        borderBottom: "1px solid var(--border)",
       }}
     >
-      <div className="skeleton-block" style={{ width: "65%", height: "18px", marginBottom: "var(--space-xs)" }} />
-      <div className="skeleton-block" style={{ width: "40%", height: "14px", marginBottom: "var(--space-sm)" }} />
-      <div style={{ display: "flex", gap: "var(--space-xs)" }}>
-        <div className="skeleton-block" style={{ width: "60px", height: "20px", borderRadius: "var(--radius-full)" }} />
-        <div className="skeleton-block" style={{ width: "50px", height: "20px", borderRadius: "var(--radius-full)" }} />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="skeleton-block" style={{ width: "55%", height: 14, marginBottom: 6 }} />
+        <div className="skeleton-block" style={{ width: "30%", height: 11 }} />
       </div>
+      <div className="skeleton-block" style={{ width: 20, height: 20, borderRadius: "var(--radius-pill)", flexShrink: 0 }} />
     </div>
   );
 }

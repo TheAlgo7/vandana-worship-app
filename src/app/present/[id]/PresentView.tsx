@@ -97,8 +97,8 @@ export default function PresentView({ song }: { song: Song }) {
       ref={scrollRef}
       onClick={handleTap}
       style={{
-        background: "var(--color-present-bg)",
-        color: "var(--color-present-fg)",
+        background: "#08080A",
+        color: "#ECEAE4",
         minHeight: "100dvh",
         overflowY: "auto",
         WebkitOverflowScrolling: "touch",
@@ -115,22 +115,22 @@ export default function PresentView({ song }: { song: Song }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "var(--space-sm) var(--space-md)",
-          paddingTop: "calc(var(--space-sm) + env(safe-area-inset-top, 0px))",
-          background: "linear-gradient(to bottom, rgba(0,0,0,0.7), transparent)",
+          padding: "10px 16px",
+          paddingTop: "calc(10px + env(safe-area-inset-top, 0px))",
+          background: "linear-gradient(to bottom, rgba(8,8,10,0.85), transparent)",
           opacity: controlOpacity,
           pointerEvents: controlPointer,
-          transition: "opacity 0.3s ease",
+          transition: "opacity var(--transition-fast) ease",
           zIndex: 10,
         }}
       >
         <Link
           href={`/song/${song.id}`}
           style={{
-            color: "var(--color-present-fg)",
+            color: "#ECEAE4",
             textDecoration: "none",
-            fontSize: "var(--font-size-sm)",
-            padding: "var(--space-xs) var(--space-sm)",
+            fontSize: "var(--text-sm)",
+            padding: "6px 10px",
           }}
           onClick={(e) => e.stopPropagation()}
         >
@@ -138,8 +138,8 @@ export default function PresentView({ song }: { song: Song }) {
         </Link>
         <span
           style={{
-            fontSize: "var(--font-size-sm)",
-            opacity: 0.6,
+            fontSize: "var(--text-sm)",
+            opacity: 0.5,
           }}
         >
           {song.title}
@@ -149,7 +149,7 @@ export default function PresentView({ song }: { song: Song }) {
       {/* ── Lyrics (continuous scroll) ── */}
       <div
         style={{
-          padding: "5rem var(--space-lg) 8rem",
+          padding: "5rem 24px 8rem",
           maxWidth: "48rem",
           margin: "0 auto",
           textAlign: "center",
@@ -158,17 +158,17 @@ export default function PresentView({ song }: { song: Song }) {
         {entries.map(([key, text]) => (
           <section
             key={key}
-            style={{ marginBottom: "var(--space-xl)" }}
+            style={{ marginBottom: 36 }}
           >
             <span
               style={{
                 display: "block",
-                fontSize: "var(--font-size-xs)",
+                fontSize: "var(--text-xs)",
                 fontWeight: 600,
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                color: "rgba(255,255,255,0.35)",
-                marginBottom: "var(--space-sm)",
+                letterSpacing: "0.12em",
+                color: "rgba(236,234,228,0.25)",
+                marginBottom: 10,
               }}
             >
               {formatLabel(key)}
@@ -178,11 +178,11 @@ export default function PresentView({ song }: { song: Song }) {
                 whiteSpace: "pre-line",
                 wordBreak: "keep-all",
                 overflowWrap: "break-word",
-                paddingLeft: "20px",
-                paddingRight: "20px",
+                paddingLeft: 20,
+                paddingRight: 20,
                 fontSize: `${FONT_SIZES[fontIdx]}rem`,
                 lineHeight: 1.7,
-                transition: "font-size 0.2s ease",
+                transition: "font-size var(--transition-fast) ease",
               }}
             >
               {text}
@@ -201,13 +201,13 @@ export default function PresentView({ song }: { song: Song }) {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          gap: "var(--space-md)",
-          padding: "var(--space-sm) var(--space-md)",
-          paddingBottom: "calc(var(--space-sm) + env(safe-area-inset-bottom, 0px))",
-          background: "linear-gradient(to top, rgba(0,0,0,0.7), transparent)",
+          gap: 14,
+          padding: "10px 16px",
+          paddingBottom: "calc(10px + env(safe-area-inset-bottom, 0px))",
+          background: "linear-gradient(to top, rgba(8,8,10,0.85), transparent)",
           opacity: controlOpacity,
           pointerEvents: controlPointer,
-          transition: "opacity 0.3s ease",
+          transition: "opacity var(--transition-fast) ease",
           zIndex: 10,
         }}
       >
@@ -219,12 +219,12 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           aria-label="Change font size"
           style={{
-            background: "rgba(255,255,255,0.15)",
-            border: "none",
-            borderRadius: "var(--radius-full)",
-            color: "var(--color-present-fg)",
-            width: "2.5rem",
-            height: "2.5rem",
+            background: "rgba(236,234,228,0.10)",
+            border: "1px solid rgba(236,234,228,0.08)",
+            borderRadius: "var(--radius-pill)",
+            color: "#ECEAE4",
+            width: 40,
+            height: 40,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -245,17 +245,17 @@ export default function PresentView({ song }: { song: Song }) {
             }}
             aria-label="Switch language"
             style={{
-              background: "rgba(255,255,255,0.15)",
-              border: "none",
-              borderRadius: "var(--radius-full)",
-              color: "var(--color-present-fg)",
-              padding: "var(--space-xs) var(--space-md)",
-              height: "2.5rem",
+              background: "rgba(236,234,228,0.10)",
+              border: "1px solid rgba(236,234,228,0.08)",
+              borderRadius: "var(--radius-pill)",
+              color: "#ECEAE4",
+              padding: "6px 16px",
+              height: 40,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               cursor: "pointer",
-              fontSize: "var(--font-size-sm)",
+              fontSize: "var(--text-sm)",
               fontWeight: 600,
               textTransform: "uppercase",
             }}
@@ -272,12 +272,12 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           aria-label={autoScroll ? "Stop auto-scroll" : "Start auto-scroll"}
           style={{
-            background: autoScroll ? "rgba(255,255,255,0.35)" : "rgba(255,255,255,0.15)",
-            border: "none",
-            borderRadius: "var(--radius-full)",
-            color: "var(--color-present-fg)",
-            width: "2.5rem",
-            height: "2.5rem",
+            background: autoScroll ? "rgba(196,170,126,0.25)" : "rgba(236,234,228,0.10)",
+            border: autoScroll ? "1px solid rgba(196,170,126,0.3)" : "1px solid rgba(236,234,228,0.08)",
+            borderRadius: "var(--radius-pill)",
+            color: "#ECEAE4",
+            width: 40,
+            height: 40,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",

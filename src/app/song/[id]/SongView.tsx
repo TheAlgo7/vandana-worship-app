@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import type { Song, Language } from "@/lib/getSongs";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -9,44 +9,127 @@ import FontSizeControl from "@/components/FontSizeControl";
 export default function SongView({ song }: { song: Song }) {
   const [lang, setLang] = useState<Language>(song.language_default);
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
+  const [scrolled, setScrolled] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement>(null);
+
+  /* Scroll-triggered sticky top bar */
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([e]) => setScrolled(!e.isIntersecting),
+      { threshold: 0 },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   return (
     <div
       style={{
         maxWidth: "40rem",
         margin: "0 auto",
-        padding: "var(--space-lg) var(--space-md)",
+        padding: "0 16px",
+        paddingBottom: "calc(56px + env(safe-area-inset-bottom, 0px) + 24px)",
       }}
     >
-      {/* Back link */}
-      <Link
-        href="/"
+      {/* Sticky top bar — appears on scroll */}
+      <div
         style={{
-          fontSize: "var(--font-size-sm)",
-          color: "var(--text-muted)",
-          textDecoration: "none",
-          display: "inline-block",
-          marginBottom: "var(--space-md)",
+          position: "sticky",
+          top: 0,
+          zIndex: 20,
+          background: scrolled
+            ? "color-mix(in srgb, var(--bg-base) 88%, transparent)"
+            : "transparent",
+          backdropFilter: scrolled ? "blur(12px) saturate(1.3)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.3)" : "none",
+          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+          transition: "background var(--transition-base), border-color var(--transition-base), backdrop-filter var(--transition-base)",
+          display: "flex",
+          alignItems: "center",
+          height: 52,
+          margin: "0 -16px",
+          padding: "0 16px",
         }}
       >
-        ← Back
-      </Link>
+        <Link
+          href="/"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 6,
+            color: "var(--text-secondary)",
+            textDecoration: "none",
+            fontSize: "var(--text-sm)",
+            fontWeight: 500,
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Back
+        </Link>
+
+        {/* Song title in top bar when scrolled */}
+        <span
+          style={{
+            flex: 1,
+            textAlign: "center",
+            fontFamily: "var(--font-display)",
+            fontSize: "var(--text-sm)",
+            fontWeight: 600,
+            color: "var(--text-primary)",
+            opacity: scrolled ? 1 : 0,
+            transition: "opacity var(--transition-base)",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            padding: "0 12px",
+          }}
+        >
+          {song.title}
+        </span>
+
+        {/* Present button always visible */}
+        <Link
+          href={`/present/${song.id}`}
+          style={{
+            padding: "6px 14px",
+            borderRadius: "var(--radius-pill)",
+            background: "var(--accent)",
+            color: "var(--bg-base)",
+            fontSize: "var(--text-xs)",
+            fontWeight: 600,
+            textDecoration: "none",
+            letterSpacing: "0.02em",
+            lineHeight: 1,
+          }}
+        >
+          Present
+        </Link>
+      </div>
+
+      {/* Scroll sentinel */}
+      <div ref={sentinelRef} style={{ height: 1 }} />
 
       {/* Header */}
-      <header style={{ marginBottom: "var(--space-lg)" }}>
+      <header style={{ marginBottom: 24, marginTop: 8 }}>
         <h1
           style={{
-            fontSize: "var(--font-size-2xl)",
+            fontFamily: "var(--font-display)",
+            fontSize: "var(--text-2xl)",
             fontWeight: 700,
             color: "var(--text-primary)",
-            marginBottom: "var(--space-xs)",
+            lineHeight: 1.2,
+            marginBottom: 4,
           }}
         >
           {song.title}
         </h1>
         <p
           style={{
-            fontSize: "var(--font-size-sm)",
+            fontSize: "var(--text-xs)",
             color: "var(--text-muted)",
           }}
         >
@@ -55,13 +138,13 @@ export default function SongView({ song }: { song: Song }) {
         </p>
       </header>
 
-      {/* Controls */}
+      {/* Controls toolbar */}
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "var(--space-md)",
-          marginBottom: "var(--space-lg)",
+          gap: 12,
+          marginBottom: 28,
           flexWrap: "wrap",
         }}
       >
@@ -71,27 +154,12 @@ export default function SongView({ song }: { song: Song }) {
           onChange={setLang}
         />
         <FontSizeControl />
-        <Link
-          href={`/present/${song.id}`}
-          style={{
-            marginLeft: "auto",
-            padding: "var(--space-xs) var(--space-md)",
-            borderRadius: "var(--radius-full)",
-            background: "var(--primary)",
-            color: "var(--primary-foreground)",
-            fontSize: "var(--font-size-sm)",
-            fontWeight: 600,
-            textDecoration: "none",
-          }}
-        >
-          Present
-        </Link>
       </div>
 
       {/* Lyrics */}
       <div className="lyrics-text">
         {Object.entries(sections).map(([key, text]) => (
-          <section key={key} style={{ marginBottom: "var(--space-lg)" }}>
+          <section key={key} style={{ marginBottom: 28 }}>
             <span className="section-label">{formatLabel(key)}</span>
             <p style={{ whiteSpace: "pre-line" }}>{text}</p>
           </section>
@@ -102,9 +170,9 @@ export default function SongView({ song }: { song: Song }) {
       {song.links && (
         <div
           style={{
-            marginTop: "var(--space-xl)",
+            marginTop: 40,
             display: "flex",
-            gap: "var(--space-sm)",
+            gap: 8,
             flexWrap: "wrap",
           }}
         >
@@ -114,10 +182,10 @@ export default function SongView({ song }: { song: Song }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "var(--space-xs) var(--space-md)",
-                borderRadius: "var(--radius-full)",
+                padding: "8px 16px",
+                borderRadius: "var(--radius-pill)",
                 border: "1px solid var(--border)",
-                fontSize: "var(--font-size-sm)",
+                fontSize: "var(--text-xs)",
                 color: "var(--text-secondary)",
                 textDecoration: "none",
               }}
@@ -131,10 +199,10 @@ export default function SongView({ song }: { song: Song }) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                padding: "var(--space-xs) var(--space-md)",
-                borderRadius: "var(--radius-full)",
+                padding: "8px 16px",
+                borderRadius: "var(--radius-pill)",
                 border: "1px solid var(--border)",
-                fontSize: "var(--font-size-sm)",
+                fontSize: "var(--text-xs)",
                 color: "var(--text-secondary)",
                 textDecoration: "none",
               }}

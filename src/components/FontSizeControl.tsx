@@ -35,7 +35,7 @@ export default function FontSizeControl() {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        gap: "var(--space-sm)",
+        gap: 8,
       }}
     >
       <button
@@ -43,27 +43,28 @@ export default function FontSizeControl() {
         disabled={size <= MIN}
         aria-label="Decrease font size"
         style={{
-          width: "2rem",
-          height: "2rem",
-          borderRadius: "var(--radius-full)",
+          width: 30,
+          height: 30,
+          borderRadius: "var(--radius-pill)",
           border: "1px solid var(--border)",
           background: "transparent",
           color: "var(--text-primary)",
-          fontSize: "var(--font-size-lg)",
+          fontSize: "var(--text-sm)",
           cursor: size <= MIN ? "not-allowed" : "pointer",
           opacity: size <= MIN ? 0.4 : 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          fontWeight: 600,
         }}
       >
-        −
+        A−
       </button>
       <span
         style={{
-          fontSize: "var(--font-size-xs)",
+          fontSize: "var(--text-xs)",
           color: "var(--text-muted)",
-          minWidth: "2rem",
+          minWidth: 28,
           textAlign: "center",
         }}
       >
@@ -74,21 +75,22 @@ export default function FontSizeControl() {
         disabled={size >= MAX}
         aria-label="Increase font size"
         style={{
-          width: "2rem",
-          height: "2rem",
-          borderRadius: "var(--radius-full)",
+          width: 30,
+          height: 30,
+          borderRadius: "var(--radius-pill)",
           border: "1px solid var(--border)",
           background: "transparent",
           color: "var(--text-primary)",
-          fontSize: "var(--font-size-lg)",
+          fontSize: "var(--text-sm)",
           cursor: size >= MAX ? "not-allowed" : "pointer",
           opacity: size >= MAX ? 0.4 : 1,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          fontWeight: 600,
         }}
       >
-        +
+        A+
       </button>
     </div>
   );

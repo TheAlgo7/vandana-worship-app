@@ -8,7 +8,7 @@ import Providers from "@/components/Providers";
 import "./globals.css";
 
 const heading = Cormorant_Garamond({
-  variable: "--font-heading",
+  variable: "--font-display",
   subsets: ["latin"],
   weight: ["300", "600", "700"],
   display: "swap",
@@ -29,7 +29,7 @@ const devanagari = Noto_Sans_Devanagari({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#9A6F20",
+  themeColor: "#C4AA7E",
   width: "device-width",
   initialScale: 1,
 };

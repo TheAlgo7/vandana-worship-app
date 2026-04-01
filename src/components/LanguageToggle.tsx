@@ -20,7 +20,7 @@ export default function LanguageToggle({
       style={{
         display: "inline-flex",
         position: "relative",
-        borderRadius: "var(--radius-full)",
+        borderRadius: "var(--radius-pill)",
         border: "1px solid var(--border)",
         overflow: "hidden",
       }}
@@ -31,14 +31,14 @@ export default function LanguageToggle({
           onClick={() => onChange(lang)}
           style={{
             position: "relative",
-            padding: "var(--space-xs) var(--space-md)",
-            fontSize: "var(--font-size-sm)",
+            padding: "6px 14px",
+            fontSize: "var(--text-xs)",
             fontWeight: current === lang ? 600 : 400,
-            background: current === lang ? "var(--primary)" : "transparent",
-            color: current === lang ? "var(--primary-foreground)" : "var(--text-muted)",
+            background: current === lang ? "var(--accent)" : "transparent",
+            color: current === lang ? "var(--bg-base)" : "var(--text-muted)",
             border: "none",
             cursor: "pointer",
-            transition: "color 0.3s, background 0.3s",
+            transition: "color var(--transition-fast), background var(--transition-fast)",
           }}
         >
           <span
@@ -46,7 +46,7 @@ export default function LanguageToggle({
               position: "relative",
               zIndex: 1,
               opacity: current === lang ? 1 : 0.72,
-              transition: "opacity 0.3s",
+              transition: "opacity var(--transition-fast)",
             }}
           >
             {lang === "hinglish" ? "Hinglish" : "Hindi"}
