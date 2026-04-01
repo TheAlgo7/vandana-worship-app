@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 
@@ -8,6 +9,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   /* derive unique churches */
   const churches = Array.from(new Set(songs.map((s) => s.church).filter(Boolean)));
@@ -17,13 +19,30 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
     const matchesChurch = !activeChurch || s.church === activeChurch;
     if (!matchesChurch) return false;
     if (!query.trim()) return true;
-    const q = query.toLowerCase();
-    return (
-      s.title.toLowerCase().includes(q) ||
-      s.artist.toLowerCase().includes(q) ||
-      s.church.toLowerCase().includes(q)
-    );
+    const normalize = (value: string) => value.toLocaleLowerCase().normalize("NFKC");
+    const q = normalize(query.trim());
+    const searchable = `${s.title} ${s.artist} ${s.church}`;
+    return normalize(searchable).includes(q);
   });
+
+  const listVariants = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: prefersReducedMotion ? 0 : 0.06,
+        delayChildren: prefersReducedMotion ? 0 : 0.04,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 8 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: prefersReducedMotion ? 0 : 0.28, ease: "easeOut" as const },
+    },
+  };
 
   return (
     <>
@@ -142,7 +161,10 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       )}
 
       {/* ── Song Grid ── */}
-      <main
+      <motion.main
+        variants={listVariants}
+        initial="hidden"
+        animate="show"
         style={{
           maxWidth: "40rem",
           margin: "0 auto",
@@ -162,9 +184,17 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             {query || activeChurch ? "No songs match your search." : "No songs yet."}
           </p>
         ) : (
-          filtered.map((song) => <SongCard key={song.id} song={song} />)
+          filtered.map((song) => (
+            <motion.div
+              key={song.id}
+              variants={itemVariants}
+              whileTap={prefersReducedMotion ? undefined : { scale: 0.97 }}
+            >
+              <SongCard song={song} />
+            </motion.div>
+          ))
         )}
-      </main>
+      </motion.main>
     </>
   );
 }

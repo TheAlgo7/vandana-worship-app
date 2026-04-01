@@ -23,15 +23,11 @@ export default function SettingsModal({
   onClose: () => void;
 }) {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  const [defaultLang, setDefaultLang] = useState<string>("hinglish");
-
-  /* hydration guard for theme */
-  useEffect(() => {
-    setMounted(true);
+  const [defaultLang, setDefaultLang] = useState<string>(() => {
+    if (typeof window === "undefined") return "hinglish";
     const saved = window.localStorage.getItem("vandana-default-lang");
-    if (saved === "hindi" || saved === "hinglish") setDefaultLang(saved);
-  }, []);
+    return saved === "hindi" || saved === "hinglish" ? saved : "hinglish";
+  });
 
   const handleLangChange = useCallback(
     (val: string) => {
@@ -53,7 +49,7 @@ export default function SettingsModal({
 
   if (!open) return null;
 
-  const isDark = mounted ? theme === "dark" : true;
+  const isDark = theme !== "light";
 
   return (
     /* Backdrop */

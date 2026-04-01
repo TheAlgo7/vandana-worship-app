@@ -53,17 +53,17 @@
 ---
 
 ## PHASE 3 — Polish & Interactions
-- [ ] Framer Motion: SongCard staggered entrance on home
-- [ ] Framer Motion: language toggle crossfade (300ms)
-- [ ] Framer Motion: page transitions
-- [ ] SongCard press animation (scale 0.97)
-- [ ] Theme transition smooth (full screen color fade)
+- [x] Framer Motion: SongCard staggered entrance on home
+- [x] Framer Motion: language toggle crossfade (300ms)
+- [x] Framer Motion: page transitions
+- [x] SongCard press animation (scale 0.97)
+- [x] Theme transition smooth (full screen color fade)
 - [ ] Devanagari font rendering tested on Android
 - [ ] Devanagari font rendering tested on iOS
-- [ ] Font size preference persisted across sessions (localStorage)
-- [ ] Search filters correctly across title + artist + church
-- [ ] Hindi search input works (type in Devanagari and get results)
-- [ ] All external links open in new tab
+- [x] Font size preference persisted across sessions (localStorage)
+- [x] Search filters correctly across title + artist + church
+- [x] Hindi search input works (type in Devanagari and get results)
+- [x] All external links open in new tab
 - [ ] No hardcoded hex colors anywhere — all CSS vars
 
 ---

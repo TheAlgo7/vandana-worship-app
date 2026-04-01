@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 
 const MIN = 0.875; // 14px
 const MAX = 2.5; // 40px
 const STEP = 0.125; // 2px
+const STORAGE_KEY = "vandana-font-size-lyrics";
 
 export default function FontSizeControl() {
-  const [size, setSize] = useState(1.25); // matches --font-size-lyrics default
+  const [size, setSize] = useState(() => {
+    if (typeof window === "undefined") return 1.25;
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    const parsed = raw ? Number(raw) : 1.25;
+    if (!Number.isFinite(parsed)) return 1.25;
+    return Math.min(MAX, Math.max(MIN, parsed));
+  });
 
   const update = useCallback((next: number) => {
     const clamped = Math.min(MAX, Math.max(MIN, next));
@@ -16,7 +23,12 @@ export default function FontSizeControl() {
       "--font-size-lyrics",
       `${clamped}rem`
     );
+    window.localStorage.setItem(STORAGE_KEY, String(clamped));
   }, []);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--font-size-lyrics", `${size}rem`);
+  }, [size]);
 
   return (
     <div

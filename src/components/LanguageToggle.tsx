@@ -1,6 +1,7 @@
 "use client";
 
 import type { Language } from "@/lib/getSongs";
+import { motion } from "framer-motion";
 
 interface LanguageToggleProps {
   available: Language[];
@@ -19,6 +20,7 @@ export default function LanguageToggle({
     <div
       style={{
         display: "inline-flex",
+        position: "relative",
         borderRadius: "var(--radius-full)",
         border: "1px solid var(--border)",
         overflow: "hidden",
@@ -29,21 +31,36 @@ export default function LanguageToggle({
           key={lang}
           onClick={() => onChange(lang)}
           style={{
+            position: "relative",
             padding: "var(--space-xs) var(--space-md)",
             fontSize: "var(--font-size-sm)",
             fontWeight: current === lang ? 600 : 400,
-            background:
-              current === lang ? "var(--primary)" : "transparent",
-            color:
-              current === lang
-                ? "var(--primary-foreground)"
-                : "var(--text-muted)",
+            background: "transparent",
+            color: current === lang ? "var(--primary-foreground)" : "var(--text-muted)",
             border: "none",
             cursor: "pointer",
-            transition: "background 0.15s, color 0.15s",
+            transition: "color 0.3s",
           }}
         >
-          {lang === "hinglish" ? "Hinglish" : "Hindi"}
+          {current === lang && (
+            <motion.span
+              layoutId="language-active-pill"
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                background: "var(--primary)",
+                zIndex: 0,
+              }}
+            />
+          )}
+          <motion.span
+            animate={{ opacity: current === lang ? 1 : 0.72 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ position: "relative", zIndex: 1 }}
+          >
+            {lang === "hinglish" ? "Hinglish" : "Hindi"}
+          </motion.span>
         </button>
       ))}
     </div>
