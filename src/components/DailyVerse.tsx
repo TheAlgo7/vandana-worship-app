@@ -33,7 +33,7 @@ export default function DailyVerse() {
 
     setVerse({
       text: isHindi ? chosen.hindi : chosen.english,
-      reference: chosen.reference,
+      reference: isHindi ? chosen.reference_hindi : chosen.reference,
       isHindi,
     });
   }, []);
@@ -51,17 +51,19 @@ export default function DailyVerse() {
       {/* ── Label ── */}
       <p
         style={{
-          fontFamily: "var(--font-body)",
+          fontFamily: verse.isHindi
+            ? "var(--font-devanagari)"
+            : "var(--font-body)",
           fontSize: "var(--text-xs)",
           fontWeight: 600,
-          letterSpacing: "var(--tracking-widest)",
+          letterSpacing: verse.isHindi ? "0.05em" : "var(--tracking-widest)",
           color: "var(--accent)",
           opacity: 0.6,
           margin: "0 0 12px 0",
-          textTransform: "uppercase",
+          textTransform: verse.isHindi ? "none" : "uppercase" as React.CSSProperties["textTransform"],
         }}
       >
-        Verse of the Day
+        {verse.isHindi ? "दिन का वचन" : "Verse of the Day"}
       </p>
 
       {/* ── Verse block with gold left border ── */}
@@ -92,7 +94,9 @@ export default function DailyVerse() {
         {/* Reference */}
         <p
           style={{
-            fontFamily: "var(--font-body)",
+            fontFamily: verse.isHindi
+              ? "var(--font-devanagari)"
+              : "var(--font-body)",
             fontSize: "var(--text-sm)",
             color: "var(--text-muted)",
             marginTop: 8,

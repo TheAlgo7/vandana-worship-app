@@ -5,7 +5,9 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
+import Greeting from "@/components/Greeting";
 import { useFavourites } from "@/contexts/FavouritesContext";
+import Link from "next/link";
 
 export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
@@ -14,10 +16,63 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [defaultLang, setDefaultLang] = useState("hinglish");
   const { isFavourite } = useFavourites();
 
+  /* Pull-to-Refresh */
+  const pullStartRef = useRef<number | null>(null);
+  const [pullProgress, setPullProgress] = useState(0);
+
+  /* Recently Viewed */
+  const [recentIds, setRecentIds] = useState<string[]>([]);
+
   useEffect(() => {
     const stored = localStorage.getItem("vandana-default-lang");
     if (stored === "hindi" || stored === "hinglish") setDefaultLang(stored);
   }, []);
+
+  /* Pull-to-refresh (mobile touch) */
+  useEffect(() => {
+    let currentPull = 0;
+    const THRESHOLD = 70;
+    const prev = document.body.style.overscrollBehaviorY;
+    document.body.style.overscrollBehaviorY = "contain";
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (window.scrollY <= 0) pullStartRef.current = e.touches[0].clientY;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      if (pullStartRef.current === null) return;
+      const dy = e.touches[0].clientY - pullStartRef.current;
+      if (dy > 0) { currentPull = dy; setPullProgress(Math.min(dy / THRESHOLD, 1.5)); }
+      else { currentPull = 0; setPullProgress(0); }
+    };
+    const onTouchEnd = () => {
+      if (currentPull >= THRESHOLD) window.location.reload();
+      pullStartRef.current = null;
+      currentPull = 0;
+      setPullProgress(0);
+    };
+
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
+    document.addEventListener("touchmove", onTouchMove, { passive: true });
+    document.addEventListener("touchend", onTouchEnd);
+    return () => {
+      document.body.style.overscrollBehaviorY = prev;
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("touchend", onTouchEnd);
+    };
+  }, []);
+
+  /* Recently viewed songs */
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("vandana-recently-viewed");
+      if (stored) setRecentIds(JSON.parse(stored));
+    } catch { /* ignore */ }
+  }, []);
+
+  const recentSongs = recentIds
+    .map((id) => songs.find((s) => s.id === id))
+    .filter((s): s is SongMeta => !!s);
 
   const churches = Array.from(
     new Set(songs.map((s) => s.church).filter(Boolean))
@@ -34,22 +89,126 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
 
   return (
     <>
+      {/* ── Pull-to-Refresh indicator ── */}
+      {pullProgress > 0 && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            display: "flex",
+            justifyContent: "center",
+            paddingTop: 12 + pullProgress * 28,
+            zIndex: 50,
+            pointerEvents: "none",
+          }}
+        >
+          <div
+            style={{
+              width: 24,
+              height: 24,
+              borderRadius: "50%",
+              border: "2px solid var(--accent)",
+              borderTopColor: "transparent",
+              transform: `rotate(${pullProgress * 360}deg)`,
+              opacity: Math.min(pullProgress, 1),
+            }}
+          />
+        </div>
+      )}
+
       {/* ── Top Bar ── */}
       <header
         style={{
           display: "flex",
-          alignItems: "center",
-          height: 56,
-          padding: "0 20px",
+          flexDirection: "column",
+          minHeight: 56,
+          padding: "14px 20px 0",
           maxWidth: "40rem",
           margin: "0 auto",
         }}
       >
+        <Greeting />
         <AppTitle />
       </header>
 
       {/* ── Daily Verse ── */}
       <DailyVerse />
+
+      {/* ── Recently Viewed ── */}
+      {recentSongs.length > 0 && (
+        <div
+          style={{
+            maxWidth: "40rem",
+            margin: "0 auto 4px",
+            padding: "0 20px",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "var(--text-xs)",
+              color: "var(--text-muted)",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              marginBottom: 8,
+            }}
+          >
+            Recently Viewed
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              overflowX: "auto",
+              scrollbarWidth: "none",
+              paddingBottom: 4,
+            }}
+          >
+            {recentSongs.map((s) => (
+              <Link
+                key={s.id}
+                href={`/song/${s.id}`}
+                style={{
+                  flexShrink: 0,
+                  padding: "8px 14px",
+                  background: "var(--bg-surface)",
+                  borderRadius: "var(--radius-md)",
+                  border: "1px solid var(--border)",
+                  textDecoration: "none",
+                  maxWidth: 160,
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {s.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "10px",
+                    color: "var(--text-muted)",
+                    marginTop: 2,
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {s.artist}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* ── Search Bar ── */}
       <div
@@ -184,18 +343,62 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
         }}
       >
         {filtered.length === 0 ? (
-          <p
+          <div
             style={{
               textAlign: "center",
-              color: "var(--text-muted)",
-              padding: "48px 0",
-              fontSize: "var(--text-sm)",
+              padding: "56px 24px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 12,
             }}
           >
-            {query || activeChurch
-              ? "No songs match your search."
-              : "No songs yet."}
-          </p>
+            <svg
+              width="48"
+              height="48"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--text-muted)"
+              strokeWidth="1.2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ opacity: 0.4 }}
+            >
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg>
+            <p
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "var(--text-sm)",
+                lineHeight: 1.5,
+              }}
+            >
+              {query
+                ? `No songs found for \u201c${query}\u201d`
+                : activeChurch
+                  ? `No songs from ${activeChurch} yet.`
+                  : "No songs yet."}
+            </p>
+            {(query || activeChurch) && (
+              <button
+                onClick={() => { setQuery(""); setActiveChurch(null); }}
+                style={{
+                  padding: "6px 16px",
+                  fontSize: "var(--text-xs)",
+                  fontWeight: 500,
+                  borderRadius: "var(--radius-pill)",
+                  border: "1px solid var(--border)",
+                  background: "transparent",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
+                }}
+              >
+                Clear filters
+              </button>
+            )}
+          </div>
         ) : (
           filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
         )}

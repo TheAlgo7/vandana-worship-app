@@ -27,11 +27,12 @@ export default function AppTitle() {
       </span>
       <span
         style={{
-          fontFamily: "var(--font-body)",
-          fontSize: "var(--text-xs)",
-          color: "var(--text-muted)",
-          marginTop: 2,
-          letterSpacing: "0.01em",
+          fontFamily: isHindi ? "var(--font-devanagari)" : "var(--font-display)",
+          fontSize: "var(--text-sm)",
+          fontStyle: "italic",
+          color: "var(--text-secondary)",
+          marginTop: 4,
+          letterSpacing: "0.015em",
         }}
       >
         {isHindi ? "अपनी भाषा में आराधना" : "Worship in your language"}

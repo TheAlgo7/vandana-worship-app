@@ -190,6 +190,9 @@
 - [ ] Community song submissions with moderation
 - [ ] Ankur Narula Ministry songs
 - [ ] Dayanidhi Rao songs
+- [ ] Splash Screen / App Open Animation
+- [ ] Keyboard Shortcuts in Present Mode
+- [ ] Verse Sharing (share individual Bible verses)
 
 ---
 

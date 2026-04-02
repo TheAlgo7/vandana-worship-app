@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
+import BottomNav from "@/components/BottomNav";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
@@ -22,15 +22,6 @@ export default function SettingsPage() {
   const handleLangChange = useCallback((val: string) => {
     setLang(val);
     localStorage.setItem("vandana-default-lang", val);
-  }, []);
-
-  /* close on Escape → go back */
-  useEffect(() => {
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") window.history.back();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   return (
@@ -56,33 +47,6 @@ export default function SettingsPage() {
           borderBottom: "1px solid var(--border)",
         }}
       >
-        <Link
-          href="/"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 36,
-            height: 36,
-            borderRadius: "var(--radius-sm)",
-            color: "var(--text-primary)",
-            transition: "background var(--transition-fast)",
-          }}
-          aria-label="Back to home"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M15 18l-6-6 6-6" />
-          </svg>
-        </Link>
         <h1
           style={{
             fontSize: "var(--text-lg)",
@@ -236,6 +200,8 @@ export default function SettingsPage() {
           </div>
         </section>
       </div>
+
+      <BottomNav />
     </div>
   );
 }

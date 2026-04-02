@@ -26,10 +26,21 @@ export default function SongView({ song }: { song: Song }) {
     toggleFavourite(song.id);
     setHeartPop(true);
     setTimeout(() => setHeartPop(false), 120);
+    if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate(10);
   }, [song.id, toggleFavourite]);
 
   // Dev-only audit: log problematic lines on first render
   useEffect(() => { formatLyricsAudit(song); }, [song]);
+
+  // Track recently viewed song
+  useEffect(() => {
+    try {
+      const KEY = "vandana-recently-viewed";
+      const stored = JSON.parse(localStorage.getItem(KEY) || "[]") as string[];
+      const updated = [song.id, ...stored.filter((id) => id !== song.id)].slice(0, 5);
+      localStorage.setItem(KEY, JSON.stringify(updated));
+    } catch { /* ignore */ }
+  }, [song.id]);
   const [scrolled, setScrolled] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
 
@@ -142,6 +153,49 @@ export default function SongView({ song }: { song: Song }) {
             strokeLinejoin="round"
           >
             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+          </svg>
+        </button>
+
+        {/* Share button */}
+        <button
+          onClick={async () => {
+            const shareData = {
+              title: song.title,
+              text: `${song.title} — ${song.artist}`,
+              url: window.location.href,
+            };
+            try {
+              if (navigator.share) await navigator.share(shareData);
+              else await navigator.clipboard.writeText(window.location.href);
+            } catch { /* user cancelled or unsupported */ }
+          }}
+          aria-label="Share song"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 44,
+            height: 44,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 0,
+            flexShrink: 0,
+          }}
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--text-secondary)"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
+            <polyline points="16 6 12 2 8 6" />
+            <line x1="12" y1="2" x2="12" y2="15" />
           </svg>
         </button>
 
