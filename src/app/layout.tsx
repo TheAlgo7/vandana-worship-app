@@ -36,7 +36,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vandana.app"),
+  metadataBase: new URL("https://vandanaapp.vercel.app"),
   title: {
     default: "Vandana – Worship Lyrics",
     template: "%s | Vandana",
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Vandana – Worship Lyrics",
     description: "Worship in your language",
-    url: "https://vandana.app",
+    url: "https://vandanaapp.vercel.app",
     siteName: "Vandana",
     images: [{ url: "/icons/og-image.png", width: 1200, height: 630 }],
     type: "website",
