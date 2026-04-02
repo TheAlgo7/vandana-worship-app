@@ -1,4 +1,4 @@
-const STATIC_CACHE = "vandana-static-v3";
+const STATIC_CACHE = "vandana-static-v4";
 const RUNTIME_CACHE = "vandana-runtime-v1";
 const PRECACHE_URLS = [
   "/",
@@ -7,7 +7,7 @@ const PRECACHE_URLS = [
   "/icons/icon-192.png",
   "/icons/icon-512.png",
   "/icons/apple-touch-icon.png",
-  "/icons/maskable-512.png",
+  "/icons/logo-tagline.svg",
 ];
 
 self.addEventListener("install", (event) => {
