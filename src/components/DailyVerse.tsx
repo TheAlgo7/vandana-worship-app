@@ -43,7 +43,7 @@ export default function DailyVerse() {
   return (
     <section
       style={{
-        padding: "8px 20px 0",
+        padding: "12px 20px 0",
         maxWidth: "40rem",
         margin: "0 auto",
       }}

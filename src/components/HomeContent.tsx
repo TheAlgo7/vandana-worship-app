@@ -134,85 +134,11 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       {/* ── Daily Verse ── */}
       <DailyVerse />
 
-      {/* ── Recently Viewed ── */}
-      {recentSongs.length > 0 && (
-        <div
-          style={{
-            maxWidth: "40rem",
-            margin: "0 auto 4px",
-            padding: "0 20px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "var(--text-xs)",
-              color: "var(--text-muted)",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              marginBottom: 8,
-            }}
-          >
-            Recently Viewed
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              overflowX: "auto",
-              scrollbarWidth: "none",
-              paddingBottom: 4,
-            }}
-          >
-            {recentSongs.map((s) => (
-              <Link
-                key={s.id}
-                href={`/song/${s.id}`}
-                style={{
-                  flexShrink: 0,
-                  padding: "8px 14px",
-                  background: "var(--bg-surface)",
-                  borderRadius: "var(--radius-md)",
-                  border: "1px solid var(--border)",
-                  textDecoration: "none",
-                  maxWidth: 160,
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "var(--text-xs)",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {s.title}
-                </p>
-                <p
-                  style={{
-                    fontSize: "10px",
-                    color: "var(--text-muted)",
-                    marginTop: 2,
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {s.artist}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* ── Search Bar ── */}
       <div
         style={{
           maxWidth: "40rem",
-          margin: "20px auto 16px",
+          margin: "16px auto 0",
           padding: "0 20px",
           position: "relative",
         }}
@@ -271,12 +197,87 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
         </svg>
       </div>
 
+      {/* ── Recently Viewed ── */}
+      {recentSongs.length > 0 && (
+        <div
+          style={{
+            maxWidth: "40rem",
+            margin: "16px auto 0",
+            padding: "0 20px",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "var(--text-xs)",
+              color: "var(--text-muted)",
+              fontWeight: 500,
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              margin: "0 0 8px 0",
+            }}
+          >
+            Recently Viewed
+          </p>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              overflowX: "auto",
+              scrollbarWidth: "none",
+              paddingBottom: 2,
+            }}
+          >
+            {recentSongs.map((s) => (
+              <Link
+                key={s.id}
+                href={`/song/${s.id}`}
+                style={{
+                  flexShrink: 0,
+                  padding: "8px 14px",
+                  background: "var(--bg-surface)",
+                  borderRadius: "var(--radius-md)",
+                  border: "1px solid var(--border)",
+                  textDecoration: "none",
+                  maxWidth: 160,
+                }}
+              >
+                <p
+                  style={{
+                    fontSize: "var(--text-xs)",
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    margin: 0,
+                  }}
+                >
+                  {s.title}
+                </p>
+                <p
+                  style={{
+                    fontSize: "10px",
+                    color: "var(--text-muted)",
+                    margin: "2px 0 0 0",
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {s.artist}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* ── Church Chips ── */}
       {churches.length > 0 && (
         <div
           style={{
             maxWidth: "40rem",
-            margin: "0 auto 20px",
+            margin: "16px auto 0",
             padding: "0 20px",
             display: "flex",
             gap: 8,
@@ -335,7 +336,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       <main
         style={{
           maxWidth: "40rem",
-          margin: "0 auto",
+          margin: "16px auto 0",
           padding: "0 20px",
           paddingBottom: "calc(56px + env(safe-area-inset-bottom, 0px) + 24px)",
         }}
