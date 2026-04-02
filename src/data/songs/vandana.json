@@ -1,0 +1,33 @@
+{
+  "id": "vandana",
+  "title": "Vandana",
+  "artist": "Ankit Sajwan Ministries",
+  "church": "FOLJ Church",
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Teri vandana gaayein shaamon savere\nTeri ho mahima\nTeri vandana gaayein shaamon savere\nTeri ho mahima\nRaajaon ka Raja Tu mera Prabhu hai\nTeri ho mahima\nRaajaon ka Raja Tu mera Prabhu hai\nTeri ho mahima",
+      "chorus": "Yeshu mahima Teri mahima\nMere Raja Yeshua gaoon Teri mahima\nYeshu mahima Teri mahima\nMere Raja Yeshua gaoon Teri mahima",
+      "verse2": "Apna bharosa Tujhpe rakha hai\nKaahen ko dar kaisi chinta re\nTere lahoo se shuddh hue hain\nKaruna ko Teri Yeshu humne chakha re",
+      "bridge": "Prem jo kiya hai Tune\nTyaaga na kabhi jo Tune\nKaise na karein mahima\nPaapo ko mita diya har shraapon se bacha liya to\nKaise na karein mahima",
+      "outro": "Yeshu mahima Teri mahima\nMere Prabhu Yeshua mere Swami Yeshua\nMere Raja Yeshua Tu hai zinda Khuda\nGaoon Teri mahima Teri stuti gaaoonga\nYeshua Yeshua ho Teri mahima\nMere Prabhu Yeshua mere Swami Yeshua\nMere Raja Yeshua Tu hai zinda Khuda\nGaau Teri mahima Yeshu Teri mahima\nYeshu Teri mahima"
+    },
+    "hindi": {
+      "verse1": "तेरी वंदना गाएँ शामों सवेरे\nतेरी हो महिमा\nतेरी वंदना गाएँ शामों सवेरे\nतेरी हो महिमा\nराजाओं का राजा तू मेरा प्रभु है\nतेरी हो महिमा\nराजाओं का राजा तू मेरा प्रभु है\nतेरी हो महिमा",
+      "chorus": "येशु महिमा तेरी महिमा\nमेरे राजा येशुआ गाऊँ तेरी महिमा\nयेशु महिमा तेरी महिमा\nमेरे राजा येशुआ गाऊँ तेरी महिमा",
+      "verse2": "अपना भरोसा तुझपे रखा है\nकाहें को डर कैसी चिंता रे\nतेरे लहू से शुद्ध हुए हैं\nकरुणा को तेरी येशु हमने चखा रे",
+      "bridge": "प्रेम जो किया है तूने\nत्यागा ना कभी जो तूने\nकैसे ना करें महिमा\nपापो को मिटा दिया हर श्रापों से बचा लिया तो\nकैसे ना करें महिमा",
+      "outro": "येशु महिमा तेरी महिमा\nमेरे प्रभु येशुआ मेरे स्वामी येशुआ\nमेरे राजा येशुआ तू है ज़िंदा ख़ुदा\nगाऊँ तेरी महिमा तेरी स्तुति गाऊँगा\nयेशुआ येशुआ हो तेरी महिमा\nमेरे प्रभु येशुआ मेरे स्वामी येशुआ\nमेरे राजा येशुआ तू है ज़िंदा ख़ुदा\nगाऊ तेरी महिमा येशु तेरी महिमा\nयेशु तेरी महिमा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "glory", "folj-church", "ankit-sajwan", "hindi", "hinglish", "2025"],
+  "seo_description": "Vandana Official Song lyrics in Hindi and Hinglish by Ankit Sajwan Ministries — FOLJ Church worship, Teri vandana gaayein shaamon savere",
+  "added_by": "Gaurav | Vandana"
+}
