@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
-import Greeting from "@/components/Greeting";
+import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
 
 export default function HomeContent({ songs }: { songs: SongMeta[] }) {
@@ -46,50 +46,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
         <AppTitle />
       </header>
 
-      {/* ── Greeting ── */}
-      <section
-        style={{
-          padding: "8px 20px 0",
-          maxWidth: "40rem",
-          margin: "0 auto",
-          position: "relative",
-        }}
-      >
-        <Greeting />
-        <h1
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "26px",
-            fontWeight: 600,
-            color: "var(--text-primary)",
-            letterSpacing: "-0.02em",
-            lineHeight: 1.2,
-          }}
-        >
-          What would you like
-          <br />
-          to worship?
-        </h1>
-
-        {/* Radial accent glow */}
-        <div
-          aria-hidden="true"
-          style={{
-            position: "absolute",
-            top: -40,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: 200,
-            height: 200,
-            borderRadius: "50%",
-            background:
-              "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
-            opacity: 0.08,
-            pointerEvents: "none",
-            zIndex: -1,
-          }}
-        />
-      </section>
+      {/* ── Daily Verse ── */}
+      <DailyVerse />
 
       {/* ── Search Bar ── */}
       <div

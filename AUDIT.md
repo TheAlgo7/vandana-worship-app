@@ -99,6 +99,10 @@
 - [x] Hydration mismatch fixed (Greeting component)
 - [x] Duplicate header removed
 - [x] CSS preload warning resolved
+- [x] Daily verse feature replacing greeting
+- [x] Verse changes daily, same verse all day
+- [x] Hindi/English based on language setting
+- [x] App title switches language based on setting
 
 ---
 
