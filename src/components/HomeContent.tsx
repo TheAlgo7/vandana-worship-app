@@ -5,12 +5,14 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
+import { useFavourites } from "@/contexts/FavouritesContext";
 
 export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [defaultLang, setDefaultLang] = useState("hinglish");
+  const { isFavourite } = useFavourites();
 
   useEffect(() => {
     const stored = localStorage.getItem("vandana-default-lang");
@@ -195,7 +197,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
               : "No songs yet."}
           </p>
         ) : (
-          filtered.map((song) => <SongCard key={song.id} song={song} />)
+          filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
         )}
       </main>
     </>

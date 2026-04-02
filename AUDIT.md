@@ -104,6 +104,14 @@
 - [x] Hindi/English based on language setting
 - [x] App title switches language based on setting
 
+## FAVOURITES — Phase 2.9
+- [x] FavouritesContext with localStorage persistence (`vandana-favourites`)
+- [x] BottomNav updated to 3 items: Home, Favourites (heart icon), Settings
+- [x] `/favourites` route with empty state (heart + message) and populated state (ordered by addition time)
+- [x] Heart toggle on lyrics page top bar (44×44px, scale animation 1→1.3→1, 120ms)
+- [x] Small filled heart indicator (10px, accent, opacity 0.5) on home song rows for favourited songs
+- [x] FavouritesProvider integrated in Providers.tsx for app-wide access
+
 ---
 
 ## PHASE 3 — Polish & Interactions

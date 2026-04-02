@@ -1,15 +1,25 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock, formatLyricsAudit } from "@/lib/formatLyrics";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
+import { useFavourites } from "@/contexts/FavouritesContext";
 
 export default function SongView({ song }: { song: Song }) {
   const [lang, setLang] = useState<Language>(song.language_default);
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
+  const { toggleFavourite, isFavourite } = useFavourites();
+  const fav = isFavourite(song.id);
+  const [heartPop, setHeartPop] = useState(false);
+
+  const handleFavToggle = useCallback(() => {
+    toggleFavourite(song.id);
+    setHeartPop(true);
+    setTimeout(() => setHeartPop(false), 120);
+  }, [song.id, toggleFavourite]);
 
   // Dev-only audit: log problematic lines on first render
   useEffect(() => { formatLyricsAudit(song); }, [song]);
@@ -94,6 +104,39 @@ export default function SongView({ song }: { song: Song }) {
         >
           {song.title}
         </span>
+
+        {/* Heart favourite toggle */}
+        <button
+          onClick={handleFavToggle}
+          aria-label={fav ? "Remove from favourites" : "Add to favourites"}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 44,
+            height: 44,
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: 0,
+            flexShrink: 0,
+            transform: heartPop ? "scale(1.3)" : "scale(1)",
+            transition: "transform 120ms ease",
+          }}
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill={fav ? "var(--accent)" : "none"}
+            stroke={fav ? "var(--accent)" : "var(--text-secondary)"}
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+          </svg>
+        </button>
 
         {/* Present button always visible */}
         <Link
