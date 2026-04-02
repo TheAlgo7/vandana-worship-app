@@ -171,16 +171,41 @@ export default function SettingsPage() {
               color: "var(--text-secondary)",
             }}
           >
-            <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: 8 }}>
+            <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: 4, fontSize: "var(--text-base)" }}>
               Vandana
             </p>
-            <p style={{ marginBottom: 12 }}>
-              Vandana — Worship in your language.
-              <br />
-              A free worship lyrics app for the Indian church.
+            <p style={{ marginBottom: 12, color: "var(--text-muted)", fontSize: "var(--text-xs)", fontStyle: "italic" }}>
+              वंदना — to worship, to praise
             </p>
+
             <p style={{ marginBottom: 12 }}>
-              Built with ❤️ by{" "}
+              The idea for Vandana came during a moment of prayer — a simple
+              thought that the Indian church deserved a modern, beautiful way to
+              access worship lyrics in Hindi and Hinglish.
+            </p>
+
+            <p style={{ marginBottom: 12 }}>
+              Born out of{" "}
+              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                ICM Church
+              </span>{" "}
+              (Isus Christos Ministries) under{" "}
+              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                Pastor Arul Thomas
+              </span>
+              , Vandana was built to fill a gap — no existing app offered
+              readable fonts, dark/light themes, and seamless
+              Hindi–Hinglish switching in one place.
+            </p>
+
+            <p style={{ marginBottom: 12 }}>
+              Looking ahead, the vision is to grow the library with songs from
+              FOLJ, Nation of Worship, Sheldon Bangera, Anil Kant, and many more
+              artists shaping worship music in India.
+            </p>
+
+            <p style={{ marginBottom: 12 }}>
+              Made with ❤️ by{" "}
               <a
                 href="https://thealgothrim.com"
                 target="_blank"
@@ -194,6 +219,7 @@ export default function SettingsPage() {
                 Gaurav — The Algothrim
               </a>
             </p>
+
             <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)" }}>
               Version 1.0.0
             </p>

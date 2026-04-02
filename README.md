@@ -1,6 +1,6 @@
 # ✝️ Vandana
 
-### Worship lyrics in your heart language~
+### Worship lyrics in your heart language
 
 A cinematic, bilingual worship lyrics app built for the Hindi-speaking Christian community. Dark-first, mobile-first, offline-ready — because worship shouldn't need WiFi.
 
@@ -20,7 +20,9 @@ Every song lives in two forms: **Hinglish** (Roman script) for the younger gener
 
 ## ✿ What This Is
 
-**Vandana** is a Progressive Web App for worship song lyrics — designed with the same care you'd put into a hymnal, but built for phones. It's statically generated, loads instantly, works offline, and respects both the beauty of Devanagari script and the accessibility of Roman transliteration. Present mode turns your phone into a projector-ready lyric display.
+**Vandana** is a Progressive Web App for worship song lyrics — designed with the same care you'd put into a hymnal, but built for phones. It's statically generated, loads instantly, works offline, and respects both the beauty of Devanagari script and the accessibility of Roman transliteration.
+
+The idea came during a moment of prayer — a simple thought that the Indian church deserved a modern, beautiful way to access worship lyrics. Born out of **ICM Church** (Isus Christos Ministries) under **Pastor Arul Thomas**, Vandana fills a gap no existing app covered: readable fonts, dark/light themes, and seamless Hindi–Hinglish switching in one place.
 
 ---
 
@@ -37,44 +39,49 @@ Install it on your phone — tap **Share → Add to Home Screen** (iOS) or the i
 ```
 vandana/
 ├── public/
-│   └── manifest.json            # PWA manifest
+│   └── manifest.json               # PWA manifest
 ├── src/
 │   ├── app/
-│   │   ├── globals.css           # Sacred Noir design tokens & theme variables
-│   │   ├── layout.tsx            # Root layout (fonts, theme, meta)
-│   │   ├── loading.tsx           # Global loading state
-│   │   ├── page.tsx              # Home — song list with search
+│   │   ├── globals.css              # Sacred Noir design tokens & theme variables
+│   │   ├── layout.tsx               # Root layout (fonts, theme, meta)
+│   │   ├── loading.tsx              # Global loading state
+│   │   ├── error.tsx                # Error boundary
+│   │   ├── page.tsx                 # Home — song list with search
+│   │   ├── favourites/
+│   │   │   ├── page.tsx             # Favourites page (SSG shell)
+│   │   │   └── FavouritesContent.tsx # Client: favourited song list
 │   │   ├── settings/
-│   │   │   └── page.tsx          # Standalone settings page
+│   │   │   └── page.tsx             # Settings — theme, language, about
 │   │   ├── song/
 │   │   │   └── [id]/
-│   │   │       ├── page.tsx      # SSG song page
-│   │   │       └── SongView.tsx  # Client: lyrics, font size, language
+│   │   │       ├── page.tsx         # SSG song page
+│   │   │       ├── loading.tsx      # Song page skeleton
+│   │   │       ├── not-found.tsx    # 404 for invalid song IDs
+│   │   │       └── SongView.tsx     # Client: lyrics, font size, language, share
 │   │   └── present/
 │   │       └── [id]/
-│   │           ├── page.tsx      # SSG present page
-│   │           └── PresentView.tsx # Client: fullscreen auto-scroll
+│   │           ├── page.tsx         # SSG present page
+│   │           └── PresentView.tsx  # Client: fullscreen auto-scroll
 │   ├── components/
-│   │   ├── BottomNav.tsx         # Glass-effect bottom navigation
-│   │   ├── FontSizeControl.tsx   # A−/Aa/A+ font scaling
-│   │   ├── HomeContent.tsx       # Song list + search + filter chips
-│   │   ├── LanguageToggle.tsx    # Pill segmented Hinglish ↔ Hindi
-│   │   ├── Providers.tsx         # ThemeProvider wrapper
-│   │   ├── SearchBar.tsx         # Instant search
-│   │   ├── SongCard.tsx          # 72px song list row
-│   │   ├── SongCardSkeleton.tsx  # Song card loading skeleton
-│   │   └── SongSkeleton.tsx      # Full page loading skeleton
+│   │   ├── AppTitle.tsx             # Dynamic app title (language-aware)
+│   │   ├── BottomNav.tsx            # Glass-effect bottom navigation
+│   │   ├── DailyVerse.tsx           # Daily Bible verse hero card
+│   │   ├── FontSizeControl.tsx      # A−/Aa/A+ font scaling
+│   │   ├── HomeContent.tsx          # Song list + search + recently viewed
+│   │   ├── LanguageToggle.tsx       # Pill segmented Hinglish ↔ Hindi
+│   │   ├── Providers.tsx            # ThemeProvider wrapper
+│   │   ├── RouteTransition.tsx      # Page transition animations
+│   │   ├── ServiceWorkerRegistration.tsx # SW registration for PWA
+│   │   ├── SongCard.tsx             # 72px song list row with heart toggle
+│   │   └── SongCardSkeleton.tsx     # Song card loading skeleton
+│   ├── contexts/
+│   │   └── FavouritesContext.tsx     # Favourites state (localStorage-backed)
 │   ├── data/
-│   │   └── songs/
-│   │       ├── chamka-sitara.json
-│   │       ├── choo-le-mujhe.json
-│   │       ├── ek-mahima-ka-baadal.json
-│   │       ├── paak-ruh-tu.json
-│   │       └── teri-ore-jab-masih.json
-│   ├── lib/
-│   │   └── getSongs.ts          # File-system song loader
-│   └── styles/
-│       └── globals.css           # Tailwind v4 import bridge
+│   │   ├── songs/                   # 34 worship song JSON files
+│   │   └── verses.json             # Daily Bible verses (Hindi + English)
+│   └── lib/
+│       ├── formatLyrics.ts          # Lyrics parsing & verse formatting
+│       └── getSongs.ts              # File-system song loader
 ├── next.config.ts
 ├── postcss.config.mjs
 ├── tsconfig.json
@@ -93,17 +100,17 @@ vandana/
 | Language | TypeScript 5 |
 | Theming | next-themes 0.4.6 (dark/light, `data-theme`) |
 | Animations | CSS @keyframes (fadeUp, shimmer, pulse) |
-| PWA | Web App Manifest (public/manifest.json) |
-| Fonts | Cormorant Garamond · Plus Jakarta Sans · Noto Sans Devanagari |
+| PWA | Web App Manifest + Service Worker |
+| Fonts | Lora · Plus Jakarta Sans · Noto Sans Devanagari |
 | Deployment | Vercel (SSG + Edge) |
 
 ---
 
 ## 🎨 Design Philosophy — Sacred Noir
 
-- **Dark-first** — worship happens in dim rooms. The dark theme (`#0F0F13` base) isn't an afterthought, it's the default. Light mode (`#F4F0E8`) is the override.
+- **Dark-first** — worship happens in dim rooms. The dark theme (`#0A0A0E` base) isn't an afterthought, it's the default. Light mode (`#F4F0E8`) is the override.
 - **Desaturated gold accent** — `#C4AA7E` — warm but restrained, like candlelight on old paper.
-- **Typography is the UI** — lyrics are the content. Cormorant Garamond for headings, Plus Jakarta Sans for body, Noto Sans Devanagari for Hindi. Every font chosen with intent.
+- **Typography is the UI** — lyrics are the content. Lora for display headings, Plus Jakarta Sans for body, Noto Sans Devanagari for Hindi. Every font chosen with intent.
 - **Zero-distraction reading** — no ads, no popups, no tracking. Just words on screen.
 - **Church-native** — features like Present Mode exist because someone actually projects lyrics from a phone. This isn't a generic app with a worship skin.
 - **Bilingual by design** — Hinglish and Hindi aren't a toggle bolted on. The data model stores both from day one.
@@ -118,24 +125,36 @@ vandana/
 |---------|------------|
 | Song Lyrics | Full lyrics with verse structure and chorus markers |
 | Language Toggle | Switch between Hinglish (Roman) and Hindi (Devanagari) instantly |
-| Font Size Control | Adjustable text size — no pinching required |
+| Font Size Control | Adjustable text size — persisted across sessions |
 | Present Mode | Fullscreen, auto-scrolling lyrics for projection |
+| Share Song | Native share sheet to share songs with others |
+| Pull-to-Refresh | Swipe down to refresh the song list |
 
 ### 🔍 Discovery
 
 | Feature | Description |
 |---------|------------|
 | Instant Search | Filter songs by title as you type |
-| Church Filters | Quick-filter pills for church categories |
-| Song Cards | Clean list with song metadata |
+| Recently Viewed | Quick access to songs you just visited |
+| Daily Bible Verse | Rotating verse card on the home screen (Hindi + English) |
+| 34 Songs | Growing library of Hindi/Hinglish worship songs |
+
+### ❤️ Personal
+
+| Feature | Description |
+|---------|------------|
+| Favourites | Heart-toggle on any song — saved locally |
+| Favourites Page | Dedicated page for all your favourited songs |
+| Empty States | Friendly messages when lists are empty |
 
 ### ⚙️ System
 
 | Feature | Description |
 |---------|------------|
 | Dark / Light Theme | System-aware with manual override |
-| Settings Page | Standalone settings with theme toggle, language defaults, about |
+| Settings Page | Theme toggle, default language, about section |
 | PWA Install | Add to home screen, works offline |
+| Haptic Feedback | Subtle vibration on key interactions |
 | Static Generation | Every song page pre-rendered at build time |
 
 ---
@@ -172,17 +191,6 @@ Open [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🛠️ Build for Production
-
-```bash
-npm run build
-npm start
-```
-
-The build statically generates all song and present pages at build time.
-
----
-
 ## 📜 Adding Songs
 
 Drop a JSON file into `src/data/songs/`:
@@ -190,10 +198,21 @@ Drop a JSON file into `src/data/songs/`:
 ```json
 {
   "id": "your-song-slug",
-  "title": { "hinglish": "Song Title", "hindi": "गीत शीर्षक" },
+  "title": "Song Title",
+  "artist": "Artist Name",
+  "church": "Church Name",
+  "album": "Album Name",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
   "lyrics": {
-    "hinglish": ["Verse 1 line 1", "Verse 1 line 2", "", "Chorus line..."],
-    "hindi": ["पद 1 पंक्ति 1", "पद 1 पंक्ति 2", "", "कोरस..."]
+    "hinglish": {
+      "chorus": "Chorus lyrics...",
+      "verse1": "Verse 1 lyrics..."
+    },
+    "hindi": {
+      "chorus": "कोरस...",
+      "verse1": "पद 1..."
+    }
   }
 }
 ```
@@ -203,11 +222,9 @@ Rebuild. That's it. No CMS, no database, no deploy pipeline to configure.
 ---
 
 <p align="center">
-  <code>v0.2.0</code> · Sacred Noir · April 2026<br/>
-  © 2025–2026 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
+  <code>v1.0.0</code> · Sacred Noir · 2025<br/>
+  © 2025 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
 </p>
-
-## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
