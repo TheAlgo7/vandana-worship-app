@@ -1,8 +1,11 @@
-# ✝️ Vandana
+<p align="center">
+  <img src="public/icons/logo-tagline.svg" alt="Vandana — Worship in your language" width="280" />
+</p>
 
-### Worship lyrics in your heart language
-
-A cinematic, bilingual worship lyrics app built for the Hindi-speaking Christian community. Dark-first, mobile-first, offline-ready — because worship shouldn't need WiFi.
+<p align="center">
+  A cinematic, bilingual worship lyrics app built for the Hindi-speaking Christian community.<br/>
+  Dark-first, mobile-first, offline-ready — because worship shouldn't need WiFi.
+</p>
 
 Every song lives in two forms: **Hinglish** (Roman script) for the younger generation and **Hindi** (Devanagari) for those who grew up reading it that way. One tap to switch. No friction. Just worship.
 

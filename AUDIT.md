@@ -199,15 +199,55 @@
 ## DESIGN DECISIONS LOG
 > Document why you made specific choices so future-you doesn't question it
 
+### Colour & Theme
 | Decision | Reason |
 |---|---|
-| Cormorant Garamond for titles | Editorial, warm, matches Apple Music reference. Worship feels reverent not techy. |
-| Warm parchment light mode (#F5F0E8) | Clinical white is cold. Worship context needs warmth. |
-| Desaturated gold accent (#C4AA7E dark / #7A6340 light) | Reverence without being "church-website-from-2009" blue. Warm yet refined. |
-| CSS variables over Tailwind for theme | next-themes swaps class on html tag, CSS vars respond instantly with zero JS. |
-| JSON files over database | Zero backend needed for MVP. Vercel rebuilds in 30s when you add a song. Migrate to Supabase at 200+ songs. |
+| Sacred Noir dark base `#0A0A0E` | True-black-adjacent — immersive in dim worship rooms, OLED-friendly, minimal light bleed. |
+| Warm parchment light mode `#F4F0E8` | Clinical white is cold. Worship context needs warmth — parchment emulates aged paper. |
+| Desaturated gold accent `#C4AA7E` / `#7A6340` | Reverence without being "church-website-from-2009" blue. Candlelight warmth, refined restraint. |
+| 3-tier surface system (base → surface → elevated) | `#0A0A0E → #141418 → #1E1E26` creates depth without visible borders. Cards float naturally. |
+| CSS variables over Tailwind color classes | `next-themes` swaps `class` on `<html>`. CSS vars respond instantly — zero JS re-render for theme toggle. |
+| `::selection` styled with accent | Even text selection feels intentional. Gold highlight on dark, dark on warm parchment. |
+
+### Typography
+| Decision | Reason |
+|---|---|
+| Lora for display headings | Replaced Cormorant Garamond — Lora has warmer calligraphic roots, better weight range, devotional feel without feeling dated. |
+| Plus Jakarta Sans for body | Geometric sans with soft terminals — modern but not sterile. Legible at small sizes for lyrics. |
+| Noto Sans Devanagari for Hindi | Google's comprehensive Devanagari face. Consistent rendering across Android/iOS, excellent matras. |
+| Cathez (custom OTF) for logo | Hand-crafted logotype font for "Vandana" wordmark and "VA" monogram — gives the brand a bespoke identity. |
+| 11-step type scale (11px–48px) | Covers caption → hero. Each step has a deliberate use: `--text-xs` for church labels, `--text-4xl` for present mode. |
+| `letter-spacing: -0.03em` on titles | Tight tracking on large Lora text creates editorial density — like a magazine masthead. |
+
+### Layout & Interaction
+| Decision | Reason |
+|---|---|
 | Mobile-first 375px | 97% of worship app usage is mobile. Desktop is secondary (projection use only). |
-| Presentation mode as separate route | Keeps lyrics page clean. Worship leaders can bookmark /present/[id] directly. |
+| 76px SongCard rows with gold accent bar | 3×28px gold bar gives each row a subtle identity. 76px is thumb-friendly without wasting scroll real estate. |
+| Glassmorphic BottomNav | `blur(24px) saturate(180%)` + `rgba(14,14,18,0.92)` — content scrolls beneath without competing. |
+| Neumorphic controls toolbar | Inset shadow on the lyrics toolbar grounds it visually. Feels like a physical panel, not a floating UI. |
+| Press `scale(0.97)` on cards | Micro-feedback on touch. Just enough to feel responsive — not enough to feel bouncy. |
+| `overscroll-behavior: none` | Kills rubber-banding on iOS. No accidental double-headers or pull-to-refresh conflicts. |
+| 4px custom scrollbar (desktop) | Thin, accent-tinted, doesn't steal attention from lyrics. Hidden entirely on mobile. |
+
+### Architecture
+| Decision | Reason |
+|---|---|
+| JSON files over database | Zero backend needed for MVP. Vercel rebuilds in 30s when you add a song. Migrate to Supabase at 200+ songs. |
+| Presentation mode as separate route | Keeps lyrics page clean. Worship leaders can bookmark `/present/[id]` directly. |
+| Static generation for all song pages | Every song page pre-rendered at build time. Near-instant navigation, zero server cost. |
+| localStorage for favourites | No auth needed. Favourites persist per-device which matches single-phone worship use. |
+| Daily verse with deterministic seed | `dayOfYear % verses.length` — same verse all day for every user. No randomness, no API call. |
+| Service worker with versioned cache | `vandana-static-v2` — cache-bust on deploy. Precaches icons/fonts, network-first for pages. |
+
+### Brand Assets
+| Decision | Reason |
+|---|---|
+| Custom Photoshop-crafted icons | Auto-generated Next.js icons replaced with hand-made assets — consistent brand mark across all surfaces. |
+| Dedicated `maskable-512.png` | Separate maskable icon with safe-zone padding — Android adaptive icons crop correctly. |
+| `apple-touch-icon.png` at 180×180 | iOS uses its own icon spec. Dedicated file avoids downscaling artifacts from 512px. |
+| OG image at 1200×630 | Social media cards (Twitter, WhatsApp, iMessage) show the brand beautifully. Not precached in SW (3.7MB). |
+| `logo-tagline.svg` for README | SVG scales perfectly on GitHub — renders the brand mark with tagline as the project header. |
 
 ---
 
