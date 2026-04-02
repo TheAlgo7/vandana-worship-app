@@ -20,8 +20,8 @@ export default function DailyVerse() {
   } | null>(null);
 
   useEffect(() => {
-    const lang = localStorage.getItem("vandana-default-lang") ?? "en";
-    const isHindi = lang === "hi";
+    const lang = localStorage.getItem("vandana-default-lang") ?? "hinglish";
+    const isHindi = lang === "hindi";
 
     const hour = new Date().getHours();
     const period = getPeriod(hour);

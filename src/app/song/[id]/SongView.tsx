@@ -9,7 +9,14 @@ import FontSizeControl from "@/components/FontSizeControl";
 import { useFavourites } from "@/contexts/FavouritesContext";
 
 export default function SongView({ song }: { song: Song }) {
-  const [lang, setLang] = useState<Language>(song.language_default);
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window === "undefined") return song.language_default;
+    const stored = localStorage.getItem("vandana-default-lang");
+    if (stored === "hindi" || stored === "hinglish") {
+      if (song.lyrics[stored as Language]) return stored as Language;
+    }
+    return song.language_default;
+  });
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
   const { toggleFavourite, isFavourite } = useFavourites();
   const fav = isFavourite(song.id);
