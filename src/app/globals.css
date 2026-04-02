@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* ── Brand font ── */
+@font-face {
+  font-family: 'Cathez';
+  src: url('/styles/Cathez-0vAm4.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ───────────────────────────────────────────────
    Vandana Worship App — Sacred Noir Design System
    Dark-first · Overridden by [data-theme="light"]
@@ -11,6 +20,10 @@
    ══════════════════════════════════════════════ */
 
 :root {
+  /* ── Font size scale ── */
+  /* ── Brand font ── */
+  --font-brand: 'Cathez', Georgia, serif;
+
   /* ── Font size scale ── */
   --text-xs: 11px;
   --text-sm: 13px;

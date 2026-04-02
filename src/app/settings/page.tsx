@@ -77,15 +77,6 @@ export default function SettingsPage() {
               <p style={{ fontSize: "var(--text-base)", fontWeight: 500 }}>
                 Dark Mode
               </p>
-              <p
-                style={{
-                  fontSize: "var(--text-xs)",
-                  color: "var(--text-secondary)",
-                  marginTop: 2,
-                }}
-              >
-                {isDark ? "Dark theme active" : "Light theme active"}
-              </p>
             </div>
             {/* pill toggle */}
             <button

@@ -21,6 +21,7 @@ export default function SongView({ song }: { song: Song }) {
   const { toggleFavourite, isFavourite } = useFavourites();
   const fav = isFavourite(song.id);
   const [heartPop, setHeartPop] = useState(false);
+  const [showCopied, setShowCopied] = useState(false);
 
   const handleFavToggle = useCallback(() => {
     toggleFavourite(song.id);
@@ -161,12 +162,16 @@ export default function SongView({ song }: { song: Song }) {
           onClick={async () => {
             const shareData = {
               title: song.title,
-              text: `${song.title} — ${song.artist}`,
+              text: "Check out this worship song on Vandana",
               url: window.location.href,
             };
             try {
               if (navigator.share) await navigator.share(shareData);
-              else await navigator.clipboard.writeText(window.location.href);
+              else {
+                await navigator.clipboard.writeText(window.location.href);
+                setShowCopied(true);
+                setTimeout(() => setShowCopied(false), 2000);
+              }
             } catch { /* user cancelled or unsupported */ }
           }}
           aria-label="Share song"
@@ -365,6 +370,30 @@ export default function SongView({ song }: { song: Song }) {
               Spotify
             </a>
           )}
+        </div>
+      )}
+
+      {/* Clipboard toast */}
+      {showCopied && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 80,
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "var(--bg-surface)",
+            color: "var(--text-primary)",
+            padding: "10px 20px",
+            borderRadius: "var(--radius-pill)",
+            fontSize: "var(--text-sm)",
+            fontWeight: 500,
+            boxShadow: "0 4px 16px rgba(0,0,0,0.4)",
+            border: "1px solid var(--border)",
+            zIndex: 100,
+            animation: "fadeUp 200ms ease",
+          }}
+        >
+          Link copied!
         </div>
       )}
     </div>
