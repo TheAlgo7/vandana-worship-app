@@ -4,6 +4,7 @@ import { ThemeProvider, useTheme } from "next-themes";
 import { useRef, useEffect } from "react";
 import RouteTransition from "@/components/RouteTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import SplashScreen from "@/components/SplashScreen";
 import { FavouritesProvider } from "@/contexts/FavouritesContext";
 
 function ThemeFadeOverlay() {
@@ -40,6 +41,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
       <FavouritesProvider>
         <ServiceWorkerRegistration />
+        <SplashScreen />
         <RouteTransition>{children}</RouteTransition>
         <ThemeFadeOverlay />
       </FavouritesProvider>

@@ -30,7 +30,7 @@ const devanagari = Noto_Sans_Devanagari({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#C4AA7E",
+  themeColor: "#0A0A0E",
   width: "device-width",
   initialScale: 1,
 };
