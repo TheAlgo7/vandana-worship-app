@@ -5,7 +5,6 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
-import Greeting from "@/components/Greeting";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import Link from "next/link";
 
@@ -129,7 +128,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           margin: "0 auto",
         }}
       >
-        <Greeting />
         <AppTitle />
       </header>
 
