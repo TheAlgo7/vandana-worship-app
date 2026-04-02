@@ -7,9 +7,9 @@
 ## PHASE 1 — Foundation (Do First)
 - [x] Next.js project created with TypeScript + Tailwind + App Router
 - [x] Folder structure created (app/, components/, data/songs/, lib/, styles/)
-- [x] Dependencies installed: next-themes, framer-motion
+- [x] Dependencies installed: next-themes
 - [x] globals.css — all CSS variables for dark + light theme
-- [x] Google Fonts loaded: Cormorant Garamond + Plus Jakarta Sans + Noto Sans Devanagari
+- [x] Google Fonts loaded: Lora + Plus Jakarta Sans + Noto Sans Devanagari
 - [x] layout.tsx — ThemeProvider wrapped, font classes applied, PWA meta tags
 - [x] next.config.ts — production headers configured
 - [x] public/manifest.json — PWA manifest complete
@@ -115,9 +115,9 @@
 ---
 
 ## PHASE 3 — Polish & Interactions
-- [x] Framer Motion: SongCard staggered entrance on home
-- [x] Framer Motion: language toggle crossfade (300ms)
-- [x] Framer Motion: page transitions
+- [x] CSS animation: SongCard staggered entrance on home (fadeUp keyframes)
+- [x] CSS transition: language toggle crossfade (300ms)
+- [x] CSS transition: page transitions (RouteTransition.tsx fade)
 - [x] SongCard press animation (scale 0.97)
 - [x] Theme transition smooth (full screen color fade)
 - [x] Devanagari font rendering tested on Android
@@ -149,11 +149,6 @@
 ## PHASE 5 — Content (Songs Database)
 - [x] 1 song added (ICM) — for UI testing only
 - [ ] UI complete and approved before adding more songs
-- [ ] 10 ICM songs added (5/10)
-- [ ] 5 FOLJ songs added
-- [ ] 5 Nation of Worship songs added
-- [ ] 5 Sheldon Bangera songs added
-- [ ] 5 Anil Kant songs added
 - [ ] Song format consistent across all entries
 - [ ] All songs have SEO descriptions
 - [ ] All songs have correct church/artist attribution
@@ -166,7 +161,6 @@
 - [ ] ICM church page built (/church/icm)
 - [ ] Pastor Arul Thomas bio + photo
 - [ ] ICM 3.0 donation section with UPI QR
-- [ ] FOLJ church page built
 - [ ] Church filter working on home screen
 - [ ] Pastor Arul Thomas blessing received before public launch
 
@@ -196,25 +190,6 @@
 - [ ] Community song submissions with moderation
 - [ ] Ankur Narula Ministry songs
 - [ ] Dayanidhi Rao songs
-
----
-
-## KNOWN ISSUES / BUGS
-> Add issues here as you find them during development
-
-- None yet
-
----
-
-## SONG DATABASE LOG
-> Track every song added
-
-| Song Title | Artist | Church | Language | Added On | Verified |
-|---|---|---|---|---|---|
-| Yeshu Mera Gawah | ICM Worship | ICM | HI + Hinglish | — | No |
-| Teri Ore Jab Masih | Pastor Arul Thomas | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
-| Ek Mahima Ka Baadal | ICM Worship | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
-| Paak Tu Paak Ruh Tu | ICM Worship | ICM | HI + Hinglish | 1 Apr 2026 | Yes |
 
 ---
 
