@@ -189,13 +189,9 @@ export default function SettingsPage() {
               <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
                 ICM Church
               </span>{" "}
-              (Isus Christos Ministries) under{" "}
-              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
-                Pastor Arul Thomas
-              </span>
-              , Vandana was built to fill a gap — no existing app offered
-              readable fonts, dark/light themes, and seamless
-              Hindi–Hinglish switching in one place.
+              (Isus Christos Ministries), Vandana was built to fill a gap — no
+              existing app offered readable fonts, dark/light themes, and
+              seamless Hindi–Hinglish switching in one place.
             </p>
 
             <p style={{ marginBottom: 12 }}>
