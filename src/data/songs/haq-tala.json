@@ -1,0 +1,33 @@
+{
+  "id": "haq-tala",
+  "title": "Haq Tala",
+  "artist": "Vipin Massey",
+  "church": "Assembly of Believers Church",
+  "album": "Glory to God India",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Jo Haq-Ta'aala ke parde mein rehta\nWo Qaadir-e-Mutlaq ke saaye mein\nSukoonat karega, sukoonat karega\nJo Haq-Ta'aala ke parde mein rehta",
+      "verse1": "Raat ki haibat, na din ke wo teer\nChhoo bhi na paayein tujhko, wo hai kareeb\nHar aafaton se chhudaanewala\nMushkil mein saath nibhaanewala\nWo kaayam rahega, wo kaayam rahega",
+      "verse2": "Sayyaad ke phande se wo\nMohlik wabaa se chhudayega wo\nPankhon mein apne chhupaanewala\nHaathon se apne bachaanewala\nTere sang rahega, tere sang rahega",
+      "verse3": "Raahon mein teri, hifaazat kare\nThes na lagne dega, paaon ko tere\nFarishte teri sab raahon mein\nTujhe aage peechhe se ghere rahenge\nAisa wo karega, aisa wo karega",
+      "verse4": "Dil jo lagaaya, tune Khuda se\nTujhko bachaaye, har ek wabaa se\nUs Yeshu naam ko jab bhi pukaaro\nPrabhu Yeshu naam ko jab bhi pukaaro\nTumhari sunega, sang rahega\nTumko chhuda ke, izzat wo dega\nMushkil ghadi mein, sang rahega\nHar ek ghati ko, poora karega\nHaath pakad ke, sang chalega\nMuraadein tumhari, wo poori karega\nUmradraaz tumko karega\nUmradraaz tumko karega"
+    },
+    "hindi": {
+      "chorus": "जो हक़-त'आला के परदे में रहता\nवो क़ादिर-ए-मुतलक़ के साए में\nसुकूनत करेगा, सुकूनत करेगा\nजो हक़-त'आला के परदे में रहता",
+      "verse1": "रात की हैबत, न दिन के वो तीर\nछू भी न पाए तुझको, वो है करीब\nहर आफ़तों से छुड़ानेवाला\nमुश्किल में साथ निभानेवाला\nवो कायम रहेगा, वो कायम रहेगा",
+      "verse2": "सय्याद के फंदे से वो\nमोहलिक वबा से छुड़ाएगा वो\nपंखों में अपने छुपानेवाला\nहाथों से अपने बचानेवाला\nतेरे संग रहेगा, तेरे संग रहेगा",
+      "verse3": "राहों में तेरी, हिफ़ाज़त करे\nठेस न लगने देगा, पाँव को तेरे\nफ़रिश्ते तेरी सब राहों में\nतुझे आगे पीछे से घेरे रहेंगे\nऐसा वो करेगा, ऐसा वो करेगा",
+      "verse4": "दिल जो लगाया, तूने ख़ुदा से\nतुझको बचाए, हर एक वबा से\nउस यीशु नाम को जब भी पुकारो\nप्रभु यीशु नाम को जब भी पुकारो\nतुम्हारी सुनेगा, संग रहेगा\nतुमको छुड़ा के, इज़्ज़त वो देगा\nमुश्किल घड़ी में, संग रहेगा\nहर एक घटी को पूरा करेगा\nहाथ पकड़ के, संग चलेगा\nमुरादें तुम्हारी, वो पूरी करेगा\nउम्रदराज़ तुमको करेगा\nउम्रदराज़ तुमको करेगा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "psalm-91", "urdu", "hindi", "hinglish", "protection", "2025"],
+  "seo_description": "Haq Tala (Zabur 91) lyrics in Hindi and Hinglish by Vipin Massey — a powerful Psalm 91 worship song from Assembly of Believers Church",
+  "added_by": "Gaurav | Vandana"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "virasat",
+  "title": "Virasat",
+  "artist": "Bridge Music ft. Thanga Selvam, Shravan Seytee, Karen George & Stuti Harrison",
+  "church": "Bridge Music",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Tere pankho mein changaai hai\nYeshu naam bada hi chamatkaari hai\nTere chhoone se swasth ho gaya main\nTujhse mil ke sampoorn ho gaya main",
+      "pre_chorus": "Tere vachan, par main khada\nHoon main changa, hoon main riha\nTera vachan, sabse mahaan\nPrabal hua, hai sarvada",
+      "chorus": "Changaai meri viraasat hai\nYeshu tu hi meri hifaazat hai",
+      "verse2": "Aaj yahan pe changaai hai\nTere chamatkaar ki baari aayi hai\nTujhko chhookar wo swasth kar raha hai\nSampoornta ka samay aa gaya hai",
+      "verse3": "Aaj yahan pe changaai hai\nMere chamatkaar ki baari aayi hai\nMujhko chhookar wo swasth kar raha hai\nSampoornta ka samay aa gaya hai",
+      "bridge": "Andhere ko raushni tu banata hai\nJo hai nahi, kehkar use bulaata hai\nSookhi hui haddiyan tu jilaata hai\nNaamumkin ko mumkin kar dikhata hai",
+      "outro": "Tera lahoo, jis din baha\nSaleeb se, ban kar shifa\nUs din se main, sab paapon se\nSab shraapon se, azaad hua"
+    },
+    "hindi": {
+      "verse1": "तेरे पंखों में चंगाई है\nयेशु नाम बड़ा ही चमत्कारी है\nतेरे छूने से स्वस्थ हो गया मैं\nतुझसे मिल के सम्पूर्ण हो गया मैं",
+      "pre_chorus": "तेरे वचन, पर मैं खड़ा\nहूँ मैं चंगा, हूँ मैं रिहा\nतेरा वचन, सबसे महान\nप्रबल हुआ, है सर्वदा",
+      "chorus": "चंगाई मेरी विरासत है\nयेशु तू ही मेरी हिफ़ाज़त है",
+      "verse2": "आज यहाँ पे चंगाई है\nतेरे चमत्कार की बारी आई है\nतुझको छूकर वो स्वस्थ कर रहा है\nसम्पूर्णता का समय आ गया है",
+      "verse3": "आज यहाँ पे चंगाई है\nमेरे चमत्कार की बारी आई है\nमुझको छूकर वो स्वस्थ कर रहा है\nसम्पूर्णता का समय आ गया है",
+      "bridge": "अँधेरे को रौशनी तू बनाता है\nजो है नहीं, कहकर उसे बुलाता है\nसूखी हुई हड्डियाँ तू जिलाता है\nनामुमकिन को मुमकिन कर दिखाता है",
+      "outro": "तेरा लहू, जिस दिन बहा\nसलीब से, बन कर शिफ़ा\nउस दिन से मैं, सब पापों से\nसब श्रापों से, आज़ाद हुआ"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "healing", "bridge-music", "hindi", "hinglish", "2025"],
+  "seo_description": "Virasat lyrics in Hindi and Hinglish by Bridge Music ft. Thanga Selvam, Shravan Seytee, Karen George & Stuti Harrison — healing worship song",
+  "added_by": "Gaurav | Vandana"
+}

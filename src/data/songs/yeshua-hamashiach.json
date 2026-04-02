@@ -1,0 +1,25 @@
+{
+  "id": "yeshua-hamashiach",
+  "title": "Yeshua Hamashiach",
+  "artist": "Ps. Arul Thomas & Dr. Mahima John Arul",
+  "church": "ICM",
+  "album": "NCS Prime Music",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Yeshua Hamashiach\nSher Yahuda Ka\nHume Bachane Wala"
+    },
+    "hindi": {
+      "chorus": "येशुआ हमाशिआच\nशेर यहूदा का\nहमें बचानेवाला"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "icm", "hebrew", "hindi", "hinglish", "2025"],
+  "seo_description": "Yeshua Hamashiach Hindi worship lyrics in Hindi and Hinglish — Lion of Judah declaration by Ps. Arul Thomas & Dr. Mahima John Arul from ICM Church",
+  "added_by": "Gaurav | Vandana"
+}

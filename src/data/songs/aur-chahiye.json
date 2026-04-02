@@ -1,0 +1,27 @@
+{
+  "id": "aur-chahiye",
+  "title": "Aur Chahiye",
+  "artist": "Br. Arul Thomas & Ps. Ankur Masih",
+  "church": "ICM",
+  "album": "ICM Church 2025",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Aur chahiye aur chahiye\nTera jalaal hamein aur chahiye",
+      "verse1": "Apni quvvat mein aa, apni qudrat mein aa\nApne zor aur jaaho jalaal mein aa\nTere Rooh ka masah, hamein aur chahiye"
+    },
+    "hindi": {
+      "chorus": "और चाहिए और चाहिए\nतेरा जलाल हमें और चाहिए",
+      "verse1": "अपनी क़ुव्वत में आ, अपनी क़ुदरत में आ\nअपने ज़ोर और जाहो जलाल में आ\nतेरे रूह का मसह, हमें और चाहिए"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "prayer", "anointing", "holy spirit", "icm", "hindi", "hinglish", "2025"],
+  "seo_description": "Aur Chahiye lyrics in Hindi and Hinglish by Br. Arul Thomas & Ps. Ankur Masih — ICM Church 2025",
+  "added_by": "Gaurav | Vandana"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "main-nachda-nahi-kade",
+  "title": "Main Nachda Nahi Kade",
+  "artist": "NCS Prime Music",
+  "church": "ICM",
+  "album": "ICM Church 2025",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Jo ne ditta sooli te\nOhda satkaar nachaunda ae\nMain nachda nahi kade\nYeshu da pyaar nachaunda ae",
+      "verse1": "Paisiyan de vich vikda nahi main\nEnna banaya khaas mainoon\nMaut de vichon kadd ke Yeshu\nJeen di ditti aas mainoon",
+      "chorus2": "Oh Maalik hai mera\nOh hi haqdar nachaunda ae\nMain nachda nahi kade\nYeshu da pyaar nachaunda ae",
+      "bridge": "Balle balle Yeshu teri balle balle\nRakhya shaitaan tu pairan thalle",
+      "verse2": "Auna chitte ghode utte tu Yeshu saj ke\nVekhega jahaan kehna badlan ne gaj ke",
+      "verse3": "Yeshu Masih hai Maalik mera, rakhna kaahe da ohla\nRabb ate bande vich Yeshu, ikko ik vachola",
+      "outro": "Teri talwaar Yeshu challe challe\nRakhya shaitaan tu pairan thalle"
+    },
+    "hindi": {
+      "chorus": "जो ने दित्ता सूली ते\nओहदा सत्कार नचौंदा ऐ\nमैं नचदा नहीं कदे\nयेशु दा प्यार नचौंदा ऐ",
+      "verse1": "पैसियां दे विच विकदा नहीं मैं\nएन्ना बनाया खास मैनूं\nमौत दे विच्चों कड्ड के येशु\nजीण दी दित्ती आस मैनूं",
+      "chorus2": "ओह मालिक है मेरा\nओह ही हकदार नचौंदा ऐ\nमैं नचदा नहीं कदे\nयेशु दा प्यार नचौंदा ऐ",
+      "bridge": "बल्ले बल्ले येशु तेरी बल्ले बल्ले\nरख्या शैतान तू पैरण थल्ले",
+      "verse2": "आउणा चिट्टे घोड़े उत्ते तू येशु सज के\nवेखेगा जहान कहना बदलां ने गज के",
+      "verse3": "येशु मसीह है मालिक मेरा, रखणा काहे दा ओहला\nरब्ब अते बंदे विच्च येशु, इक्खो इक वचोला",
+      "outro": "तेरी तलवार येशु चल्ले चल्ले\nरख्या शैतान तू पैरण थल्ले"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "celebration", "icm", "hindi", "hinglish", "fast", "2025"],
+  "seo_description": "Main Nachda Nahi Kade lyrics in Hindi and Hinglish by NCS Prime Music — ICM Church 2025",
+  "added_by": "Gaurav | Vandana"
+}

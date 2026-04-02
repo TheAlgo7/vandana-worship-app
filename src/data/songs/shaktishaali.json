@@ -1,0 +1,35 @@
+{
+  "id": "shaktishaali",
+  "title": "Shaktishaali",
+  "artist": "Amit Kamble, Cameron Mendes, Sam Alex Pasula, Joseph Raj Allam, Prince Mulla",
+  "church": "Nations of Worship",
+  "album": "Nations of Worship 2026",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Kaun hai wo jo aag se bachaye\nKaun hai wo jo raasta banaye\nKaun hai wo jo aandhi rukwaye\nKaun hai wo jo andhera mitaye\nItihaas ko jisne rachaya, hai wo bada baadshah",
+      "chorus": "Bikhar ja aafat, tu mit ja Yeshu ke shaktishaali naam se\nShraap ko hai kuchla, sab kuch hai badla, Yeshu ke shaktishaali naam se",
+      "verse2": "Kaun hai wo jo jung ko jitaye\nKaun hai wo jo nafrat ko mitaye\nItihaas ko jisne rachaya, hai wo baadshah",
+      "bridge": "Wahi hai baadshah, uska jawaab, uski hukumat bemisal\nTakht pe viraajmaan Yeshu\nO qabr, tere waar hain bekaar, maut tera dank kho gaya\nTujhe to sooli par haraya Yeshu ne",
+      "outro": "Shaitaan ko haraye, Yeshu, Yeshu, Yeshu naam se\nJesus, Name Jesus",
+      "chorus2": "Nikal ja aafat, tu mit ja Yeshu ke shaktishaali naam se\nShraap ko hai kuchla, sab kuch hai badla, Yeshu ke shaktishaali naam se\nPahadiyan pighal ja, aafat tu mit ja, Yeshu ke shaktishaali naam se"
+    },
+    "hindi": {
+      "verse1": "कौन है वो जो आग से बचाए\nकौन है वो जो रास्ता बनाए\nकौन है वो जो आंधी रुकवाए\nकौन है वो जो अंधेरा मिटाए\nइतिहास को जिसने रचाया, है वो बड़ा बादशाह",
+      "chorus": "बिखर जा आफत, तू मिट जा यीशु के शक्तिशाली नाम से\nश्राप को है कुचला, सब कुछ है बदला, यीशु के शक्तिशाली नाम से",
+      "verse2": "कौन है वो जो जंग को जिताए\nकौन है वो जो नफरत को मिटाए\nइतिहास को जिसने रचाया, है वो बादशाह",
+      "bridge": "वही है बादशाह, उसका जवाब, उसकी हुकूमत बेमिसाल\nतख्त पे विराजमान यीशु\nओ कब्र, तेरे वार हैं बेकार, मौत तेरा डंक खो गया\nतुझे तो सूली पर हराया यीशु ने",
+      "outro": "शैतान को हराए, यीशु, यीशु, यीशु नाम से\nजीसस, नेम जीसस",
+      "chorus2": "निकल जा आफत, तू मिट जा यीशु के शक्तिशाली नाम से\nश्राप को है कुचला, सब कुछ है बदला, यीशु के शक्तिशाली नाम से\nपहाड़ियां पिघल जा, आफत तू मिट जा, यीशु के शक्तिशाली नाम से"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "celebration", "nation-of-worship", "hindi", "hinglish", "2026"],
+  "seo_description": "Shaktishaali lyrics in Hindi and Hinglish by Amit Kamble, Cameron Mendes, Sam Alex Pasula, Joseph Raj Allam & Prince Mulla — Nations of Worship 2026",
+  "added_by": "Gaurav | Vandana"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "yahweh-sabaoth",
+  "title": "Yahweh Sabaoth",
+  "artist": "Ps. Arul Thomas & Dr. Mahima John Arul",
+  "church": "ICM",
+  "album": "NCS Prime Music",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Yahweh Sabaoth\nYahweh Sabaoth\nYahweh Sabaoth\nYahweh Sabaoth\nSenaon Ka Yahova\nMahima Ka Raja\nYahweh Sabaoth\nYahweh Sabaoth",
+      "verse1": "Senapati\nBaadshah Hi Raja\nSenapati\nBaadshah Hi Raja",
+      "verse2": "Mera yudh Tu ladaa\nStutiyon Ka Raja\nMera yudh Tu ladaa\nStutiyon Ka Raja",
+      "verse3": "Mera Gadh Tu hi hai\nYariho ke jaise\nMera Gadh Tu hi hai\nYariho ke jaise"
+    },
+    "hindi": {
+      "chorus": "याहवेह सबाओत\nयाहवेह सबाओत\nयाहवेह सबाओत\nयाहवेह सबाओत\nसेनाओं का यहोवा\nमहिमा का राजा\nयाहवेह सबाओत\nयाहवेह सबाओत",
+      "verse1": "सेनापति\nबादशाह ही राजा\nसेनापति\nबादशाह ही राजा",
+      "verse2": "मेरा युद्ध तू लड़ा\nस्तुतियों का राजा\nमेरा युद्ध तू लड़ा\nस्तुतियों का राजा",
+      "verse3": "मेरा गढ़ तू ही है\nयरीहो के जैसे\nमेरा गढ़ तू ही है\nयरीहो के जैसे"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "icm", "hebrew", "hindi", "hinglish", "2025"],
+  "seo_description": "Yahweh Sabaoth Hindi worship cover lyrics in Hindi and Hinglish by Ps. Arul Thomas & Dr. Mahima John Arul from ICM Church — originally by Nathaniel Bassey",
+  "added_by": "Gaurav | Vandana"
+}

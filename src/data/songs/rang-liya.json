@@ -1,0 +1,33 @@
+{
+  "id": "rang-liya",
+  "title": "Rang Liya",
+  "artist": "Ankit Sajwan Ministries",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Rang liya mohe rang liya\nMohe apne lahoo mein rang liya",
+      "verse1": "Yeshu ne diya apna massa\nDiya apna zehan mujhe apna roop diya",
+      "verse2": "Diya jeene ko rang, Roohe Paak kiya sang chaupaan banaao\nIk ajab khushi ik anokha maza, dilo jaan banaao\nSang liya mohe sang liya",
+      "verse3": "Wo hi pyaar ka roop, chaahe chhaaon ya dhoop Yeshu hai Khuda\nWo hi deta hai phal usmein nahi chhal, Yeshu hai wafa\nMaang liya mohe maang liya",
+      "verse4": "Ab jeena Masih aur marna nafa\nJapta hoon yahi\nYeshu ke bina jeena kya jeena\nKehta hoon yahi\nAng liya mohe ang liya"
+    },
+    "hindi": {
+      "chorus": "रंग लिया मोहे रंग लिया\nमोहे अपने लहू में रंग लिया",
+      "verse1": "यीशु ने दिया अपना मस्सा\nदिया अपना ज़हन मुझे अपना रूप दिया",
+      "verse2": "दिया जीने को रंग, रूहे पाक किया संग चौपान बनाओ\nइक अजब खुशी इक अनोखा मज़ा, दिलो जान बनाओ\nसंग लिया मोहे संग लिया",
+      "verse3": "वो ही प्यार का रूप, चाहे छाओं या धूप यीशु है ख़ुदा\nवो ही देता है फल उसमें नहीं छल, यीशु है वफ़ा\nमांग लिया मोहे मांग लिया",
+      "verse4": "अब जीना मसीह और मरना नफ़ा\nजपता हूँ यही\nयीशु के बिना जीना क्या जीना\nकेहता हूँ यही\nअंग लिया मोहे अंग लिया"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "traditional", "hindi", "hinglish", "2025"],
+  "seo_description": "Rang Liya Mohe Rang Liya lyrics in Hindi and Hinglish — a traditional Hindi worship song originally by Pastor Ernest Mall, performed by Ankit Sajwan Ministries",
+  "added_by": "Gaurav | Vandana"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "kadosh-kadosh",
+  "title": "Kadosh Kadosh",
+  "artist": "ICM Church Worship Team",
+  "church": "ICM",
+  "album": "ICM Church 2025",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Kadosh, Kadosh, Kadosh, Kadosh\nWoh Khuda ka memna sinhasan par\nKeval tu stuti ke yogya hai"
+    },
+    "hindi": {
+      "chorus": "कदोश, कदोश, कदोश, कदोश\nवो ख़ुदा का मेमना सिंहासन पर\nकेवल तू स्तुति के योग्य है"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "devotion", "praise", "icm", "hindi", "hinglish", "2025"],
+  "seo_description": "Kadosh Kadosh lyrics in Hindi and Hinglish by ICM Church Worship Team — ICM Church 2025",
+  "added_by": "Gaurav | Vandana"
+}

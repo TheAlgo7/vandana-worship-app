@@ -1,0 +1,33 @@
+{
+  "id": "yeshu-gharana",
+  "title": "Yeshu Gharana",
+  "artist": "Amit Kamble & Cameron Mendes",
+  "church": "Nations of Worship",
+  "album": "Nations of Worship 2025",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Na koi Yahoodi, na koi Yunaani\nNa koi bhedbhaav\nNa koi rang ya riwaaj\nNa koi gulaam, na koi swaami\nYa ho unch-neech, ya ho nar ya naari\nHum sab Masih mein ek hain\nLahu se khareed'e gaye",
+      "chorus": "Yeshu gharaane ka waaris hoon main\nWaaris hoon, main uska beta hoon",
+      "verse2": "Naya aagaaz hai, nayi pehchaan hai\nNaya dil, teri Rooh se bhara hai mujhe\nNayi aawaaz hai, naya andaaz hai\nTere naam ke libaas mein odha mujhe\nHum sab Masih mein ek hain\nLahu se khareed'e gaye",
+      "bridge": "Rajaon ka raaja tu, mera pita bhi hai tu\nAb koi shastra na roke mujhe, shatru ki ungli na toke\nHaq ke aage hai tu, hai baadshah mera\nMahima bhi tu hi hai\nBolo Masih Yeshu ki jai",
+      "outro": "Yeshu mera\nYeshu mein, Yeshu mein, uska beta hoon main"
+    },
+    "hindi": {
+      "verse1": "ना कोई यहूदी, ना कोई यूनानी\nना कोई भेदभाव\nना कोई रंग या रिवाज़\nना कोई गुलाम, ना कोई स्वामी\nया हो ऊंच-नीच, या हो नर या नारी\nहम सब मसीह में एक हैं\nलहू से ख़रीदे गए",
+      "chorus": "यीशु घराने का वारिस हूं मैं\nवारिस हूं, मैं उसका बेटा हूं",
+      "verse2": "नया आग़ाज़ है, नई पहचान है\nनया दिल, तेरी रूह से भरा है मुझे\nनई आवाज़ है, नया अंदाज़ है\nतेरे नाम के लिबास में ओढ़ा मुझे\nहम सब मसीह में एक हैं\nलहू से ख़रीदे गए",
+      "bridge": "राजाओं का राजा तू, मेरा पिता भी है तू\nअब कोई शस्त्र ना रोके मुझे, शत्रु की उंगली ना टोके\nहक़ के आगे है तू, है बादशाह मेरा\nमहिमा भी तू ही है\nबोलो मसीह यीशु की जय",
+      "outro": "यीशु मेरा\nयीशु में, यीशु में, उसका बेटा हूं मैं"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "nations-of-worship", "hindi", "hinglish", "2025"],
+  "seo_description": "Yeshu Gharana lyrics in Hindi and Hinglish by Amit Kamble & Cameron Mendes — Nations of Worship 2025",
+  "added_by": "Gaurav | Vandana"
+}

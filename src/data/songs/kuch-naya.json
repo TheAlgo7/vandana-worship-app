@@ -1,0 +1,35 @@
+{
+  "id": "kuch-naya",
+  "title": "Kuch Naya",
+  "artist": "Prince Mulla & Thanga Selvam",
+  "church": "Nations of Worship",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Nirjal desh mein nadiyaan bahayega\nJangal ke beech mein, naya marg banayega",
+      "pre_chorus": "Kya tum dekh pa rahe ho\nKuchh hone wala hai\nTumhare zindagi mein\nAashish aane wala hai",
+      "chorus": "Kuch naya kar raha hai\nKuch naya kar raha hai\nParmeshwar naya kar raha hai\nAb yahaan kar raha hai",
+      "verse2": "Wo tere vansh par aashish barsayega\nTeri santaan par Aatma undelega",
+      "bridge": "Band jo darwaaze hain, ab khul rahe hain\nBaanjh ko bachchon ki aanand se bharta hai\nJo aankhon ne na dekha, jo kaanon ne na suna\nYeshu naam se ab hone wala hai",
+      "outro": "Mere ghar mein parivar mein\nMere bachchon ke bhavishya mein\nMeri Kalisiya aur sewa mein\nKuch naya kar raha hai\nIs nagar mein, har shehar mein\nSab rajyon mein, mere desh mein\nIs duniya ke har kone mein\nKuch naya kar raha hai"
+    },
+    "hindi": {
+      "verse1": "निर्जल देश में नदियाँ बहाएगा\nजंगल के बीच में, नया मार्ग बनाएगा",
+      "pre_chorus": "क्या तुम देख पा रहे हो\nकुछ होने वाला है\nतुम्हारे ज़िन्दगी में\nआशीष आने वाला है",
+      "chorus": "कुछ नया कर रहा है\nकुछ नया कर रहा है\nपरमेश्वर नया कर रहा है\nअब यहाँ कर रहा है",
+      "verse2": "वो तेरे वंश पर आशीष बरसाएगा\nतेरी संतान पर आत्मा उंडेलेगा",
+      "bridge": "बंद जो दरवाज़े हैं, अब खुल रहे हैं\nबाँझ को बच्चों की आनंद से भरता है\nजो आँखों ने न देखा, जो कानों ने न सुना\nयीशु नाम से अब होने वाला है",
+      "outro": "मेरे घर में परिवार में\nमेरे बच्चों के भविष्य में\nमेरी कलीसिया और सेवा में\nकुछ नया कर रहा है\nइस नगर में, हर शहर में\nसब राज्यों में, मेरे देश में\nइस दुनिया के हर कोने में\nकुछ नया कर रहा है"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "declaration", "nations-of-worship", "hindi", "hinglish", "2026"],
+  "seo_description": "Kuch Naya Kar Raha Hai lyrics in Hindi and Hinglish by Prince Mulla & Thanga Selvam — Nations of Worship declaration of God doing a new thing",
+  "added_by": "Gaurav | Vandana"
+}

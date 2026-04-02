@@ -1,0 +1,31 @@
+{
+  "id": "vedi",
+  "title": "Vedi",
+  "artist": "Allen Ganta, Amit Kamble, Cameron Mendes & Sheldon Bangera",
+  "church": null,
+  "album": "Red Sea Films",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Vedi ke upar hum khushi se qurbaan\nMar mite hain kab se junooni Tera pyaar\nNa matlab hai iss duniya se hum jeevit balidaan\nTu Zinda karne wala Prabhu punaruthaan",
+      "chorus": "Kya koi Tere jaisa bachane wala\nTu hi hai Khuda\nTera raj ab hai yahaan\nHar raja se ooncha hai Yeshua",
+      "verse2": "Kayi aaye raaja kiya kabza aur sataav\nHukumat ki praja pe talwar se kiya naash\nSirf panne banke reh gaye kitaab-e-itihaas\nPar Yeshu Teri saltanat rahe Tera jalaal",
+      "verse3": "Khudayi jazbe ki hum mein nahi kami\nAag ki saza hamari vedi bani\nJalte marte jaayein tab bhi himmat na hari\nHai jeet hamari ho chuki karte elaan abhi"
+    },
+    "hindi": {
+      "verse1": "वेदी के ऊपर हम ख़ुशी से क़ुर्बान\nमर मिटे हैं कब से जुनूनी तेरा प्यार\nना मतलब है इस दुनिया से हम जीवित बलिदान\nतू ज़िन्दा करनेवाला प्रभु पुनरुत्थान",
+      "chorus": "क्या कोई तेरे जैसा बचानेवाला\nतू ही है ख़ुदा\nतेरा राज अब है यहाँ\nहर राजा से ऊँचा है येशुआ",
+      "verse2": "कई आए राजा किया कब्ज़ा और सताव\nहुकूमत की प्रजा पे तलवार से किया नाश\nसिर्फ़ पन्ने बनके रह गए किताब-ए-इतिहास\nपर येशु तेरी सल्तनत रहे तेरा जलाल",
+      "verse3": "ख़ुदाई जज़्बे की हम में नहीं कमी\nआग की सज़ा हमारी वेदी बनी\nजलते मरते जाएँ तब भी हिम्मत ना हारी\nहै जीत हमारी हो चुकी करते एलान अभी"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "sacrifice", "declaration", "urdu", "hindi", "hinglish", "2025"],
+  "seo_description": "Vedi worship lyrics in Hindi and Hinglish by Allen Ganta, Amit Kamble, Cameron Mendes & Sheldon Bangera — a sacrificial worship anthem from Red Sea Films",
+  "added_by": "Gaurav | Vandana"
+}

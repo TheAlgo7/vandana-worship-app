@@ -1,0 +1,33 @@
+{
+  "id": "zinda-khuda",
+  "title": "Zinda Khuda",
+  "artist": "Sheldon Bangera ft. Abhishek Rogers, Sharon Kamble & Ashish Khare",
+  "church": null,
+  "album": "Jaago Music",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Chaand suraj ki parastish\nHum nahi karte\nDuniya ke maboodon ke\nAage nahi jhukte",
+      "chorus": "Kyunki Zinda Khuda hai hamara\nZinda Khuda hai hamara",
+      "verse2": "Khushkhabri phailayenge\nRooh mein badhte jayenge\nKhoye sab insaano ko\nPaas Yeshu ke layenge\nShaitanon ke toofanon se\nHum nahi darte",
+      "verse3": "Jab sitaish hoti hai\nRooh ki baarish hoti hai\nYeshu Teri huzuri mein\nRooh ki jumbish hoti hai\nTeri kuwat se khaali\nHum nahi rehte",
+      "verse4": "Jab Teri rehmat hoti hai\nNakaam makaam mil jaate hain\nYeshu Teri rehmat se\nDua qabool ho jaati hai\nTere majme se khaali\nHum nahi jaate"
+    },
+    "hindi": {
+      "verse1": "चाँद सूरज की परस्तिश\nहम नहीं करते\nदुनिया के माबूदों के\nआगे नहीं झुकते",
+      "chorus": "क्योंकि ज़िन्दा ख़ुदा है हमारा\nज़िन्दा ख़ुदा है हमारा",
+      "verse2": "ख़ुशख़बरी फैलाएँगे\nरूह में बढ़ते जाएँगे\nखोए सब इंसानों को\nपास येशु के लाएँगे\nशैतानों के तूफ़ानों से\nहम नहीं डरते",
+      "verse3": "जब सिताइश होती है\nरूह की बारिश होती है\nयेशु तेरी हुज़ूरी में\nरूह की जुंबिश होती है\nतेरी कुव्वत से ख़ाली\nहम नहीं रहते",
+      "verse4": "जब तेरी रहमत होती है\nनाकाम मक़ाम मिल जाते हैं\nयेशु तेरी रहमत से\nदुआ क़बूल हो जाती है\nतेरे मजमे से ख़ाली\nहम नहीं जाते"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "declaration", "urdu", "hindi", "hinglish", "2025"],
+  "seo_description": "Zinda Khuda Hai Hamara lyrics in Hindi and Hinglish by Sheldon Bangera — originally by Kaleem Emmanuel, a bold declaration of the Living God",
+  "added_by": "Gaurav | Vandana"
+}

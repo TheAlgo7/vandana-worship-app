@@ -1,0 +1,35 @@
+{
+  "id": "khazana",
+  "title": "Khazana",
+  "artist": "Bridge Music ft. Sam Alex Pasula & Phebe Bright",
+  "church": "Bridge Music",
+  "album": "Khazana - Bridge Music Season 4",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Duniya ki nazaron mein\nJab main kaafi na tha\nTu ne mujhe apne\nPyaar se kaabil kiya",
+      "pre_chorus": "Huzoori mein Teri, baitha rahoon main\nTujhko hi taqta rahoon\nKadmon mein Tere, baithkar main Teri\nBaaton ko sunta rahoon",
+      "chorus": "Main deewana Tera\nTu keemti khazana mera\nYeshua",
+      "verse2": "Duniya ki baatein\nUthati giraati mujhe\nTere hi lafzon se\nMilti hai rahat mujhe",
+      "bridge": "Teri nazar se\nKhud ko main dekhun\nPehle se kaamil hu main\nJaana jab maine\nKhush hai Tu mujhse\nAazaad main ho gaya",
+      "outro": "Tu deewana mera\nMain keemti khazana Tera\nTune sab kuch de diya\nMain keemti khazana Tera\nTeri aankhon ki putli hoon Papa"
+    },
+    "hindi": {
+      "verse1": "दुनिया की नज़रों में\nजब मैं काफ़ी ना था\nतूने मुझे अपने\nप्यार से काबिल किया",
+      "pre_chorus": "हुज़ूरी में तेरी, बैठा रहूं मैं\nतुझको ही ताकता रहूं\nकदमों में तेरे, बैठकर मैं तेरी\nबातों को सुनता रहूं",
+      "chorus": "मैं दीवाना तेरा\nतू कीमती ख़ज़ाना मेरा\nयेशुआ",
+      "verse2": "दुनिया की बातें\nउठाती गिराती मुझे\nतेरे ही लफ़्ज़ों से\nमिलती है राहत मुझे",
+      "bridge": "तेरी नज़र से\nख़ुद को मैं देखूं\nपहले से कामिल हूं मैं\nजाना जब मैंने\nख़ुश है तू मुझसे\nआज़ाद मैं हो गया",
+      "outro": "तू दीवाना मेरा\nमैं कीमती ख़ज़ाना तेरा\nतूने सब कुछ दे दिया\nमैं कीमती ख़ज़ाना तेरा\nतेरी आंखों की पुतली हूं पापा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "devotion", "bridge-music", "hindi", "hinglish", "2025"],
+  "seo_description": "Khazana lyrics in Hindi and Hinglish by Bridge Music ft. Sam Alex Pasula & Phebe Bright — Khazana Bridge Music Season 4",
+  "added_by": "Gaurav | Vandana"
+}

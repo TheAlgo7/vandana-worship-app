@@ -1,0 +1,31 @@
+{
+  "id": "abraham-ka-prabhu",
+  "title": "Abraham Ka Prabhu",
+  "artist": "Amit Kamble",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Abraham ka Prabhu, Ishaak ka Prabhu\nYakoob ka Prabhu Tu mera hai\nAbraham ka Prabhu, Ishaak ka Prabhu\nYakoob ka Prabhu Tu mera hai\nTu kabhi na chhodega, Tu kabhi na thukrayega\nTu mera hai, Tu mera hai",
+      "verse1": "Jiske haath mein mera kal\nJiske haath mein mera aaj\nAur aane wala kal, wo mera hai",
+      "verse2": "Nadiya mujhe dooba na sake\nAgni mujhe jala na sake\nMera haath jo Tune thaama hai",
+      "verse3": "Jo aadi mein tha\nJo Shabd Khuda sang tha\nWo Shabd Khuda hi tha\nWo mera hai, wo mera hai"
+    },
+    "hindi": {
+      "chorus": "अब्राहम का प्रभु, इसहाक का प्रभु\nयाकूब का प्रभु तू मेरा है\nअब्राहम का प्रभु, इसहाक का प्रभु\nयाकूब का प्रभु तू मेरा है\nतू कभी ना छोड़ेगा, तू कभी ना ठुकरायेगा\nतू मेरा है, तू मेरा है",
+      "verse1": "जिसके हाथ में मेरा कल\nजिसके हाथ में मेरा आज\nऔर आने वाला कल, वो मेरा है",
+      "verse2": "नदिया मुझे डूबा न सके\nअग्नि मुझे जला न सके\nमेरा हाथ जो तूने थामा है",
+      "verse3": "जो आदि में था\nजो शब्द ख़ुदा संग था\nवो शब्द ख़ुदा ही था\nवो मेरा है, वो मेरा है"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "declaration", "faith", "hindi", "hinglish", "2022"],
+  "seo_description": "Abraham Ka Prabhu lyrics in Hindi and Hinglish by Amit Kamble — a declaration of faith in the God of Abraham, Isaac, and Jacob",
+  "added_by": "Gaurav | Vandana"
+}

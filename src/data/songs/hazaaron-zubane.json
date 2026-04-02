@@ -1,0 +1,33 @@
+{
+  "id": "hazaaron-zubane",
+  "title": "Hazaaron Zubane",
+  "artist": "Amit Kamble, Prakruthi Angelina & Hemant Sharma",
+  "church": "Nations of Worship",
+  "album": "Nations of Worship 2024",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Saari srishti par tera adhikaar\nTu rajadhiraaj hai Prabhu\nTujhse hai zameen, tujhse aasman\nJag ka tu Maalik Prabhu",
+      "pre_chorus": "Karte hain sajda\nIbadat ho teri sada",
+      "chorus": "Hazaaron zubane gaayein\nTera hi naam dohraayen\nYeshu tu pavitra hai",
+      "verse2": "Unch neech ka na koi wajood\nTere rajya mein, tere rajya mein\nHar kisi ka hai swagat yahan\nTere rajya mein, tere rajya mein\nTeri rehmat mein, tu leta hai sabko kareeb",
+      "bridge": "Shaahon ka shaah hai tu Khuda\nTera na koi muqaabla\nTera hi takht rahe, sabse uncha"
+    },
+    "hindi": {
+      "verse1": "सारी सृष्टि पर तेरा अधिकार\nतू राजाधिराज है प्रभु\nतुझसे है ज़मीन, तुझसे आसमान\nजग का तू मालिक प्रभु",
+      "pre_chorus": "करते हैं सजदा\nइबादत हो तेरी सदा",
+      "chorus": "हज़ारों ज़ुबाने गायें\nतेरा ही नाम दोहराएं\nयीशु तू पवित्र है",
+      "verse2": "ऊंच नीच का ना कोई वजूद\nतेरे राज्य में, तेरे राज्य में\nहर किसी का है स्वागत यहाँ\nतेरे राज्य में, तेरे राज्य में\nतेरी रहमत में, तू लेता है सबको करीब",
+      "bridge": "शाहों का शाह है तू ख़ुदा\nतेरा ना कोई मुक़ाबला\nतेरा ही तख़्त रहे, सबसे ऊंचा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "nations-of-worship", "hindi", "hinglish", "2024"],
+  "seo_description": "Hazaaron Zubane lyrics in Hindi and Hinglish by Amit Kamble, Prakruthi Angelina & Hemant Sharma — Nations of Worship 2024",
+  "added_by": "Gaurav | Vandana"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "oshimiri-atata",
+  "title": "Oshimiri Atata",
+  "artist": "Ps. Arul Thomas",
+  "church": "ICM",
+  "album": "Grace Music India 2026",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Oshimiri Atata\nOshimiri Atata\nOshimiri Atata\nRiver that never runs dry\nNadi jo sookhe na kabhi",
+      "verse1": "Hum lete hain wo\nNadi jo sookhe na kabhi\nHaan, haan",
+      "bridge": "Chalta phirta aag hoon main"
+    },
+    "hindi": {
+      "chorus": "ओशिमिरी अताता\nओशिमिरी अताता\nओशिमिरी अताता\nRiver that never runs dry\nनदी जो सूखे ना कभी",
+      "verse1": "हम लेते हैं वो\nनदी जो सूखे ना कभी\nहाँ, हाँ",
+      "bridge": "चलता फिरता आग हूँ मैं"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "praise", "anointing", "icm", "hinglish", "hindi", "2026"],
+  "seo_description": "Oshimiri Atata lyrics in Hindi and Hinglish by Ps. Arul Thomas — ICM Church 2026",
+  "added_by": "Gaurav | Vandana"
+}
