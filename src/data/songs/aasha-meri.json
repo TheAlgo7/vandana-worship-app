@@ -1,0 +1,31 @@
+{
+  "id": "aasha-meri",
+  "title": "Aasha Meri",
+  "artist": "Nations of Worship ft. Allen Ganta, Sam Alex, Prakruthi Angelina & Philemon Anand",
+  "church": "Nations of Worship",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Hum mein woh doori, thi kitni gehri\nKitna bada tha, woh fasla\nMayoos hokar, swarg ki or dekha\nNiraasha mein Tera naam liya\nAndhkaar hataakar, Teri mohabbat\nSe mera dil Tune bhardiya\nPoora hua sab, likha gaya anth\nYeshu Masih, Tu hai Aasha Meri",
+      "verse2": "Kisne tha socha, ki aisi daya\nMilegi humko bharpoori se\nYugon ka Raja Mahima ko chhodkar\nApnaya mere sharm aur gunaah\nKroos se maine payi hai maafi\nMain ho gaya uss Raja ka\nSundar Masiha, ab main hoon Tera\nYeshu Masih, Tu hai Aasha Meri",
+      "chorus": "Hallelujah, Prabhu Teri stuti ho\nHallelujah, Tune haraya mrityu ko\nTune todi har zanjeer\nTere naam mein rihai\nYeshu Masih, Tu hai Aasha Meri",
+      "verse3": "Aayi woh subah, waada poora hua\nBejaan shareer ne, phir saansein lin\nKhamoshi mein se, Tune pukaara\nKabr teri jeet kahaan\nYeshua, Teri jai ho sada"
+    },
+    "hindi": {
+      "verse1": "हम में वो दूरी, थी कितनी गहरी\nकितना बड़ा था, वो फ़ासला\nमायूस होकर, स्वर्ग की ओर देखा\nनिराशा में तेरा नाम लिया\nअंधकार हटाकर, तेरी मोहब्बत\nसे मेरा दिल तूने भरदिया\nपूरा हुआ सब, लिखा गया अंत\nयीशु मसीह, तू है आशा मेरी",
+      "verse2": "किसने था सोचा, कि ऐसी दया\nमिलेगी हमको भरपूरी से\nयुगों का राजा महिमा को छोड़कर\nअपनाया मेरे शर्म और गुनाह\nक्रूस से मैंने पाई है माफ़ी\nमैं हो गया उस राजा का\nसुंदर मसीहा, अब मैं हूं तेरा\nयीशु मसीह, तू है आशा मेरी",
+      "chorus": "हल्लेलूयाह, प्रभु तेरी स्तुति हो\nहल्लेलूयाह, तूने हराया मृत्यु को\nतूने तोड़ी हर ज़ंजीर\nतेरे नाम में रिहाई\nयीशु मसीह, तू है आशा मेरी",
+      "verse3": "आई वो सुबह, वादा पूरा हुआ\nबेजान शरीर ने, फिर साँसें लीं\nख़ामोशी में से, तूने पुकारा\nक़ब्र तेरी जीत कहाँ\nयीशुआ, तेरी जय हो सदा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "hope", "resurrection", "nations-of-worship", "living-hope", "hindi", "hinglish", "2021"],
+  "seo_description": "Aasha Meri lyrics in Hindi and Hinglish by Nations of Worship ft. Allen Ganta — Hindi adaptation of Living Hope",
+  "added_by": "Gaurav | Vandana"
+}

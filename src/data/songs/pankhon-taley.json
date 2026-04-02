@@ -1,0 +1,33 @@
+{
+  "id": "pankhon-taley",
+  "title": "Pankhon Taley",
+  "artist": "Abhinav Massey",
+  "church": "Assembly of Believers Church",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Dua mein shabd na rahein\nAansu hi bayaan karein\nJo kehna chahun Tujhse main Khuda\nYe aansu hain to bah rahe\nPar haara nahin hoon main\nImaan ab bhi Tujhmein hai mera",
+      "pre_chorus": "Gar bikhra sa hoon, Tu sawaar dega\nGar toota main hoon, Tu sambhaal lega",
+      "chorus": "Pankhon taley Tu chhupayega mujhe\nUngliyon ko meri thaam ke\nTu chalayega mujhe\nEmmanuel, Tu saath rahega\nAndheron mein bhi mujhko Tu\nGirne na dega",
+      "verse2": "Aaya hoon paas main Tere leke saari khwahishein\nPar sabse zyada Tu chahiye\nKoi samjhe na mujhe, chahe koi kuch kahe\nMujhe sabse zyada Tu hi chahiye",
+      "bridge": "Tu hi dard deta, marham lagata hai\nTu tarai mein le jaaye, uncha uthata hai\nTu ghure se uthaake, shahzaadon sang baithaaye\nJab koi Tujhe pukaare, uske sang Tu aa jaaye"
+    },
+    "hindi": {
+      "verse1": "दुआ में शब्द न रहें\nआंसू ही बयान करें\nजो कहना चाहूं तुझसे मैं ख़ुदा\nये आंसू हैं तो बह रहे\nपर हारा नहीं हूं मैं\nईमान अब भी तुझमें है मेरा",
+      "pre_chorus": "गर बिखरा सा हूं, तू संवार देगा\nगर टूटा मैं हूं, तू संभाल लेगा",
+      "chorus": "पंखों तले तू छुपाएगा मुझे\nउंगलियों को मेरी थाम के\nतू चलाएगा मुझे\nएम्मानुएल, तू साथ रहेगा\nअंधेरों में भी मुझको तू\nगिरने न देगा",
+      "verse2": "आया हूं पास मैं तेरे लेके सारी ख़्वाहिशें\nपर सबसे ज़्यादा तू चाहिए\nकोई समझे न मुझे, चाहे कोई कुछ कहे\nमुझे सबसे ज़्यादा तू ही चाहिए",
+      "bridge": "तू ही दर्द देता, मरहम लगाता है\nतू तराई में ले जाए, ऊंचा उठाता है\nतू घुरे से उठाके, शहज़ादों संग बैठाए\nजब कोई तुझे पुकारे, उसके संग तू आ जाए"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "devotion", "protection", "assembly-of-believers-church", "abc-worship", "hindi", "hinglish", "2025"],
+  "seo_description": "Pankhon Taley lyrics in Hindi and Hinglish by Abhinav Massey — Glory to God India, Assembly of Believers Church worship",
+  "added_by": "Gaurav | Vandana"
+}

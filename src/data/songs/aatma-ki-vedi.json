@@ -1,0 +1,27 @@
+{
+  "id": "aatma-ki-vedi",
+  "title": "Aatma Ki Vedi",
+  "artist": "Ps. Arul Thomas & Dr. Mahima John Arul",
+  "church": "ICM Church",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Aatma ki vedi mujhmein taiyaar hai\nAbhishek ka pyaala umade, umade, umade\nAatma ki vedi mujhmein taiyaar hai\nAbhishek ka tel umade, umade, umade",
+      "bridge": "Adhikaar ki vaani meri zubaan se\nAatma ki aag ugale, ugale, ugale"
+    },
+    "hindi": {
+      "chorus": "आत्मा की वेदी मुझमें तैयार है\nअभिषेक का प्याला उमड़े, उमड़े, उमड़े\nआत्मा की वेदी मुझमें तैयार है\nअभिषेक का तेल उमड़े, उमड़े, उमड़े",
+      "bridge": "अधिकार की वाणी मेरी ज़ुबान से\nआत्मा की आग उगले, उगले, उगले"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "spirit", "anointing", "icm-church", "grace-music-india", "hindi", "hinglish", "2025"],
+  "seo_description": "Aatma Ki Vedi lyrics in Hindi and Hinglish — Ps. Arul Thomas & Dr. Mahima John Arul, ICM Church worship",
+  "added_by": "Gaurav | Vandana"
+}

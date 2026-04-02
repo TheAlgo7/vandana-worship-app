@@ -1,0 +1,35 @@
+{
+  "id": "tore-siwa",
+  "title": "Tore Siwa",
+  "artist": "FOLJ Church ft. Ankit Sajwan, Sheldon Bangera, Samarth Shukla, Hinanaaz Bali & Daniel Naz",
+  "church": "FOLJ Church",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Tore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan",
+      "verse1": "Prabhu main tha ek agyanee\nAnugrah se hi teri, mahima jaani\nBhed hoon main, Tu hai gadariya\nAatma se mujhko chara\nTore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan",
+      "verse2": "Kaale samandar se, main ghira tha\nAas na thi koi, doob raha tha\nAa ke Yeshu tune bachaaya\nJeevan ka maarg dikhaaya\nTore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan",
+      "verse3": "Prabhu main tha ek abhimaanee\nKarta tha apni manmaanee\nPatthar sa dil pighlaya\nSachcha prem karna sikhaaya\nTore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan",
+      "verse4": "More jeevan ke tum Swami\nTumko arpan, praan, Aatma bhi\nTore jaisa kaun hai premi\nNa milega, Tu sa koi\nBhed hoon main, Tu hai gadariya\nAatma se mujhko chara\nTore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan",
+      "verse5": "Saare milkar jai jai gaayen\nTere aage sheesh jhukayen\nSarvashaktimaan hai Tu\nNa koi Tujh sa Prabhu\nTore siwa jaaun kahaan\nPaaun tujhe jaaun jahaan"
+    },
+    "hindi": {
+      "chorus": "तोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ",
+      "verse1": "प्रभु मैं था एक अज्ञानी\nअनुग्रह से ही तेरी, महिमा जानी\nभेड़ हूँ मैं, तू है गडरिया\nआत्मा से मुझको चरा\nतोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ",
+      "verse2": "काले समन्दर से, मैं घिरा था\nआस न थी कोई, डूब रहा था\nआ के यीशु तूने बचाया\nजीवन का मार्ग दिखाया\nतोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ",
+      "verse3": "प्रभु मैं था एक अभिमानी\nकरता था अपनी मनमानी\nपत्थर सा दिल पिघलाया\nसच्चा प्रेम करना सिखाया\nतोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ",
+      "verse4": "मोरे जीवन के तुम स्वामी\nतुमको अर्पण, प्राण, आत्मा भी\nतोरे जैसा कौन है प्रेमी\nन मिलेगा, तू सा कोई\nभेड़ हूँ मैं, तू है गडरिया\nआत्मा से मुझको चरा\nतोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ",
+      "verse5": "सारे मिलकर जय जय गाएँ\nतेरे आगे शीश झुकाएँ\nसर्वशक्तिमान है तू\nन कोई तुझ सा प्रभु\nतोरे सिवा जाऊं कहाँ\nपाऊं तुझे जाऊं जहाँ"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watch?=toresiwa",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "devotion", "folj-church", "hindi", "hinglish", "2022"],
+  "seo_description": "Tore Siwa lyrics in Hindi and Hinglish by FOLJ Church ft. Ankit Sajwan, Sheldon Bangera & Samarth Shukla — a devotional worship song of complete dependence on God",
+  "added_by": "Gaurav | Vandana"
+}

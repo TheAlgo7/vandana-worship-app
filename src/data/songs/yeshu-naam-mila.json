@@ -1,0 +1,33 @@
+{
+  "id": "yeshu-naam-mila",
+  "title": "Yeshu Naam Mila",
+  "artist": "Ankit Sajwan Ministries",
+  "church": "FOLJ Church",
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Yeshu naam mila\nMera jeevan sawar gaya\nMera jeevan sawar gaya",
+      "verse1": "Tune lahoo ke qatron ko, mere liye baha diya\nTune jaan badan dekar, Yeshu mujhko bacha liya\nTere lahoo se, Tere lahoo se\nYeshu ke lahoo se, Masih ke lahoo se\nMera jeevan sawar gaya\nMera jeevan sawar gaya",
+      "verse2": "Tera naam jo leta hai, woh zindagi paata hai\nTeri raahon pe chalkar, Rooh inaam paata hai\nTere Rooh se, Tere Rooh se\nKhuda ke Rooh se, Tere Rooh se\nMera jeevan sawar gaya\nMera jeevan sawar gaya",
+      "verse3": "Yeshu Teri hazoori mein, qudrat aur jalaal hai\nYeshu Tere hi haathon mein, mujh zaat kamaal hai\nTere chhoone se, Tere chhoone se\nMasih ke chhoone se, Khuda ke chhoone se\nMera jeevan sawar gaya\nMera jeevan sawar gaya",
+      "verse4": "Yeshu ab mere jeevan ka, ab Tu hi sahaara hai\nMere jeevan ki kashti ka, Yeshu Tu hi kinaara hai\nYeshu Tu mila, haan mujhe Tu mila\nHaan mujhe Tu mila, Yeshu Tu mila\nMera jeevan sawar gaya\nMera jeevan sawar gaya"
+    },
+    "hindi": {
+      "chorus": "येशु नाम मिला\nमेरा जीवन सवर गया\nमेरा जीवन सवर गया",
+      "verse1": "तूने लहू के क़तरों को, मेरे लिए बहा दिया\nतूने जान बदन देकर, येशु मुझको बचा लिया\nतेरे लहू से, तेरे लहू से\nयेशु के लहू से, मसीह के लहू से\nमेरा जीवन सवर गया\nमेरा जीवन सवर गया",
+      "verse2": "तेरा नाम जो लेता है, वो ज़िंदगी पाता है\nतेरी राहों पे चलकर, रूह ईनाम पाता है\nतेरे रूह से, तेरे रूह से\nख़ुदा के रूह से, तेरे रूह से\nमेरा जीवन सवर गया\nमेरा जीवन सवर गया",
+      "verse3": "येशु तेरी हज़ूरी में, क़ुदरत और जलाल है\nयेशु तेरे ही हाथों में, मुझ ज़ात कमाल है\nतेरे छूने से, तेरे छूने से\nमसीह के छूने से, ख़ुदा के छूने से\nमेरा जीवन सवर गया\nमेरा जीवन सवर गया",
+      "verse4": "येशु अब मेरे जीवन का, अब तू ही सहारा है\nमेरे जीवन की कश्ती का, येशु तू ही किनारा है\nयेशु तू मिला, हाँ मुझे तू मिला\nहाँ मुझे तू मिला, येशु तू मिला\nमेरा जीवन सवर गया\nमेरा जीवन सवर गया"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "testimony", "salvation", "folj-church", "ankit-sajwan", "hindi", "hinglish", "2025"],
+  "seo_description": "Yeshu Naam Mila lyrics in Hindi and Hinglish by Ankit Sajwan Ministries — FOLJ Church worship",
+  "added_by": "Gaurav | Vandana"
+}

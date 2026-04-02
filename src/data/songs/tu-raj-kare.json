@@ -1,0 +1,35 @@
+{
+  "id": "tu-raj-kare",
+  "title": "Tu Raj Kare",
+  "artist": "Sheldon Bangera",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Tune kiya khaali apne aap ko\nChhodi saari mahima\nHokar Khuda kiya shunya apne aap ko\nBana manushya samaan\nBan gaya daas samaan",
+      "pre_chorus": "Mrityu sahi, haan mrityu kroos ki\nAur hua sabse mahaan",
+      "chorus": "Tu raj kare\nTu raj kare\nTu raj kare\nSaari duniya pe\nGhutne tike saare\nGhutne tike ghutne tike\nYeshu Naam ke liye",
+      "verse2": "Aasmaanon mein hai sthir Tera sinhaasan\nParakrami Khuda\nMahima se ab faile Tera shaasan\nKadmon pe saara jahaan\nSajde mein har insaan",
+      "pre_chorus2": "Vadh jo hua, nirdosh memna\nTera hai saaradhikaar",
+      "bridge": "Kal, aaj aur sarvada\nYeshu Tu hi hai Khuda"
+    },
+    "hindi": {
+      "verse1": "तूने किया खाली अपने आप को\nछोड़ी सारी महिमा\nहोकर ख़ुदा किया शून्य अपने आप को\nबना मनुष्य समान\nबन गया दास समान",
+      "pre_chorus": "मृत्यु सही, हाँ मृत्यु क्रूस की\nऔर हुआ सबसे महान",
+      "chorus": "तू राज करे\nतू राज करे\nतू राज करे\nसारी दुनिया पे\nघुटने टिके सारे\nघुटने टिके घुटने टिके\nयेशु नाम के लिए",
+      "verse2": "आसमानों में है स्थिर तेरा सिंहासन\nपराक्रमी ख़ुदा\nमहिमा से अब फैले तेरा शासन\nक़दमों पे सारा जहान\nसज्दे में हर इंसान",
+      "pre_chorus2": "वध जो हुआ, निर्दोष मेमना\nतेरा है सर्वाधिकार",
+      "bridge": "कल, आज और सर्वदा\nयेशु तू ही है ख़ुदा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "sovereignty", "kenosis", "sheldon-bangera", "jaago-music", "hindi", "hinglish", "2023"],
+  "seo_description": "Tu Raj Kare lyrics in Hindi and Hinglish by Sheldon Bangera — Live in Ranchi, Ek Awaaz Tour, Jaago Music",
+  "added_by": "Gaurav | Vandana"
+}

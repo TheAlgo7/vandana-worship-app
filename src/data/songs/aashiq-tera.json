@@ -1,0 +1,31 @@
+{
+  "id": "aashiq-tera",
+  "title": "Aashiq Tera",
+  "artist": "Emmanuel Gollar",
+  "church": null,
+  "album": "Oneness India Season 3",
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "pre_chorus": "Aaya hoon main yahaan Yeshu Tere darbar mein\nDarbar mein ho Teri stuti\nDarbar mein ho aaradhana\nAaya hoon main yahaan",
+      "chorus": "Main Aashik Tera, Yeshu\nMain Aashik Tera",
+      "verse1": "Aashik hoon main Tera\nMain na sharmaaunga\nAashik hoon main Tera\nMain na ghabraaunga\nYeshu Tu mera zinda Khuda\nTu hi to mera hai Masiha\nDaavud ki tarah main nachunga, Yeshu main nachunga",
+      "verse2": "Aaj to main Yeshu kuch aisa gaaunga\nAaj to main Yeshu kuch aisa nachunga\nShanti ka Raja Tu Baadshah\nMaut ko Tune hara diya\nTu jo zinda hai main jhoomoonga, Yeshu main jhoomoonga"
+    },
+    "hindi": {
+      "pre_chorus": "आया हूं मैं यहाँ यीशु तेरे दरबार में\nदरबार में हो तेरी स्तुति\nदरबार में हो आराधना\nआया हूं मैं यहाँ",
+      "chorus": "मैं आशिक तेरा, यीशु\nमैं आशिक तेरा",
+      "verse1": "आशिक हूं मैं तेरा\nमैं ना शरमाऊँगा\nआशिक हूं मैं तेरा\nमैं ना घबराऊँगा\nयीशु तू मेरा ज़िंदा ख़ुदा\nतू ही तो मेरा है मसीहा\nदाऊद की तरह मैं नाचुंगा, यीशु मैं नाचुंगा",
+      "verse2": "आज तो मैं यीशु कुछ ऐसा गाऊँगा\nआज तो मैं यीशु कुछ ऐसा नाचुंगा\nशांति का राजा तू बादशाह\nमौत को तूने हरा दिया\nतू जो ज़िंदा है मैं झूमूँगा, यीशु मैं झूमूँगा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "dance", "devotion", "emmanuel-gollar", "oneness-india", "hindi", "hinglish", "2025"],
+  "seo_description": "Aashiq Tera lyrics in Hindi and Hinglish by Emmanuel Gollar — Oneness India Season 3, David Parla production",
+  "added_by": "Gaurav | Vandana"
+}

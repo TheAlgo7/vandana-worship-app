@@ -1,0 +1,31 @@
+{
+  "id": "jab-saath-hai-masiha",
+  "title": "Jab Saath Hai Masiha",
+  "artist": "Ankit Sajwan Ministries",
+  "church": "FOLJ Church",
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Kyon tu darta hai tere liye Woh ladta hai\nNa rath na ghode vijay dilaayenge\nJab saath hai Masiha jeet hum jaayenge\nJab saath hai Masiha jeet hum jaayenge\nJeet hum jaayenge\nHum fatah paayenge",
+      "verse1": "Uske logon ko jo bhi koi lalkaarta hai\nBachche se phir Wohi balwaan ko maarta hai\nDaavud jaise Goliyath hum haraayenge\nJab saath hai Masiha jeet hum jaayenge\nJab saath hai Masiha jeet hum jaayenge\nJeet hum jaayenge\nHum fatah paayenge",
+      "verse2": "Hum leke chalenge apne saath hathiyaar roohaani\nSaitaan bhi haarega humse dushman jo jaane\nYeshu naam mein hum to badhte jaayenge\nJab saath hai Masiha jeet hum jaayenge\nJab saath hai Masiha jeet hum jaayenge\nJeet hum jaayenge\nHum fatah paayenge",
+      "verse3": "Paigaam mohabbat ka ghar ghar pahunchaayenge\nNafrat ko bhi hum pyaar se jeet dikhaayenge\nYeshu aane waala sabko bataayenge\nJab saath hai Masiha jeet hum jaayenge\nJab saath hai Masiha jeet hum jaayenge\nJeet hum jaayenge\nHum fatah paayenge"
+    },
+    "hindi": {
+      "chorus": "क्यों तू डरता है तेरे लिए वो लड़ता है\nन रथ न घोड़े विजय दिलाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजीत हम जाएंगे\nहम फ़तह पाएंगे",
+      "verse1": "उसके लोगों को जो भी कोई ललकारता है\nबच्चे से फिर वोही बलवान को मारता है\nदाऊद जैसे गोलियथ हम हराएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजीत हम जाएंगे\nहम फ़तह पाएंगे",
+      "verse2": "हम लेके चलेंगे अपने साथ हथियार रूहानी\nसैतान भी हारेगा हमसे दुश्मन जो जाने\nयीशु नाम में हम तो बढ़ते जाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजीत हम जाएंगे\nहम फ़तह पाएंगे",
+      "verse3": "पैग़ाम मोहब्बत का घर घर पहुँचाएंगे\nनफ़रत को भी हम प्यार से जीत दिखाएंगे\nयीशु आने वाला सबको बताएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजब साथ है मसीहा जीत हम जाएंगे\nजीत हम जाएंगे\nहम फ़तह पाएंगे"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "victory", "warfare", "folj-church", "ankit-sajwan", "hindi", "hinglish", "2024"],
+  "seo_description": "Jab Saath Hai Masiha lyrics in Hindi and Hinglish by Ankit Sajwan Ministries — FOLJ Church worship",
+  "added_by": "Gaurav | Vandana"
+}

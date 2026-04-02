@@ -1,0 +1,29 @@
+{
+  "id": "jhukta-singhasan-pe",
+  "title": "Jhukta Singhasan Pe",
+  "artist": "Dr. Mahima John Arul",
+  "church": "ICM Church",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": ["hinglish", "hindi"],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Jhukta singhasan pe\nShabd nahi bache\nPavitra pavitrata\nPrabhu",
+      "verse1": "Tu Pavitra senaon ke Raja\nDharti gaaye Teri stuti\nTu Pavitra senaon ke Rana\nDharti gaaye Teri stuti",
+      "bridge": "Yahweh Rafa\nElohim Shaddai\nYireh Adonai\nHuzoori hai yahaan"
+    },
+    "hindi": {
+      "chorus": "झुकता सिंहासन पे\nशब्द नहीं बचे\nपवित्र पवित्रता\nप्रभु",
+      "verse1": "तू पवित्र सेनाओं के राजा\nधरती गाए तेरी स्तुति\nतू पवित्र सेनाओं के राणा\nधरती गाए तेरी स्तुति",
+      "bridge": "याहवेह रफ़ा\nएलोहिम शद्दाई\nयीरेह अदोनाई\nहुज़ूरी है यहाँ"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "holiness", "throne", "icm-church", "grace-music-india", "hindi", "hinglish", "2026"],
+  "seo_description": "Jhukta Singhasan Pe lyrics in Hindi and Hinglish by Dr. Mahima John Arul — ICM Church, powerful Hindi worship song",
+  "added_by": "Gaurav | Vandana"
+}
