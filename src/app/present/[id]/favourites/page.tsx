@@ -2,8 +2,8 @@ import { getAllSongMetas } from "@/lib/getSongs";
 import FavouritesContent from "./FavouritesContent";
 import BottomNav from "@/components/BottomNav";
 
-export default function FavouritesPage() {
-  const songs = getAllSongMetas();
+export default async function FavouritesPage() {
+  const songs = await getAllSongMetas();
 
   return (
     <div style={{ minHeight: "100vh" }}>
