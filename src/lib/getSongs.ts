@@ -127,6 +127,7 @@ export async function getSongs(): Promise<Song[]> {
     .order("title");
 
   if (error || !data) {
+    console.error("[getSongs] Supabase error:", error?.message ?? "no data");
     const cached = getCachedSongs();
     if (cached) return cached;
     return [];

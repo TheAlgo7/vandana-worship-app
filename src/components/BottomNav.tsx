@@ -48,8 +48,8 @@ export default function BottomNav() {
           left: 0,
           right: 0,
           zIndex: 50,
-          background: "rgba(14,14,18,0.92)",
-          borderTop: "1px solid rgba(255,255,255,0.06)",
+          background: "var(--bg-overlay)",
+          borderTop: "1px solid var(--border-subtle)",
           backdropFilter: "blur(24px) saturate(180%)",
           WebkitBackdropFilter: "blur(24px) saturate(180%)",
           display: "flex",
@@ -62,12 +62,12 @@ export default function BottomNav() {
         {/* Home */}
         <Link href="/" style={itemStyle(isHome)}>
           <svg
-            width="22"
-            height="22"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.8"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -78,7 +78,7 @@ export default function BottomNav() {
             <polyline
               points="9 22 9 12 15 12 15 22"
               fill={isHome ? "var(--bg-base)" : "none"}
-              stroke="currentColor"
+              stroke={isHome ? "var(--bg-base)" : "currentColor"}
             />
           </svg>
           Home
@@ -87,12 +87,12 @@ export default function BottomNav() {
         {/* Favourites */}
         <Link href="/favourites" style={itemStyle(isFavourites)}>
           <svg
-            width="22"
-            height="22"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill={isFavourites ? "currentColor" : "none"}
             stroke="currentColor"
-            strokeWidth="1.8"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -104,12 +104,12 @@ export default function BottomNav() {
         {/* Settings */}
         <Link href="/settings" style={itemStyle(isSettings)}>
           <svg
-            width="22"
-            height="22"
+            width="24"
+            height="24"
             viewBox="0 0 24 24"
             fill={isSettings ? "currentColor" : "none"}
             stroke="currentColor"
-            strokeWidth="1.8"
+            strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
