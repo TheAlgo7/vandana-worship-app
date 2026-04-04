@@ -93,13 +93,12 @@ export default function SongCard({ song, isFavourite }: { song: SongMeta; isFavo
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
-                <ChevronRight size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{ color: "var(--text-muted)", flexShrink: 0 }}
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
+            }}
+          >
+            {song.church}
+          </span>
+        )}
+        <ChevronRight size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
       </div>
     </Link>
   );
