@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
 import updatesData from "@/data/updates.json";
-import { Home, Bell, Heart, Settings as SettingsIcon } from "lucide-react";
+import { House, Bell, Heart, Settings as SettingsIcon } from "lucide-react";
 
 /** Fixed bottom navigation — Home · Updates · Favourites · Settings (4-item) */
 export default function BottomNav() {
@@ -80,7 +80,7 @@ export default function BottomNav() {
       >
         {/* Home */}
         <Link href="/" style={itemStyle(isHome)}>
-          <Home
+          <House
             size={24}
             strokeWidth={2}
             color={isHome ? "var(--accent)" : "var(--text-muted)"}

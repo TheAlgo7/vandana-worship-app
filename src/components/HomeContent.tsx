@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Search as MagnifyingGlass, ChevronRight } from "lucide-react";
+import { Search as MagnifyingGlass, ChevronRight, SearchX } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
@@ -79,12 +79,11 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   );
 
   const filtered = songs.filter((s) => {
+    const matchesQuery =
+      s.title.toLowerCase().includes(query.toLowerCase()) ||
+      s.artist?.toLowerCase().includes(query.toLowerCase());
     const matchesChurch = !activeChurch || s.church === activeChurch;
-    if (!matchesChurch) return false;
-    if (!query.trim()) return true;
-    const normalize = (v: string) => v.toLocaleLowerCase().normalize("NFKC");
-    const q = normalize(query.trim());
-    return normalize(`${s.title} ${s.artist} ${s.church}`).includes(q);
+    return matchesQuery && matchesChurch;
   });
 
   return (
@@ -175,9 +174,9 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             e.currentTarget.style.boxShadow = "none";
           }}
         />
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
-            <MagnifyingGlass size={20} strokeWidth={2} />
-          </span>
+        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+          <MagnifyingGlass size={20} strokeWidth={2} />
+        </span>
       </div>
 
       {/* ── Recently Viewed ── */}
@@ -236,142 +235,123 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 >
                   {s.title}
                 </p>
-                <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
-                <div
-                  style={{
-                    fontSize: "10px",
-                    color: "var(--text-muted)",
-                    margin: "2px 0 0 0",
-                    overflow: "hidden",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: 12,
-                  }}
-                >
-                  <MagnifyingGlass size={48} strokeWidth={2} className="mb-4" />
-                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}>
-                    {query
-                      ? `No songs found for \u201c${query}\u201d`
-                      : activeChurch
-                        ? `No songs from ${activeChurch} yet.`
-                        : "No songs yet."}
-                  </p>
-                </div>
-          <button
-            onClick={() => setActiveChurch(null)}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* ── Church Filter ── */}
+      <div style={{ display: "flex", gap: 8, margin: "16px 0" }}>
+        <button
+          onClick={() => setActiveChurch(null)}
+          style={{
+            flexShrink: 0,
+            padding: "6px 16px",
+            fontSize: "var(--text-xs)",
+            fontWeight: 500,
+            borderRadius: "var(--radius-pill)",
+            border: "1px solid",
+            borderColor: !activeChurch ? "var(--accent)" : "var(--border)",
+            cursor: "pointer",
+            transition: "all var(--transition-fast)",
+            background: !activeChurch ? "var(--accent)" : "transparent",
+            color: !activeChurch
+              ? "var(--bg-base)"
+              : "var(--text-secondary)",
+          }}
+        >
+          All
+        </button>
+        {churches.map((ch) => {
+          const active = activeChurch === ch;
+          return (
+            <button
+              key={ch}
+              onClick={() => setActiveChurch(active ? null : ch)}
+              style={{
+                flexShrink: 0,
+                padding: "6px 16px",
+                fontSize: "var(--text-xs)",
+                fontWeight: 500,
+                borderRadius: "var(--radius-pill)",
+                border: "1px solid",
+                borderColor: active ? "var(--accent)" : "var(--border)",
+                cursor: "pointer",
+                transition: "all var(--transition-fast)",
+                background: active ? "var(--accent)" : "transparent",
+                color: active ? "var(--bg-base)" : "var(--text-secondary)",
+              }}
+            >
+              {ch}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* ── Song List ── */}
+      <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px" }}>
+        {filtered.length === 0 ? (
+          <div
             style={{
-              flexShrink: 0,
-              padding: "6px 16px",
-              fontSize: "var(--text-xs)",
-              fontWeight: 500,
-              borderRadius: "var(--radius-pill)",
-              border: "1px solid",
-              borderColor: !activeChurch ? "var(--accent)" : "var(--border)",
-              cursor: "pointer",
-              transition: "all var(--transition-fast)",
-              background: !activeChurch ? "var(--accent)" : "transparent",
-              color: !activeChurch
-                ? "var(--bg-base)"
-                : "var(--text-secondary)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: 12,
+              padding: "8px 14px",
+              background: "var(--bg-surface)",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)",
+              textDecoration: "none",
+              maxWidth: 160,
             }}
           >
-            All
-          </button>
-          {churches.map((ch) => {
-            const active = activeChurch === ch;
-            return (
+            <SearchX
+              size={48}
+              strokeWidth={1.2}
+              style={{ color: "var(--text-muted)", opacity: 0.4 }}
+            />
+            <p
+              style={{
+                color: "var(--text-muted)",
+                fontSize: "var(--text-sm)",
+                lineHeight: 1.5,
+              }}
+            >
+              {query
+                ? `No songs found for \u201c${query}\u201d`
+                : activeChurch
+                ? `No songs from ${activeChurch} yet.`
+                : "No songs yet."}
+            </p>
+            {(query || activeChurch) && (
               <button
-                key={ch}
-                onClick={() => setActiveChurch(active ? null : ch)}
+                onClick={() => {
+                  setQuery("");
+                  setActiveChurch(null);
+                }}
                 style={{
-                  flexShrink: 0,
                   padding: "6px 16px",
                   fontSize: "var(--text-xs)",
                   fontWeight: 500,
                   borderRadius: "var(--radius-pill)",
-                  border: "1px solid",
-                  borderColor: active ? "var(--accent)" : "var(--border)",
-                  cursor: "pointer",
-                  transition: "all var(--transition-fast)",
-                  background: active ? "var(--accent)" : "transparent",
-                  color: active ? "var(--bg-base)" : "var(--text-secondary)",
-                }}
-              >
-                {ch}
-              </button>
-            );
-          })}
-        </div>
-      )}
-
-      {/* ── Song List ── */}
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  gap: 12,
-                  padding: "8px 14px",
-                  background: "var(--bg-surface)",
-                  borderRadius: "var(--radius-md)",
                   border: "1px solid var(--border)",
-                  textDecoration: "none",
-                  maxWidth: 160,
+                  background: "transparent",
+                  color: "var(--text-secondary)",
+                  cursor: "pointer",
                 }}
               >
-                <svg
-                  width="48"
-                  height="48"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--text-muted)"
-                  strokeWidth="1.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  style={{ opacity: 0.4 }}
-                >
-                  <circle cx="11" cy="11" r="8" />
-                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  <line x1="8" y1="11" x2="14" y2="11" />
-                </svg>
-                <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
-                <p
-                  style={{
-                    color: "var(--text-muted)",
-                    fontSize: "var(--text-sm)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {query
-                    ? `No songs found for \u201c${query}\u201d`
-                    : activeChurch
-                    ? `No songs from ${activeChurch} yet.`
-                    : "No songs yet."}
-                </p>
-                {(query || activeChurch) && (
-                  <button
-                    onClick={() => { setQuery(""); setActiveChurch(null); }}
-                    style={{
-                      padding: "6px 16px",
-                      fontSize: "var(--text-xs)",
-                      fontWeight: 500,
-                      borderRadius: "var(--radius-pill)",
-                      border: "1px solid var(--border)",
-                      background: "transparent",
-                      color: "var(--text-secondary)",
-                      cursor: "pointer",
-                    }}
-                  >
-                    Clear filters
-                  </button>
-                )}
-              </div>
-            ) : null}
-            {(!empty && !query && !activeChurch) && (
-              filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
+                Clear filters
+              </button>
             )}
+          </div>
+        ) :
+          filtered.map((song) => (
+            <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />
+          ))
+        }
       </main>
     </>
   );
 }
+

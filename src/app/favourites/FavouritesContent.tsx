@@ -4,7 +4,7 @@
 import { useFavourites } from "@/contexts/FavouritesContext";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
-import { Heart } from "lucide-react";
+import { HeartOff } from "lucide-react";
 
 export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
   const { favourites } = useFavourites();
@@ -28,7 +28,7 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
         }}
       >
         {/* Large heart icon (Lucide) */}
-        <Heart
+        <HeartOff
           size={40}
           strokeWidth={1.5}
           style={{ color: "var(--accent)", opacity: 0.4 }}
