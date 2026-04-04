@@ -174,7 +174,18 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             e.currentTarget.style.boxShadow = "none";
           }}
         />
-        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+        <span
+          style={{
+            position: "absolute",
+            left: 34,
+            top: "50%",
+            transform: "translateY(-50%)",
+            color: "var(--text-muted)",
+            display: "flex",
+            alignItems: "center",
+            pointerEvents: "none",
+          }}
+        >
           <MagnifyingGlass size={20} strokeWidth={2} />
         </span>
       </div>
@@ -242,7 +253,17 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       )}
 
       {/* ── Church Filter ── */}
-      <div style={{ display: "flex", gap: 8, margin: "16px 0" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          margin: "16px auto 0",
+          padding: "0 20px",
+          maxWidth: "40rem",
+          overflowX: "auto",
+          scrollbarWidth: "none",
+        }}
+      >
         <button
           onClick={() => setActiveChurch(null)}
           style={{
@@ -298,12 +319,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
               flexDirection: "column",
               alignItems: "center",
               gap: 12,
-              padding: "8px 14px",
-              background: "var(--bg-surface)",
-              borderRadius: "var(--radius-md)",
-              border: "1px solid var(--border)",
-              textDecoration: "none",
-              maxWidth: 160,
+              padding: "48px 24px",
+              textAlign: "center",
             }}
           >
             <SearchX
