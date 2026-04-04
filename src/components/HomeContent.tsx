@@ -306,10 +306,12 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       )}
 
       {/* ── Song List ── */}
-              <Link
-                key={s.id}
-                href={`/song/${s.id}`}
+              <div
                 style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 12,
                   padding: "8px 14px",
                   background: "var(--bg-surface)",
                   borderRadius: "var(--radius-md)",
@@ -318,63 +320,56 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                   maxWidth: 160,
                 }}
               >
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 12,
-            }}
-          >
-            <svg
-              width="48"
-              height="48"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="var(--text-muted)"
-              strokeWidth="1.2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              style={{ opacity: 0.4 }}
-            >
-              <circle cx="11" cy="11" r="8" />
-              <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  // ...existing code...
-              <line x1="8" y1="11" x2="14" y2="11" />
-            </svg>
-            <p
-              style={{
+                <svg
+                  width="48"
+                  height="48"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="var(--text-muted)"
+                  strokeWidth="1.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  style={{ opacity: 0.4 }}
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                  <line x1="8" y1="11" x2="14" y2="11" />
+                </svg>
                 <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
-                color: "var(--text-muted)",
-                fontSize: "var(--text-sm)",
-                lineHeight: 1.5,
-              }}
-            >
-              {query
-                ? `No songs found for \u201c${query}\u201d`
-                : activeChurch
-                  ? `No songs from ${activeChurch} yet.`
-                  : "No songs yet."}
-            </p>
-            {(query || activeChurch) && (
-              <button
-                onClick={() => { setQuery(""); setActiveChurch(null); }}
-                style={{
-                  padding: "6px 16px",
-                  fontSize: "var(--text-xs)",
-                  fontWeight: 500,
-                  borderRadius: "var(--radius-pill)",
-                  border: "1px solid var(--border)",
-                  background: "transparent",
-                  color: "var(--text-secondary)",
-                  cursor: "pointer",
-                }}
-              >
-                Clear filters
-              </button>
+                <p
+                  style={{
+                    color: "var(--text-muted)",
+                    fontSize: "var(--text-sm)",
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {query
+                    ? `No songs found for \u201c${query}\u201d`
+                    : activeChurch
+                      ? `No songs from ${activeChurch} yet.`
+                      : "No songs yet."}
+                </p>
+                {(query || activeChurch) && (
+                  <button
+                    onClick={() => { setQuery(""); setActiveChurch(null); }}
+                    style={{
+                      padding: "6px 16px",
+                      fontSize: "var(--text-xs)",
+                      fontWeight: 500,
+                      borderRadius: "var(--radius-pill)",
+                      border: "1px solid var(--border)",
+                      background: "transparent",
+                      color: "var(--text-secondary)",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Clear filters
+                  </button>
+                )}
+              </div>
+            ) : (
+              filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
             )}
-          </div>
-        ) : (
-          filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
-        )}
       </main>
     </>
   );
