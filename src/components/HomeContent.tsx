@@ -215,7 +215,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 key={s.id}
                 href={`/song/${s.id}`}
                 style={{
-                <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
                   padding: "8px 14px",
                   background: "var(--bg-surface)",
                   borderRadius: "var(--radius-md)",
@@ -237,6 +236,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 >
                   {s.title}
                 </p>
+                <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
                 <p
                   style={{
                     fontSize: "10px",
