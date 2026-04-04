@@ -237,23 +237,27 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                   {s.title}
                 </p>
                 <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
-                <p
+                <div
                   style={{
                     fontSize: "10px",
                     color: "var(--text-muted)",
                     margin: "2px 0 0 0",
                     overflow: "hidden",
-            <MagnifyingGlass size={48} strokeWidth={2} className="mb-4" />
-          style={{
-            maxWidth: "40rem",
-            margin: "16px auto 0",
-            padding: "0 20px",
-            display: "flex",
-            gap: 8,
-            overflowX: "auto",
-            scrollbarWidth: "none",
-          }}
-        >
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    gap: 12,
+                  }}
+                >
+                  <MagnifyingGlass size={48} strokeWidth={2} className="mb-4" />
+                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}>
+                    {query
+                      ? `No songs found for \u201c${query}\u201d`
+                      : activeChurch
+                        ? `No songs from ${activeChurch} yet.`
+                        : "No songs yet."}
+                  </p>
+                </div>
           <button
             onClick={() => setActiveChurch(null)}
             style={{
