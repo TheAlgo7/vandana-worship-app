@@ -346,8 +346,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                   {query
                     ? `No songs found for \u201c${query}\u201d`
                     : activeChurch
-                      ? `No songs from ${activeChurch} yet.`
-                      : "No songs yet."}
+                    ? `No songs from ${activeChurch} yet.`
+                    : "No songs yet."}
                 </p>
                 {(query || activeChurch) && (
                   <button
@@ -367,7 +367,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                   </button>
                 )}
               </div>
-            ) : (
+            ) : null}
+            {(!empty && !query && !activeChurch) && (
               filtered.map((song) => <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />)
             )}
       </main>
