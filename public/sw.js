@@ -1,5 +1,5 @@
-const STATIC_CACHE = "vandana-static-v6";
-const RUNTIME_CACHE = "vandana-runtime-v3";
+const STATIC_CACHE = "vandana-static-v7";
+const RUNTIME_CACHE = "vandana-runtime-v4";
 const PRECACHE_URLS = [
   "/",
   "/manifest.json",
