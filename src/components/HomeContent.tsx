@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { Search as MagnifyingGlass, ChevronRight } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
@@ -174,27 +175,9 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             e.currentTarget.style.boxShadow = "none";
           }}
         />
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          style={{
-            position: "absolute",
-            left: 36,
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "var(--text-muted)",
-            pointerEvents: "none",
-          }}
-        >
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-[var(--text-muted)]">
+            <MagnifyingGlass size={20} strokeWidth={2} />
+          </span>
       </div>
 
       {/* ── Recently Viewed ── */}
@@ -232,7 +215,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 key={s.id}
                 href={`/song/${s.id}`}
                 style={{
-                  flexShrink: 0,
+                <ChevronRight size={24} strokeWidth={2} className="text-[var(--text-muted)]" />
                   padding: "8px 14px",
                   background: "var(--bg-surface)",
                   borderRadius: "var(--radius-md)",
@@ -260,21 +243,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                     color: "var(--text-muted)",
                     margin: "2px 0 0 0",
                     overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {s.artist}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Church Chips ── */}
-      {churches.length > 0 && (
-        <div
+            <MagnifyingGlass size={48} strokeWidth={2} className="mb-4" />
           style={{
             maxWidth: "40rem",
             margin: "16px auto 0",

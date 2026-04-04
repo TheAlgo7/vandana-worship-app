@@ -170,29 +170,19 @@ export default function SettingsPage() {
             </p>
 
             <p style={{ marginBottom: 12 }}>
-              The idea for Vandana came during a moment of prayer — a simple
-              thought that the Indian church deserved a modern, beautiful way to
-              access worship lyrics in Hindi and Hinglish.
+              Vandana is a modern, minimal worship lyrics app for the Indian church. Every song is available in both Hinglish and Hindi, with a presentation mode for worship leaders and a dark theme for late-night prayer.
             </p>
 
             <p style={{ marginBottom: 12 }}>
-              Born out of{" "}
-              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
-                ICM Church
-              </span>{" "}
-              (Isus Christos Ministries), Vandana was built to fill a gap — no
-              existing app offered readable fonts, dark/light themes, and
-              seamless Hindi–Hinglish switching in one place.
+              The library is always growing — ICM, FOLJ, Nations of Worship, Sheldon Bangera, Anil Kant, Dayanidhi Rao, and more artists shaping worship music in India.
             </p>
 
             <p style={{ marginBottom: 12 }}>
-              Looking ahead, the vision is to grow the library with songs from
-              FOLJ, Nation of Worship, Sheldon Bangera, Anil Kant, and many more
-              artists shaping worship music in India.
+              No ads, no clutter, no missing songs. Just a beautiful, accessible way to worship.
             </p>
 
-            <p style={{ marginBottom: 12 }}>
-              Made with ❤️ by{" "}
+            <p>
+              Made with <span style={{ color: "var(--accent)", fontWeight: 600 }}>♥</span> by{' '}
               <a
                 href="https://thealgothrim.com"
                 target="_blank"
@@ -206,9 +196,15 @@ export default function SettingsPage() {
                 Gaurav — The Algothrim
               </a>
             </p>
-
-            <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)" }}>
-              Version 1.0.0
+            <p
+              style={{
+                textAlign: "center",
+                color: "var(--text-muted)",
+                fontSize: 11,
+                marginTop: 16,
+              }}
+            >
+              v1.0.0
             </p>
           </div>
         </section>

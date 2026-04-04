@@ -1,0 +1,20 @@
+[
+  {
+    "id": "update-001",
+    "date": "2026-04-04",
+    "title": "100 songs added",
+    "body": "We've added 100 new worship songs from ICM, Nations of Worship, Sheldon Bangera and more.",
+    "type": "songs_added",
+    "song_count": 100,
+    "song_names": []
+  },
+  {
+    "id": "update-002",
+    "date": "2026-04-04",
+    "title": "New feature: Favourites",
+    "body": "You can now save your favourite songs and access them instantly.",
+    "type": "feature",
+    "song_count": 0,
+    "song_names": []
+  }
+]

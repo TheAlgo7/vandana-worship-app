@@ -2,54 +2,33 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import { ChevronLeft, Heart, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
-import { formatBlock, formatLyricsAudit } from "@/lib/formatLyrics";
+import { formatBlock } from "@/lib/formatLyrics";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 import { useFavourites } from "@/contexts/FavouritesContext";
 
-export default function SongView({ song }: { song: Song }) {
-  const [lang, setLang] = useState<Language>(() => {
-    if (typeof window === "undefined") return song.language_default;
-    const stored = localStorage.getItem("vandana-default-lang");
-    if (stored === "hindi" || stored === "hinglish") {
-      if (song.lyrics[stored as Language]) return stored as Language;
-    }
-    return song.language_default;
-  });
-  const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
-  const { toggleFavourite, isFavourite } = useFavourites();
-  const fav = isFavourite(song.id);
-  const [heartPop, setHeartPop] = useState(false);
-  const [showCopied, setShowCopied] = useState(false);
+type SongViewProps = {
+  song: Song;
+};
 
-  const handleFavToggle = useCallback(() => {
-    toggleFavourite(song.id);
-    setHeartPop(true);
-    setTimeout(() => setHeartPop(false), 120);
-    if (typeof navigator !== "undefined" && navigator.vibrate) navigator.vibrate(10);
-  }, [song.id, toggleFavourite]);
-
-  // Dev-only audit: log problematic lines on first render
-  useEffect(() => { formatLyricsAudit(song); }, [song]);
-
-  // Track recently viewed song
-  useEffect(() => {
-    try {
-      const KEY = "vandana-recently-viewed";
-      const stored = JSON.parse(localStorage.getItem(KEY) || "[]") as string[];
-      const updated = [song.id, ...stored.filter((id) => id !== song.id)].slice(0, 5);
-      localStorage.setItem(KEY, JSON.stringify(updated));
-    } catch { /* ignore */ }
-  }, [song.id]);
+export default function SongView({ song }: SongViewProps) {
+  const [lang, setLang] = useState<Language>(song.languages_available[0]);
   const [scrolled, setScrolled] = useState(false);
-  const sentinelRef = useRef<HTMLDivElement>(null);
+  const [showCopied, setShowCopied] = useState(false);
+  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const { favourites, toggleFavourite } = useFavourites();
+  const isFavourite = favourites.includes(song.id);
 
-  /* Scroll-triggered sticky top bar */
+  // Lyrics sections
+  const sections = song.lyrics[lang] || {};
+
+  // Scroll sentinel for sticky header
   useEffect(() => {
     const el = sentinelRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
+    const obs = new window.IntersectionObserver(
       ([e]) => setScrolled(!e.isIntersecting),
       { threshold: 0 },
     );
@@ -57,50 +36,50 @@ export default function SongView({ song }: { song: Song }) {
     return () => obs.disconnect();
   }, []);
 
+  // Share handler
+  const handleShare = useCallback(async () => {
+    const shareData = {
+      title: song.title,
+      text: "Check out this worship song on Vandana",
+      url: window.location.href,
+    };
+    try {
+      if (navigator.share) await navigator.share(shareData);
+      else {
+        await navigator.clipboard.writeText(window.location.href);
+        setShowCopied(true);
+        setTimeout(() => setShowCopied(false), 2000);
+      }
+    } catch {
+      // user cancelled or unsupported
+    }
+  }, [song.title]);
+
   return (
-    <div
-      style={{
-        maxWidth: "40rem",
-        margin: "0 auto",
-        padding: "0 16px",
-        paddingBottom: "calc(56px + env(safe-area-inset-bottom, 0px) + 24px)",
-      }}
-    >
-      {/* Sticky top bar — appears on scroll */}
+    <div style={{ position: "relative", minHeight: "100vh", padding: 20 }}>
+      {/* Top bar */}
       <div
         style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 20,
-          background: scrolled
-            ? "color-mix(in srgb, var(--bg-base) 88%, transparent)"
-            : "transparent",
-          backdropFilter: scrolled ? "blur(12px) saturate(1.3)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(12px) saturate(1.3)" : "none",
-          borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
-          transition: "background var(--transition-base), border-color var(--transition-base), backdrop-filter var(--transition-base)",
           display: "flex",
           alignItems: "center",
-          height: 52,
-          margin: "0 -16px",
-          padding: "0 16px",
+          gap: 6,
+          marginBottom: 12,
         }}
       >
+        {/* Back button */}
         <Link
           href="/"
           style={{
             display: "flex",
             alignItems: "center",
-            gap: 6,
+            gap: 4,
             color: "var(--text-secondary)",
             textDecoration: "none",
             fontSize: "var(--text-sm)",
             fontWeight: 500,
           }}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
+          <ChevronLeft size={18} />
           Back
         </Link>
 
@@ -126,8 +105,8 @@ export default function SongView({ song }: { song: Song }) {
 
         {/* Heart favourite toggle */}
         <button
-          onClick={handleFavToggle}
-          aria-label={fav ? "Remove from favourites" : "Add to favourites"}
+          onClick={() => toggleFavourite(song.id)}
+          aria-label={isFavourite ? "Remove from favourites" : "Add to favourites"}
           style={{
             display: "flex",
             alignItems: "center",
@@ -139,41 +118,16 @@ export default function SongView({ song }: { song: Song }) {
             cursor: "pointer",
             padding: 0,
             flexShrink: 0,
-            transform: heartPop ? "scale(1.3)" : "scale(1)",
+            color: isFavourite ? "var(--accent)" : "var(--text-secondary)",
             transition: "transform 120ms ease",
           }}
         >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill={fav ? "var(--accent)" : "none"}
-            stroke={fav ? "var(--accent)" : "var(--text-secondary)"}
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-          </svg>
+          <Heart size={20} fill={isFavourite ? "var(--accent)" : "none"} color={isFavourite ? "var(--accent)" : undefined} />
         </button>
 
         {/* Share button */}
         <button
-          onClick={async () => {
-            const shareData = {
-              title: song.title,
-              text: "Check out this worship song on Vandana",
-              url: window.location.href,
-            };
-            try {
-              if (navigator.share) await navigator.share(shareData);
-              else {
-                await navigator.clipboard.writeText(window.location.href);
-                setShowCopied(true);
-                setTimeout(() => setShowCopied(false), 2000);
-              }
-            } catch { /* user cancelled or unsupported */ }
-          }}
+          onClick={handleShare}
           aria-label="Share song"
           style={{
             display: "flex",
@@ -186,22 +140,10 @@ export default function SongView({ song }: { song: Song }) {
             cursor: "pointer",
             padding: 0,
             flexShrink: 0,
+            color: "var(--text-secondary)",
           }}
         >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="var(--text-secondary)"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8" />
-            <polyline points="16 6 12 2 8 6" />
-            <line x1="12" y1="2" x2="12" y2="15" />
-          </svg>
+          <Share2 size={18} />
         </button>
 
         {/* Present button always visible */}

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Heart, ChevronRight } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 
 export default function SongCard({ song, isFavourite }: { song: SongMeta; isFavourite?: boolean }) {
@@ -92,19 +93,7 @@ export default function SongCard({ song, isFavourite }: { song: SongMeta; isFavo
               overflow: "hidden",
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
-              letterSpacing: "0.08em",
-            }}
-          >
-            {song.church}
-          </span>
-        )}
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
+                <ChevronRight size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
           strokeLinecap="round"
           strokeLinejoin="round"
           style={{ color: "var(--text-muted)", flexShrink: 0 }}

@@ -2,13 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
-/** Fixed bottom navigation — Home · Favourites · Settings (3-item) */
+import updatesData from "@/data/updates.json";
+import { Home, Bell, Heart, Settings as SettingsIcon } from "lucide-react";
+
+/** Fixed bottom navigation — Home · Updates · Favourites · Settings (4-item) */
 export default function BottomNav() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const isUpdates = pathname === "/updates";
   const isFavourites = pathname === "/favourites";
   const isSettings = pathname.startsWith("/settings");
+
+  const [hasUnread, setHasUnread] = useState(false);
+
+  useEffect(() => {
+    const lastRead = localStorage.getItem("vandana-updates-last-read");
+    if (!lastRead) {
+      setHasUnread(updatesData.length > 0);
+      return;
+    }
+    const latestUpdate = updatesData
+      .map((u) => new Date(u.date + "T00:00:00").getTime())
+      .reduce((a, b) => Math.max(a, b), 0);
+    setHasUnread(latestUpdate > new Date(lastRead).getTime());
+  }, [pathname]);
 
   const itemStyle = (active: boolean): React.CSSProperties => ({
     display: "flex",
@@ -61,61 +80,60 @@ export default function BottomNav() {
       >
         {/* Home */}
         <Link href="/" style={itemStyle(isHome)}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path
-              d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
-              fill={isHome ? "currentColor" : "none"}
-            />
-            <polyline
-              points="9 22 9 12 15 12 15 22"
-              fill={isHome ? "var(--bg-base)" : "none"}
-              stroke={isHome ? "var(--bg-base)" : "currentColor"}
-            />
-          </svg>
+          <Home
+            size={24}
+            strokeWidth={2}
+            color={isHome ? "var(--accent)" : "var(--text-muted)"}
+            fill={isHome ? "var(--accent)" : "none"}
+          />
           Home
+        </Link>
+
+        {/* Updates */}
+        <Link href="/updates" style={itemStyle(isUpdates)}>
+          <span style={{ position: "relative", display: "inline-flex" }}>
+            <Bell
+              size={24}
+              strokeWidth={2}
+              color={isUpdates ? "var(--accent)" : "var(--text-muted)"}
+              fill={isUpdates ? "var(--accent)" : "none"}
+            />
+            {hasUnread && (
+              <span
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  right: 0,
+                  width: 6,
+                  height: 6,
+                  borderRadius: "50%",
+                  background: "var(--accent)",
+                }}
+              />
+            )}
+          </span>
+          Updates
         </Link>
 
         {/* Favourites */}
         <Link href="/favourites" style={itemStyle(isFavourites)}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill={isFavourites ? "currentColor" : "none"}
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-          </svg>
+          <Heart
+            size={24}
+            strokeWidth={2}
+            color={isFavourites ? "var(--accent)" : "var(--text-muted)"}
+            fill={isFavourites ? "var(--accent)" : "none"}
+          />
           Favourites
         </Link>
 
         {/* Settings */}
         <Link href="/settings" style={itemStyle(isSettings)}>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill={isSettings ? "currentColor" : "none"}
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12.22 2h-.44a2 2 0 00-2 2v.18a2 2 0 01-1 1.73l-.43.25a2 2 0 01-2 0l-.15-.08a2 2 0 00-2.73.73l-.22.38a2 2 0 00.73 2.73l.15.1a2 2 0 011 1.72v.51a2 2 0 01-1 1.74l-.15.09a2 2 0 00-.73 2.73l.22.38a2 2 0 002.73.73l.15-.08a2 2 0 012 0l.43.25a2 2 0 011 1.73V20a2 2 0 002 2h.44a2 2 0 002-2v-.18a2 2 0 011-1.73l.43-.25a2 2 0 012 0l.15.08a2 2 0 002.73-.73l.22-.39a2 2 0 00-.73-2.73l-.15-.08a2 2 0 01-1-1.74v-.5a2 2 0 011-1.74l.15-.09a2 2 0 00.73-2.73l-.22-.38a2 2 0 00-2.73-.73l-.15.08a2 2 0 01-2 0l-.43-.25a2 2 0 01-1-1.73V4a2 2 0 00-2-2z" />
-            <circle cx="12" cy="12" r="3" fill={isSettings ? "var(--bg-base)" : "none"} stroke="currentColor" />
-          </svg>
+          <SettingsIcon
+            size={24}
+            strokeWidth={2}
+            color={isSettings ? "var(--accent)" : "var(--text-muted)"}
+            fill={isSettings ? "var(--accent)" : "none"}
+          />
           Settings
         </Link>
       </nav>

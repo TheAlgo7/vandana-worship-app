@@ -17,14 +17,25 @@ export default function AppTitle() {
       <span
         style={{
           fontFamily: isHindi ? "var(--font-devanagari)" : "var(--font-brand)",
-          fontSize: "22px",
-          fontWeight: 500,
+          fontSize: isHindi ? "22px" : "28px",
+          fontWeight: "normal",
           color: "var(--accent)",
-          letterSpacing: isHindi ? "0" : "-0.02em",
+          letterSpacing: isHindi ? "0" : "0.04em",
         }}
       >
         {isHindi ? "वंदना" : "Vandana"}
       </span>
+      <span
+        style={{
+          display: "block",
+          width: "32px",
+          height: "1px",
+          background: "var(--accent)",
+          opacity: 0.4,
+          marginTop: "4px",
+        }}
+        aria-hidden="true"
+      />
     </div>
   );
 }

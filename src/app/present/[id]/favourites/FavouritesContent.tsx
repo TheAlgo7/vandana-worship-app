@@ -1,8 +1,10 @@
 "use client";
 
+
 import { useFavourites } from "@/contexts/FavouritesContext";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
+import { Heart } from "lucide-react";
 
 export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
   const { favourites } = useFavourites();
@@ -25,20 +27,12 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
           textAlign: "center",
         }}
       >
-        {/* Large heart icon */}
-        <svg
-          width="40"
-          height="40"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+        {/* Large heart icon (Lucide) */}
+        <Heart
+          size={40}
+          strokeWidth={1.5}
           style={{ color: "var(--accent)", opacity: 0.4 }}
-        >
-          <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
-        </svg>
+        />
 
         <p
           style={{
