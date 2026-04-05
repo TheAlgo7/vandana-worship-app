@@ -1,20 +1,47 @@
 [
   {
-    "id": "update-001",
-    "date": "2026-04-04",
-    "title": "100 songs added",
-    "body": "We've added 100 new worship songs from ICM, Nations of Worship, Sheldon Bangera and more.",
-    "type": "songs_added",
-    "song_count": 100,
+    "id": "update-005",
+    "date": "2026-04-05",
+    "title": "Improved Hindi Lyrics",
+    "body": "All Hindi song lyrics have been re-transliterated for better accuracy. Fixed edge cases in transliteration so the text reads more naturally.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-004",
+    "date": "2026-04-05",
+    "title": "Refreshed Icons & Visuals",
+    "body": "All icons across the app have been upgraded to a cleaner, more consistent design. The Vandana wordmark has also been improved.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-003",
+    "date": "2026-04-05",
+    "title": "Mobile Layout Fixes",
+    "body": "Fixed church filter overflow, search icon alignment, and empty state sizing on smaller screens for a smoother mobile experience.",
+    "type": "fix",
+    "song_count": 0,
     "song_names": []
   },
   {
     "id": "update-002",
     "date": "2026-04-04",
-    "title": "New feature: Favourites",
+    "title": "New Feature: Favourites",
     "body": "You can now save your favourite songs and access them instantly.",
     "type": "feature",
     "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-001",
+    "date": "2026-04-04",
+    "title": "100 Songs Added",
+    "body": "We've added 100 new worship songs from ICM, Nations of Worship, Sheldon Bangera and more.",
+    "type": "songs_added",
+    "song_count": 100,
     "song_names": []
   }
 ]
