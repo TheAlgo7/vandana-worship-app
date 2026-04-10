@@ -1,5 +1,35 @@
 [
   {
+    "id": "update-007",
+    "date": "2026-04-10",
+    "title": "11 New Songs Added",
+    "body": "Added new worship songs from Nations of Worship, Sheldon Bangera, and Immanuel Community Church.",
+    "type": "songs_added",
+    "song_count": 11,
+    "song_names": [
+      "Phir Se Vo Aag Barsa De",
+      "Zindagi Yeshu Bina",
+      "Uski Mahima Karo, Bandhan Toot Jaayenge",
+      "Neele Aasman Ke Paar",
+      "Han Hai Yakeen",
+      "Zinda Hoon Main",
+      "Main Khuda Ka Beta Hoon",
+      "Aag Mein Ek Aur",
+      "Gaaoon Hallelujah",
+      "Aasha Meri",
+      "Mera Yeshu Zinda Hai"
+    ]
+  },
+  {
+    "id": "update-006",
+    "date": "2026-04-10",
+    "title": "Missing Artists Recovered",
+    "body": "Added accurate artist and church information mapping to 189 existing songs in the database. You can now properly browse and search these songs by their artists.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-005",
     "date": "2026-04-05",
     "title": "Improved Hindi Lyrics",
