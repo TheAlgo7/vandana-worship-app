@@ -24,6 +24,16 @@ export default function SongView({ song }: SongViewProps) {
   // Lyrics sections
   const sections = song.lyrics[lang] || {};
 
+  // Track recently viewed
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("vandana-recently-viewed") || "[]";
+      const recent = JSON.parse(stored) as string[];
+      const updated = [song.id, ...recent.filter((id) => id !== song.id)].slice(0, 10);
+      localStorage.setItem("vandana-recently-viewed", JSON.stringify(updated));
+    } catch { /* ignore */ }
+  }, [song.id]);
+
   // Scroll sentinel for sticky header
   useEffect(() => {
     const el = sentinelRef.current;

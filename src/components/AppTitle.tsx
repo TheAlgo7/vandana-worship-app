@@ -4,13 +4,15 @@ import { useState, useEffect } from "react";
 
 export default function AppTitle() {
   const [lang, setLang] = useState<"hinglish" | "hindi">("hinglish");
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem("vandana-default-lang");
     if (stored === "hindi") setLang("hindi");
+    setMounted(true);
   }, []);
 
-  const isHindi = lang === "hindi";
+  const isHindi = mounted && lang === "hindi";
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -21,6 +23,7 @@ export default function AppTitle() {
           fontWeight: "normal",
           color: "var(--accent)",
           letterSpacing: isHindi ? "0" : "0.04em",
+          visibility: mounted ? "visible" : "hidden",
         }}
       >
         {isHindi ? "वंदना" : "Vandana"}

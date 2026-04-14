@@ -14,10 +14,12 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const [defaultLang, setDefaultLang] = useState("hinglish");
-  const { isFavourite } = useFavourites();
+  const { isFavourite, toggleFavourite } = useFavourites();
 
   /* Pull-to-Refresh */
   const pullStartRef = useRef<number | null>(null);
+  const pullStartXRef = useRef<number | null>(null);
+  const pullLockedOutRef = useRef(false);
   const [pullProgress, setPullProgress] = useState(0);
 
   /* Recently Viewed */
@@ -36,17 +38,33 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
     document.body.style.overscrollBehaviorY = "contain";
 
     const onTouchStart = (e: TouchEvent) => {
-      if (window.scrollY <= 0) pullStartRef.current = e.touches[0].clientY;
+      if (window.scrollY <= 0) {
+        pullStartRef.current = e.touches[0].clientY;
+        pullStartXRef.current = e.touches[0].clientX;
+        pullLockedOutRef.current = false;
+      }
     };
     const onTouchMove = (e: TouchEvent) => {
       if (pullStartRef.current === null) return;
+      if (pullLockedOutRef.current) return;
       const dy = e.touches[0].clientY - pullStartRef.current;
+      const dx = Math.abs(e.touches[0].clientX - (pullStartXRef.current ?? 0));
+      // If the gesture is more horizontal than vertical, lock out pull-to-refresh
+      // for this touch sequence so horizontal scrolling (e.g. recently viewed) never fires a reload
+      if (dx > 8 && dx > Math.abs(dy)) {
+        pullLockedOutRef.current = true;
+        currentPull = 0;
+        setPullProgress(0);
+        return;
+      }
       if (dy > 0) { currentPull = dy; setPullProgress(Math.min(dy / THRESHOLD, 1.5)); }
       else { currentPull = 0; setPullProgress(0); }
     };
     const onTouchEnd = () => {
-      if (currentPull >= THRESHOLD) window.location.reload();
+      if (!pullLockedOutRef.current && currentPull >= THRESHOLD) window.location.reload();
       pullStartRef.current = null;
+      pullStartXRef.current = null;
+      pullLockedOutRef.current = false;
       currentPull = 0;
       setPullProgress(0);
     };
@@ -364,7 +382,12 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           </div>
         ) :
           filtered.map((song) => (
-            <SongCard key={song.id} song={song} isFavourite={isFavourite(song.id)} />
+            <SongCard
+              key={song.id}
+              song={song}
+              isFavourite={isFavourite(song.id)}
+              onLongPress={() => toggleFavourite(song.id)}
+            />
           ))
         }
       </main>
