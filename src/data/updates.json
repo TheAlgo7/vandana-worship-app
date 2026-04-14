@@ -1,5 +1,14 @@
 [
   {
+    "id": "update-008",
+    "date": "2026-04-14",
+    "title": "Bug Fixes & Long-Press to Favourite",
+    "body": "Hold any song on the home screen to instantly save it to favourites — no need to open the song. Also fixed skeleton loading screens, corrected swipe behaviour on recently viewed, and songs now appear in Recently Viewed after you visit them.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-007",
     "date": "2026-04-10",
     "title": "11 New Songs Added",

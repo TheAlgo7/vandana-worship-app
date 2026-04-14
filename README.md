@@ -225,8 +225,8 @@ Rebuild. That's it. No CMS, no database, no deploy pipeline to configure.
 ---
 
 <p align="center">
-  <code>v1.0.0</code> · Sacred Noir · 2025<br/>
-  © 2025 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
+  <code>v1.9.1</code> · Sacred Noir · 2026<br/>
+  © 2026 <a href="https://github.com/TheAlgo7">Gaurav Kumar</a> · <a href="https://thealgothrim.com">thealgothrim.com</a> · New Delhi, India
 </p>
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
