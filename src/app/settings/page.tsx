@@ -218,7 +218,7 @@ export default function SettingsPage() {
                 marginTop: 16,
               }}
             >
-              v1.9.1
+              v2.0.0
             </p>
           </div>
         </section>

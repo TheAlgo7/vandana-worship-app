@@ -79,7 +79,7 @@ export default function DesktopNav() {
 
       {/* Footer */}
       <div className={styles.footer}>
-        <p className={styles.version}>v1.9.1</p>
+        <p className={styles.version}>v2.0.0</p>
       </div>
     </aside>
   );
