@@ -66,7 +66,7 @@ export default function SongView({ song }: SongViewProps) {
   }, [song.title]);
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", padding: 20, paddingBottom: "calc(var(--nav-clearance) + 20px)" }}>
+    <div style={{ position: "relative", minHeight: "100vh", padding: 20, paddingBottom: "calc(var(--nav-clearance) + 20px)", maxWidth: "720px", margin: "0 auto" }}>
       {/* Top bar */}
       <div
         style={{

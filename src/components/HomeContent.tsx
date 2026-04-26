@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Search as MagnifyingGlass, ChevronRight, SearchX } from "lucide-react";
+import { Search as MagnifyingGlass, SearchX } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
@@ -30,7 +30,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
     if (stored === "hindi" || stored === "hinglish") setDefaultLang(stored);
   }, []);
 
-  /* Pull-to-refresh (mobile touch) */
+  /* Pull-to-refresh (mobile touch only) */
   useEffect(() => {
     let currentPull = 0;
     const THRESHOLD = 70;
@@ -49,8 +49,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       if (pullLockedOutRef.current) return;
       const dy = e.touches[0].clientY - pullStartRef.current;
       const dx = Math.abs(e.touches[0].clientX - (pullStartXRef.current ?? 0));
-      // If the gesture is more horizontal than vertical, lock out pull-to-refresh
-      // for this touch sequence so horizontal scrolling (e.g. recently viewed) never fires a reload
       if (dx > 8 && dx > Math.abs(dy)) {
         pullLockedOutRef.current = true;
         currentPull = 0;
@@ -106,302 +104,189 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
 
   return (
     <>
-      {/* ── Pull-to-Refresh indicator ── */}
+      {/* Pull-to-Refresh indicator */}
       {pullProgress > 0 && (
-        <div
-          style={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            display: "flex",
-            justifyContent: "center",
-            paddingTop: 12 + pullProgress * 28,
-            zIndex: 50,
-            pointerEvents: "none",
-          }}
-        >
-          <div
-            style={{
-              width: 24,
-              height: 24,
-              borderRadius: "50%",
-              border: "2px solid var(--accent)",
-              borderTopColor: "transparent",
-              transform: `rotate(${pullProgress * 360}deg)`,
-              opacity: Math.min(pullProgress, 1),
-            }}
-          />
+        <div style={{ position: "fixed", top: 0, left: 0, right: 0, display: "flex", justifyContent: "center", paddingTop: 12 + pullProgress * 28, zIndex: 50, pointerEvents: "none" }}>
+          <div style={{ width: 24, height: 24, borderRadius: "50%", border: "2px solid var(--accent)", borderTopColor: "transparent", transform: `rotate(${pullProgress * 360}deg)`, opacity: Math.min(pullProgress, 1) }} />
         </div>
       )}
 
-      {/* ── Top Bar ── */}
-      <header
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          minHeight: 56,
-          padding: "14px 20px 0",
-          maxWidth: "40rem",
-          margin: "0 auto",
-        }}
-      >
-        <AppTitle />
-      </header>
-
-      {/* ── Daily Verse ── */}
-      <DailyVerse />
-
-      {/* ── Search Bar ── */}
-      <div
-        style={{
-          maxWidth: "40rem",
-          margin: "16px auto 0",
-          padding: "0 20px",
-          position: "relative",
-        }}
-      >
-        <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
-          Search songs and artists
-        </label>
-        <input
-          ref={searchRef}
-          id="search-input"
-          type="search"
-          placeholder="Search songs, artists…"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{
-            width: "100%",
-            height: 52,
-            padding: "0 16px 0 48px",
-            fontSize: "var(--text-sm)",
-            background: "var(--bg-surface)",
-            color: "var(--text-primary)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--radius-pill)",
-            outline: "none",
-            boxShadow: "inset 0 1px 3px rgba(0,0,0,0.4)",
-            transition:
-              "border-color var(--transition-fast), box-shadow var(--transition-fast)",
-          }}
-          onFocus={(e) => {
-            e.currentTarget.style.borderColor = "var(--accent)";
-            e.currentTarget.style.boxShadow =
-              "0 0 0 3px var(--accent-dim)";
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.borderColor = "var(--border)";
-            e.currentTarget.style.boxShadow = "none";
-          }}
-        />
-        <span
-          style={{
-            position: "absolute",
-            left: 34,
-            top: "50%",
-            transform: "translateY(-50%)",
-            color: "var(--text-muted)",
-            display: "flex",
-            alignItems: "center",
-            pointerEvents: "none",
-          }}
-        >
-          <MagnifyingGlass size={20} strokeWidth={2} />
-        </span>
+      {/* Mobile-only app title (desktop sidebar shows the wordmark) */}
+      <div className="mobile-only">
+        <header style={{ display: "flex", flexDirection: "column", minHeight: 56, padding: "14px 20px 0", maxWidth: "40rem", margin: "0 auto" }}>
+          <AppTitle />
+        </header>
       </div>
 
-      {/* ── Recently Viewed ── */}
-      {recentSongs.length > 0 && (
-        <div
-          style={{
-            maxWidth: "40rem",
-            margin: "16px auto 0",
-            padding: "0 20px",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "var(--text-xs)",
-              color: "var(--text-muted)",
-              fontWeight: 500,
-              textTransform: "uppercase",
-              letterSpacing: "0.08em",
-              margin: "0 0 8px 0",
-            }}
-          >
-            Recently Viewed
-          </p>
-          <div
-            style={{
-              display: "flex",
-              gap: 8,
-              overflowX: "auto",
-              scrollbarWidth: "none",
-              paddingBottom: 2,
-            }}
-          >
-            {recentSongs.map((s) => (
-              <Link
-                key={s.id}
-                href={`/song/${s.id}`}
+      {/* Layout: single-col on mobile, two-col grid on desktop */}
+      <div className="home-grid-outer">
+        <div className="home-grid">
+
+          {/* MAIN COLUMN */}
+          <div>
+            {/* Daily Verse — inline on mobile (desktop right panel handles it) */}
+            <div className="mobile-only">
+              <DailyVerse />
+            </div>
+
+            {/* Search Bar */}
+            <div style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px", position: "relative" }}>
+              <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
+                Search songs and artists
+              </label>
+              <input
+                ref={searchRef}
+                id="search-input"
+                type="search"
+                placeholder="Search songs, artists..."
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  minHeight: 44,
-                  padding: "0 14px",
+                  width: "100%",
+                  height: 52,
+                  padding: "0 16px 0 48px",
+                  fontSize: "var(--text-sm)",
                   background: "var(--bg-surface)",
-                  borderRadius: "var(--radius-md)",
+                  color: "var(--text-primary)",
                   border: "1px solid var(--border)",
-                  textDecoration: "none",
-                  maxWidth: 160,
-                }}
-              >
-                <p
-                  style={{
-                    fontSize: "var(--text-xs)",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                    overflow: "hidden",
-                    textOverflow: "ellipsis",
-                    whiteSpace: "nowrap",
-                    margin: 0,
-                  }}
-                >
-                  {s.title}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* ── Church Filter ── */}
-      <div
-        style={{
-          display: "flex",
-          gap: 8,
-          margin: "16px auto 0",
-          padding: "0 20px",
-          maxWidth: "40rem",
-          overflowX: "auto",
-          scrollbarWidth: "none",
-        }}
-      >
-        <button
-          onClick={() => setActiveChurch(null)}
-          aria-pressed={!activeChurch}
-          style={{
-            flexShrink: 0,
-            minHeight: 44,
-            padding: "0 16px",
-            fontSize: "var(--text-xs)",
-            fontWeight: 500,
-            borderRadius: "var(--radius-pill)",
-            border: "1px solid",
-            borderColor: !activeChurch ? "var(--accent)" : "var(--border)",
-            cursor: "pointer",
-            transition: "all var(--transition-fast)",
-            background: !activeChurch ? "var(--accent)" : "transparent",
-            color: !activeChurch
-              ? "var(--bg-base)"
-              : "var(--text-secondary)",
-          }}
-        >
-          All
-        </button>
-        {churches.map((ch) => {
-          const active = activeChurch === ch;
-          return (
-            <button
-              key={ch}
-              onClick={() => setActiveChurch(active ? null : ch)}
-              aria-pressed={active}
-              style={{
-                flexShrink: 0,
-                minHeight: 44,
-                padding: "0 16px",
-                fontSize: "var(--text-xs)",
-                fontWeight: 500,
-                borderRadius: "var(--radius-pill)",
-                border: "1px solid",
-                borderColor: active ? "var(--accent)" : "var(--border)",
-                cursor: "pointer",
-                transition: "all var(--transition-fast)",
-                background: active ? "var(--accent)" : "transparent",
-                color: active ? "var(--bg-base)" : "var(--text-secondary)",
-              }}
-            >
-              {ch}
-            </button>
-          );
-        })}
-      </div>
-
-      {/* ── Song List ── */}
-      <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
-        {filtered.length === 0 ? (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 12,
-              padding: "48px 24px",
-              textAlign: "center",
-            }}
-          >
-            <SearchX
-              size={48}
-              strokeWidth={1.2}
-              style={{ color: "var(--text-muted)", opacity: 0.4 }}
-            />
-            <p
-              style={{
-                color: "var(--text-muted)",
-                fontSize: "var(--text-sm)",
-                lineHeight: 1.5,
-              }}
-            >
-              {query
-                ? `No songs found for \u201c${query}\u201d`
-                : activeChurch
-                ? `No songs from ${activeChurch} yet.`
-                : "No songs yet."}
-            </p>
-            {(query || activeChurch) && (
-              <button
-                onClick={() => {
-                  setQuery("");
-                  setActiveChurch(null);
-                }}
-                style={{
-                  padding: "6px 16px",
-                  fontSize: "var(--text-xs)",
-                  fontWeight: 500,
                   borderRadius: "var(--radius-pill)",
-                  border: "1px solid var(--border)",
-                  background: "transparent",
-                  color: "var(--text-secondary)",
-                  cursor: "pointer",
+                  outline: "none",
+                  boxShadow: "inset 0 1px 3px rgba(0,0,0,0.4)",
+                  transition: "border-color var(--transition-fast), box-shadow var(--transition-fast)",
                 }}
-              >
-                Clear filters
-              </button>
+                onFocus={(e) => {
+                  e.currentTarget.style.borderColor = "var(--accent)";
+                  e.currentTarget.style.boxShadow = "0 0 0 3px var(--accent-dim)";
+                }}
+                onBlur={(e) => {
+                  e.currentTarget.style.borderColor = "var(--border)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              />
+              <span style={{ position: "absolute", left: 34, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", display: "flex", alignItems: "center", pointerEvents: "none" }}>
+                <MagnifyingGlass size={20} strokeWidth={2} />
+              </span>
+            </div>
+
+            {/* Recently Viewed — horizontal chips (mobile only) */}
+            {recentSongs.length > 0 && (
+              <div className="mobile-only" style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px" }}>
+                <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>
+                  Recently Viewed
+                </p>
+                <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 2 }}>
+                  {recentSongs.map((s) => (
+                    <Link
+                      key={s.id}
+                      href={`/song/${s.id}`}
+                      style={{ display: "flex", alignItems: "center", minHeight: 44, padding: "0 14px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", textDecoration: "none", maxWidth: 160, flexShrink: 0 }}
+                    >
+                      <p style={{ fontSize: "var(--text-xs)", fontWeight: 600, color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", margin: 0 }}>
+                        {s.title}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
             )}
+
+            {/* Church Filter */}
+            <div style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
+              <button
+                onClick={() => setActiveChurch(null)}
+                aria-pressed={!activeChurch}
+                style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: !activeChurch ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: !activeChurch ? "var(--accent)" : "transparent", color: !activeChurch ? "var(--bg-base)" : "var(--text-secondary)" }}
+              >
+                All
+              </button>
+              {churches.map((ch) => {
+                const active = activeChurch === ch;
+                return (
+                  <button
+                    key={ch}
+                    onClick={() => setActiveChurch(active ? null : ch)}
+                    aria-pressed={active}
+                    style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: active ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: active ? "var(--accent)" : "transparent", color: active ? "var(--bg-base)" : "var(--text-secondary)" }}
+                  >
+                    {ch}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Song List */}
+            <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+              {filtered.length === 0 ? (
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "48px 24px", textAlign: "center" }}>
+                  <SearchX size={48} strokeWidth={1.2} style={{ color: "var(--text-muted)", opacity: 0.4 }} />
+                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}>
+                    {query
+                      ? `No songs found for "${query}"`
+                      : activeChurch
+                      ? `No songs from ${activeChurch} yet.`
+                      : "No songs yet."}
+                  </p>
+                  {(query || activeChurch) && (
+                    <button
+                      onClick={() => { setQuery(""); setActiveChurch(null); }}
+                      style={{ padding: "6px 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", cursor: "pointer" }}
+                    >
+                      Clear filters
+                    </button>
+                  )}
+                </div>
+              ) : (
+                filtered.map((song) => (
+                  <SongCard
+                    key={song.id}
+                    song={song}
+                    isFavourite={isFavourite(song.id)}
+                    onLongPress={() => toggleFavourite(song.id)}
+                  />
+                ))
+              )}
+            </main>
           </div>
-        ) :
-          filtered.map((song) => (
-            <SongCard
-              key={song.id}
-              song={song}
-              isFavourite={isFavourite(song.id)}
-              onLongPress={() => toggleFavourite(song.id)}
-            />
-          ))
-        }
-      </main>
+
+          {/* RIGHT PANEL — desktop only (CSS hides on mobile) */}
+          <aside className="home-side" aria-label="Library info panel">
+            {/* Daily Verse */}
+            <div className="home-side-card">
+              <DailyVerse />
+            </div>
+
+            {/* Recently Viewed — vertical list */}
+            {recentSongs.length > 0 && (
+              <div>
+                <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
+                  Recently Viewed
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                  {recentSongs.slice(0, 6).map((s) => (
+                    <Link
+                      key={s.id}
+                      href={`/song/${s.id}`}
+                      style={{ display: "flex", alignItems: "center", minHeight: 40, padding: "0 12px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", textDecoration: "none", transition: "border-color var(--transition-fast)" }}
+                      onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                      onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
+                    >
+                      <p style={{ fontSize: "var(--text-xs)", fontWeight: 600, color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", margin: 0 }}>
+                        {s.title}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Library count */}
+            <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" }}>
+              {songs.length} songs in the library
+            </p>
+          </aside>
+
+        </div>
+      </div>
     </>
   );
 }
-

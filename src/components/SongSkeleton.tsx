@@ -1,6 +1,6 @@
 export default function SongSkeleton() {
   return (
-    <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "24px 16px" }}>
+    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "24px 20px" }}>
       {/* Back link placeholder */}
       <div className="skeleton-block" style={{ width: "4rem", height: "1rem", marginBottom: 16 }} />
 

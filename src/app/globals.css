@@ -236,6 +236,12 @@ a:active {
   min-width: 0;
 }
 
+/* desktop-only: invisible on mobile */
+.desktop-only { display: none; }
+
+/* home right panel: hidden on mobile */
+.home-side { display: none; }
+
 @media (min-width: 900px) {
   .app-frame {
     flex-direction: row;
@@ -246,10 +252,66 @@ a:active {
     --nav-clearance: 24px;
   }
 
-  /* Song card hover feedback on pointer devices */
+  /* Song card: pointer cursor + hover lift */
+  .song-card {
+    cursor: pointer;
+  }
   .song-card:hover {
     background: var(--bg-surface);
     border-radius: var(--radius-md);
+  }
+
+  /* Hide mobile-only elements (AppTitle duplicated by sidebar) */
+  .mobile-only {
+    display: none;
+  }
+
+  /* Reveal desktop-only elements */
+  .desktop-only {
+    display: block;
+  }
+
+  /* ── Home two-column grid ── */
+  .home-grid-outer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr 272px;
+    gap: 0 24px;
+    align-items: start;
+  }
+
+  /* Right info panel */
+  .home-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100dvh - 48px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-right: 24px;
+    padding-bottom: 24px;
+  }
+  .home-side::-webkit-scrollbar { display: none; }
+
+  /* Daily verse card wrapper in right panel */
+  .home-side-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
+
+  /* ── Sticky page header (Favourites, Updates) ── */
+  .page-header-content {
+    max-width: 40rem;
+    margin: 0 auto;
   }
 }
 
