@@ -9,10 +9,10 @@ export type Language = "hinglish" | "hindi";
 export type LyricsMap = Record<string, string>;
 
 export interface SongLink {
-  youtube?: string;
-  spotify?: string;
-  apple_music?: string;
-  [key: string]: string | undefined;
+  youtube?: string | null;
+  spotify?: string | null;
+  apple_music?: string | null;
+  [key: string]: string | null | undefined;
 }
 
 export interface Song {
