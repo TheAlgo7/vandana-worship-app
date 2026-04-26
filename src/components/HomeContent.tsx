@@ -246,7 +246,10 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 key={s.id}
                 href={`/song/${s.id}`}
                 style={{
-                  padding: "8px 14px",
+                  display: "flex",
+                  alignItems: "center",
+                  minHeight: 44,
+                  padding: "0 14px",
                   background: "var(--bg-surface)",
                   borderRadius: "var(--radius-md)",
                   border: "1px solid var(--border)",
@@ -290,7 +293,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           aria-pressed={!activeChurch}
           style={{
             flexShrink: 0,
-            padding: "6px 16px",
+            minHeight: 44,
+            padding: "0 16px",
             fontSize: "var(--text-xs)",
             fontWeight: 500,
             borderRadius: "var(--radius-pill)",
@@ -315,7 +319,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
               aria-pressed={active}
               style={{
                 flexShrink: 0,
-                padding: "6px 16px",
+                minHeight: 44,
+                padding: "0 16px",
                 fontSize: "var(--text-xs)",
                 fontWeight: 500,
                 borderRadius: "var(--radius-pill)",

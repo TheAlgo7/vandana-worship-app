@@ -93,6 +93,7 @@ export default function SongCard({
               fill="var(--accent)"
               color="var(--accent)"
               strokeWidth={0}
+              aria-hidden="true"
               style={{ opacity: 0.5, flexShrink: 0 }}
             />
           )}
@@ -135,7 +136,7 @@ export default function SongCard({
             {song.church}
           </span>
         )}
-        <ChevronRight size={20} style={{ color: "var(--text-muted)", flexShrink: 0 }} />
+        <ChevronRight size={20} aria-hidden="true" style={{ color: "var(--text-muted)", flexShrink: 0 }} />
       </div>
 
       {/* Long-press badge */}

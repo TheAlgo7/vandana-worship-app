@@ -64,6 +64,8 @@
   --nav-active-text: #0A0A0E;
   --nav-fill-top: #D4BC94;
   --nav-fill-bottom: #B89B70;
+  --nav-pill-bg: rgba(20, 20, 24, 0.62);
+  --nav-pill-border: rgba(236, 234, 228, 0.09);
 
   /* ── Transitions ── */
   --transition-fast: 200ms ease;
@@ -111,6 +113,9 @@
 
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+  --nav-pill-bg: rgba(250, 248, 243, 0.82);
+  --nav-pill-border: rgba(0, 0, 0, 0.08);
 }
 
 /* ── Tailwind v4 theme bridge ── */

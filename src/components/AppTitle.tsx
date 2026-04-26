@@ -16,7 +16,7 @@ export default function AppTitle() {
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      <span
+      <h1
         style={{
           fontFamily: isHindi ? "var(--font-devanagari)" : "var(--font-brand)",
           fontSize: isHindi ? "22px" : "28px",
@@ -24,10 +24,11 @@ export default function AppTitle() {
           color: "var(--accent)",
           letterSpacing: isHindi ? "0" : "0.04em",
           visibility: mounted ? "visible" : "hidden",
+          margin: 0,
         }}
       >
         {isHindi ? "वंदना" : "Vandana"}
-      </span>
+      </h1>
       <span
         style={{
           display: "block",

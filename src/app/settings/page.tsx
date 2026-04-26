@@ -78,35 +78,49 @@ export default function SettingsPage() {
                 Dark Mode
               </p>
             </div>
-            {/* pill toggle */}
+            {/* pill toggle — outer button is the 44px tap zone */}
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
               style={{
-                position: "relative",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 width: 48,
-                height: 28,
-                borderRadius: "var(--radius-pill)",
+                minHeight: 44,
+                background: "none",
                 border: "none",
-                background: isDark ? "var(--accent)" : "var(--border)",
                 cursor: "pointer",
-                transition: "background var(--transition-fast)",
                 flexShrink: 0,
+                padding: 0,
               }}
             >
               <span
                 style={{
-                  position: "absolute",
-                  top: 3,
-                  left: isDark ? 23 : 3,
-                  width: 22,
-                  height: 22,
-                  borderRadius: "50%",
-                  background: isDark ? "var(--bg-base)" : "var(--bg-surface)",
-                  transition: "left var(--transition-fast)",
-                  boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                  position: "relative",
+                  display: "block",
+                  width: 48,
+                  height: 28,
+                  borderRadius: "var(--radius-pill)",
+                  background: isDark ? "var(--accent)" : "var(--border)",
+                  transition: "background var(--transition-fast)",
+                  flexShrink: 0,
                 }}
-              />
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 3,
+                    left: isDark ? 23 : 3,
+                    width: 22,
+                    height: 22,
+                    borderRadius: "50%",
+                    background: isDark ? "var(--bg-base)" : "var(--bg-surface)",
+                    transition: "left var(--transition-fast)",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                  }}
+                />
+              </span>
             </button>
           </div>
         </section>
