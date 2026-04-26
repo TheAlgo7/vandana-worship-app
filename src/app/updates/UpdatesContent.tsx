@@ -33,7 +33,7 @@ export default function UpdatesContent({
   }, []);
 
   return (
-    <main style={{ padding: "0 20px", paddingTop: 24, paddingBottom: 120 }}>
+    <main style={{ padding: "0 20px", paddingTop: 24, paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
       {/* Header */}
       <h1
         style={{

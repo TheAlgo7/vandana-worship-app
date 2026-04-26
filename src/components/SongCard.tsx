@@ -69,19 +69,6 @@ export default function SongCard({
         WebkitUserSelect: "none",
       }}
     >
-      {/* Accent pill */}
-      <div
-        style={{
-          width: 3,
-          height: 28,
-          borderRadius: 2,
-          background: "var(--accent)",
-          flexShrink: 0,
-          marginRight: 14,
-          opacity: 0.45,
-        }}
-      />
-
       {/* Left: title + artist */}
       <div style={{ flex: 1, minWidth: 0 }}>
         <h2

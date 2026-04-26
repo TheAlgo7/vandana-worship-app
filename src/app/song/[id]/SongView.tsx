@@ -66,7 +66,7 @@ export default function SongView({ song }: SongViewProps) {
   }, [song.title]);
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", padding: 20 }}>
+    <div style={{ position: "relative", minHeight: "100vh", padding: 20, paddingBottom: "calc(var(--nav-clearance) + 20px)" }}>
       {/* Top bar */}
       <div
         style={{
@@ -217,7 +217,7 @@ export default function SongView({ song }: SongViewProps) {
         <h1
           style={{
             fontFamily: "var(--font-display)",
-            fontSize: "34px",
+            fontSize: "var(--text-song-title)",
             fontWeight: 700,
             color: "var(--text-primary)",
             lineHeight: 1.2,
@@ -269,7 +269,7 @@ export default function SongView({ song }: SongViewProps) {
       </div>
 
       {/* Lyrics */}
-      <div className="lyrics-text">
+      <div className="lyrics-text" lang={lang === "hindi" ? "hi" : "en"}>
         {Object.entries(sections).map(([key, text]) => (
           <section key={key} style={{ marginBottom: 28 }}>
             <span className="section-label">{formatLabel(key)}</span>

@@ -21,7 +21,7 @@ export default function SplashScreen() {
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#0A0A0E",
+        background: "var(--bg-base)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",

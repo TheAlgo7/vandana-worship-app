@@ -42,7 +42,7 @@
   border-radius: 999px;
   text-decoration: none;
   -webkit-tap-highlight-color: transparent;
-  color: #6D6B7A;
+  color: var(--nav-inactive);
   overflow: hidden;
   /* Transition color for icon/label, prevent the global a:active scale glitch */
   transition: color 220ms ease, transform 100ms ease;
@@ -58,7 +58,7 @@
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+  background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
   opacity: 0;
   transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
   /* Subtle inset highlights — outward glow intentionally omitted (glow reduced) */
@@ -68,7 +68,7 @@
 }
 
 .item.active {
-  color: #0A0A0E;
+  color: var(--nav-active-text);
 }
 
 .item.active::before {

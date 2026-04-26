@@ -30,7 +30,7 @@ export default function SettingsPage() {
         minHeight: "100dvh",
         background: "var(--bg-base)",
         color: "var(--text-primary)",
-        paddingBottom: "calc(56px + env(safe-area-inset-bottom, 0px) + 24px)",
+        paddingBottom: "calc(var(--nav-clearance) + 16px)",
       }}
     >
       {/* ── Header ── */}

@@ -33,6 +33,7 @@
   --text-2xl: 28px;
   --text-3xl: 36px;
   --text-4xl: 48px;
+  --text-song-title: 34px;
 
   /* ── Line heights ── */
   --leading-tight: 1.25;
@@ -54,6 +55,15 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-pill: 999px;
+
+  /* ── Nav clearance (floating pill: 14px gap + 44px items + 8px×2 padding) ── */
+  --nav-clearance: calc(74px + env(safe-area-inset-bottom, 0px));
+
+  /* ── Nav pill color tokens ── */
+  --nav-inactive: #6D6B7A;
+  --nav-active-text: #0A0A0E;
+  --nav-fill-top: #D4BC94;
+  --nav-fill-bottom: #B89B70;
 
   /* ── Transitions ── */
   --transition-fast: 200ms ease;

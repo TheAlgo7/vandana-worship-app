@@ -161,6 +161,9 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
           position: "relative",
         }}
       >
+        <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
+          Search songs and artists
+        </label>
         <input
           ref={searchRef}
           id="search-input"
@@ -284,6 +287,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       >
         <button
           onClick={() => setActiveChurch(null)}
+          aria-pressed={!activeChurch}
           style={{
             flexShrink: 0,
             padding: "6px 16px",
@@ -308,6 +312,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             <button
               key={ch}
               onClick={() => setActiveChurch(active ? null : ch)}
+              aria-pressed={active}
               style={{
                 flexShrink: 0,
                 padding: "6px 16px",
@@ -329,7 +334,7 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       </div>
 
       {/* ── Song List ── */}
-      <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px" }}>
+      <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
         {filtered.length === 0 ? (
           <div
             style={{
