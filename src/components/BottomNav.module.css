@@ -118,6 +118,14 @@
   z-index: 2;
 }
 
+/* ── Hide on desktop — sidebar takes over ── */
+@media (min-width: 900px) {
+  .pill,
+  .fade {
+    display: none;
+  }
+}
+
 /* ── Respect reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
   .item,

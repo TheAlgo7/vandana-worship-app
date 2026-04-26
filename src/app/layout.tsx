@@ -5,6 +5,7 @@ import {
   Noto_Sans_Devanagari,
 } from "next/font/google";
 import Providers from "@/components/Providers";
+import DesktopNav from "@/components/DesktopNav";
 import "./globals.css";
 
 const heading = Lora({
@@ -84,8 +85,13 @@ export default function RootLayout({
       className={`${heading.variable} ${body.variable} ${devanagari.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col">
-        <Providers>{children}</Providers>
+      <body className="min-h-full">
+        <div className="app-frame">
+          <DesktopNav />
+          <div className="app-main">
+            <Providers>{children}</Providers>
+          </div>
+        </div>
       </body>
     </html>
   );

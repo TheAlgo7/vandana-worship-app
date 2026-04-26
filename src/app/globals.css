@@ -222,6 +222,38 @@ a:active {
 }
 
 /* ══════════════════════════════════════════════
+   Desktop Shell Layout
+   ══════════════════════════════════════════════ */
+
+.app-frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+.app-main {
+  flex: 1;
+  min-width: 0;
+}
+
+@media (min-width: 900px) {
+  .app-frame {
+    flex-direction: row;
+  }
+
+  /* No floating pill nav on desktop — clearance becomes normal padding */
+  :root {
+    --nav-clearance: 24px;
+  }
+
+  /* Song card hover feedback on pointer devices */
+  .song-card:hover {
+    background: var(--bg-surface);
+    border-radius: var(--radius-md);
+  }
+}
+
+/* ══════════════════════════════════════════════
    Reusable Utility Classes
    ══════════════════════════════════════════════ */
 
