@@ -19,8 +19,8 @@ export interface Song {
   id: string;
   title: string;
   artist: string;
-  church: string;
-  album: string;
+  church: string | null;
+  album: string | null;
   language_default: Language;
   languages_available: Language[];
   lyrics: Record<Language, LyricsMap>;
@@ -35,7 +35,7 @@ export interface SongMeta {
   id: string;
   title: string;
   artist: string;
-  church: string;
+  church: string | null;
   tags: string[];
 }
 
@@ -45,8 +45,8 @@ interface DbSongRow {
   id: string;
   title: string;
   artist: string;
-  church: string;
-  album: string;
+  church: string | null;
+  album: string | null;
   language_default: Language;
   languages_available: Language[];
   lyrics_hinglish: LyricsMap | null;
