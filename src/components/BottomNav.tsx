@@ -3,48 +3,42 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
-
-import updatesData from "@/data/updates.json";
+import type { LucideIcon } from "lucide-react";
 import { House, Bell, Heart, Settings } from "lucide-react";
+import updatesData from "@/data/updates.json";
 
-/** Fixed bottom navigation — Home · Updates · Favourites · Settings (4-item) */
+const NAV_ITEMS: {
+  href: string;
+  label: string;
+  Icon: LucideIcon;
+  exact: boolean;
+  badge?: "updates";
+}[] = [
+  { href: "/",           label: "Home",       Icon: House,    exact: true  },
+  { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true, badge: "updates" },
+  { href: "/favourites", label: "Favourites", Icon: Heart,    exact: false },
+  { href: "/settings",   label: "Settings",   Icon: Settings, exact: false },
+];
+
 export default function BottomNav() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
-  const isUpdates = pathname === "/updates";
-  const isFavourites = pathname === "/favourites";
-  const isSettings = pathname.startsWith("/settings");
-
   const [hasUnread, setHasUnread] = useState(false);
 
   useEffect(() => {
     const lastRead = localStorage.getItem("vandana-updates-last-read");
-    if (!lastRead) {
-      setHasUnread(updatesData.length > 0);
-      return;
-    }
-    const latestUpdate = updatesData
+    if (!lastRead) { setHasUnread(updatesData.length > 0); return; }
+    const latest = updatesData
       .map((u) => new Date(u.date + "T00:00:00").getTime())
       .reduce((a, b) => Math.max(a, b), 0);
-    setHasUnread(latestUpdate > new Date(lastRead).getTime());
+    setHasUnread(latest > new Date(lastRead).getTime());
   }, [pathname]);
 
-  const itemStyle = (active: boolean): React.CSSProperties => ({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "3px",
-    textDecoration: "none",
-    color: active ? "var(--accent)" : "var(--text-muted)",
-    fontSize: "var(--text-xs)",
-    fontWeight: 500,
-    transition: `color var(--transition-fast)`,
-    WebkitTapHighlightColor: "transparent",
-  });
+  const isActive = (href: string, exact: boolean) =>
+    exact ? pathname === href : pathname.startsWith(href);
 
   return (
     <>
-      {/* Gradient fade above nav */}
+      {/* Soft gradient so content isn't hidden behind the floating nav */}
       <div
         aria-hidden
         style={{
@@ -52,90 +46,114 @@ export default function BottomNav() {
           bottom: 0,
           left: 0,
           right: 0,
-          height: "5.5rem",
+          height: "4.5rem",
           pointerEvents: "none",
           zIndex: 49,
-          background:
-            "linear-gradient(to top, var(--bg-base) 56px, transparent)",
+          background: "linear-gradient(to top, var(--bg-base) 40%, transparent)",
         }}
       />
 
+      {/* Floating pill */}
       <nav
+        aria-label="Main navigation"
         style={{
           position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
+          bottom: "calc(14px + env(safe-area-inset-bottom))",
+          left: "50%",
+          transform: "translateX(-50%)",
           zIndex: 50,
-          background: "var(--bg-overlay)",
-          borderTop: "1px solid var(--border-subtle)",
-          backdropFilter: "blur(24px) saturate(180%)",
-          WebkitBackdropFilter: "blur(24px) saturate(180%)",
-          display: "flex",
-          justifyContent: "space-around",
+          display: "inline-flex",
           alignItems: "center",
-          height: "56px",
-          paddingBottom: "env(safe-area-inset-bottom)",
+          gap: 4,
+          padding: 8,
+          background: "rgba(20,20,24,0.62)",
+          backdropFilter: "blur(28px) saturate(190%)",
+          WebkitBackdropFilter: "blur(28px) saturate(190%)",
+          border: "0.5px solid rgba(236,234,228,0.09)",
+          borderRadius: 999,
+          boxShadow: [
+            "0 18px 40px rgba(0,0,0,0.55)",
+            "0 2px 10px rgba(0,0,0,0.3)",
+            "inset 0 1px 0 rgba(255,255,255,0.05)",
+            "inset 0 -1px 0 rgba(0,0,0,0.4)",
+          ].join(", "),
         }}
       >
-        {/* Home */}
-        <Link href="/" style={itemStyle(isHome)}>
-          <House
-            size={24}
-            strokeWidth={2}
-            color={isHome ? "var(--accent)" : "var(--text-muted)"}
-            fill={isHome ? "var(--accent)" : "none"}
-          />
-          Home
-        </Link>
+        {NAV_ITEMS.map(({ href, label, Icon, exact, badge }) => {
+          const active = isActive(href, exact);
+          const showDot = badge === "updates" && hasUnread && !active;
 
-        {/* Updates */}
-        <Link href="/updates" style={itemStyle(isUpdates)}>
-          <span style={{ position: "relative", display: "inline-flex" }}>
-            <Bell
-              size={24}
-              strokeWidth={2}
-              color={isUpdates ? "var(--accent)" : "var(--text-muted)"}
-              fill={isUpdates ? "var(--accent)" : "none"}
-            />
-            {hasUnread && (
+          return (
+            <Link
+              key={href}
+              href={href}
+              aria-current={active ? "page" : undefined}
+              style={{
+                position: "relative",
+                display: "inline-flex",
+                alignItems: "center",
+                height: 44,
+                minWidth: 44,
+                padding: "0 14px",
+                borderRadius: 999,
+                textDecoration: "none",
+                WebkitTapHighlightColor: "transparent",
+                color: active ? "#0A0A0E" : "#6D6B7A",
+                background: active
+                  ? "linear-gradient(180deg, #D4BC94 0%, #B89B70 100%)"
+                  : "transparent",
+                boxShadow: active
+                  ? [
+                      "0 4px 14px rgba(196,170,126,0.35)",
+                      "inset 0 1px 0 rgba(255,255,255,0.35)",
+                      "inset 0 -1px 0 rgba(0,0,0,0.15)",
+                    ].join(", ")
+                  : "none",
+                transition: "color 180ms ease, background 220ms ease, box-shadow 220ms ease",
+              }}
+            >
+              <Icon size={20} strokeWidth={active ? 2.1 : 1.7} />
+
+              {/* Label — expands in when active */}
               <span
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  right: 0,
-                  width: 6,
-                  height: 6,
-                  borderRadius: "50%",
-                  background: "var(--accent)",
+                  fontSize: 13,
+                  fontWeight: 600,
+                  letterSpacing: "-0.01em",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  maxWidth: active ? 100 : 0,
+                  opacity: active ? 1 : 0,
+                  marginLeft: active ? 8 : 0,
+                  transition: [
+                    "max-width 280ms cubic-bezier(0.22,1,0.36,1)",
+                    "opacity 200ms ease",
+                    "margin-left 240ms ease",
+                  ].join(", "),
                 }}
-              />
-            )}
-          </span>
-          Updates
-        </Link>
+              >
+                {label}
+              </span>
 
-        {/* Favourites */}
-        <Link href="/favourites" style={itemStyle(isFavourites)}>
-          <Heart
-            size={24}
-            strokeWidth={2}
-            color={isFavourites ? "var(--accent)" : "var(--text-muted)"}
-            fill={isFavourites ? "var(--accent)" : "none"}
-          />
-          Favourites
-        </Link>
-
-        {/* Settings */}
-        <Link href="/settings" style={itemStyle(isSettings)}>
-          <Settings
-            size={24}
-            strokeWidth={2}
-            color={isSettings ? "var(--accent)" : "var(--text-muted)"}
-            fill={isSettings ? "var(--accent)" : "none"}
-          />
-          Settings
-        </Link>
+              {/* Unread badge */}
+              {showDot && (
+                <span
+                  aria-label="Unread updates"
+                  style={{
+                    position: "absolute",
+                    top: 11,
+                    right: 11,
+                    width: 6,
+                    height: 6,
+                    borderRadius: "50%",
+                    background: "var(--accent)",
+                    boxShadow: "0 0 0 2px rgba(10,10,14,0.9)",
+                  }}
+                />
+              )}
+            </Link>
+          );
+        })}
       </nav>
     </>
   );
