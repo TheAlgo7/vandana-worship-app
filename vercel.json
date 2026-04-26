@@ -1,5 +1,11 @@
 {
   "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/ping",
+      "schedule": "0 9 */5 * *"
+    }
+  ],
   "headers": [
     {
       "source": "/sw.js",

@@ -1,4 +1,5 @@
 import { supabase } from "./supabase";
+import { LOCAL_SONGS, LOCAL_SONGS_BY_ID } from "@/data/localSongs";
 
 /* ── Types ── */
 
@@ -85,24 +86,26 @@ function mapDbRowToSong(row: DbSongRow): Song {
 /* ── Offline cache (localStorage, client-side only) ── */
 
 const CACHE_KEY = "vandana-songs-cache";
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 interface CacheEntry {
   timestamp: number;
   data: Song[];
 }
 
-function getCachedSongs(): Song[] | null {
+/** Returns fresh cache (within TTL). Pass `acceptStale=true` to return expired cache too. */
+function getCachedSongs(acceptStale = false): Song[] | null {
   if (typeof window === "undefined") return null;
   try {
     const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
     const entry: CacheEntry = JSON.parse(raw);
-    if (Date.now() - entry.timestamp > CACHE_TTL) {
+    const isExpired = Date.now() - entry.timestamp > CACHE_TTL;
+    if (isExpired && !acceptStale) {
       localStorage.removeItem(CACHE_KEY);
       return null;
     }
-    return entry.data;
+    return entry.data?.length > 0 ? entry.data : null;
   } catch {
     return null;
   }
@@ -118,46 +121,84 @@ function setCachedSongs(data: Song[]): void {
   }
 }
 
+/** Queries Supabase with a 5-second timeout. Returns null on error or timeout. */
+async function fetchFromSupabase(): Promise<Song[] | null> {
+  try {
+    const timeout = new Promise<null>((resolve) =>
+      setTimeout(() => resolve(null), 5000)
+    );
+    const query = supabase
+      .from("songs")
+      .select("*")
+      .order("title")
+      .then(({ data, error }) => {
+        if (error || !data || data.length === 0) return null;
+        return (data as DbSongRow[]).map(mapDbRowToSong);
+      });
+    return await Promise.race([query, timeout]);
+  } catch {
+    return null;
+  }
+}
+
 /* ── Public API ── */
 
 export async function getSongs(): Promise<Song[]> {
-  const { data, error } = await supabase
-    .from("songs")
-    .select("*")
-    .order("title");
-
-  if (error || !data) {
-    console.error("[getSongs] Supabase error:", error?.message ?? "no data");
-    const cached = getCachedSongs();
-    if (cached) return cached;
-    return [];
+  // 1. Try Supabase (5s timeout so SSR never hangs when project is paused)
+  const fromDb = await fetchFromSupabase();
+  if (fromDb) {
+    setCachedSongs(fromDb);
+    return fromDb;
   }
 
-  const songs = (data as DbSongRow[]).map(mapDbRowToSong);
-  setCachedSongs(songs);
-  return songs;
+  console.warn("[getSongs] Supabase unavailable — checking cache.");
+
+  // 2. Fresh localStorage cache (within 7-day TTL)
+  const fresh = getCachedSongs();
+  if (fresh) return fresh;
+
+  // 3. Stale localStorage cache — 200+ songs from a past session beats 35 local files
+  const stale = getCachedSongs(true);
+  if (stale) return stale;
+
+  // 4. Last resort: 35 bundled local songs
+  console.warn("[getSongs] No cache — falling back to bundled local songs.");
+  return LOCAL_SONGS.slice().sort((a, b) => a.title.localeCompare(b.title));
 }
 
 export async function getSongById(id: string): Promise<Song | null> {
-  const { data, error } = await supabase
-    .from("songs")
-    .select("*")
-    .eq("id", id)
-    .single();
-
-  if (error || !data) return null;
-  return mapDbRowToSong(data as DbSongRow);
+  try {
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
+    const query = supabase
+      .from("songs")
+      .select("*")
+      .eq("id", id)
+      .single()
+      .then(({ data, error }) => (error || !data ? null : mapDbRowToSong(data as DbSongRow)));
+    const result = await Promise.race([query, timeout]);
+    return result ?? LOCAL_SONGS_BY_ID.get(id) ?? null;
+  } catch {
+    return LOCAL_SONGS_BY_ID.get(id) ?? null;
+  }
 }
 
 export async function getSongsByChurch(church: string): Promise<Song[]> {
-  const { data, error } = await supabase
-    .from("songs")
-    .select("*")
-    .eq("church", church)
-    .order("title");
-
-  if (error || !data) return [];
-  return (data as DbSongRow[]).map(mapDbRowToSong);
+  try {
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
+    const query = supabase
+      .from("songs")
+      .select("*")
+      .eq("church", church)
+      .order("title")
+      .then(({ data, error }) =>
+        error || !data ? null : (data as DbSongRow[]).map(mapDbRowToSong)
+      );
+    const result = await Promise.race([query, timeout]);
+    if (result) return result;
+  } catch { /* fall through */ }
+  return LOCAL_SONGS.filter((s) => s.church === church).sort((a, b) =>
+    a.title.localeCompare(b.title)
+  );
 }
 
 /* ── Convenience helpers (used by pages) ── */
@@ -174,7 +215,16 @@ export async function getAllSongMetas(): Promise<SongMeta[]> {
 }
 
 export async function getSongIds(): Promise<string[]> {
-  const { data, error } = await supabase.from("songs").select("id");
-  if (error || !data) return [];
-  return data.map((row: { id: string }) => row.id);
+  try {
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
+    const query = supabase
+      .from("songs")
+      .select("id")
+      .then(({ data, error }) =>
+        error || !data ? null : data.map((row: { id: string }) => row.id)
+      );
+    return (await Promise.race([query, timeout])) ?? LOCAL_SONGS.map((s) => s.id);
+  } catch {
+    return LOCAL_SONGS.map((s) => s.id);
+  }
 }
