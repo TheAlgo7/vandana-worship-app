@@ -1,0 +1,233 @@
+<!doctype html>
+<html data-theme="dark"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #0A0A0E; margin: 0; padding: 0;
+    font-family: var(--font-body); color: var(--text-primary); }
+  .card { padding: 22px 24px; display: flex; flex-direction: column; gap: 26px; }
+  .label { font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--accent); }
+  .sub { font-size: 10px; color: #87849A; letter-spacing: 0.04em;
+    margin-top: 6px; font-family: ui-monospace, monospace; }
+
+  /* Stage: a mini phone canvas so the nav sits in context */
+  .stage {
+    position: relative; height: 180px; border-radius: 22px; overflow: hidden;
+    background:
+      radial-gradient(120% 70% at 50% 0%, rgba(196,170,126,0.05), transparent 55%),
+      linear-gradient(180deg, #121218 0%, #0A0A0E 100%);
+    border: 1px solid #1C1B26;
+  }
+  /* Simulated content behind the nav */
+  .stage::before {
+    content: ""; position: absolute; inset: 22px 24px 90px; display: block;
+    background:
+      linear-gradient(180deg, rgba(236,234,228,0.06) 0%, rgba(236,234,228,0) 100%);
+    border-radius: 10px;
+    mask: linear-gradient(180deg, #000 40%, transparent 100%);
+  }
+  .stage::after {
+    content: ""; position: absolute; inset: 28px 32px 100px; display: block;
+    background-image:
+      linear-gradient(#ECEAE4 1px, transparent 1px),
+      linear-gradient(#ECEAE4 1px, transparent 1px),
+      linear-gradient(#ECEAE4 1px, transparent 1px);
+    background-position: 0 0, 0 22px, 0 44px;
+    background-size: 70% 1px, 60% 1px, 85% 1px;
+    background-repeat: no-repeat;
+    opacity: 0.06;
+  }
+
+  /* ── Variant A: Docked glass bar (existing) ── */
+  .nav-docked {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 64px;
+    background: rgba(14,14,18,0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-top: 1px solid rgba(36,35,48,0.7);
+    display: flex; justify-content: space-around; align-items: center;
+    padding-bottom: 2px;
+  }
+
+  /* ── Variant B: Floating pill (2026) ── */
+  .nav-floating {
+    position: absolute; left: 50%; bottom: 14px;
+    transform: translateX(-50%);
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 8px;
+    background: rgba(20,20,24,0.62);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 0.5px solid rgba(236,234,228,0.09);
+    border-radius: 999px;
+    box-shadow:
+      0 18px 40px rgba(0,0,0,0.55),
+      0 2px 10px rgba(0,0,0,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.05),
+      inset 0 -1px 0 rgba(0,0,0,0.4);
+  }
+
+  /* ── Nav items ── */
+  .item {
+    --c: #6D6B7A;
+    position: relative;
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 8px; color: var(--c);
+    height: 44px; min-width: 44px;
+    padding: 0 14px;
+    border-radius: 999px;
+    transition: color 180ms ease, background 220ms ease;
+    cursor: pointer;
+  }
+  .item svg { width: 20px; height: 20px; stroke: currentColor;
+    stroke-width: 1.7; fill: none;
+    stroke-linecap: round; stroke-linejoin: round; }
+  .item .txt {
+    font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+    max-width: 0; overflow: hidden; opacity: 0;
+    transition: max-width 280ms cubic-bezier(0.22,1,0.36,1),
+                opacity 200ms ease, margin-left 240ms ease;
+    white-space: nowrap;
+  }
+
+  /* Docked variant items — stacked label below icon */
+  .nav-docked .item {
+    flex-direction: column; gap: 3px; height: 52px;
+    padding: 0 10px; min-width: 64px; border-radius: 14px;
+  }
+  .nav-docked .item .txt {
+    font-size: 10.5px; font-weight: 500;
+    max-width: none; opacity: 1; letter-spacing: 0.01em;
+  }
+  .nav-docked .item.active {
+    color: var(--accent);
+  }
+  .nav-docked .item.active svg {
+    stroke-width: 2;
+    filter: drop-shadow(0 0 4px rgba(196,170,126,0.35));
+  }
+
+  /* Floating pill variant — active expands & fills */
+  .nav-floating .item:hover { color: #ECEAE4; }
+  .nav-floating .item.active {
+    color: #0A0A0E;
+    background:
+      linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+    box-shadow:
+      0 4px 14px rgba(196,170,126,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+  .nav-floating .item.active .txt {
+    max-width: 100px; opacity: 1; margin-left: 2px;
+  }
+  .nav-floating .item.active svg {
+    stroke-width: 2.1;
+  }
+
+  /* Dot badge */
+  .dot {
+    position: absolute; top: 11px; right: 11px;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 2px rgba(10,10,14,0.9);
+  }
+  .nav-docked .item .dot { top: 7px; right: 18px; }
+  .item.active .dot { display: none; }
+
+  .row-head {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 12px;
+  }
+</style></head>
+<body>
+<div class="card">
+
+  <!-- 2026 floating pill -->
+  <div>
+    <div class="row-head">
+      <div class="label">Bottom Nav — Floating Pill · 2026</div>
+    </div>
+    <div class="sub">Recommended · contracts to icons, expands active label, sits above content</div>
+    <div class="stage" style="margin-top: 12px;">
+      <div class="nav-floating">
+
+        <div class="item active" data-nav="home">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-3.25V14.5h-6.5v6H5.5A1.5 1.5 0 0 1 4 19Z"/>
+          </svg>
+          <span class="txt">Home</span>
+        </div>
+
+        <div class="item" data-nav="updates">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 10a5.5 5.5 0 0 1 11 0c0 4 1.5 5.5 2.5 6.5H4c1-1 2.5-2.5 2.5-6.5Z"/>
+            <path d="M10.5 19.5a1.8 1.8 0 0 0 3 0"/>
+          </svg>
+          <span class="txt">Updates</span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="item" data-nav="favourites">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 20.5s-7.5-4.7-7.5-10.1A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 7.5 3.1c0 5.4-7.5 10.1-7.5 10.1Z"/>
+          </svg>
+          <span class="txt">Favourites</span>
+        </div>
+
+        <div class="item" data-nav="settings">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="2.8"/>
+            <path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M6 18l1.6-1.6M16.4 7.6 18 6"/>
+          </svg>
+          <span class="txt">Settings</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Docked glass bar -->
+  <div>
+    <div class="row-head">
+      <div class="label">Bottom Nav — Docked Glass · alt</div>
+    </div>
+    <div class="sub">4 items · icon + label · active state glows gold · edge-to-edge</div>
+    <div class="stage" style="margin-top: 12px;">
+      <div class="nav-docked">
+
+        <div class="item active">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-3.25V14.5h-6.5v6H5.5A1.5 1.5 0 0 1 4 19Z"/>
+          </svg>
+          <span class="txt">Home</span>
+        </div>
+
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6.5 10a5.5 5.5 0 0 1 11 0c0 4 1.5 5.5 2.5 6.5H4c1-1 2.5-2.5 2.5-6.5Z"/>
+            <path d="M10.5 19.5a1.8 1.8 0 0 0 3 0"/>
+          </svg>
+          <span class="txt">Updates</span>
+          <span class="dot"></span>
+        </div>
+
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 20.5s-7.5-4.7-7.5-10.1A4.4 4.4 0 0 1 12 7.3a4.4 4.4 0 0 1 7.5 3.1c0 5.4-7.5 10.1-7.5 10.1Z"/>
+          </svg>
+          <span class="txt">Favourites</span>
+        </div>
+
+        <div class="item">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="2.8"/>
+            <path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6 6l1.6 1.6M16.4 16.4 18 18M6 18l1.6-1.6M16.4 7.6 18 6"/>
+          </svg>
+          <span class="txt">Settings</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div></body></html>
