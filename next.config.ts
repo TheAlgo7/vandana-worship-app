@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   turbopack: {},
+  devIndicators: {
+    position: "top-right",
+  },
   async headers() {
     return [
       {

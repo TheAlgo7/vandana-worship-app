@@ -2,19 +2,82 @@
 
 import { useState, useRef, useEffect } from "react";
 import { Search as MagnifyingGlass, SearchX } from "lucide-react";
-import type { SongMeta } from "@/lib/getSongs";
+import type { SongLibrarySource, SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
 import { useFavourites } from "@/contexts/FavouritesContext";
+import { useSetlist } from "@/contexts/SetlistContext";
 import Link from "next/link";
 
-export default function HomeContent({ songs }: { songs: SongMeta[] }) {
+function normalizeSearch(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9\s]/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function levenshteinWithin(a: string, b: string, maxDistance: number): boolean {
+  if (Math.abs(a.length - b.length) > maxDistance) return false;
+  const previous = Array.from({ length: b.length + 1 }, (_, i) => i);
+
+  for (let i = 1; i <= a.length; i += 1) {
+    let diagonal = previous[0];
+    previous[0] = i;
+    let rowMin = previous[0];
+
+    for (let j = 1; j <= b.length; j += 1) {
+      const above = previous[j];
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      previous[j] = Math.min(
+        previous[j] + 1,
+        previous[j - 1] + 1,
+        diagonal + cost,
+      );
+      diagonal = above;
+      rowMin = Math.min(rowMin, previous[j]);
+    }
+
+    if (rowMin > maxDistance) return false;
+  }
+
+  return previous[b.length] <= maxDistance;
+}
+
+function fuzzyIncludes(haystack: string, query: string): boolean {
+  const normalizedHaystack = normalizeSearch(haystack);
+  const normalizedQuery = normalizeSearch(query);
+  if (!normalizedQuery) return true;
+  if (normalizedHaystack.includes(normalizedQuery)) return true;
+
+  const words = normalizedHaystack.split(" ").filter(Boolean);
+  const queryWords = normalizedQuery.split(" ").filter(Boolean);
+  if (queryWords.length === 0) return true;
+
+  return queryWords.every((queryWord) => {
+    if (queryWord.length < 4) {
+      return words.some((word) => word.startsWith(queryWord));
+    }
+    const distance = queryWord.length > 7 ? 2 : 1;
+    return words.some((word) => levenshteinWithin(word, queryWord, distance));
+  });
+}
+
+export default function HomeContent({
+  songs,
+  librarySource = "supabase",
+}: {
+  songs: SongMeta[];
+  librarySource?: SongLibrarySource;
+}) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const [defaultLang, setDefaultLang] = useState("hinglish");
   const { isFavourite, toggleFavourite } = useFavourites();
+  const { isInSetlist, toggleSetlist } = useSetlist();
 
   /* Pull-to-Refresh */
   const pullStartRef = useRef<number | null>(null);
@@ -24,11 +87,6 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
 
   /* Recently Viewed */
   const [recentIds, setRecentIds] = useState<string[]>([]);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("vandana-default-lang");
-    if (stored === "hindi" || stored === "hinglish") setDefaultLang(stored);
-  }, []);
 
   /* Pull-to-refresh (mobile touch only) */
   useEffect(() => {
@@ -80,27 +138,52 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
 
   /* Recently viewed songs */
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem("vandana-recently-viewed");
-      if (stored) setRecentIds(JSON.parse(stored));
-    } catch { /* ignore */ }
+    queueMicrotask(() => {
+      try {
+        const stored = localStorage.getItem("vandana-recently-viewed");
+        if (stored) setRecentIds(JSON.parse(stored));
+      } catch { /* ignore */ }
+    });
   }, []);
 
   const recentSongs = recentIds
     .map((id) => songs.find((s) => s.id === id))
     .filter((s): s is SongMeta => !!s);
+  const clearRecentSongs = () => {
+    setRecentIds([]);
+    localStorage.removeItem("vandana-recently-viewed");
+  };
 
   const churches = Array.from(
     new Set(songs.map((s) => s.church).filter(Boolean))
   );
 
+  const normalizedQuery = normalizeSearch(query);
   const filtered = songs.filter((s) => {
+    const searchable = [
+      s.title,
+      s.artist,
+      s.church ?? "",
+      s.tags.join(" "),
+      s.lyrics_search,
+    ].join(" ");
     const matchesQuery =
-      s.title.toLowerCase().includes(query.toLowerCase()) ||
-      s.artist?.toLowerCase().includes(query.toLowerCase());
+      !normalizedQuery ||
+      fuzzyIncludes(searchable, normalizedQuery);
     const matchesChurch = !activeChurch || s.church === activeChurch;
     return matchesQuery && matchesChurch;
   });
+  const lyricOnlyMatches = normalizedQuery
+    ? filtered.filter((s) => {
+        const q = normalizedQuery;
+        const titleArtistChurchTags = [s.title, s.artist, s.church ?? "", s.tags.join(" ")].join(" ");
+        return (
+          fuzzyIncludes(s.lyrics_search, q) &&
+          !fuzzyIncludes(titleArtistChurchTags, q)
+        );
+      }).length
+    : 0;
+  const hasActiveFilters = !!query || !!activeChurch;
 
   return (
     <>
@@ -108,6 +191,31 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
       {pullProgress > 0 && (
         <div style={{ position: "fixed", top: 0, left: 0, right: 0, display: "flex", justifyContent: "center", paddingTop: 12 + pullProgress * 28, zIndex: 50, pointerEvents: "none" }}>
           <div style={{ width: 24, height: 24, borderRadius: "50%", border: "2px solid var(--accent)", borderTopColor: "transparent", transform: `rotate(${pullProgress * 360}deg)`, opacity: Math.min(pullProgress, 1) }} />
+        </div>
+      )}
+
+      {librarySource !== "supabase" && (
+        <div
+          role="status"
+          style={{
+            position: "fixed",
+            left: "50%",
+            bottom: "calc(var(--nav-clearance) + 10px)",
+            transform: "translateX(-50%)",
+            zIndex: 70,
+            padding: "9px 12px",
+            borderRadius: "var(--radius-pill)",
+            border: "1px solid var(--border)",
+            background: "var(--bg-overlay)",
+            color: "var(--text-secondary)",
+            boxShadow: "var(--shadow-sm)",
+            backdropFilter: "blur(14px)",
+            fontSize: "var(--text-xs)",
+            fontWeight: 600,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {librarySource === "cache" ? "Using cached library" : "Using offline library"}
         </div>
       )}
 
@@ -132,14 +240,14 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             {/* Search Bar */}
             <div style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px", position: "relative" }}>
               <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
-                Search songs and artists
+                Search songs, artists, and lyrics
               </label>
               <input
                 ref={searchRef}
                 id="search-input"
                 type="search"
                 suppressHydrationWarning
-                placeholder="Search songs, artists..."
+                placeholder="Search songs, lyrics..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 style={{
@@ -174,30 +282,8 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
               </span>
             </div>
 
-            {/* Recently Viewed — horizontal chips (mobile only) */}
-            {recentSongs.length > 0 && (
-              <div className="mobile-only" style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px" }}>
-                <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 500, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>
-                  Recently Viewed
-                </p>
-                <div style={{ display: "flex", gap: 8, overflowX: "auto", scrollbarWidth: "none", paddingBottom: 2 }}>
-                  {recentSongs.map((s) => (
-                    <Link
-                      key={s.id}
-                      href={`/song/${s.id}`}
-                      style={{ display: "flex", alignItems: "center", minHeight: 44, padding: "0 14px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border)", textDecoration: "none", maxWidth: 160, flexShrink: 0 }}
-                    >
-                      <p style={{ fontSize: "var(--text-xs)", fontWeight: 600, color: "var(--text-primary)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", margin: 0 }}>
-                        {s.title}
-                      </p>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* Church Filter */}
-            <div style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
+            <div className="horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
               <button
                 onClick={() => setActiveChurch(null)}
                 aria-pressed={!activeChurch}
@@ -222,17 +308,29 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
 
             {/* Song List */}
             <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+              {filtered.length > 0 && lyricOnlyMatches > 0 && (
+                <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", lineHeight: 1.5, margin: "14px 0 0" }}>
+                  {lyricOnlyMatches} {lyricOnlyMatches === 1 ? "song matches" : "songs match"} inside lyrics.
+                </p>
+              )}
               {filtered.length === 0 ? (
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "48px 24px", textAlign: "center" }}>
                   <SearchX size={48} strokeWidth={1.2} style={{ color: "var(--text-muted)", opacity: 0.4 }} />
-                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.5 }}>
+                  <p style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.3, margin: 0 }}>
                     {query
-                      ? `No songs found for "${query}"`
+                      ? "No matching songs"
                       : activeChurch
-                      ? `No songs from ${activeChurch} yet.`
+                      ? "No songs in this filter"
                       : "No songs yet."}
                   </p>
-                  {(query || activeChurch) && (
+                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.55, maxWidth: 280, margin: 0 }}>
+                    {query
+                      ? `Try a shorter lyric phrase, artist name, or clear filters for "${query}". Fuzzy search catches close spellings too.`
+                      : activeChurch
+                      ? `${activeChurch} does not have songs in this library yet.`
+                      : "The bundled library did not return songs."}
+                  </p>
+                  {hasActiveFilters && (
                     <button
                       onClick={() => { setQuery(""); setActiveChurch(null); }}
                       style={{ padding: "6px 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", cursor: "pointer" }}
@@ -248,6 +346,9 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                     song={song}
                     isFavourite={isFavourite(song.id)}
                     onLongPress={() => toggleFavourite(song.id)}
+                    onFavouriteToggle={() => toggleFavourite(song.id)}
+                    isInSetlist={isInSetlist(song.id)}
+                    onSetlistToggle={() => toggleSetlist(song.id)}
                   />
                 ))
               )}
@@ -264,9 +365,18 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
             {/* Recently Viewed — vertical list */}
             {recentSongs.length > 0 && (
               <div>
-                <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>
-                  Recently Viewed
-                </p>
+                <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
+                  <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
+                    Recently Viewed
+                  </p>
+                  <button
+                    type="button"
+                    onClick={clearRecentSongs}
+                    style={{ border: "none", background: "transparent", color: "var(--accent)", fontSize: "var(--text-xs)", fontWeight: 600, cursor: "pointer", padding: "4px 0" }}
+                  >
+                    Clear
+                  </button>
+                </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
                   {recentSongs.slice(0, 6).map((s) => (
                     <Link

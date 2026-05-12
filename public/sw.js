@@ -1,7 +1,11 @@
-const STATIC_CACHE = "vandana-static-v7";
-const RUNTIME_CACHE = "vandana-runtime-v4";
+const STATIC_CACHE = "vandana-static-v8";
+const RUNTIME_CACHE = "vandana-runtime-v5";
 const PRECACHE_URLS = [
   "/",
+  "/updates",
+  "/favourites",
+  "/setlist",
+  "/settings",
   "/manifest.json",
   "/icons/favicon-32.png",
   "/icons/icon-192.png",
@@ -26,6 +30,12 @@ self.addEventListener("activate", (event) => {
       )
     ).then(() => self.clients.claim())
   );
+});
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener("fetch", (event) => {

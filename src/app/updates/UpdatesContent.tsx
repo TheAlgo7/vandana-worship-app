@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { Bell } from "lucide-react";
 
 interface UpdateEntry {
   id: string;
@@ -45,7 +46,17 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
       </header>
 
       <div style={{ padding: "20px 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
-        {updates.map((u) => (
+        {updates.length === 0 ? (
+          <div style={{ minHeight: "60vh", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 12, textAlign: "center", padding: "0 24px" }}>
+            <Bell size={40} strokeWidth={1.4} style={{ color: "var(--accent)", opacity: 0.45 }} />
+            <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", color: "var(--text-primary)", fontWeight: 600, margin: 0 }}>
+              No updates yet
+            </p>
+            <p style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", lineHeight: 1.55, maxWidth: 300, margin: 0 }}>
+              New songs and library changes will appear here after they are published.
+            </p>
+          </div>
+        ) : updates.map((u) => (
           <div
             key={u.id}
             style={{

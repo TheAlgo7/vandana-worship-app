@@ -1,9 +1,18 @@
 [
   {
+    "id": "update-009",
+    "date": "2026-05-12",
+    "title": "Setlists, Better Search & Smoother Navigation",
+    "body": "Added setlists for worship planning, next and previous controls in Present Mode, lyrics-aware search with fuzzy matching, clearer empty states, visible favourite and setlist buttons, smoother tab switching, offline/update notices, and a more balanced floating navigation bar.",
+    "type": "feature",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-008",
     "date": "2026-04-14",
     "title": "Bug Fixes & Long-Press to Favourite",
-    "body": "Hold any song on the home screen to instantly save it to favourites — no need to open the song. Also fixed skeleton loading screens, corrected swipe behaviour on recently viewed, and songs now appear in Recently Viewed after you visit them.",
+    "body": "Hold any song on the home screen to instantly save it to favourites, no need to open the song. Also fixed skeleton loading screens, corrected swipe behaviour on recently viewed, and songs now appear in Recently Viewed after you visit them.",
     "type": "improvement",
     "song_count": 0,
     "song_names": []

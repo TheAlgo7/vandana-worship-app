@@ -6,6 +6,7 @@ import RouteTransition from "@/components/RouteTransition";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import SplashScreen from "@/components/SplashScreen";
 import { FavouritesProvider } from "@/contexts/FavouritesContext";
+import { SetlistProvider } from "@/contexts/SetlistContext";
 
 function ThemeFadeOverlay() {
   const { resolvedTheme } = useTheme();
@@ -40,10 +41,12 @@ export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
       <FavouritesProvider>
-        <ServiceWorkerRegistration />
-        <SplashScreen />
-        <RouteTransition>{children}</RouteTransition>
-        <ThemeFadeOverlay />
+        <SetlistProvider>
+          <ServiceWorkerRegistration />
+          <SplashScreen />
+          <RouteTransition>{children}</RouteTransition>
+          <ThemeFadeOverlay />
+        </SetlistProvider>
       </FavouritesProvider>
     </ThemeProvider>
   );

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import type { LucideIcon } from "lucide-react";
-import { House, Bell, Heart, Settings } from "lucide-react";
+import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
 import styles from "./DesktopNav.module.css";
 
@@ -17,6 +17,7 @@ const NAV_ITEMS: {
 }[] = [
   { href: "/",           label: "Home",       Icon: House,    exact: true  },
   { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true,  badge: "updates" },
+  { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false },
   { href: "/favourites", label: "Favourites", Icon: Heart,    exact: false },
   { href: "/settings",   label: "Settings",   Icon: Settings, exact: false },
 ];
@@ -28,14 +29,16 @@ export default function DesktopNav() {
 
   useEffect(() => {
     if (isPresent) return;
-    try {
-      const lastRead = localStorage.getItem("vandana-updates-last-read");
-      if (!lastRead) { setHasUnread(updatesData.length > 0); return; }
-      const latest = (updatesData as Array<{ date: string }>)
-        .map((u) => new Date(u.date + "T00:00:00").getTime())
-        .reduce((a, b) => Math.max(a, b), 0);
-      setHasUnread(latest > new Date(lastRead).getTime());
-    } catch { /* ignore */ }
+    queueMicrotask(() => {
+      try {
+        const lastRead = localStorage.getItem("vandana-updates-last-read");
+        if (!lastRead) { setHasUnread(updatesData.length > 0); return; }
+        const latest = (updatesData as Array<{ date: string }>)
+          .map((u) => new Date(u.date + "T00:00:00").getTime())
+          .reduce((a, b) => Math.max(a, b), 0);
+        setHasUnread(latest > new Date(lastRead).getTime());
+      } catch { /* ignore */ }
+    });
   }, [pathname, isPresent]);
 
   if (isPresent) return null;

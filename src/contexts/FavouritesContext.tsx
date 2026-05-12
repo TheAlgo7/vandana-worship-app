@@ -25,21 +25,27 @@ const FavouritesContext = createContext<FavouritesCtx>({
 
 export function FavouritesProvider({ children }: { children: ReactNode }) {
   const [favourites, setFavourites] = useState<string[]>([]);
+  const [hydrated, setHydrated] = useState(false);
 
   /* Hydrate from localStorage once on mount */
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) setFavourites(JSON.parse(raw));
-    } catch {
-      /* ignore corrupt data */
-    }
+    queueMicrotask(() => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) setFavourites(JSON.parse(raw));
+      } catch {
+        /* ignore corrupt data */
+      } finally {
+        setHydrated(true);
+      }
+    });
   }, []);
 
   /* Persist every change */
   useEffect(() => {
+    if (!hydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(favourites));
-  }, [favourites]);
+  }, [favourites, hydrated]);
 
   const toggleFavourite = useCallback((id: string) => {
     setFavourites((prev) =>

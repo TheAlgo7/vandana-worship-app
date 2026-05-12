@@ -2,12 +2,13 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ChevronLeft, Heart, Share2 } from "lucide-react";
+import { ChevronLeft, Heart, ListPlus, ListX, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock } from "@/lib/formatLyrics";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 import { useFavourites } from "@/contexts/FavouritesContext";
+import { useSetlist } from "@/contexts/SetlistContext";
 
 type SongViewProps = {
   song: Song;
@@ -19,7 +20,9 @@ export default function SongView({ song }: SongViewProps) {
   const [showCopied, setShowCopied] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const { favourites, toggleFavourite } = useFavourites();
+  const { isInSetlist, toggleSetlist } = useSetlist();
   const isFavourite = favourites.includes(song.id);
+  const queued = isInSetlist(song.id);
 
   // Lyrics sections
   const sections = song.lyrics[lang] || {};
@@ -154,6 +157,27 @@ export default function SongView({ song }: SongViewProps) {
           }}
         >
           <Share2 size={18} />
+        </button>
+
+        <button
+          onClick={() => toggleSetlist(song.id)}
+          aria-label={queued ? "Remove from setlist" : "Add to setlist"}
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: 44,
+            height: 44,
+            background: queued ? "var(--accent-dim)" : "none",
+            border: "none",
+            borderRadius: "var(--radius-pill)",
+            cursor: "pointer",
+            padding: 0,
+            flexShrink: 0,
+            color: queued ? "var(--accent)" : "var(--text-secondary)",
+          }}
+        >
+          {queued ? <ListX size={19} /> : <ListPlus size={19} />}
         </button>
 
         {/* Present button always visible */}

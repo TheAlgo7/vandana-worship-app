@@ -11,6 +11,7 @@ const eslintConfig = defineConfig([
     ".next/**",
     "out/**",
     "build/**",
+    "Vandana Design System/**",
     "next-env.d.ts",
   ]),
 ]);

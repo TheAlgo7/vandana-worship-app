@@ -3,10 +3,11 @@
 import { useFavourites } from "@/contexts/FavouritesContext";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
-import { HeartOff } from "lucide-react";
+import Link from "next/link";
+import { HeartOff, Search } from "lucide-react";
 
 export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
-  const { favourites } = useFavourites();
+  const { favourites, toggleFavourite, isFavourite } = useFavourites();
 
   const favSongs = favourites
     .map((id) => songs.find((s) => s.id === id))
@@ -63,13 +64,38 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
             No favourites yet
           </p>
           <p style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", marginTop: 8, lineHeight: 1.5 }}>
-            Tap the &#9825; on any song to save it here
+            Tap the heart beside any song to keep it ready for worship.
           </p>
+          <Link
+            href="/"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              minHeight: 44,
+              padding: "0 16px",
+              marginTop: 20,
+              borderRadius: "var(--radius-pill)",
+              background: "var(--accent)",
+              color: "var(--bg-base)",
+              fontSize: "var(--text-sm)",
+              fontWeight: 700,
+              textDecoration: "none",
+            }}
+          >
+            <Search size={16} aria-hidden="true" />
+            Browse songs
+          </Link>
         </div>
       ) : (
         <main style={{ padding: "0 20px", paddingTop: 20, paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
           {favSongs.map((song) => (
-            <SongCard key={song.id} song={song} />
+            <SongCard
+              key={song.id}
+              song={song}
+              isFavourite={isFavourite(song.id)}
+              onFavouriteToggle={() => toggleFavourite(song.id)}
+            />
           ))}
         </main>
       )}

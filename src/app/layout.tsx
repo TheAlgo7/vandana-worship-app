@@ -39,7 +39,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://vandanaapp.vercel.app"),
   title: {
-    default: "Vandana – Worship Lyrics",
+    default: "Vandana - Worship Lyrics",
     template: "%s | Vandana",
   },
   description: "Worship in your language",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
     shortcut: ["/icons/favicon-32.png"],
   },
   openGraph: {
-    title: "Vandana – Worship Lyrics",
+    title: "Vandana - Worship Lyrics",
     description: "Worship in your language",
     url: "https://vandanaapp.vercel.app",
     siteName: "Vandana",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vandana – Worship Lyrics",
+    title: "Vandana - Worship Lyrics",
     description: "Worship in your language",
     images: ["/icons/og-image.png"],
   },

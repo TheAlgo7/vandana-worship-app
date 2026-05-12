@@ -1,10 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { Play, Pause } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock } from "@/lib/formatLyrics";
+import { useSetlist } from "@/contexts/SetlistContext";
 
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
 const FONT_LABELS = ["A", "A", "A"] as const;
@@ -17,9 +19,13 @@ export default function PresentView({ song }: { song: Song }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<number | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { setlist } = useSetlist();
 
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
   const entries = Object.entries(sections);
+  const setlistIndex = setlist.indexOf(song.id);
+  const prevSetlistId = setlistIndex > 0 ? setlist[setlistIndex - 1] : null;
+  const nextSetlistId = setlistIndex >= 0 && setlistIndex < setlist.length - 1 ? setlist[setlistIndex + 1] : null;
 
   /* auto-hide controls after 3s */
   const scheduleHide = useCallback(() => {
@@ -146,6 +152,17 @@ export default function PresentView({ song }: { song: Song }) {
         >
           {song.title}
         </span>
+        {setlistIndex >= 0 && (
+          <span
+            style={{
+              fontSize: "var(--text-xs)",
+              color: "rgba(236,234,228,0.45)",
+              whiteSpace: "nowrap",
+            }}
+          >
+            {setlistIndex + 1}/{setlist.length}
+          </span>
+        )}
       </div>
 
       {/* ── Lyrics (continuous scroll) ── */}
@@ -293,10 +310,57 @@ export default function PresentView({ song }: { song: Song }) {
             <Play size={16} fill="currentColor" strokeWidth={0} />
           )}
         </button>
+
+        {setlistIndex >= 0 && (
+          <>
+            {prevSetlistId ? (
+              <Link
+                href={`/present/${prevSetlistId}`}
+                onClick={(e) => e.stopPropagation()}
+                aria-label="Previous song in setlist"
+                style={setlistNavStyle}
+              >
+                <ChevronLeft size={18} aria-hidden="true" />
+              </Link>
+            ) : (
+              <span aria-hidden="true" style={{ ...setlistNavStyle, opacity: 0.35 }}>
+                <ChevronLeft size={18} />
+              </span>
+            )}
+
+            {nextSetlistId ? (
+              <Link
+                href={`/present/${nextSetlistId}`}
+                onClick={(e) => e.stopPropagation()}
+                aria-label="Next song in setlist"
+                style={setlistNavStyle}
+              >
+                <ChevronRight size={18} aria-hidden="true" />
+              </Link>
+            ) : (
+              <span aria-hidden="true" style={{ ...setlistNavStyle, opacity: 0.35 }}>
+                <ChevronRight size={18} />
+              </span>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
 }
+
+const setlistNavStyle: CSSProperties = {
+  background: "rgba(236,234,228,0.10)",
+  border: "1px solid rgba(236,234,228,0.08)",
+  borderRadius: "var(--radius-pill)",
+  color: "#ECEAE4",
+  width: 40,
+  height: 40,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+};
 
 function formatLabel(key: string): string {
   return key

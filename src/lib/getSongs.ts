@@ -30,13 +30,27 @@ export interface Song {
   added_by: string;
 }
 
+export type SongLibrarySource = "supabase" | "cache" | "bundled";
+
+export interface SongLibraryResult {
+  songs: Song[];
+  source: SongLibrarySource;
+}
+
 /** Minimal info for listing / cards. */
 export interface SongMeta {
   id: string;
   title: string;
   artist: string;
   church: string | null;
+  languages_available: Language[];
   tags: string[];
+  lyrics_search: string;
+}
+
+export interface SongMetaLibraryResult {
+  songs: SongMeta[];
+  source: SongLibrarySource;
 }
 
 /* ── DB row → Song mapper ── */
@@ -143,27 +157,34 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
 
 /* ── Public API ── */
 
-export async function getSongs(): Promise<Song[]> {
+export async function getSongLibrary(): Promise<SongLibraryResult> {
   // 1. Try Supabase (5s timeout so SSR never hangs when project is paused)
   const fromDb = await fetchFromSupabase();
   if (fromDb) {
     setCachedSongs(fromDb);
-    return fromDb;
+    return { songs: fromDb, source: "supabase" };
   }
 
   console.warn("[getSongs] Supabase unavailable — checking cache.");
 
   // 2. Fresh localStorage cache (within 7-day TTL)
   const fresh = getCachedSongs();
-  if (fresh) return fresh;
+  if (fresh) return { songs: fresh, source: "cache" };
 
   // 3. Stale localStorage cache — 200+ songs from a past session beats 35 local files
   const stale = getCachedSongs(true);
-  if (stale) return stale;
+  if (stale) return { songs: stale, source: "cache" };
 
   // 4. Last resort: 35 bundled local songs
   console.warn("[getSongs] No cache — falling back to bundled local songs.");
-  return LOCAL_SONGS.slice().sort((a, b) => a.title.localeCompare(b.title));
+  return {
+    songs: LOCAL_SONGS.slice().sort((a, b) => a.title.localeCompare(b.title)),
+    source: "bundled",
+  };
+}
+
+export async function getSongs(): Promise<Song[]> {
+  return (await getSongLibrary()).songs;
 }
 
 export async function getSongById(id: string): Promise<Song | null> {
@@ -204,14 +225,24 @@ export async function getSongsByChurch(church: string): Promise<Song[]> {
 /* ── Convenience helpers (used by pages) ── */
 
 export async function getAllSongMetas(): Promise<SongMeta[]> {
-  const songs = await getSongs();
-  return songs.map(({ id, title, artist, church, tags }) => ({
+  return (await getAllSongMetasWithSource()).songs;
+}
+
+export async function getAllSongMetasWithSource(): Promise<SongMetaLibraryResult> {
+  const library = await getSongLibrary();
+  const songs = library.songs.map(({ id, title, artist, church, languages_available, tags, lyrics }) => ({
     id,
     title,
     artist,
     church,
+    languages_available,
     tags,
+    lyrics_search: Object.values(lyrics)
+      .flatMap((sections) => Object.values(sections))
+      .join("\n"),
   }));
+
+  return { songs, source: library.source };
 }
 
 export async function getSongIds(): Promise<string[]> {

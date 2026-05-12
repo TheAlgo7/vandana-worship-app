@@ -207,7 +207,7 @@ export default function SettingsPage() {
                   fontWeight: 500,
                 }}
               >
-                Gaurav — The Algothrim
+                Gaurav - The Algothrim
               </a>
             </p>
             <p

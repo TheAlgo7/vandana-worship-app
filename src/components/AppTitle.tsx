@@ -7,9 +7,11 @@ export default function AppTitle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("vandana-default-lang");
-    if (stored === "hindi") setLang("hindi");
-    setMounted(true);
+    queueMicrotask(() => {
+      const stored = localStorage.getItem("vandana-default-lang");
+      if (stored === "hindi") setLang("hindi");
+      setMounted(true);
+    });
   }, []);
 
   const isHindi = mounted && lang === "hindi";

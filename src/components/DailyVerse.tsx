@@ -20,21 +20,23 @@ export default function DailyVerse() {
   } | null>(null);
 
   useEffect(() => {
-    const lang = localStorage.getItem("vandana-default-lang") ?? "hinglish";
-    const isHindi = lang === "hindi";
+    queueMicrotask(() => {
+      const lang = localStorage.getItem("vandana-default-lang") ?? "hinglish";
+      const isHindi = lang === "hindi";
 
-    const hour = new Date().getHours();
-    const period = getPeriod(hour);
-    const pool = verses[period];
+      const hour = new Date().getHours();
+      const period = getPeriod(hour);
+      const pool = verses[period];
 
-    const dayOfYear = Math.floor(Date.now() / 86400000);
-    const index = dayOfYear % pool.length;
-    const chosen = pool[index];
+      const dayOfYear = Math.floor(Date.now() / 86400000);
+      const index = dayOfYear % pool.length;
+      const chosen = pool[index];
 
-    setVerse({
-      text: isHindi ? chosen.hindi : chosen.english,
-      reference: isHindi ? chosen.reference_hindi : chosen.reference,
-      isHindi,
+      setVerse({
+        text: isHindi ? chosen.hindi : chosen.english,
+        reference: isHindi ? chosen.reference_hindi : chosen.reference,
+        isHindi,
+      });
     });
   }, []);
 
