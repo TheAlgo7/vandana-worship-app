@@ -29,7 +29,7 @@ function ThemeFadeOverlay() {
         inset: 0,
         zIndex: 999,
         pointerEvents: "none",
-        background: "var(--color-bg)",
+        background: "var(--bg-base)",
         opacity: 0,
       }}
     />

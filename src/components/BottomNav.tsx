@@ -55,11 +55,11 @@ export default function BottomNav() {
             >
               <span className={styles.icon}>
                 <Icon size={20} strokeWidth={active ? 2.1 : 1.7} aria-hidden />
+                {showDot && (
+                  <span aria-label="Unread updates" className={styles.dot} />
+                )}
               </span>
               <span className={styles.label}>{label}</span>
-              {showDot && (
-                <span aria-label="Unread updates" className={styles.dot} />
-              )}
             </Link>
           );
         })}

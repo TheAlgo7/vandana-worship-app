@@ -138,19 +138,25 @@ export default function HomeContent({ songs }: { songs: SongMeta[] }) {
                 ref={searchRef}
                 id="search-input"
                 type="search"
+                suppressHydrationWarning
                 placeholder="Search songs, artists..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 style={{
                   width: "100%",
-                  height: 52,
-                  padding: "0 16px 0 48px",
+                  height: "52px",
+                  paddingTop: 0,
+                  paddingRight: "16px",
+                  paddingBottom: 0,
+                  paddingLeft: "48px",
                   fontSize: "var(--text-sm)",
-                  background: "var(--bg-surface)",
+                  backgroundColor: "var(--bg-surface)",
                   color: "var(--text-primary)",
-                  border: "1px solid var(--border)",
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--border)",
                   borderRadius: "var(--radius-pill)",
-                  outline: "none",
+                  outlineStyle: "none",
                   boxShadow: "inset 0 1px 3px rgba(0,0,0,0.4)",
                   transition: "border-color var(--transition-fast), box-shadow var(--transition-fast)",
                 }}
