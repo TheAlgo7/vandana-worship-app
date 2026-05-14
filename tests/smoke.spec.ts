@@ -64,3 +64,17 @@ test("present mode opens and keeps core controls available", async ({ page }) =>
   await expect(page.getByRole("link", { name: /Exit/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Start auto-scroll" })).toBeVisible();
 });
+
+test("song sections keep worship order", async ({ page }) => {
+  await page.goto("/song/deewana-main-yeshu-ka");
+
+  const labels = await page.locator(".section-label").allTextContents();
+
+  expect(labels.slice(0, 5)).toEqual([
+    "Pre Chorus",
+    "Chorus",
+    "Verse 1",
+    "Verse 2",
+    "Bridge",
+  ]);
+});
