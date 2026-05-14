@@ -1,0 +1,42 @@
+{
+  "id": "chillakar-gaoonga",
+  "title": "Chillakar Gaoonga",
+  "artist": "Sheldon Bangera",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse1": "देखो क्रूस पर\nप्रेम की सज़ा\nउन हाथों पर\nनाम मेरा लिखा (x2)",
+      "chorus": "मुझसे प्रेम, येशू ने किया है\nदेख कर प्राण, प्रभु फिर से जी उठा है (x2)",
+      "bridge": "तो मैं चिल्लाकर गाऊँगा\nसब को ये सुनाऊँगा\nमुझे, प्रेम ने है पाया\nमेरा अतीत बीत गया",
+      "verse2": "महिमा में मैं\nनिश्चिंत जाऊँगा\nयेशू के संग मैं\nहरदम रहूँगा (x2)",
+      "repeat_chorus": "मुझसे प्रेम, येशू ने किया है\nदेख कर प्राण, प्रभु फिर से जी उठा है"
+    },
+    "hinglish": {
+      "verse1": "Dekho krus par\nPrem ki saza\nUn haathon par\nNaam mera likha (x2)",
+      "chorus": "Mujhse prem, Yeshu ne kiya hai\nDekhkar praan, Prabhu phir se ji utha hai (x2)",
+      "bridge": "Toh main chillakar gaoonga\nSab ko ye sunaunga\nMujhe, prem ne hai paaya\nMere aatit biti gaya",
+      "verse2": "Mahima main main\nNishchint jaaunga\nYeshu ke sang main\nHardam rahunga (x2)",
+      "repeat_chorus": "Mujhse prem, Yeshu ne kiya hai\nDekhkar praan, Prabhu phir se ji utha hai"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Chillakar Gaoonga lyrics in Hindi and Hinglish by Sheldon Bangera",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/chillakar-gaoonga"
+}

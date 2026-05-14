@@ -1,9 +1,24 @@
 [
   {
+    "id": "update-014",
+    "date": "2026-05-14",
+    "title": "New Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Chaak Par Apni Rakh Mujhe, Charano Mein Tere, Chattan, and Chillakar Gaoonga.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Chaak Par Apni Rakh Mujhe",
+      "Chale jaana hai door se door talak",
+      "Charano Mein Tere",
+      "Chattan",
+      "Chillakar Gaoonga"
+    ]
+  },
+  {
     "id": "update-013",
     "date": "2026-05-14",
-    "title": "5 B-List Songs Added",
-    "body": "Added and cleaned Hindi/Hinglish lyrics for Bhajan (Har Subah Har Shaam), Bharat, Bharpur Jeevan Tere Liye, Binti Sunle Yeshu Pyare, and Bolo Jai Milkar Jai.",
+    "title": "More Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Bhajan (Har Subah Har Shaam), Bharat, Bharpur Jeevan Tere Liye, Binti Sunle Yeshu Pyare, and Bolo Jai Milkar Jai.",
     "type": "songs_added",
     "song_count": 5,
     "song_names": [
@@ -39,7 +54,7 @@
   {
     "id": "update-010",
     "date": "2026-05-14",
-    "title": "10 Classic Hindi Worship Songs Added",
+    "title": "Hindi Worship Songs Added",
     "body": "Added a new batch of Hindi and Hinglish worship songs, including Aa Bhi Jaa, Aaja Re, Ab Aao Vishwasiyo, Ae Lashkaron Ke Rab, and more. These songs are available in the library and can be used in setlists and Present Mode.",
     "type": "songs_added",
     "song_count": 10,

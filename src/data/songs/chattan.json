@@ -1,0 +1,45 @@
+{
+  "id": "chattan",
+  "title": "Chattan",
+  "artist": "Bridge Music",
+  "church": "Bridge Music",
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse1": "भँवर के बीच में,\nतू कहता है थाम जा,\nतू मेरी ताकत है,\nतू ही मेरा ईमान",
+      "pre_chorus": "बीते कल में तू,\nसाथ मेरे था,\nआज भी मेरे,\nसाथ है कड़ा,",
+      "chorus": "उठे हुए उफानों में,\nतू ही मेरी चट्टान,\nबढ़ती हुई लहरों पे,\nतेरे कदमों के निशान",
+      "verse2": "बीमारियों में,\nतू कहता है उठ जा,\nयहोवा राफा,\nतू ही मेरी शिफा",
+      "bridge": "बीमारी, देख तेरा सर झुका,\nमुझ पर तेरा बस न चल सका,\nऐसा कोई शस्त्र न बना,\nजो कर सकेगा मेरा सामना",
+      "repeat_chorus": "उठे हुए उफानों में,\nतू ही मेरी चट्टान,\nबढ़ती हुई लहरों पे,\nतेरे कदमों के निशान"
+    },
+    "hinglish": {
+      "verse1": "Bhawar Ke Beech Me,\nTu Kehta Hai Tham Ja,\nTu Meri Taakat Hai,\nTu Hi Mera Imaan",
+      "pre_chorus": "Beetay Kal Me Tu,\nSaath Mere Tha,\nAaj Bhi Mere,\nSaath Hai Kada,",
+      "chorus": "Utt The Hue Uffano Mein,\nTu Hi Meri Chattan,\nBadti Hui Lehron Pe,\nTere Kadmo Ke Nishaan",
+      "verse2": "Binariyoon Mein,\nTu Kehta Hai Ut Ja,\nYehova Raafa,\nTu Hi Meri Shifa",
+      "bridge": "Bimiari, Dekh Tera Sar Jhuka,\nMujh Par Tera Bas Na Chal Saka,\nAisa Koi Shastr Na Bana,\nJo Kar Sakega Mera Samma",
+      "repeat_chorus": "Utt The Hue Uffano Mein,\nTu Hi Meri Chattan,\nBadti Hui Lehron Pe,\nTere Kadmo Ke Nishaan"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "bridge-music",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Chattan lyrics in Hindi and Hinglish by Bridge Music",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/chattan"
+}

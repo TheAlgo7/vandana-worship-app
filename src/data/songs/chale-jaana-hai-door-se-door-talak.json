@@ -1,0 +1,40 @@
+{
+  "id": "chale-jaana-hai-door-se-door-talak",
+  "title": "Chale jaana hai door se door talak",
+  "artist": "Bro. Yehoshua Kamalakar",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "चले जाना है दूर से दूर तलक\nलेके यीशु का प्यारा प्यारा नाम\nवो ही नाम, प्यारा प्यारा नाम",
+      "verse1": "जिस नाम से हमको मुक्ति मिली\nजिस नाम से हमको शांति मिली\nवो ही नाम, प्यारा प्यारा नाम",
+      "verse2": "जिस नाम से अंधे देखने लगे\nजिस नाम से लंगड़े चलने लगे\nवो ही नाम, प्यारा प्यारा नाम",
+      "verse3": "जिस नाम से हमको आनंद मिला\nउस आनंद को बाँटते चले जाना है\nवो ही नाम, प्यारा प्यारा नाम"
+    },
+    "hinglish": {
+      "chorus": "Chale jaana hai door se door talak\nLeke Yeshu ka pyaara pyaara naam\nWohi naam, pyaara pyaara naam",
+      "verse1": "Jis naam se humko mukti mili\nJis naam se humko shaanti mili\nWohi naam, pyaara pyaara naam",
+      "verse2": "Jis naam se andhe dekhne lage\nJis naam se langde chalne lage\nWohi naam, pyaara pyaara naam",
+      "verse3": "Jis naam se humko aanand mila\nUs aanand ko baante chale jaana hai\nWohi naam, pyaara pyaara naam"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Chale jaana hai door se door talak lyrics in Hindi and Hinglish by Bro. Yehoshua Kamalakar",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/chale-jaana-hai-door-se-door-talak"
+}

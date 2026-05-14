@@ -31,8 +31,13 @@ import bharat from "./songs/bharat.json";
 import bharpurJeevanTereLiye from "./songs/bharpur-jeevan-tere-liye.json";
 import bintiSunleYeshuPyare from "./songs/binti-sunle-yeshu-pyare.json";
 import boloJaiMilkarJai from "./songs/bolo-jai-milkar-jai.json";
+import chaakParApniRakhMujhe from "./songs/chaak-par-apni-rakh-mujhe.json";
 import chamkaSitara from "./songs/chamka-sitara.json";
+import chaleJaanaHaiDoorSeDoorTalak from "./songs/chale-jaana-hai-door-se-door-talak.json";
+import charanoMeinTere from "./songs/charano-mein-tere.json";
+import chattan from "./songs/chattan.json";
 import chooLeMujhe from "./songs/choo-le-mujhe.json";
+import chillakarGaoonga from "./songs/chillakar-gaoonga.json";
 import deewana from "./songs/deewana.json";
 import ekMahimaKaBaadal from "./songs/ek-mahima-ka-baadal.json";
 import haqTala from "./songs/haq-tala.json";
@@ -85,8 +90,13 @@ export const LOCAL_SONGS: Song[] = [
   bharpurJeevanTereLiye,
   bintiSunleYeshuPyare,
   boloJaiMilkarJai,
+  chaakParApniRakhMujhe,
   chamkaSitara,
+  chaleJaanaHaiDoorSeDoorTalak,
+  charanoMeinTere,
+  chattan,
   chooLeMujhe,
+  chillakarGaoonga,
   deewana,
   ekMahimaKaBaadal,
   haqTala,

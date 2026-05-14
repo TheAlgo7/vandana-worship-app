@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock } from "@/lib/formatLyrics";
+import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import { useSetlist } from "@/contexts/SetlistContext";
 
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
@@ -22,7 +23,7 @@ export default function PresentView({ song }: { song: Song }) {
   const { setlist } = useSetlist();
 
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
-  const entries = Object.entries(sections);
+  const entries = getOrderedSectionEntries(sections);
   const setlistIndex = setlist.indexOf(song.id);
   const prevSetlistId = setlistIndex > 0 ? setlist[setlistIndex - 1] : null;
   const nextSetlistId = setlistIndex >= 0 && setlistIndex < setlist.length - 1 ? setlist[setlistIndex + 1] : null;
@@ -190,7 +191,7 @@ export default function PresentView({ song }: { song: Song }) {
                 marginBottom: 10,
               }}
             >
-              {formatLabel(key)}
+              {formatSectionLabel(key)}
             </span>
             <p
               style={{
@@ -361,12 +362,3 @@ const setlistNavStyle: CSSProperties = {
   justifyContent: "center",
   cursor: "pointer",
 };
-
-function formatLabel(key: string): string {
-  return key
-    .replace(/_/g, " ")
-    .replace(/([0-9]+)/g, " $1")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}

@@ -1,0 +1,40 @@
+{
+  "id": "charano-mein-tere",
+  "title": "Charano Mein Tere",
+  "artist": "Amit Kamble",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse1": "चरणों में तेरे हम आते हैं\nसारा आदर तुझको देते हैं\nशीश हम झुकते हैं\nवंदना करते हैं",
+      "chorus": "हलेलूयाह हलेलूयाह, आमीन",
+      "verse2": "हमको यकीन है, के तू है खुदा\nइस कारण ही, करते हैं सजदा\nशीश हम झुकते हैं\nवंदना करते हैं",
+      "verse3": "धन्य तुझे हम कहते हैं आज\nसारे जहाँ का, है तू सरताज\nभेंट हम चढ़ाते हैं\nवंदना करते हैं"
+    },
+    "hinglish": {
+      "verse1": "Charano mein tere hum aatein hai\nSaara aadar tujhko dete hai\nSheesh hum jhukate hai\nVandana kartein hai",
+      "chorus": "Hallelujah Hallelujah, Amen",
+      "verse2": "Humko yakeen hai, ke Tu hai Khuda\nIss kaaran hi, kartein sajdaa\nSheesh hum jhukate hai\nVandana kartein hai",
+      "verse3": "Dhanya tujhe hum kehte hai aaj\nSaare jahaan ka, hai Tu sartaaj\nBhet hum chadhaate hai\nVandana kartein hai"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Charano Mein Tere lyrics in Hindi and Hinglish by Amit Kamble",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/charano-mein-tere"
+}

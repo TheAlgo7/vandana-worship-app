@@ -24,16 +24,15 @@ interface UpdateEntry {
 type UpdateTheme = {
   label: string;
   icon: typeof Music2;
-  tone: string;
 };
 
 const UPDATE_THEMES: Record<string, UpdateTheme> = {
-  songs_added: { label: "Songs", icon: Music2, tone: "#7FC7A6" },
-  songs_updated: { label: "Lyrics", icon: CheckCircle2, tone: "#8FB7FF" },
-  feature: { label: "Feature", icon: Sparkles, tone: "#C4AA7E" },
-  improvement: { label: "Polish", icon: Wrench, tone: "#BFA7FF" },
-  fix: { label: "Fix", icon: CheckCircle2, tone: "#F3B36A" },
-  metadata: { label: "Credits", icon: Info, tone: "#8ED8E8" },
+  songs_added: { label: "Songs", icon: Music2 },
+  songs_updated: { label: "Lyrics", icon: CheckCircle2 },
+  feature: { label: "Feature", icon: Sparkles },
+  improvement: { label: "Polish", icon: Wrench },
+  fix: { label: "Fix", icon: CheckCircle2 },
+  metadata: { label: "Credits", icon: Info },
 };
 
 function formatDate(iso: string): string {
@@ -47,7 +46,7 @@ function formatMonth(iso: string): string {
 }
 
 function getTheme(type: string): UpdateTheme {
-  return UPDATE_THEMES[type] ?? { label: "Update", icon: Bell, tone: "var(--accent)" };
+  return UPDATE_THEMES[type] ?? { label: "Update", icon: Bell };
 }
 
 export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) {
@@ -127,7 +126,7 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
         style={{
           padding: "18px 20px",
           paddingBottom: "calc(var(--nav-clearance) + 18px)",
-          maxWidth: "40rem",
+          maxWidth: "42rem",
           margin: "0 auto",
         }}
       >
@@ -171,18 +170,21 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
         ) : (
           <>
             <section
+              aria-label="Updates summary"
               style={{
-                display: "grid",
-                gridTemplateColumns: "1fr 1fr",
-                gap: 10,
-                marginBottom: 18,
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+                marginBottom: 22,
+                padding: "2px 0 16px",
+                borderBottom: "1px solid var(--border-subtle)",
               }}
             >
-              <SummaryTile label="Library updates" value={updates.length.toString()} />
-              <SummaryTile label="Songs added" value={totalSongs.toString()} />
+              <SummaryStat label="Published notes" value={updates.length.toString()} />
+              <SummaryStat label="Songs added" value={totalSongs.toString()} />
             </section>
 
-            <section style={{ display: "grid", gap: 12 }}>
+            <section style={{ display: "grid", gap: 2 }}>
               {updates.map((update, index) => {
                 const theme = getTheme(update.type);
                 const Icon = theme.icon;
@@ -209,13 +211,10 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                       style={{
                         position: "relative",
                         display: "grid",
-                        gridTemplateColumns: "34px 1fr",
-                        gap: 12,
-                        padding: 14,
-                        background: "var(--bg-surface)",
-                        border: "1px solid var(--border)",
-                        borderRadius: 8,
-                        boxShadow: "var(--shadow-sm)",
+                        gridTemplateColumns: "30px 1fr",
+                        gap: 13,
+                        padding: "14px 0 16px",
+                        borderBottom: "1px solid var(--border-subtle)",
                       }}
                     >
                       <div
@@ -224,14 +223,15 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                           display: "flex",
                           alignItems: "center",
                           justifyContent: "center",
-                          width: 34,
-                          height: 34,
+                          width: 30,
+                          height: 30,
                           borderRadius: "var(--radius-pill)",
-                          background: `color-mix(in srgb, ${theme.tone} 16%, transparent)`,
-                          color: theme.tone,
+                          background: "var(--accent-dim)",
+                          border: "1px solid color-mix(in srgb, var(--accent) 18%, transparent)",
+                          color: "var(--accent)",
                         }}
                       >
-                        <Icon size={17} strokeWidth={1.8} />
+                        <Icon size={15} strokeWidth={1.75} />
                       </div>
 
                       <div style={{ minWidth: 0 }}>
@@ -248,10 +248,12 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                             <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                               <span
                                 style={{
-                                  color: theme.tone,
+                                  color: "var(--accent)",
                                   fontSize: "var(--text-xs)",
                                   fontWeight: 700,
                                   lineHeight: 1,
+                                  letterSpacing: "0.05em",
+                                  textTransform: "uppercase",
                                 }}
                               >
                                 {theme.label}
@@ -259,13 +261,13 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                               {update.song_count > 0 && (
                                 <span
                                   style={{
-                                    color: "var(--accent)",
-                                    background: "var(--accent-dim)",
-                                    border: "1px solid color-mix(in srgb, var(--accent) 26%, transparent)",
+                                    color: "var(--text-secondary)",
+                                    background: "transparent",
+                                    border: "1px solid var(--border)",
                                     borderRadius: "var(--radius-pill)",
-                                    padding: "2px 8px",
+                                    padding: "2px 7px",
                                     fontSize: "var(--text-xs)",
-                                    fontWeight: 700,
+                                    fontWeight: 600,
                                     lineHeight: 1.35,
                                   }}
                                 >
@@ -281,7 +283,7 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                                 fontWeight: 700,
                                 lineHeight: 1.35,
                                 letterSpacing: 0,
-                                marginTop: 5,
+                                marginTop: 6,
                               }}
                             >
                               {update.title}
@@ -329,7 +331,7 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                   color: "var(--text-secondary)",
-                                  background: "var(--bg-elevated)",
+                                  background: "color-mix(in srgb, var(--bg-elevated) 58%, transparent)",
                                   border: "1px solid var(--border-subtle)",
                                   borderRadius: "var(--radius-pill)",
                                   padding: "4px 9px",
@@ -356,14 +358,11 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
   );
 }
 
-function SummaryTile({ label, value }: { label: string; value: string }) {
+function SummaryStat({ label, value }: { label: string; value: string }) {
   return (
     <div
       style={{
-        background: "var(--bg-surface)",
-        border: "1px solid var(--border)",
-        borderRadius: 8,
-        padding: "12px 14px",
+        minWidth: 0,
       }}
     >
       <p
@@ -373,7 +372,7 @@ function SummaryTile({ label, value }: { label: string; value: string }) {
           fontWeight: 700,
           letterSpacing: "0.08em",
           textTransform: "uppercase",
-          marginBottom: 5,
+          marginBottom: 4,
         }}
       >
         {label}
@@ -382,7 +381,7 @@ function SummaryTile({ label, value }: { label: string; value: string }) {
         style={{
           color: "var(--text-primary)",
           fontFamily: "var(--font-display)",
-          fontSize: "var(--text-2xl)",
+          fontSize: "var(--text-xl)",
           fontWeight: 600,
           lineHeight: 1,
           margin: 0,

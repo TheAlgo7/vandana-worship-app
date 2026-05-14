@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, Heart, ListPlus, ListX, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock } from "@/lib/formatLyrics";
+import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 import { useFavourites } from "@/contexts/FavouritesContext";
@@ -26,6 +27,7 @@ export default function SongView({ song }: SongViewProps) {
 
   // Lyrics sections
   const sections = song.lyrics[lang] || {};
+  const sectionEntries = getOrderedSectionEntries(sections);
 
   // Track recently viewed
   useEffect(() => {
@@ -294,9 +296,9 @@ export default function SongView({ song }: SongViewProps) {
 
       {/* Lyrics */}
       <div className="lyrics-text" lang={lang === "hindi" ? "hi" : "en"}>
-        {Object.entries(sections).map(([key, text]) => (
+        {sectionEntries.map(([key, text]) => (
           <section key={key} style={{ marginBottom: 28 }}>
-            <span className="section-label">{formatLabel(key)}</span>
+            <span className="section-label">{formatSectionLabel(key)}</span>
             <p style={{ whiteSpace: "pre-line" }}>{formatBlock(text)}</p>
           </section>
         ))}
@@ -376,11 +378,3 @@ export default function SongView({ song }: SongViewProps) {
   );
 }
 
-function formatLabel(key: string): string {
-  return key
-    .replace(/_/g, " ")
-    .replace(/([0-9]+)/g, " $1")
-    .replace(/\s+/g, " ")
-    .trim()
-    .replace(/\b\w/g, (c) => c.toUpperCase());
-}
