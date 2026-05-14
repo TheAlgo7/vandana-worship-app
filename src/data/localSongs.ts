@@ -65,6 +65,7 @@ import janmaHaiEmmanuel from "./songs/janma-hai-emmanuel.json";
 import jeeUthaHaiMasiha from "./songs/jee-utha-hai-masiha.json";
 import jhuktaSinghasanPe from "./songs/jhukta-singhasan-pe.json";
 import joKuchhWoTumSeKahe from "./songs/jo-kuchh-wo-tum-se-kahe.json";
+import jungliDarkhtonKeDarmiyan from "./songs/jungli-darkhton-ke-darmiyan.json";
 import kadoshKadosh from "./songs/kadosh-kadosh.json";
 import khazana from "./songs/khazana.json";
 import kuchNaya from "./songs/kuch-naya.json";
@@ -144,6 +145,7 @@ export const LOCAL_SONGS: Song[] = [
   jeeUthaHaiMasiha,
   jhuktaSinghasanPe,
   joKuchhWoTumSeKahe,
+  jungliDarkhtonKeDarmiyan,
   kadoshKadosh,
   khazana,
   kuchNaya,

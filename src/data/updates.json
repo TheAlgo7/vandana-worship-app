@@ -1,5 +1,16 @@
 [
   {
+    "id": "update-018",
+    "date": "2026-05-14",
+    "title": "Jungli Darkhton Ke Darmiyan Added",
+    "body": "Added Hindi/Hinglish lyrics for Jungli Darkhton Ke Darmiyan from the reviewed screenshots, so it is now available in the library, setlists, and Present Mode.",
+    "type": "songs_added",
+    "song_count": 1,
+    "song_names": [
+      "Jungli Darkhton Ke Darmiyan"
+    ]
+  },
+  {
     "id": "update-017",
     "date": "2026-05-14",
     "title": "Fresh Worship Songs Added",
