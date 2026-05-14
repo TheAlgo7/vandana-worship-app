@@ -1,0 +1,38 @@
+{
+  "id": "aasmaano-mein-hoga",
+  "title": "Aasmaano mein hoga",
+  "artist": "Jay Moses",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse1": "आसमानों में होगा, मेरा भी एक मकान\nउसमें रहेंगे हम जाकर, छोड़ेंगे जब ये जहाँ",
+      "verse2": "मैं काहे घबराऊँ, मेरा भरोसा वही,\nउसने किया है वादा, वादा है सच्चा सही,\nजगह बनाऊँ जाके, अपने पिता के यहाँ",
+      "verse3": "लिखा गया मेमने की, पुस्तक में मेरा भी नाम\nमुझ पापी पर हुआ था, उसके पूजन का ये काम\nउसने बचाया है मुझको, वो है बड़ा मेहरबान",
+      "verse4": "झूठे जहाँ में तसल्ली, कभी नहीं पाओगे\nयीशु के पास बोझ लाओ, तभी आराम पाओगे\nउसके संग रहेंगे हम जाके, छोड़ेंगे जब ये जहाँ"
+    },
+    "hinglish": {
+      "verse1": "Aasmaano mein hoga, mera bhi ek makaan\nUsmein rahenge hum jaakar, chhodenge jab ye jahaan",
+      "verse2": "Main kaahe ghabraaoon, mera bharosa wahi,\nUsne kiya hai wada, wada hai saccha sahi,\nJagah banaoonga jaake, apne Pita ke yahaan",
+      "verse3": "Likha gaya memne ki, pustak mein mera bhi naam\nMujh paapi par hua tha, uske poojan ka ye kaam\nUsne bachaya hai mujhko, wo hai bada meherbaan",
+      "verse4": "Jhoothe jahaan mein tasalli, kabhi nahin paaoge\nYeshu ke paas bojh laao, tabhi aaraam paaoge\nUske sang rahenge hum jaake, chhodenge jab ye jahaan"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish"
+  ],
+  "seo_description": "Aasmaano mein hoga lyrics in hindi and hinglish by Jay Moses",
+  "added_by": "Gaurav | Vandana"
+}

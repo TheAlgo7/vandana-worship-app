@@ -13,13 +13,16 @@ import aaBhiJaa from "./songs/aa-bhi-jaa.json";
 import aajHaiMahaAnandKaSusamay from "./songs/aaj-hai-maha-anand-ka-susamay.json";
 import aajKaDinYahowaNeBanayaHai from "./songs/aaj-ka-din-yahowa-ne-banaya-hai.json";
 import aajaRe from "./songs/aaja-re.json";
+import aasmaanoMeinHoga from "./songs/aasmaano-mein-hoga.json";
 import aashaMeri from "./songs/aasha-meri.json";
 import aashiqTera from "./songs/aashiq-tera.json";
 import aatmaKiVedi from "./songs/aatma-ki-vedi.json";
+import aatmaRe from "./songs/aatma-re.json";
 import abrahamKaPrabhu from "./songs/abraham-ka-prabhu.json";
 import abAaoVishwasiyo from "./songs/ab-aao-vishwasiyo.json";
 import aeLashkaronKeRab from "./songs/ae-lashkaron-ke-rab.json";
 import aeMereDilJhoomKeGaa from "./songs/ae-mere-dil-jhoom-ke-gaa.json";
+import anandKiBharpuri from "./songs/anand-ki-bharpuri.json";
 import aaoHumYahovaKaDhanyavaadKarein from "./songs/aao-hum-yahova-ka-dhanyavaad-karein.json";
 import aurChahiye from "./songs/aur-chahiye.json";
 import aurKisiBaatKiBadaaiNaKarein from "./songs/aur-kisi-baat-ki-badaai-na-karein.json";
@@ -60,13 +63,16 @@ export const LOCAL_SONGS: Song[] = [
   aajHaiMahaAnandKaSusamay,
   aajKaDinYahowaNeBanayaHai,
   aajaRe,
+  aasmaanoMeinHoga,
   aashaMeri,
   aashiqTera,
   aatmaKiVedi,
+  aatmaRe,
   abrahamKaPrabhu,
   abAaoVishwasiyo,
   aeLashkaronKeRab,
   aeMereDilJhoomKeGaa,
+  anandKiBharpuri,
   aaoHumYahovaKaDhanyavaadKarein,
   aurChahiye,
   aurKisiBaatKiBadaaiNaKarein,

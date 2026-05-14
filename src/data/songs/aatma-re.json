@@ -1,0 +1,38 @@
+{
+  "id": "aatma-re",
+  "title": "Aatmare",
+  "artist": "Sheldon Bangera",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "आत्मा रे, पवित्र आत्मा रे\nयेशू की शक्ति को ला\nआत्मा रे, पवित्र आत्मा रे\nत्रिएक उपस्थिति ला",
+      "verse1": "जहाँ दो या तीन इकट्ठे हुए\nवहाँ येशू ने वादा किया\nबोले तू आएगा सामर्थ शक्ति में\nदर्शन लाएगा",
+      "verse2": "तेरी जैसी शक्ति नहीं कोई\nसब तू ही रचाया\nसब आत्माएँ येशू सिंहासन\nमाथा टेकते जा",
+      "bridge": "मिलकर हम एक मन से पुकारें\nदेखे तेरा जलाल\nगिर जाए जंजीरे सारी\nबरसा दे वो आग"
+    },
+    "hinglish": {
+      "chorus": "Aatmare, Pavitra Aatmare\nYeshu ki shakti ko la\nAatmare, Pavitra Aatmare\nTriek upastiti la",
+      "verse1": "Jahan do ya teen ekhate huye\nWah Yeshu ne wada kiya\nBole tu aayega samarth shakti me\nDarshan laayega",
+      "verse2": "Teri jesi shakti nahi koyi\nSab tune hai rachaya\nSab aatmaye Yeshu sinhasan\nMatha tekhte ja",
+      "bridge": "Milkar hum ek maan se pukaare\nDekhe tera jalaal\nGir jaye zanzire saari\nBarsa de wo aag"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish"
+  ],
+  "seo_description": "Aatmare lyrics in hindi and hinglish by Sheldon Bangera",
+  "added_by": "Gaurav | Vandana"
+}

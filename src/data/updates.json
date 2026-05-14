@@ -1,5 +1,18 @@
 [
   {
+    "id": "update-012",
+    "date": "2026-05-14",
+    "title": "Screenshot Lyrics Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics from reviewed screenshots for Aasmaano mein hoga, Aatmare, and Anand Ki Bharpuri.",
+    "type": "songs_updated",
+    "song_count": 3,
+    "song_names": [
+      "Aasmaano mein hoga",
+      "Aatmare",
+      "Anand Ki Bharpuri"
+    ]
+  },
+  {
     "id": "update-011",
     "date": "2026-05-14",
     "title": "Song Credits Refined",

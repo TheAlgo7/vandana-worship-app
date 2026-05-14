@@ -1,0 +1,40 @@
+{
+  "id": "anand-ki-bharpuri",
+  "title": "Anand Ki Bharpuri",
+  "artist": "Sheldon Bangera",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "ये जीवन है तेरा प्रभुजी\nतू ही राज करे, हो तेरी मर्जी\nसंग तेरे, हम गाते जाए\nआए मुसीबत, मुस्कुराए",
+      "verse1": "तेरे भवन में आनंद की भरपूरी है\nयेशु तू संग तो जीवन में संतुष्टि है",
+      "verse2": "क्रूस पर सब हुए समाप्ति\nहरा शैतान, मिली पापों से मुक्ति\nतेरे मौत से मिली है आजादी\nरोक सके ना हमें अब कोई शक्ति",
+      "verse3": "तेरे भवन में आनंद की भरपूरी है\nयेशु तू संग तो जीवन में संतुष्टि है",
+      "bridge": "भरपूरी भरपूरी, आनंद की भरपूरी\nसंतुष्टि संतुष्टि, येशु में संतुष्टि\n\nमेरा प्याला उमड़ उमड़ते भरे\nमेरा जीवन येशु, तू खुशी से भरे"
+    },
+    "hinglish": {
+      "chorus": "Ye jeevan hai tera Prabhuji\nTu hi raaj kare, ho teri marzi\nSang tere, hum gaate jaye\nAayee musibat, muskuraye",
+      "verse1": "Tere bhavan mai anand ki bharpuri hai\nYeshu tu sang tho jeevan mai santusti hai",
+      "verse2": "Krus par sab huye samapti\nHara shaitan, mili papo se mukti\nTere maut se mile hai azaadi\nRok sakeena hume ab koyi shakti",
+      "verse3": "Tere bhavan mai anand ki bharpuri hai\nYeshu tu sang tho jeevan mai santusti hai",
+      "bridge": "Bharpuri bharpuri, anand ki bharpuri\nSantusti santusti, Yeshu mai santusti\n\nMera pyala umad umadte bhare\nMera jeevan Yeshu, tu khushi se bhare"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish"
+  ],
+  "seo_description": "Anand Ki Bharpuri lyrics in hindi and hinglish by Sheldon Bangera",
+  "added_by": "Gaurav | Vandana"
+}
