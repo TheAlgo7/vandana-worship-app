@@ -39,8 +39,8 @@ export default function FontSizeControl() {
         onClick={() => pick(0)}
         aria-label="Small font size"
         style={{
-          width: 30,
-          height: 30,
+          width: 44,
+          height: 44,
           borderRadius: "var(--radius-pill)",
           border: "1px solid",
           borderColor: index === 0 ? "var(--accent)" : "var(--border)",
@@ -54,14 +54,14 @@ export default function FontSizeControl() {
           fontWeight: 600,
         }}
       >
-        A−
+        A-
       </button>
       <button
         onClick={() => pick(1)}
         aria-label="Medium font size"
         style={{
-          width: 30,
-          height: 30,
+          width: 44,
+          height: 44,
           borderRadius: "var(--radius-pill)",
           border: "1px solid",
           borderColor: index === 1 ? "var(--accent)" : "var(--border)",
@@ -81,8 +81,8 @@ export default function FontSizeControl() {
         onClick={() => pick(2)}
         aria-label="Large font size"
         style={{
-          width: 30,
-          height: 30,
+          width: 44,
+          height: 44,
           borderRadius: "var(--radius-pill)",
           border: "1px solid",
           borderColor: index === 2 ? "var(--accent)" : "var(--border)",

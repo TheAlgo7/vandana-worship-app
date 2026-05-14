@@ -106,8 +106,8 @@ export default function PresentView({ song }: { song: Song }) {
       ref={scrollRef}
       onClick={handleTap}
       style={{
-        background: "#08080A",
-        color: "#ECEAE4",
+        background: "var(--present-bg)",
+        color: "var(--present-text)",
         minHeight: "100dvh",
         overflowY: "auto",
         WebkitOverflowScrolling: "touch",
@@ -126,7 +126,7 @@ export default function PresentView({ song }: { song: Song }) {
           alignItems: "center",
           padding: "10px 16px",
           paddingTop: "calc(10px + env(safe-area-inset-top, 0px))",
-          background: "linear-gradient(to bottom, rgba(8,8,10,0.85), transparent)",
+          background: "var(--present-overlay-top)",
           opacity: controlOpacity,
           pointerEvents: controlPointer,
           transition: "opacity var(--transition-fast) ease",
@@ -136,7 +136,7 @@ export default function PresentView({ song }: { song: Song }) {
         <Link
           href={`/song/${song.id}`}
           style={{
-            color: "#ECEAE4",
+            color: "var(--present-text)",
             textDecoration: "none",
             fontSize: "var(--text-sm)",
             padding: "6px 10px",
@@ -157,7 +157,7 @@ export default function PresentView({ song }: { song: Song }) {
           <span
             style={{
               fontSize: "var(--text-xs)",
-              color: "rgba(236,234,228,0.45)",
+              color: "var(--present-control-muted)",
               whiteSpace: "nowrap",
             }}
           >
@@ -187,7 +187,7 @@ export default function PresentView({ song }: { song: Song }) {
                 fontWeight: 600,
                 textTransform: "uppercase",
                 letterSpacing: "0.12em",
-                color: "rgba(236,234,228,0.25)",
+                color: "var(--present-label)",
                 marginBottom: 10,
               }}
             >
@@ -224,7 +224,7 @@ export default function PresentView({ song }: { song: Song }) {
           gap: 14,
           padding: "10px 16px",
           paddingBottom: "calc(10px + env(safe-area-inset-bottom, 0px))",
-          background: "linear-gradient(to top, rgba(8,8,10,0.85), transparent)",
+          background: "var(--present-overlay-bottom)",
           opacity: controlOpacity,
           pointerEvents: controlPointer,
           transition: "opacity var(--transition-fast) ease",
@@ -239,12 +239,12 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           aria-label="Change font size"
           style={{
-            background: "rgba(236,234,228,0.10)",
-            border: "1px solid rgba(236,234,228,0.08)",
+            background: "var(--present-control-bg)",
+            border: "1px solid var(--present-control-border)",
             borderRadius: "var(--radius-pill)",
-            color: "#ECEAE4",
-            width: 40,
-            height: 40,
+            color: "var(--present-text)",
+            width: 44,
+            height: 44,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -265,12 +265,12 @@ export default function PresentView({ song }: { song: Song }) {
             }}
             aria-label="Switch language"
             style={{
-              background: "rgba(236,234,228,0.10)",
-              border: "1px solid rgba(236,234,228,0.08)",
+              background: "var(--present-control-bg)",
+              border: "1px solid var(--present-control-border)",
               borderRadius: "var(--radius-pill)",
-              color: "#ECEAE4",
+              color: "var(--present-text)",
               padding: "6px 16px",
-              height: 40,
+              minHeight: 44,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -292,12 +292,12 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           aria-label={autoScroll ? "Stop auto-scroll" : "Start auto-scroll"}
           style={{
-            background: autoScroll ? "rgba(196,170,126,0.25)" : "rgba(236,234,228,0.10)",
-            border: autoScroll ? "1px solid rgba(196,170,126,0.3)" : "1px solid rgba(236,234,228,0.08)",
+            background: autoScroll ? "rgba(196,170,126,0.25)" : "var(--present-control-bg)",
+            border: autoScroll ? "1px solid rgba(196,170,126,0.3)" : "1px solid var(--present-control-border)",
             borderRadius: "var(--radius-pill)",
-            color: "#ECEAE4",
-            width: 40,
-            height: 40,
+            color: "var(--present-text)",
+            width: 44,
+            height: 44,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -351,12 +351,12 @@ export default function PresentView({ song }: { song: Song }) {
 }
 
 const setlistNavStyle: CSSProperties = {
-  background: "rgba(236,234,228,0.10)",
-  border: "1px solid rgba(236,234,228,0.08)",
+  background: "var(--present-control-bg)",
+  border: "1px solid var(--present-control-border)",
   borderRadius: "var(--radius-pill)",
-  color: "#ECEAE4",
-  width: 40,
-  height: 40,
+  color: "var(--present-text)",
+  width: 44,
+  height: 44,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",

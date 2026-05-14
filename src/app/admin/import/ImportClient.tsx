@@ -187,7 +187,7 @@ export default function ImportClient() {
                 }}
               >
                 <strong style={{ color: "var(--text-primary)" }}>{entry.title}</strong>
-                <span style={{ marginLeft: 8, color: entry.status === "invalid" ? "#d38f8f" : "var(--accent)" }}>
+                <span style={{ marginLeft: 8, color: entry.status === "invalid" ? "var(--status-error)" : "var(--accent)" }}>
                   {entry.status}
                 </span>
                 {(entry.duplicateOf || entry.reason || entry.file) && (

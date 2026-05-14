@@ -372,7 +372,7 @@ export default function HomeContent({
                   <button
                     type="button"
                     onClick={clearRecentSongs}
-                    style={{ border: "none", background: "transparent", color: "var(--accent)", fontSize: "var(--text-xs)", fontWeight: 600, cursor: "pointer", padding: "4px 0" }}
+                    style={{ border: "none", background: "transparent", color: "var(--accent)", fontSize: "var(--text-xs)", fontWeight: 600, cursor: "pointer", minHeight: 44, padding: "0 4px" }}
                   >
                     Clear
                   </button>
@@ -382,7 +382,7 @@ export default function HomeContent({
                     <Link
                       key={s.id}
                       href={`/song/${s.id}`}
-                      style={{ display: "flex", alignItems: "center", minHeight: 40, padding: "0 12px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", textDecoration: "none", transition: "border-color var(--transition-fast)" }}
+                      style={{ display: "flex", alignItems: "center", minHeight: 44, padding: "0 12px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)", textDecoration: "none", transition: "border-color var(--transition-fast)" }}
                       onMouseEnter={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
                       onMouseLeave={(e) => (e.currentTarget.style.borderColor = "var(--border-subtle)")}
                     >
