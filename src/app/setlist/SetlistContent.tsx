@@ -90,7 +90,7 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
           </Link>
         </div>
       ) : (
-        <main style={{ padding: "20px 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
+        <main className="page-list-main" style={{ padding: "20px 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16 }}>
             {firstSong && (
               <Link

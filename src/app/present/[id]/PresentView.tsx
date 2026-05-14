@@ -136,10 +136,14 @@ export default function PresentView({ song }: { song: Song }) {
         <Link
           href={`/song/${song.id}`}
           style={{
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minHeight: 44,
             color: "var(--present-text)",
             textDecoration: "none",
             fontSize: "var(--text-sm)",
-            padding: "6px 10px",
+            padding: "0 12px",
           }}
           onClick={(e) => e.stopPropagation()}
         >

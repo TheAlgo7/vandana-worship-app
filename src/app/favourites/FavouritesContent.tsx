@@ -88,7 +88,7 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
           </Link>
         </div>
       ) : (
-        <main style={{ padding: "0 20px", paddingTop: 20, paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
+        <main className="page-list-main" style={{ padding: "0 20px", paddingTop: 20, paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
           {favSongs.map((song) => (
             <SongCard
               key={song.id}

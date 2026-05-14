@@ -58,7 +58,7 @@ export default function SettingsPage() {
         </h1>
       </header>
 
-      <div style={{ padding: "24px 20px", maxWidth: 560, margin: "0 auto" }}>
+      <main className="settings-main" style={{ padding: "24px 20px", maxWidth: 560, margin: "0 auto" }}>
         {/* ── Appearance ── */}
         <section style={{ marginBottom: 36 }}>
           <p className="section-label">Appearance</p>
@@ -202,6 +202,9 @@ export default function SettingsPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  minHeight: 44,
                   color: "var(--accent)",
                   textDecoration: "none",
                   fontWeight: 500,
@@ -222,7 +225,7 @@ export default function SettingsPage() {
             </p>
           </div>
         </section>
-      </div>
+      </main>
 
       <BottomNav />
     </div>

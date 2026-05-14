@@ -54,7 +54,7 @@ export default function SongView({ song }: SongViewProps) {
 
   // Share handler
   const handleShare = useCallback(async () => {
-    const songCredit = [song.artist, song.church].filter(Boolean).join(" · ");
+    const songCredit = [song.artist, song.church].filter(Boolean).join(", ");
     const shareText = [
       `${song.title} lyrics`,
       songCredit ? `By ${songCredit}` : null,
@@ -83,22 +83,14 @@ export default function SongView({ song }: SongViewProps) {
   }, [languageLabel, song.artist, song.church, song.title]);
 
   return (
-    <div style={{ position: "relative", minHeight: "100vh", padding: 20, paddingBottom: "calc(var(--nav-clearance) + 20px)", maxWidth: "720px", margin: "0 auto" }}>
+    <div className="song-view-shell">
       {/* Top bar */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 6,
-          marginBottom: 12,
-        }}
-      >
+      <div className="song-topbar">
         {/* Back button */}
         <Link
           href="/"
+          className="song-back-link"
           style={{
-            display: "flex",
-            alignItems: "center",
             gap: 4,
             color: "var(--text-secondary)",
             textDecoration: "none",
@@ -112,9 +104,8 @@ export default function SongView({ song }: SongViewProps) {
 
         {/* Song title in top bar when scrolled */}
         <span
+          className="song-topbar-title"
           style={{
-            flex: 1,
-            textAlign: "center",
             fontFamily: "var(--font-display)",
             fontSize: "var(--text-sm)",
             fontWeight: 600,
@@ -124,7 +115,6 @@ export default function SongView({ song }: SongViewProps) {
             overflow: "hidden",
             textOverflow: "ellipsis",
             whiteSpace: "nowrap",
-            padding: "0 12px",
           }}
         >
           {song.title}
@@ -197,8 +187,8 @@ export default function SongView({ song }: SongViewProps) {
         {/* Present button always visible */}
         <Link
           href={`/present/${song.id}`}
+          className="song-present-link"
           style={{
-            padding: "6px 14px",
             borderRadius: "var(--radius-pill)",
             background: "var(--accent)",
             color: "var(--bg-base)",
@@ -235,6 +225,8 @@ export default function SongView({ song }: SongViewProps) {
         }}
       />
 
+      <div className="song-view-grid">
+        <div className="song-reading-column">
       {/* Header */}
       <header style={{ marginBottom: 24, marginTop: 8 }}>
         {/* Skeuomorphic 4-pointed star */}
@@ -272,7 +264,7 @@ export default function SongView({ song }: SongViewProps) {
           }}
         >
           {song.artist}
-          {song.church ? ` · ${song.church}` : ""}
+          {song.church ? `, ${song.church}` : ""}
         </p>
         <hr
           style={{
@@ -362,6 +354,69 @@ export default function SongView({ song }: SongViewProps) {
           )}
         </div>
       )}
+
+        </div>
+
+        <aside className="song-side-panel" aria-label="Song details">
+          <div
+            style={{
+              background: "var(--bg-surface)",
+              border: "1px solid var(--border)",
+              borderRadius: "var(--radius-lg)",
+              padding: 18,
+            }}
+          >
+            <p className="section-label" style={{ marginBottom: 14 }}>Song Details</p>
+            <div style={{ display: "grid", gap: 14 }}>
+              <div>
+                <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+                  Artist
+                </p>
+                <p style={{ color: "var(--text-primary)", fontSize: "var(--text-sm)", fontWeight: 600, margin: 0 }}>
+                  {song.artist}
+                </p>
+              </div>
+              {song.church && (
+                <div>
+                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+                    Ministry
+                  </p>
+                  <p style={{ color: "var(--text-primary)", fontSize: "var(--text-sm)", fontWeight: 600, margin: 0 }}>
+                    {song.church}
+                  </p>
+                </div>
+              )}
+              <div>
+                <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+                  Languages
+                </p>
+                <p style={{ color: "var(--text-primary)", fontSize: "var(--text-sm)", fontWeight: 600, margin: 0 }}>
+                  {song.languages_available.map((item) => (item === "hindi" ? "Hindi" : "Hinglish")).join(", ")}
+                </p>
+              </div>
+            </div>
+            <Link
+              href={`/present/${song.id}`}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                minHeight: 44,
+                width: "100%",
+                marginTop: 18,
+                borderRadius: "var(--radius-pill)",
+                background: "var(--accent)",
+                color: "var(--bg-base)",
+                fontSize: "var(--text-sm)",
+                fontWeight: 700,
+                textDecoration: "none",
+              }}
+            >
+              Present
+            </Link>
+          </div>
+        </aside>
+      </div>
 
       {/* Clipboard toast */}
       {showCopied && (

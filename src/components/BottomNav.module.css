@@ -19,7 +19,7 @@
   align-items: center;
   gap: 4px;
   width: max-content;
-  max-width: calc(100vw - 22px);
+  max-width: calc(100vw - 12px);
   padding: 8px;
   background: var(--nav-pill-bg);
   backdrop-filter: blur(28px) saturate(190%);
@@ -35,6 +35,7 @@
   align-items: center;
   justify-content: center;
   width: 48px;
+  flex: 0 0 auto;
   height: 44px;
   border-radius: 999px;
   color: var(--nav-inactive);

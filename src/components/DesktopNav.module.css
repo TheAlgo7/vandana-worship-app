@@ -25,7 +25,9 @@
 }
 
 .wordmark {
-  display: block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   font-family: var(--font-brand);
   font-size: 24px;
   font-weight: normal;

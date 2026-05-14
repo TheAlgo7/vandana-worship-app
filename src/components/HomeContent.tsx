@@ -66,6 +66,8 @@ function fuzzyIncludes(haystack: string, query: string): boolean {
   });
 }
 
+const SONG_BATCH_SIZE = 80;
+
 export default function HomeContent({
   songs,
   librarySource = "supabase",
@@ -75,6 +77,7 @@ export default function HomeContent({
 }) {
   const [query, setQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
+  const [visibleState, setVisibleState] = useState({ key: "", count: SONG_BATCH_SIZE });
   const searchRef = useRef<HTMLInputElement>(null);
   const { isFavourite, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
@@ -184,6 +187,10 @@ export default function HomeContent({
       }).length
     : 0;
   const hasActiveFilters = !!query || !!activeChurch;
+  const visibleKey = `${normalizedQuery}|${activeChurch ?? ""}`;
+  const visibleCount = visibleState.key === visibleKey ? visibleState.count : SONG_BATCH_SIZE;
+  const visibleSongs = hasActiveFilters ? filtered : filtered.slice(0, visibleCount);
+  const canShowMore = !hasActiveFilters && visibleSongs.length < filtered.length;
 
   return (
     <>
@@ -231,14 +238,14 @@ export default function HomeContent({
         <div className="home-grid">
 
           {/* MAIN COLUMN */}
-          <div>
+          <div className="home-main">
             {/* Daily Verse - inline on mobile (desktop right panel handles it) */}
             <div className="mobile-only">
               <DailyVerse />
             </div>
 
             {/* Search Bar */}
-            <div style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px", position: "relative" }}>
+            <div className="home-search-wrap" style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px", position: "relative" }}>
               <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
                 Search songs, artists, and lyrics
               </label>
@@ -283,7 +290,7 @@ export default function HomeContent({
             </div>
 
             {/* Church Filter */}
-            <div className="horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
+            <div className="home-filter-row horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
               <button
                 onClick={() => setActiveChurch(null)}
                 aria-pressed={!activeChurch}
@@ -307,7 +314,7 @@ export default function HomeContent({
             </div>
 
             {/* Song List */}
-            <main style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+            <main className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
               {filtered.length > 0 && lyricOnlyMatches > 0 && (
                 <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", lineHeight: 1.5, margin: "14px 0 0" }}>
                   {lyricOnlyMatches} {lyricOnlyMatches === 1 ? "song matches" : "songs match"} inside lyrics.
@@ -340,17 +347,42 @@ export default function HomeContent({
                   )}
                 </div>
               ) : (
-                filtered.map((song) => (
-                  <SongCard
-                    key={song.id}
-                    song={song}
-                    isFavourite={isFavourite(song.id)}
-                    onLongPress={() => toggleFavourite(song.id)}
-                    onFavouriteToggle={() => toggleFavourite(song.id)}
-                    isInSetlist={isInSetlist(song.id)}
-                    onSetlistToggle={() => toggleSetlist(song.id)}
-                  />
-                ))
+                <>
+                  {visibleSongs.map((song) => (
+                    <SongCard
+                      key={song.id}
+                      song={song}
+                      isFavourite={isFavourite(song.id)}
+                      onLongPress={() => toggleFavourite(song.id)}
+                      onFavouriteToggle={() => toggleFavourite(song.id)}
+                      isInSetlist={isInSetlist(song.id)}
+                      onSetlistToggle={() => toggleSetlist(song.id)}
+                    />
+                  ))}
+                  {canShowMore && (
+                    <button
+                      type="button"
+                      onClick={() => setVisibleState({ key: visibleKey, count: visibleCount + SONG_BATCH_SIZE })}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        minHeight: 44,
+                        marginTop: 14,
+                        borderRadius: "var(--radius-pill)",
+                        border: "1px solid var(--border)",
+                        background: "var(--bg-surface)",
+                        color: "var(--text-secondary)",
+                        fontSize: "var(--text-sm)",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Show more songs
+                    </button>
+                  )}
+                </>
               )}
             </main>
           </div>

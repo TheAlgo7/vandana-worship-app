@@ -31,7 +31,8 @@ export default function LanguageToggle({
           onClick={() => onChange(lang)}
           style={{
             position: "relative",
-            padding: "6px 14px",
+            minHeight: 44,
+            padding: "0 16px",
             fontSize: "var(--text-xs)",
             fontWeight: current === lang ? 600 : 400,
             background: current === lang ? "var(--accent)" : "transparent",

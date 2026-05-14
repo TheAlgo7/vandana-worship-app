@@ -29,7 +29,7 @@ test("search finds close spellings without extra homepage filters", async ({ pag
 
 test("song can be opened, favourited, and found in favourites", async ({ page }) => {
   await page.goto("/");
-  await page.getByText("Aa Prabhu Yeshu aa").click();
+  await page.getByRole("link", { name: /Aa Prabhu Yeshu aa Yeshua/ }).first().click();
 
   await expect(page.getByRole("link", { name: "Present" })).toBeVisible();
   await page.getByRole("button", { name: "Add to favourites" }).click();

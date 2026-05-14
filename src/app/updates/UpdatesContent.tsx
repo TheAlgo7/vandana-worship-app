@@ -95,6 +95,7 @@ export default function UpdatesContent({
       </header>
 
       <main
+        className="updates-main"
         style={{
           padding: "24px 20px",
           maxWidth: 560,
