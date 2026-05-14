@@ -1,10 +1,17 @@
 import { expect, test } from "@playwright/test";
 
+test.beforeEach(async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => {
+    localStorage.clear();
+  });
+});
+
 test("home renders a calm song search flow", async ({ page }) => {
   await page.goto("/");
 
   await expect(page).toHaveTitle(/Vandana/);
-  await expect(page.getByPlaceholder("Search songs, lyrics...")).toBeVisible();
+  await expect(page.getByPlaceholder("Search songs, lyrics...").first()).toBeVisible();
   await expect(page.getByRole("button", { name: "All", exact: true })).toBeVisible();
   await expect(page.getByText("Aa Prabhu Yeshu aa", { exact: true }).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Home/ })).toBeVisible();
@@ -13,7 +20,7 @@ test("home renders a calm song search flow", async ({ page }) => {
 test("search finds close spellings without extra homepage filters", async ({ page }) => {
   await page.goto("/");
 
-  await page.getByPlaceholder("Search songs, lyrics...").fill("Aag Meen");
+  await page.getByPlaceholder("Search songs, lyrics...").first().fill("Aag Meen");
 
   await expect(page.getByText("Aag Mein Ek Aur")).toBeVisible();
   await expect(page.getByText("All artists")).toHaveCount(0);

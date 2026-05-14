@@ -48,9 +48,11 @@ export function FavouritesProvider({ children }: { children: ReactNode }) {
   }, [favourites, hydrated]);
 
   const toggleFavourite = useCallback((id: string) => {
-    setFavourites((prev) =>
-      prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id],
-    );
+    setFavourites((prev) => {
+      const next = prev.includes(id) ? prev.filter((f) => f !== id) : [...prev, id];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   const isFavourite = useCallback(

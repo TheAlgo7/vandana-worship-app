@@ -1,0 +1,40 @@
+{
+  "id": "aaj-hai-maha-anand-ka-susamay",
+  "title": "Aaj Hai Maha Anand Ka Susamay",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Aaj hai maha anand ka susamay\nYeshu Masih ka janm din yah hai\nAaj harsh se hum sab gaayein uske geet\nAur uski stuti kar dikhayein apni preet",
+      "chorus": "Hey Prabhu, hey Prabhu, tu aaj upasthit ho\nKi tera yah anand ka din aashirvit ho",
+      "verse2": "Bachchon ka mann anand se hai bharpoor\nRona aur ranj sab unse hua door\nBalakon ka mitra Prabhu Yeshu hai\nWah unko apne paas bulaake rakhta hai",
+      "verse3": "Ishwar ka swarg mein ho gunaanuvaad\nShaant hokar prithvi deve dhanyavaad\nAahlaadit ho aur traan ki aasha kar\nParmeshwar ki prasannata hai manushyon par"
+    },
+    "hindi": {
+      "verse1": "आज है महा आनन्द का सुसमय\nयीशु मसीह का जन्म दिन यह है\nआज हर्ष से हम सब गाएँ उसके गीत\nऔर उसकी स्तुति कर दिखाएँ अपनी प्रीत",
+      "chorus": "हे प्रभु, हे प्रभु, तू आज उपस्थित हो\nकि तेरा यह आनन्द का दिन आशीर्वादित हो",
+      "verse2": "बच्चों का मन आनन्द से है भरपूर\nरोना और रंज सब उनसे हुआ दूर\nबालकों का मित्र प्रभु यीशु है\nवह उनको अपने पास बुलाके रखता है",
+      "verse3": "ईश्वर का स्वर्ग में हो गुणानुवाद\nशान्त होकर पृथ्वी देवे धन्यवाद\nआह्लादित हो और त्राण की आशा कर\nपरमेश्वर की प्रसन्नता है मनुष्यों पर"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Aaj Hai Maha Anand Ka Susamay lyrics in hinglish and hindi by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/aaj-hai-maha-anand-ka-susamay"
+}

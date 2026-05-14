@@ -9,11 +9,21 @@
 
 import type { Song } from "@/lib/getSongs";
 
+import aaBhiJaa from "./songs/aa-bhi-jaa.json";
+import aajHaiMahaAnandKaSusamay from "./songs/aaj-hai-maha-anand-ka-susamay.json";
+import aajKaDinYahowaNeBanayaHai from "./songs/aaj-ka-din-yahowa-ne-banaya-hai.json";
+import aajaRe from "./songs/aaja-re.json";
 import aashaMeri from "./songs/aasha-meri.json";
 import aashiqTera from "./songs/aashiq-tera.json";
 import aatmaKiVedi from "./songs/aatma-ki-vedi.json";
 import abrahamKaPrabhu from "./songs/abraham-ka-prabhu.json";
+import abAaoVishwasiyo from "./songs/ab-aao-vishwasiyo.json";
+import aeLashkaronKeRab from "./songs/ae-lashkaron-ke-rab.json";
+import aeMereDilJhoomKeGaa from "./songs/ae-mere-dil-jhoom-ke-gaa.json";
+import aaoHumYahovaKaDhanyavaadKarein from "./songs/aao-hum-yahova-ka-dhanyavaad-karein.json";
 import aurChahiye from "./songs/aur-chahiye.json";
+import aurKisiBaatKiBadaaiNaKarein from "./songs/aur-kisi-baat-ki-badaai-na-karein.json";
+import aayaHaiYeshuAayaHai from "./songs/aaya-hai-yeshu-aaya-hai.json";
 import chamkaSitara from "./songs/chamka-sitara.json";
 import chooLeMujhe from "./songs/choo-le-mujhe.json";
 import deewana from "./songs/deewana.json";
@@ -46,11 +56,21 @@ import yeshuaHamashiach from "./songs/yeshua-hamashiach.json";
 import zindaKhuda from "./songs/zinda-khuda.json";
 
 export const LOCAL_SONGS: Song[] = [
+  aaBhiJaa,
+  aajHaiMahaAnandKaSusamay,
+  aajKaDinYahowaNeBanayaHai,
+  aajaRe,
   aashaMeri,
   aashiqTera,
   aatmaKiVedi,
   abrahamKaPrabhu,
+  abAaoVishwasiyo,
+  aeLashkaronKeRab,
+  aeMereDilJhoomKeGaa,
+  aaoHumYahovaKaDhanyavaadKarein,
   aurChahiye,
+  aurKisiBaatKiBadaaiNaKarein,
+  aayaHaiYeshuAayaHai,
   chamkaSitara,
   chooLeMujhe,
   deewana,

@@ -1,0 +1,43 @@
+{
+  "id": "aaja-re",
+  "title": "Aaja Re",
+  "artist": "Yeshua Ministries",
+  "church": "Yeshua Ministries",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Dar pe tere aaye, hai hum jhukaye\nYe sar ko tere samne\nSab kuch bhulake, hum hathon ko jode\nHuye aaye paas tere",
+      "chorus": "Aaja re, aaja re...  O Yeshu mere\nAaja re, aaja re...  Intezar hai tera re",
+      "verse2": "Hum pure dil se, tujhe hi pukare\nJaha bhi hai tu aaja re\nHathon me tere, hume tu sambhale\nAb tu kahi aaja re",
+      "chorus2": "Aaja re, aaja re...  O Yeshu mere\nAaja re, aaja re...  Intezar hai tera re",
+      "bridge": "Har naam se uccha hai, tere naam jo meetha hai\nTera naam jo saccha hai, tera naam jo pyara hai\nTera naam jo accha hai, tera naam jo yahan hai\nTera naam, tera naam, Yeshu naam"
+    },
+    "hindi": {
+      "verse1": "दर पे तेरे आए, है हम झुकाए\nये सर को तेरे सामने\nसब कुछ भूलके, हम हाथों को जोड़े\nहुए आए पास तेरे",
+      "chorus": "आजा रे, आजा रे...  ओ येशू मेरे\nआजा रे, आजा रे...  इंतेज़ार है तेरा रे",
+      "verse2": "हम पूरे दिल से, तुझे ही पुकारे\nजहाँ भी है तू आजा रे\nहाथों में तेरे, हमें तू संभाले\nअब तू कहीं आजा रे",
+      "chorus2": "आजा रे, आजा रे...  ओ येशू मेरे\nआजा रे, आजा रे...  इंतेज़ार है तेरा रे",
+      "bridge": "हर नाम से ऊँचा है, तेरा नाम जो मीठा है\nतेरा नाम जो सच्चा है, तेरा नाम जो प्यारा है\nतेरा नाम जो अच्छा है, तेरा नाम जो यहाँ है\nतेरा नाम, तेरा नाम, येशू नाम"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics",
+    "yeshua-ministries"
+  ],
+  "seo_description": "Aaja Re lyrics in hinglish and hindi by Yeshua Ministries - Yeshua Ministries",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/aaja-re"
+}

@@ -1,0 +1,44 @@
+{
+  "id": "aaya-hai-yeshu-aaya-hai",
+  "title": "Aaya Hai Yeshu Aaya Hai",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Aaya hai Yeshu aaya hai,\nMukt le saath aaya hai.",
+      "verse1": "Jangal mein mangal doot mil gaate,\nJai-jai ho Prabhu, jai-jai ho,\nShaanti mel laaya hai.",
+      "verse2": "Dekhan gadariye chale raat mein,\nDooton se sun ke, dooton se,\nMasiha Mariyam ka jaaya hai.",
+      "verse3": "Poorab desh se chale manjoosī,\nTaare se dekho, taare se,\nPata Yeshu ka paaya hai.",
+      "verse4": "Yarushalem ja poochhan laage,\nKis ghar ji raaja, kis ghar ji,\nMukt ka raaja aaya hai.",
+      "verse5": "Daas suna jab prem Masiha ka,\nTan man se logo, tan man se,\nSharan Yeshu ki aaya hai."
+    },
+    "hindi": {
+      "chorus": "आया है यीशु आया है,\nमुक्त ले साथ आया है।",
+      "verse1": "जंगल में मंगल दूत मिल गाते,\nजय–जय हो प्रभु, जय–जय हो,\nशांति मेल लाया है।",
+      "verse2": "देखन गड़रिये चले रात में,\nदूतों से सुन के, दूतों से,\nमसीह मरियम का जाया है।",
+      "verse3": "पूरब देश से चले मंजूसी,\nतारे से देखो, तारे से,\nपता यीशु का पाया है।",
+      "verse4": "यरूशलेम जा पूछन लागे,\nकिस घर जी राजा, किस घर जी,\nमुक्त का राजा आया है।",
+      "verse5": "दास सुना जब प्रेम मसीह का,\nतन मन से लोगों, तन मन से,\nशरण यीशु की आया है॥"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Aaya Hai Yeshu Aaya Hai lyrics in hinglish and hindi by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/aaya-hai-yeshu-aaya-hai"
+}

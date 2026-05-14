@@ -52,20 +52,31 @@ export function SetlistProvider({ children }: { children: ReactNode }) {
   }, [setlist, hydrated]);
 
   const addToSetlist = useCallback((id: string) => {
-    setSetlist((prev) => (prev.includes(id) ? prev : [...prev, id]));
+    setSetlist((prev) => {
+      const next = prev.includes(id) ? prev : [...prev, id];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   const removeFromSetlist = useCallback((id: string) => {
-    setSetlist((prev) => prev.filter((item) => item !== id));
+    setSetlist((prev) => {
+      const next = prev.filter((item) => item !== id);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   const toggleSetlist = useCallback((id: string) => {
-    setSetlist((prev) =>
-      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id],
-    );
+    setSetlist((prev) => {
+      const next = prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
   }, []);
 
   const clearSetlist = useCallback(() => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
     setSetlist([]);
   }, []);
 

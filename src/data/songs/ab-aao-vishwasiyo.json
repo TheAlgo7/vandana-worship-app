@@ -1,0 +1,42 @@
+{
+  "id": "ab-aao-vishwasiyo",
+  "title": "Ab Aao Vishwasiyo",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Ab aao vishwasiyo\nJai jai karte aao\nAb aao hum chalein Baitlehem ko\nCharni mein dekho mahima ka Raja",
+      "chorus": "Ab aao hum sarahein\nAb aao hum sarahein\nAb aao hum sarahein\nKhrist Prabhu ko",
+      "verse2": "Wah Ishwar se Ishwar\nJyot ka jyot sanatan\nChhin usne na kiya garbh kunwari se\nSachcha Parmeshwar, na soojha par janma",
+      "verse3": "Hey saare dootgano\nJai-jai kaar tum karo\nHaan swarg ke swarg mein tum gaate raho\nMahima aur stuti Ishwar sarv pradhan ko",
+      "verse4": "Aameen Prabhu dhanya ho\nTraan ke liye janma\nHey Yeshu ho teri anant mahima\nPita ka vachan ab dehdhaari hua"
+    },
+    "hindi": {
+      "verse1": "अब आओ विश्वासियो\nजय जय करते आओ\nअब आओ हम चलें बैतलहम को\nचरनी में देखो महिमा का राजा",
+      "chorus": "अब आओ हम सराहें\nअब आओ हम सराहें\nअब आओ हम सराहें\nख्रीस्त प्रभु को",
+      "verse2": "वह ईश्वर से ईश्वर\nज्योत का ज्योत सनातन\nछिन उसने न किया गर्भ कुँवारी से\nसच्चा परमेश्वर, न सूझा पर जन्मा",
+      "verse3": "हे सारे दूतगणो\nजय-जयकार तुम करो\nहाँ स्वर्ग के स्वर्ग में तुम गाते रहो\nमहिमा और स्तुति ईश्वर सर्व प्रधान को",
+      "verse4": "आमीन प्रभु धन्य हो\nत्राण के लिये जन्मा\nहे यीशु हो तेरी अनन्त महिमा\nपिता का वचन अब देहधारी हुआ"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ab Aao Vishwasiyo lyrics in hinglish and hindi by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ab-aao-vishwasiyo"
+}

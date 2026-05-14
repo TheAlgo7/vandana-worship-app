@@ -1,0 +1,40 @@
+{
+  "id": "ae-mere-dil-jhoom-ke-gaa",
+  "title": "Ae Mere Dil Jhoom Ke Gaa",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "chorus": "Ae mere dil jhoom ke gaa\nBeet gaya wo zamaana\nJanma Masih is jag mein",
+      "verse1": "Dooton ne geet gaaya, charwahon ko sunaaya\nJanma hai Raja, wo Muktidata\nJhoome hai dharti gagan",
+      "verse2": "Chalne lage Majusi, dekha naya jo taara\nSir ko jhukaate, bhente chadhaate\nRaja ko karte naman",
+      "verse3": "Raahon mein tha andhera, laaya naya savera\nHumko bachaaya, dil se lagaaya\nPaapon ko karke dafan"
+    },
+    "hindi": {
+      "chorus": "ऐ मेरे दिल झूम के गा\nबीत गया वो ज़माना\nजन्मा मसीह इस जग में",
+      "verse1": "दूतों ने गीत गाया, चरवाहों को सुनाया\nजन्मा है राजा, वो मुक्तिदाता\nझूमे है धरती गगन",
+      "verse2": "चलने लगे मजूसी, देखा नया जो तारा\nसिर को झुकाते, भेंटें चढ़ाते\nराजा को करते नमन",
+      "verse3": "राहों में था अंधेरा, लाया नया सवेरा\nहमको बचाया, दिल से लगाया\nपापों को करके दफ़न"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ae Mere Dil Jhoom Ke Gaa lyrics in hinglish and hindi by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ae-mere-dil-jhoom-ke-gaa"
+}

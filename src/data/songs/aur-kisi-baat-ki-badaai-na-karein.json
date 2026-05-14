@@ -1,0 +1,42 @@
+{
+  "id": "aur-kisi-baat-ki-badaai-na-karein",
+  "title": "Aur Kisi Baat Ki Badaai Na Karein",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Aur kisi baat ki badaai na karein\nYeshu Masih ke kroos ko chhode",
+      "verse2": "Yeshu Masih ne shareer mein aa ke\nPaap par dand ki aasha di",
+      "verse3": "Jab main paapi ho hi raha tha\nMere liye wah mar gaya",
+      "verse4": "Uske sang jo hum dukh uthaayein\nToh mahima bhi paayenge",
+      "verse5": "Main toh nahin, par Yeshu Masih\nWahi mujh mein jeeta hai"
+    },
+    "hindi": {
+      "verse1": "और किसी बात की बढ़ाई न करें\nयीशु मसीह के क्रूस को छोड़",
+      "verse2": "यीशु मसीह ने शरीर में आ के\nपाप पर दण्ड की आज्ञा दी",
+      "verse3": "जब मैं पापी हो ही रहा था\nमेरे लिये वह मर गया",
+      "verse4": "उसके संग जो हम दुःख उठाएँ\nतो महिमा भी पाएँगे",
+      "verse5": "मैं तो नहीं, पर यीशु मसीह\nवही मुझ में जीता है"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Aur Kisi Baat Ki Badaai Na Karein lyrics in hinglish and hindi by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/aur-kisi-baat-ki-badaai-na-karein"
+}

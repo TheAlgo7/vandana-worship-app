@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Example Worship Song",
+    "artist": "Example Artist",
+    "church": "Example Church",
+    "source_url": "https://example.com/source-page",
+    "youtube": null,
+    "tags": ["example"],
+    "lyrics_hinglish": "[Verse 1]\nPaste Hinglish lyrics here\n\n[Chorus]\nPaste chorus here",
+    "lyrics_hindi": "[Verse 1]\nयहां हिंदी गीत पेस्ट करें\n\n[Chorus]\nयहां कोरस पेस्ट करें"
+  }
+]

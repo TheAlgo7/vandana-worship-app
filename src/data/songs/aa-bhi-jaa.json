@@ -1,0 +1,40 @@
+{
+  "id": "aa-bhi-jaa",
+  "title": "Aa Bhi Jaa",
+  "artist": "Sunil Singh",
+  "church": null,
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Aa Bhi Jaa,\nAa Tu Aa Bhi Jaa,\nYeshu Pukarta\nZindagi Ka Wo Rasta, Yeshu Pukarta",
+      "verse2": "Aa Bhi Jaa,\nAa Tu Aa Bhi Jaa,\nYeshu Pukarta\nZindagi Ka Wo Rasta, Yeshu Pukarta\nMann Me Hai Tere Ashanti, Jaan Le\nUsme Milegi Purd Shanti, Maan Le\nNa Tu Jaa , Aa Tu Aa Bhi Jaa\nYeshu Purkarta",
+      "verse3": "Saathi Tere Hi Tujhe Loot Kar,\nBarbaad Karne Lage,\nJaane Tu Kab Hoosh Mein Ayega,\nTera Hi Tujhse Wo Toh Cheen Kar,\nJaane Tu Kab Unko Samajh Payega,\nUsne Diya Hai Samay, Nikal Jayega\nWaqt Gaya Jo Tere Haath Se, Pachtayega\nHar Dum Wo Niharta",
+      "verse4": "Tune Chuna Hai Jo Raasta\nWo Toh Aage Dikhta Nahi,\nChoodh Kar Usko, Loot Aa\nAa Jaa Dikha Doon Naya Raasta,\nJo Jata Bilkul Sahi,\nDer Na Kar Mere Yaar, Maan Jaa\nDe Raha Wo Awaz, Dhyan Kar\nAnkh Uthake Zara Dekh, Wo Hai Krus Par"
+    },
+    "hindi": {
+      "verse1": "आ भी जा,\nआ तू आ भी जा,\nयेशु पुकारता\nज़िंदगी का वो रास्ता, येशु पुकारता",
+      "verse2": "आ भी जा,\nआ तू आ भी जा,\nयेशु पुकारता\nज़िंदगी का वो रास्ता, येशु पुकारता\nतेरे मन में है अशांति, जान ले\nउसमे मिलेगी पूर्ण शांति, मान ले\nना तू जा, आ तू आ भी जा\nयेशु पुकारता",
+      "verse3": "साथी तेरे ही तुझे लूट कर,\nबर्बाद करने लगे,\nजाने तू कब होश में आएगा,\nतेरा ही तुझसे वो तो छीन कर,\nजाने तू कब उनको समझ पाएगा,\nउसने दिया है समय, निकल जाएगा\nवक्त गया जो तेरे हाथ से, पछताएगा\nहर दम वो निहारता",
+      "verse4": "तूने चुना है जो रास्ता\nवो तो आगे दिखता नहीं,\nछोड़ कर उसको, लौट आ\nआ जा दिखा दूं नया रास्ता,\nदेर ना कर मेरे यार, मान जा\nदे रहा वो आवाज़, ध्यान कर\nआंख उठाके ज़रा देख, वो है क्रूस पर\nबाहें वो पसारता,"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hinglish",
+    "hindi",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Aa Bhi Jaa lyrics in hinglish and hindi by Sunil Singh",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/aa-bhi-jaa"
+}

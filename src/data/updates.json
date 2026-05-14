@@ -1,5 +1,25 @@
 [
   {
+    "id": "update-010",
+    "date": "2026-05-14",
+    "title": "10 Classic Hindi Worship Songs Added",
+    "body": "Added a new batch of Hindi and Hinglish worship songs, including Aa Bhi Jaa, Aaja Re, Ab Aao Vishwasiyo, Ae Lashkaron Ke Rab, and more. These songs are available in the library and can be used in setlists and Present Mode.",
+    "type": "songs_added",
+    "song_count": 10,
+    "song_names": [
+      "Aa Bhi Jaa",
+      "Aaj Hai Maha Anand Ka Susamay",
+      "Aaj Ka Din Yahowa Ne Banaya Hai",
+      "Aaja Re",
+      "Aao Hum Yahova Ka Dhanyavaad Karein",
+      "Aaya Hai Yeshu Aaya Hai",
+      "Ab Aao Vishwasiyo",
+      "Ae Lashkaron Ke Rab",
+      "Ae Mere Dil Jhoom Ke Gaa",
+      "Aur Kisi Baat Ki Badaai Na Karein"
+    ]
+  },
+  {
     "id": "update-009",
     "date": "2026-05-12",
     "title": "Setlists, Better Search & Smoother Navigation",
