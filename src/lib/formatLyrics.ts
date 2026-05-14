@@ -3,7 +3,7 @@ import type { Song } from "./getSongs";
 /* ── Sacred words that must always be capitalized ── */
 
 const SACRED_WORDS = [
-  "Pavitra Aatma", // multi-word — must be checked before single words
+  "Pavitra Aatma", // multi-word - must be checked before single words
   "Yeshu",
   "Masih",
   "Prabhu",
@@ -20,7 +20,7 @@ const DEVANAGARI_RE = /[\u0900-\u097F]/;
 /**
  * Build a single case-insensitive regex that matches all sacred words
  * at word-ish boundaries. Multi-word entries (e.g. "Pavitra Aatma")
- * are included — order matters (longest first already in the array).
+ * are included - order matters (longest first already in the array).
  */
 const sacredRe = new RegExp(
   `(?<=^|\\s|[.,;:!?'"\`()])(?:${SACRED_WORDS.map(escapeRegExp).join("|")})(?=$|\\s|[.,;:!?'"\`()])`,
@@ -114,7 +114,7 @@ export function formatLyricsAudit(song: Song): void {
 
   if (issues.length) {
     console.log(
-      `%c[Vandana Audit] ${song.title} — ${issues.length} issue(s)`,
+      `%c[Vandana Audit] ${song.title} - ${issues.length} issue(s)`,
       "color: #C4AA7E; font-weight: bold",
     );
     issues.forEach((msg) => console.log(`  ${msg}`));

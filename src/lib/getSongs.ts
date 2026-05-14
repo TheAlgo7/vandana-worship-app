@@ -131,7 +131,7 @@ function setCachedSongs(data: Song[]): void {
     const entry: CacheEntry = { timestamp: Date.now(), data };
     localStorage.setItem(CACHE_KEY, JSON.stringify(entry));
   } catch {
-    // localStorage full or unavailable — ignore
+    // localStorage full or unavailable - ignore
   }
 }
 
@@ -165,18 +165,18 @@ export async function getSongLibrary(): Promise<SongLibraryResult> {
     return { songs: fromDb, source: "supabase" };
   }
 
-  console.warn("[getSongs] Supabase unavailable — checking cache.");
+  console.warn("[getSongs] Supabase unavailable - checking cache.");
 
   // 2. Fresh localStorage cache (within 7-day TTL)
   const fresh = getCachedSongs();
   if (fresh) return { songs: fresh, source: "cache" };
 
-  // 3. Stale localStorage cache — 200+ songs from a past session beats 35 local files
+  // 3. Stale localStorage cache - 200+ songs from a past session beats 35 local files
   const stale = getCachedSongs(true);
   if (stale) return { songs: stale, source: "cache" };
 
   // 4. Last resort: 35 bundled local songs
-  console.warn("[getSongs] No cache — falling back to bundled local songs.");
+  console.warn("[getSongs] No cache - falling back to bundled local songs.");
   return {
     songs: LOCAL_SONGS.slice().sort((a, b) => a.title.localeCompare(b.title)),
     source: "bundled",

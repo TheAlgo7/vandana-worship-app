@@ -16,7 +16,7 @@ export async function generateMetadata({
   const { id } = await params;
   const song = await getSongById(id);
   if (!song) return {};
-  return { title: `${song.title} — Present` };
+  return { title: `${song.title}: Present` };
 }
 
 export default async function PresentPage({

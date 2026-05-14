@@ -78,7 +78,7 @@ export default function SettingsPage() {
                 Dark Mode
               </p>
             </div>
-            {/* pill toggle — outer button is the 44px tap zone */}
+            {/* pill toggle - outer button is the 44px tap zone */}
             <button
               onClick={() => setTheme(isDark ? "light" : "dark")}
               aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
@@ -180,7 +180,7 @@ export default function SettingsPage() {
               Vandana
             </p>
             <p style={{ marginBottom: 12, color: "var(--text-muted)", fontSize: "var(--text-xs)", fontStyle: "italic" }}>
-              वंदना — to worship, to praise
+              वंदना means to worship, to praise
             </p>
 
             <p style={{ marginBottom: 12 }}>
@@ -188,7 +188,7 @@ export default function SettingsPage() {
             </p>
 
             <p style={{ marginBottom: 12 }}>
-              The library is always growing — ICM, FOLJ, Nations of Worship, Sheldon Bangera, Anil Kant, Dayanidhi Rao, and more artists shaping worship music in India.
+              The library is always growing with ICM, FOLJ, Nations of Worship, Sheldon Bangera, Anil Kant, Dayanidhi Rao, and more artists shaping worship music in India.
             </p>
 
             <p style={{ marginBottom: 12 }}>

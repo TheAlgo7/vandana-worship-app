@@ -106,7 +106,7 @@ export default function DailyVerse() {
             marginBottom: 0,
           }}
         >
-          — {verse.reference}
+          {verse.reference}
         </p>
       </blockquote>
     </section>

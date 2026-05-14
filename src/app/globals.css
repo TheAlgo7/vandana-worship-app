@@ -10,13 +10,13 @@
 }
 
 /* ───────────────────────────────────────────────
-   Vandana Worship App — Sacred Noir Design System
+   Vandana Worship App - Sacred Noir Design System
    Dark-first · Overridden by [data-theme="light"]
    ─────────────────────────────────────────────── */
 
 /* ══════════════════════════════════════════════
-   Part 1 — Color System
-   Part 2 — Typography & Global Tokens
+   Part 1 - Color System
+   Part 2 - Typography & Global Tokens
    ══════════════════════════════════════════════ */
 
 :root {
@@ -247,7 +247,7 @@ a:active {
     flex-direction: row;
   }
 
-  /* No floating pill nav on desktop — clearance becomes normal padding */
+  /* No floating pill nav on desktop - clearance becomes normal padding */
   :root {
     --nav-clearance: 24px;
   }

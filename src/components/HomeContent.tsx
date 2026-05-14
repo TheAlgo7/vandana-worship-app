@@ -232,7 +232,7 @@ export default function HomeContent({
 
           {/* MAIN COLUMN */}
           <div>
-            {/* Daily Verse — inline on mobile (desktop right panel handles it) */}
+            {/* Daily Verse - inline on mobile (desktop right panel handles it) */}
             <div className="mobile-only">
               <DailyVerse />
             </div>
@@ -355,14 +355,14 @@ export default function HomeContent({
             </main>
           </div>
 
-          {/* RIGHT PANEL — desktop only (CSS hides on mobile) */}
+          {/* RIGHT PANEL - desktop only (CSS hides on mobile) */}
           <aside className="home-side" aria-label="Library info panel">
             {/* Daily Verse */}
             <div className="home-side-card">
               <DailyVerse />
             </div>
 
-            {/* Recently Viewed — vertical list */}
+            {/* Recently Viewed - vertical list */}
             {recentSongs.length > 0 && (
               <div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
