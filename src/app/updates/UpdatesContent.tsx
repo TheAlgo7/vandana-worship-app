@@ -48,12 +48,18 @@ function getTheme(type: string): UpdateTheme {
   return UPDATE_THEMES[type] ?? { label: "Update", icon: Bell };
 }
 
-export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) {
+export default function UpdatesContent({
+  updates,
+  librarySongCount,
+}: {
+  updates: UpdateEntry[];
+  librarySongCount: number;
+}) {
   useEffect(() => {
     localStorage.setItem("vandana-updates-last-read", new Date().toISOString());
   }, []);
 
-  const totalSongs = updates.reduce((sum, update) => sum + Math.max(update.song_count, 0), 0);
+  const latestUpdate = updates[0]?.date ? formatDate(updates[0].date) : "None";
 
   return (
     <div
@@ -149,8 +155,8 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                 border: "1px solid var(--border)",
               }}
             >
-              <SummaryStat label="Published notes" value={updates.length.toString()} />
-              <SummaryStat label="Songs added" value={totalSongs.toString()} />
+              <SummaryStat label="Total songs" value={librarySongCount.toString()} />
+              <SummaryStat label="Latest update" value={latestUpdate} />
             </section>
 
             <p className="section-label">Recent Changes</p>
