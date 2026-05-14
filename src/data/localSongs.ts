@@ -58,8 +58,13 @@ import hoSitaish from "./songs/ho-sitaish.json";
 import hoTeriAradhana from "./songs/ho-teri-aradhana.json";
 import hoTeriStutiAurAradhana from "./songs/ho-teri-stuti-aur-aradhana.json";
 import hungama from "./songs/hungama.json";
+import itnaKareebAa from "./songs/itna-kareeb-aa.json";
 import jabSaathHaiMasiha from "./songs/jab-saath-hai-masiha.json";
+import jaiJaiPrabhuYeshuKi from "./songs/jai-jai-prabhu-yeshu-ki.json";
+import janmaHaiEmmanuel from "./songs/janma-hai-emmanuel.json";
+import jeeUthaHaiMasiha from "./songs/jee-utha-hai-masiha.json";
 import jhuktaSinghasanPe from "./songs/jhukta-singhasan-pe.json";
+import joKuchhWoTumSeKahe from "./songs/jo-kuchh-wo-tum-se-kahe.json";
 import kadoshKadosh from "./songs/kadosh-kadosh.json";
 import khazana from "./songs/khazana.json";
 import kuchNaya from "./songs/kuch-naya.json";
@@ -132,8 +137,13 @@ export const LOCAL_SONGS: Song[] = [
   hoTeriAradhana,
   hoTeriStutiAurAradhana,
   hungama,
+  itnaKareebAa,
   jabSaathHaiMasiha,
+  jaiJaiPrabhuYeshuKi,
+  janmaHaiEmmanuel,
+  jeeUthaHaiMasiha,
   jhuktaSinghasanPe,
+  joKuchhWoTumSeKahe,
   kadoshKadosh,
   khazana,
   kuchNaya,

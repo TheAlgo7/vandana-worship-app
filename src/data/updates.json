@@ -1,5 +1,20 @@
 [
   {
+    "id": "update-017",
+    "date": "2026-05-14",
+    "title": "Fresh Worship Songs Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics for Itna Kareeb Aa, Jai Jai Prabhu Yeshu Ki, Janma hai Emmanuel, Jee Utha Hai Masiha, and Jo Kuchh Wo Tum Se Kahe.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Itna Kareeb Aa",
+      "Jai Jai Prabhu Yeshu Ki",
+      "Janma hai Emmanuel",
+      "Jee Utha Hai Masiha",
+      "Jo Kuchh Wo Tum Se Kahe"
+    ]
+  },
+  {
     "id": "update-016",
     "date": "2026-05-14",
     "title": "New E, G & H Worship Songs Added",

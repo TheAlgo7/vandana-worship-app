@@ -1,0 +1,39 @@
+{
+  "id": "janma-hai-emmanuel",
+  "title": "Janma hai Emmanuel",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "जन्मा है इम्मानुएल\nदूतों ने है कहा\nआओ चलें हम उसके पीछे\nले चले वो जहाँ",
+      "verse1": "राह तकता था जग जिसको\nआ गया वो बनके ज्योति\nआ गई फिर से वो खुशियाँ\nझूमता है जहाँ",
+      "verse2": "एक नए युग की हो रचना\nऔर नया जीवन हो अपना\nप्यार देने, माफ़ करने\nआ गया रहनुमा"
+    },
+    "hinglish": {
+      "chorus": "Janma hai Emmanuel\nDooton ne hai kaha\nAao chalein hum uske peeche\nLe chale wo jahan",
+      "verse1": "Raah takta tha jag jisko\nAa gaya wo banke jyoti\nAa gayi phir se wo khushiyaan\nJhoomta hai jahan",
+      "verse2": "Ek naye yug ki ho rachna\nAur naya jeevan ho apna\nPyaar dene, maaf karne\nAa gaya Rahnuma"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "christmas",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Janma hai Emmanuel lyrics in Hindi and Hinglish",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/janma-hai-emmanuel"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "jee-utha-hai-masiha",
+  "title": "Jee Utha Hai Masiha",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "जी उठा है मसीहा (3)\nवो मर के जी उठा है\nमौत का बन्दन तोड़ कर\nमेरा मसीह जी उठा है (2)",
+      "verse1": "हम गुनेगारों के लिए\nकुर्बानी यीशु हुआ है\nअपनी शक्ति महिमा से\nयीशु ने फिर जी उठा है (2)",
+      "verse2": "जय जय कार करें अपनी\nजीवन में उसकी सदा\nजिसने हमको बुलाकर\nएक नया जीवन दिया है (2)"
+    },
+    "hinglish": {
+      "chorus": "Jee utha hai Masiha (3)\nVo mar ke jee utha hai\nMaut ka bandhan tod kar\nMera Masiha jee utha hai (2)",
+      "verse1": "Ham gunegaron ke liye\nKurbani Yeshu huva hai\nApni shakti mahima se\nYeshu ne fir jee utha hai (2)",
+      "verse2": "Jay jay kar kare apni\nJivan me uski sada\nJisane hamko bulakar\nEk naya jivan diya hai (2)"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "easter",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Jee Utha Hai Masiha lyrics in Hindi and Hinglish",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/jee-utha-hai-masiha"
+}
