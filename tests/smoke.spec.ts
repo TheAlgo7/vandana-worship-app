@@ -68,7 +68,7 @@ test("present mode opens and keeps core controls available", async ({ page }) =>
 test("song sections keep worship order", async ({ page }) => {
   await page.goto("/song/deewana-main-yeshu-ka");
 
-  const labels = await page.locator(".section-label").allTextContents();
+  let labels = await page.locator(".section-label").allTextContents();
 
   expect(labels.slice(0, 5)).toEqual([
     "Pre Chorus",
@@ -76,5 +76,18 @@ test("song sections keep worship order", async ({ page }) => {
     "Verse 1",
     "Verse 2",
     "Bridge",
+  ]);
+
+  await page.goto("/song/chattan");
+
+  labels = await page.locator(".section-label").allTextContents();
+
+  expect(labels.slice(0, 6)).toEqual([
+    "Pre Chorus",
+    "Chorus",
+    "Verse 1",
+    "Verse 2",
+    "Bridge",
+    "Repeat Chorus",
   ]);
 });

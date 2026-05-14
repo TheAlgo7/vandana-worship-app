@@ -14,10 +14,11 @@ function getSectionRank(key: string): number {
   const normalized = normalizeSectionKey(key);
 
   if (normalized.startsWith("intro")) return 0;
-  if (normalized.startsWith("pre_chorus") || normalized.startsWith("prechorus")) return 1;
-  if (normalized.startsWith("chorus") || normalized.startsWith("repeat_chorus")) return 2;
+  if (normalized === "pre_chorus" || normalized === "prechorus") return 1;
+  if (normalized === "chorus") return 2;
   if (normalized.startsWith("verse")) return 3;
   if (normalized.startsWith("bridge")) return 5;
+  if (normalized.startsWith("repeat_chorus") || normalized.startsWith("chorus")) return 5;
   if (normalized.startsWith("outro")) return 6;
   return 4;
 }
