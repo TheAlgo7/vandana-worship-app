@@ -1,0 +1,40 @@
+{
+  "id": "bharpur-jeevan-tere-liye",
+  "title": "Bharpur Jeevan Tere Liye",
+  "artist": "Pr. Wilson George",
+  "church": null,
+  "album": "Bharpur Jeevan",
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "भरपूर जीवन तेरे लिए,\nयेशू लाया है तेरे लिए",
+      "verse1": "जीवन से थककर, है क्यों उदास\nयेशू है देता तुझको, जीवन नया\nअनंत जीवन, तेरे लिए",
+      "verse2": "खाली है जीवन तेरे, है बेकरार\nतरस खाता येशू तुझपर, करता है प्यार\nझरनों सा जीवन, तेरे लिए",
+      "verse3": "येशू बुलाता तुझको, आ येशू पास\nजीवन से पीकर, बुझा अपनी प्यास\nनदियों सा जीवन, तेरे लिए"
+    },
+    "hinglish": {
+      "chorus": "Bharpur jeevan tere liye,\nYeshu laya hai tere liye",
+      "verse1": "Jeevan se thakkar, hai kyu udaas\nYeshu hai deta tujhko, jeevan naya\nAnant jeevan, tere liye",
+      "verse2": "Khaali hai jeevan tere, hai beqaraar\nTaras khaata Yeshu tujhpar, karta hai pyaar\nJharno sa jeevan, tere liye",
+      "verse3": "Yeshu bulaata tujhko, aa Yeshu paas\nJeevan se pi kar, bujha apni pyaas\nNadiyon sa jeevan, tere liye"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Bharpur Jeevan Tere Liye lyrics in Hindi and Hinglish by Pr. Wilson George",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/bharpur-jeevan-tere-liye"
+}

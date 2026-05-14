@@ -1,25 +1,30 @@
 {
   "id": "har-subah-har-shaam",
-  "title": "Har Subah Har Shaam",
-  "artist": "Cameron Mendes (YESHUA Ministries)",
-  "church": "FOLJ Church",
+  "title": "Bhajan (Har Subah Har Shaam)",
+  "artist": "Yeshua Ministries",
+  "church": null,
   "album": null,
-  "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
   "lyrics": {
-    "hinglish": {
-      "pre_chorus": "Meri aankhon mein meri saanson mein\nMere hothon pe meri baaton mein\nIs dil ki har dhadkan mein Tu",
-      "chorus": "Har subah har shaam\nGaaenge Yeshu naam\nHar subah har shaam\nGaaenge Yeshu naam",
-      "verse1": "Tujhe chhodkar jaaun kahaan\nTu hai to main hoon yahaan\nAb ye lamha zara tham jaaye yahaan\nTere mere darmiyaan",
-      "verse2": "Mere hi kareeb aao Tum yahaan\nPaas baitho na mere zara\nTeri khushboo se bhar jaaye jeevan mera\nRahe ye dil Tera hi sadaa",
-      "post_chorus": "Bolo naam Yeshu naam Yeshu naam\nBolo naam Yeshu naam Yeshu naam"
-    },
     "hindi": {
-      "pre_chorus": "मेरी आँखों में मेरी साँसों में\nमेरे होठों पे मेरी बातों में\nइस दिल की हर धड़कन में तू",
-      "chorus": "हर सुबह हर शाम\nगाएँगे यीशु नाम\nहर सुबह हर शाम\nगाएँगे यीशु नाम",
-      "verse1": "तुझे छोड़कर जाऊं कहाँ\nतू है तो मैं हूं यहाँ\nअब ये लम्हा ज़रा थम जाए यहाँ\nतेरे मेरे दरमियान",
-      "verse2": "मेरे ही करीब आओ तुम यहाँ\nपास बैठो न मेरे ज़रा\nतेरी ख़ुशबू से भर जाए जीवन मेरा\nरहे ये दिल तेरा ही सदा",
-      "post_chorus": "बोलो नाम यीशु नाम यीशु नाम\nबोलो नाम यीशु नाम यीशु नाम"
+      "verse1": "मेरी आँखों में, मेरी साँसों में\nमेरी होठों में, मेरी बातों में\nइस दिल की हर धड़कन में तू",
+      "chorus": "हर सुबह हर शाम\nगाएंगे येशू नाम",
+      "verse2": "तुझे छोड़कर, जाऊ कहाँ\nतू है तो मैं हूँ यहाँ (x2)\nअब ये लम्हा ज़रा, थम जाए यहाँ",
+      "repeat_chorus": "हर सुबह हर शाम\nगाएंगे येशू नाम",
+      "verse3": "मेरे ही करीब, आओ तुम यहाँ\nपास बैठो न, मेरे ज़रा (x2)\nतेरे खुशबू से, भर जाए जीवन मेरा",
+      "outro": "बोलो नाम येशू नाम, येशू नाम\nबोलो नाम येशू नाम, येशू नाम"
+    },
+    "hinglish": {
+      "verse1": "Meri ankhon me, meri sanson me\nMeri hotoon me, meri batoon me\nIs dil ki har dadkan me Tu",
+      "chorus": "Har subah har shaam\nGayenge Yeshu naam",
+      "verse2": "Tujhe chhodkar, jau kahan\nTu hai toh main hoon yahan (x2)\nAb ye lamha zara, tham jaye yahan",
+      "repeat_chorus": "Har subah har shaam\nGayenge Yeshu naam",
+      "verse3": "Mere hi kareeb, aao tum yahan\nPaas baitho na, mere zara (x2)\nTere khushboo se, bhar jaye jeevan mera",
+      "outro": "Bolo naam Yeshu naam, Yeshu naam\nBolo naam Yeshu naam, Yeshu naam"
     }
   },
   "links": {
@@ -27,7 +32,15 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "devotion", "intimacy", "folj-church", "yeshua-ministries", "hindi", "hinglish", "2026"],
-  "seo_description": "Har Subah Har Shaam lyrics in Hindi and Hinglish — Cameron Mendes (YESHUA Ministries), live at FOLJ Church",
-  "added_by": "Gaurav | Vandana"
+  "tags": [
+    "worship",
+    "devotion",
+    "yeshua-ministries",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Bhajan (Har Subah Har Shaam) lyrics in Hindi and Hinglish by Yeshua Ministries",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/bhajan-har-subah-har-shaam"
 }

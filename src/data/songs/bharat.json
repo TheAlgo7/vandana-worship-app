@@ -1,0 +1,45 @@
+{
+  "id": "bharat",
+  "title": "Bharat",
+  "artist": "Yeshua Ministries",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse1": "जहाँ थी खुश्बू प्यार की\nकहाँ से आई नफ़रत की तलवार",
+      "chorus": "है ये मेरी दुआ, सलामत रखना\nभारत को ऐ खुदा, है ये दुआ",
+      "verse2": "जब कहीं बहता है लहू\nहै वही बहती आँसू",
+      "bridge": "जो दे कांटे उसका दामन\nफूलों से भर दो",
+      "repeat_chorus": "है ये मेरी दुआ, सलामत रखना\nभारत को ऐ खुदा, है ये दुआ",
+      "outro": "आओ मिलकर हम बनाए ज़िंदगी\nअंधेरी रातों में जले रोशनी"
+    },
+    "hinglish": {
+      "verse1": "Jahan thi khushboo pyaar ki\nKahan se aayi nafrat ki talwar",
+      "chorus": "Hai ye meri dua salamat rakhna\nBharat ko ae Khuda, hai ye dua",
+      "verse2": "Jab kahi behta hai lahoo\nHai vahi behti aasu",
+      "bridge": "Jo de kantein uska daaman\nPhoolon se bhardo",
+      "repeat_chorus": "Hai ye meri dua salamat rakhna\nBharat ko ae Khuda, hai ye dua",
+      "outro": "Aao milkar hum banaye zindagi\nAndheri raaton mein jale roshini"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "yeshua-ministries",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Bharat lyrics in Hindi and Hinglish by Yeshua Ministries",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/bharat"
+}

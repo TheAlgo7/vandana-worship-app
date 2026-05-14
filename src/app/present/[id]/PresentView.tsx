@@ -364,6 +364,9 @@ const setlistNavStyle: CSSProperties = {
 
 function formatLabel(key: string): string {
   return key
+    .replace(/_/g, " ")
     .replace(/([0-9]+)/g, " $1")
-    .replace(/^./, (c) => c.toUpperCase());
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/\b\w/g, (c) => c.toUpperCase());
 }

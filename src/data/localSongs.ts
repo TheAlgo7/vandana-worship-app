@@ -27,6 +27,10 @@ import aaoHumYahovaKaDhanyavaadKarein from "./songs/aao-hum-yahova-ka-dhanyavaad
 import aurChahiye from "./songs/aur-chahiye.json";
 import aurKisiBaatKiBadaaiNaKarein from "./songs/aur-kisi-baat-ki-badaai-na-karein.json";
 import aayaHaiYeshuAayaHai from "./songs/aaya-hai-yeshu-aaya-hai.json";
+import bharat from "./songs/bharat.json";
+import bharpurJeevanTereLiye from "./songs/bharpur-jeevan-tere-liye.json";
+import bintiSunleYeshuPyare from "./songs/binti-sunle-yeshu-pyare.json";
+import boloJaiMilkarJai from "./songs/bolo-jai-milkar-jai.json";
 import chamkaSitara from "./songs/chamka-sitara.json";
 import chooLeMujhe from "./songs/choo-le-mujhe.json";
 import deewana from "./songs/deewana.json";
@@ -77,6 +81,10 @@ export const LOCAL_SONGS: Song[] = [
   aurChahiye,
   aurKisiBaatKiBadaaiNaKarein,
   aayaHaiYeshuAayaHai,
+  bharat,
+  bharpurJeevanTereLiye,
+  bintiSunleYeshuPyare,
+  boloJaiMilkarJai,
   chamkaSitara,
   chooLeMujhe,
   deewana,

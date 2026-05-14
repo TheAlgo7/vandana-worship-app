@@ -1,0 +1,42 @@
+{
+  "id": "bolo-jai-milkar-jai",
+  "title": "Bolo Jai Milkar Jai",
+  "artist": "Ivon Anthony Smith",
+  "church": null,
+  "album": "Stuti Aaradna Ke Geet",
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "बोलो जय मिलकर जय, बोलो जय यीशु की जय\nबोलो जय मिलकर जय, बोलो जय यीशु की जय\nबोलो जय जय जय...",
+      "verse1": "तेरे प्रेम की यही रीत\nमन में भर दे अपनी प्रीत\nतेरे प्रेम के गाए गीत",
+      "verse2": "क्रूस पर अपना खून बहा\nमुझ पापी को दी क्षमा\nमन मेरे तू बोल सदा",
+      "verse3": "तेरी कुदरत की ये शान\nखुद ही दाता, खुद ही दान\nपूरे कर मन के अरमान",
+      "verse4": "खिदमत अपनी ले मुझसे\nइस मंदिर में तू ही बसे\nहिंद में तेरा नाम रहे"
+    },
+    "hinglish": {
+      "chorus": "Bolo jai milkar jai, bolo jai Yeshu ki jai\nBolo jai milkar jai, bolo jai Yeshu ki jai\nBolo jai jai jai...",
+      "verse1": "Tere prem ki yahi reet\nMan mein bhar de apni preet\nTere prem ke gaaye geet",
+      "verse2": "Krus par apna khoon baha\nMujh paapi ko di shama\nMan mere tu bol sada",
+      "verse3": "Teri kudrat ki ye shaan\nKhud hi daata, khud hi daan\nPoore kar man ke armaan",
+      "verse4": "Khidmat apni le mujhse\nIs mandir mein tu hi base\nHind mein tera naam rahe"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": "https://music.apple.com/in/song/1763682270"
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Bolo Jai Milkar Jai lyrics in Hindi and Hinglish by Ivon Anthony Smith",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/bolo-jai-milkar-jai"
+}

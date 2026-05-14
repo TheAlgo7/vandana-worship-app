@@ -1,5 +1,20 @@
 [
   {
+    "id": "update-013",
+    "date": "2026-05-14",
+    "title": "5 B-List Songs Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics for Bhajan (Har Subah Har Shaam), Bharat, Bharpur Jeevan Tere Liye, Binti Sunle Yeshu Pyare, and Bolo Jai Milkar Jai.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Bhajan (Har Subah Har Shaam)",
+      "Bharat",
+      "Bharpur Jeevan Tere Liye",
+      "Binti Sunle Yeshu Pyare",
+      "Bolo Jai Milkar Jai"
+    ]
+  },
+  {
     "id": "update-012",
     "date": "2026-05-14",
     "title": "Screenshot Lyrics Added",
