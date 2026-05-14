@@ -28,6 +28,7 @@ export default function SongView({ song }: SongViewProps) {
   // Lyrics sections
   const sections = song.lyrics[lang] || {};
   const sectionEntries = getOrderedSectionEntries(sections);
+  const languageLabel = lang === "hindi" ? "Hindi" : "Hinglish";
 
   // Track recently viewed
   useEffect(() => {
@@ -53,22 +54,33 @@ export default function SongView({ song }: SongViewProps) {
 
   // Share handler
   const handleShare = useCallback(async () => {
+    const songCredit = [song.artist, song.church].filter(Boolean).join(" · ");
+    const shareText = [
+      `${song.title} lyrics`,
+      songCredit ? `By ${songCredit}` : null,
+      `Language: ${languageLabel}`,
+      "",
+      "Open in Vandana:",
+      window.location.href,
+    ]
+      .filter(Boolean)
+      .join("\n");
     const shareData = {
-      title: song.title,
-      text: "Check out this worship song on Vandana",
+      title: `${song.title} lyrics`,
+      text: shareText,
       url: window.location.href,
     };
     try {
       if (navigator.share) await navigator.share(shareData);
       else {
-        await navigator.clipboard.writeText(window.location.href);
+        await navigator.clipboard.writeText(shareText);
         setShowCopied(true);
         setTimeout(() => setShowCopied(false), 2000);
       }
     } catch {
       // user cancelled or unsupported
     }
-  }, [song.title]);
+  }, [languageLabel, song.artist, song.church, song.title]);
 
   return (
     <div style={{ position: "relative", minHeight: "100vh", padding: 20, paddingBottom: "calc(var(--nav-clearance) + 20px)", maxWidth: "720px", margin: "0 auto" }}>
