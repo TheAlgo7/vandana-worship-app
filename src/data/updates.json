@@ -1,5 +1,20 @@
 [
   {
+    "id": "update-015",
+    "date": "2026-05-14",
+    "title": "More Hindi Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Deewana, Deewana Main Yeshu Ka, Door ek thara jaa rahaa hai, Door kahin in raahon, and Duniya ke kone-kone mein.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Deewana",
+      "Deewana Main Yeshu Ka",
+      "Door ek thara jaa rahaa hai",
+      "Door kahin in raahon",
+      "Duniya ke kone-kone mein"
+    ]
+  },
+  {
     "id": "update-014",
     "date": "2026-05-14",
     "title": "New Worship Songs Added",

@@ -1,0 +1,32 @@
+{
+  "id": "door-ek-thara-jaa-rahaa-hai",
+  "title": "Door ek thara jaa rahaa hai",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hindi", "hinglish"],
+  "lyrics": {
+    "hindi": {
+      "chorus": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को",
+      "verse1": "मरियम का बेटा वो है\nचरनी में जो आज आया है (×2)\nतारे आकाश जल खुशियाँ मनाते\nवो ही हमारा राजा है (×2)",
+      "verse2": "आया बचाने को हमें\nडूबे थे जब हम पापों में (×2)\nये बात समझो, मन फिराओ\nक्यों आया जग में प्यारा मसीह (×2)",
+      "verse3": "आएगा फिर से मसीह\nचिन्हों को देखो पूरे होते (×2)\nन्याय करेगा आकर हमारा\nन्याय का दिन अब निकट आया (×2)"
+    },
+    "hinglish": {
+      "chorus": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko",
+      "verse1": "Mariyam kaa betaa vo hai\nCharnee me jo aaj aayaa hai (×2)\nThaare aakaash jal kushiyaa manaathe\nVo hee hamaaraa raajaa hai (×2)",
+      "verse2": "Aayaa bachaane ko hame\nDoobe the jab ham paapo mein (×2)\nYe baath samjho, man phiraavo\nKyo aayaa jag me pyaaraa Maseeh (×2)",
+      "verse3": "Aayegaa phir se Maseeh\nChinho ko dekho poore hothe (×2)\nNyaay karegaa aakar hamaaraa\nNyaay kaa din ab nikat aayaa (×2)"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "christmas", "hindi", "hinglish", "indianchristianlyrics"],
+  "seo_description": "Door ek thara jaa rahaa hai lyrics in Hindi and Hinglish",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/door-ek-thara-jaa-rahaa-hai"
+}

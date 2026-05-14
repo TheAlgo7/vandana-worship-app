@@ -1,25 +1,29 @@
 {
   "id": "deewana",
   "title": "Deewana",
-  "artist": "Joseph Raj Allam & Akshay Mathews",
+  "artist": "Rahul Noel Massey",
   "church": null,
   "album": null,
   "language_default": "hinglish",
   "languages_available": ["hinglish", "hindi"],
   "lyrics": {
     "hinglish": {
-      "pre_chorus": "Deewana, Main Yeshu Ka\nMere honthon pe Uska hi naam\nDeewana, Main Yeshu Ka\nUske pyaar mein dooba\nMain khoya, main zinda rahun",
-      "chorus": "Yeshu Ka Aa Aa Aa Aa\nMain Deewana Aa Aa Aa Aa\nYeshu Ka Aa Aa Aa Aa\nMain Deewana",
-      "verse1": "Teri baaton ko sunta rahun\nApni manmaani ab na karun\nAb na daayen, na baayen mudun\nTere pyaar mein dooba rahun",
-      "verse2": "Tujhe chhod ke jaaun kahaan\nJahaan dekhun Tu hi hai wahaan\nYeshu, Tujh mein hi milta sukun\nTere pyaar mein dooba rahun",
-      "bridge": "Khoya tha main, bhatka tha main\nMaaf karke, ghar le aaya\nApni pehchaan mujhko dekar\nApna Beta mujhko kehlaya"
+      "chorus": "Your love is the only thing I need\nYour love is the reason I live (x2)",
+      "verse1": "Deewana hua, parwana hua\nTere pyaar mein, main toh pagal sa (pagal sa hua)\nDuniya bhool gaya, sab kuch chhod diya\nChahoon main aur kya, ab ek hi dhun savar\nYeshua Yeshua Yeshua Yeshua",
+      "repeat_chorus": "Your love is the only thing I need\nYour love is the reason I live",
+      "verse2": "Pehli nazar mein, ek aawaaz mein\nGirtaa main toh gaya, tere pyaar mein (tere pyaar mein)\nKya kar jaaun main, kaise batlaa doon main\nMeri chahat tu hi hai, aur koi nahi hai\nWoh Yeshu hai, woh Yeshu hai, woh Yeshu hai, woh Yeshu hai\nWoh Yeshu hai, woh Khuda hai, woh Khuda hai",
+      "bridge": "Chahoon main jeevan bhar tumhe\nHar lamha mein tu hi toh base hai\nAankhen apni jab bhi kholoon\nTu hi tu har dam dikhe\nTu hi tu dikhe, tu hi tu dikhe, tu hi tu dikhe\nYou're all I want, you're all I need",
+      "verse3": "Rangon se bhara, mera har lamha\nLaage bin mausam barish ki dua\nSaath tera ab jo mila\nNa chhodunga kabhi aae Khuda\nSaath tera, ab jo mila\nNa chhodunga, ab aae Khuda",
+      "outro": "Tu hi tu dikhe"
     },
     "hindi": {
-      "pre_chorus": "दीवाना, मैं येशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं येशु का\nउसके प्यार में डूबा\nमैं खोया, मैं ज़िन्दा रहूँ",
-      "chorus": "येशु का आ आ आ आ\nमैं दीवाना आ आ आ आ\nयेशु का आ आ आ आ\nमैं दीवाना",
-      "verse1": "तेरी बातों को सुनता रहूँ\nअपनी मनमानी अब ना करूँ\nअब ना दाएँ, ना बाएँ मुड़ूँ\nतेरे प्यार में डूबा रहूँ",
-      "verse2": "तुझे छोड़ के जाऊँ कहाँ\nजहाँ देखूँ तू ही है वहाँ\nयेशु, तुझ में ही मिलता सुकून\nतेरे प्यार में डूबा रहूँ",
-      "bridge": "खोया था मैं, भटका था मैं\nमाफ़ करके, घर ले आया\nअपनी पहचान मुझको देकर\nअपना बेटा मुझको कहलाया"
+      "chorus": "तेरा प्यार ही एक चीज़ है जो मुझे चाहिए\nतेरा प्यार ही मेरी ज़िंदगी की वजह है (x2)",
+      "verse1": "दीवाना हुआ, परवाना हुआ\nतेरे प्यार में, मैं तो पागल सा (पागल सा हुआ)\nदुनिया भूल गया, सब कुछ छोड़ दिया\nचाहूं मैं और क्या, अब एक ही धुन सवार\nयेशुआ येशुआ येशुआ येशुआ",
+      "repeat_chorus": "तेरा प्यार ही एक चीज़ है जो मुझे चाहिए\nतेरा प्यार ही मेरी ज़िंदगी की वजह है",
+      "verse2": "पहली नज़र में, एक आवाज़ में\nगिरता मैं तो गया, तेरे प्यार में (तेरे प्यार में)\nक्या कर जाऊं मैं, कैसे बतला दूं मैं\nमेरी चाहत तू ही है, और कोई नहीं है\nवो येशू है, वो येशू है, वो येशू है, वो येशू है\nवो येशू है, वो ख़ुदा है, वो ख़ुदा है",
+      "bridge": "चाहूं मैं जीवन भर तुम्हें\nहर लम्हा में तू ही तो बसा है\nआंखें अपनी जब भी खोलूं\nतू ही तू हर दम दिखे\nतू ही तू दिखे, तू ही तू दिखे, तू ही तू दिखे\nYou're all I want, you're all I need",
+      "verse3": "रंगों से भरा, मेरा हर लम्हा\nलगे बिन मौसम बारिश की दुआ\nसाथ तेरा अब जो मिला\nना छोड़ूंगा कभी आए ख़ुदा\nसाथ तेरा, अब जो मिला\nना छोड़ूंगा, अब आए ख़ुदा",
+      "outro": "तू ही तू दिखे"
     }
   },
   "links": {
@@ -27,7 +31,8 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "devotion", "hindi", "hinglish", "2026"],
-  "seo_description": "Deewana Main Yeshu Ka lyrics in Hindi and Hinglish by Joseph Raj Allam & Akshay Mathews — a devotional worship song of passionate love for Jesus",
-  "added_by": "Gaurav | Vandana"
+  "tags": ["worship", "devotion", "hindi", "hinglish", "indianchristianlyrics"],
+  "seo_description": "Deewana lyrics in Hindi and Hinglish by Rahul Noel Massey",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/deewana"
 }

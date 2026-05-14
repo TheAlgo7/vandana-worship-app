@@ -39,6 +39,10 @@ import chattan from "./songs/chattan.json";
 import chooLeMujhe from "./songs/choo-le-mujhe.json";
 import chillakarGaoonga from "./songs/chillakar-gaoonga.json";
 import deewana from "./songs/deewana.json";
+import deewanaMainYeshuKa from "./songs/deewana-main-yeshu-ka.json";
+import doorEkTharaJaaRahaaHai from "./songs/door-ek-thara-jaa-rahaa-hai.json";
+import doorKahinInRaahon from "./songs/door-kahin-in-raahon.json";
+import duniyaKeKonekoneMein from "./songs/duniya-ke-konekone-mein.json";
 import ekMahimaKaBaadal from "./songs/ek-mahima-ka-baadal.json";
 import haqTala from "./songs/haq-tala.json";
 import harSubahHarShaam from "./songs/har-subah-har-shaam.json";
@@ -98,6 +102,10 @@ export const LOCAL_SONGS: Song[] = [
   chooLeMujhe,
   chillakarGaoonga,
   deewana,
+  deewanaMainYeshuKa,
+  doorEkTharaJaaRahaaHai,
+  doorKahinInRaahon,
+  duniyaKeKonekoneMein,
   ekMahimaKaBaadal,
   haqTala,
   harSubahHarShaam,

@@ -1,0 +1,32 @@
+{
+  "id": "duniya-ke-konekone-mein",
+  "title": "Duniya ke kone-kone mein",
+  "artist": "Traditional",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": ["hindi", "hinglish"],
+  "lyrics": {
+    "hindi": {
+      "chorus": "दुनिया के कोने-कोने में,\nगूंज रहा यीशु का नाम,\nदुनिया में हालेलूय्याह।\nकैसा प्यारा यीशु का नाम,",
+      "verse1": "आकाश के नीचे लोगों के बीच में,\nफिर दूसरा नाम नहीं,\nदुनिया में हालेलूय्याह।\nकैसा प्यारा यीशु का नाम,",
+      "verse2": "खून की धारा बह रही है,\nसूली से सारे जहाँ में,\nदुनिया में हालेलूय्याह।\nकैसा प्यारा यीशु का नाम,",
+      "verse3": "धो लो तुम अपने सारे पापों को,\nपाओ तुम शिफा जहाँ में,\nदुनिया में हालेलूय्याह॥\nकैसा प्यारा यीशु का नाम,"
+    },
+    "hinglish": {
+      "chorus": "Duniya ke kone-kone mein,\nGoonj raha Yeshu ka naam,\nDuniya mein hallelujah.\nKaisa pyaara Yeshu ka naam,",
+      "verse1": "Aakaash ke neeche logon ke beech mein,\nPhir doosra naam nahi,\nDuniya mein hallelujah.\nKaisa pyaara Yeshu ka naam,",
+      "verse2": "Khoon ki dhaara beh rahi hai,\nSooli se saare jahaan mein,\nDuniya mein hallelujah.\nKaisa pyaara Yeshu ka naam,",
+      "verse3": "Dho lo tum apne saare paapon ko,\nPao tum shifaa jahaan mein,\nDuniya mein hallelujah.\nKaisa pyaara Yeshu ka naam,"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": ["worship", "hindi", "hinglish", "traditional", "indianchristianlyrics"],
+  "seo_description": "Duniya ke kone-kone mein lyrics in Hindi and Hinglish",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/duniya-ke-konekone-mein"
+}
