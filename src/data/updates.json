@@ -1,5 +1,14 @@
 [
   {
+    "id": "update-011",
+    "date": "2026-05-14",
+    "title": "Song Credits Refined",
+    "body": "Updated verified artist and source credits for several recently added songs, including Aaj Ka Din Yahowa Ne Banaya Hai, Aaya Hai Yeshu Aaya Hai, Ab Aao Vishwasiyo, and Ae Lashkaron Ke Rab.",
+    "type": "metadata",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-010",
     "date": "2026-05-14",
     "title": "10 Classic Hindi Worship Songs Added",

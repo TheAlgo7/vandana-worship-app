@@ -1,7 +1,7 @@
 {
   "id": "aaya-hai-yeshu-aaya-hai",
   "title": "Aaya Hai Yeshu Aaya Hai",
-  "artist": "Unknown Artist",
+  "artist": "Kavita Paudwal",
   "church": null,
   "album": null,
   "language_default": "hinglish",
@@ -30,7 +30,7 @@
   "links": {
     "youtube": null,
     "spotify": null,
-    "apple_music": null
+    "apple_music": "https://music.apple.com/in/song/1195113617"
   },
   "tags": [
     "worship",
@@ -38,7 +38,7 @@
     "hindi",
     "indianchristianlyrics"
   ],
-  "seo_description": "Aaya Hai Yeshu Aaya Hai lyrics in hinglish and hindi by Unknown Artist",
+  "seo_description": "Aaya Hai Yeshu Aaya Hai lyrics in hinglish and hindi by Kavita Paudwal",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/aaya-hai-yeshu-aaya-hai"
 }

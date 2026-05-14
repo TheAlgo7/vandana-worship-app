@@ -1,7 +1,7 @@
 {
   "id": "ab-aao-vishwasiyo",
   "title": "Ab Aao Vishwasiyo",
-  "artist": "Unknown Artist",
+  "artist": "Anuradha Paudwal & Sonu Nigam",
   "church": null,
   "album": null,
   "language_default": "hinglish",
@@ -28,7 +28,7 @@
   "links": {
     "youtube": null,
     "spotify": null,
-    "apple_music": null
+    "apple_music": "https://music.apple.com/in/song/1195113618"
   },
   "tags": [
     "worship",
@@ -36,7 +36,7 @@
     "hindi",
     "indianchristianlyrics"
   ],
-  "seo_description": "Ab Aao Vishwasiyo lyrics in hinglish and hindi by Unknown Artist",
+  "seo_description": "Ab Aao Vishwasiyo lyrics in hinglish and hindi by Anuradha Paudwal & Sonu Nigam",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/ab-aao-vishwasiyo"
 }
