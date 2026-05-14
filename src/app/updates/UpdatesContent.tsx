@@ -3,7 +3,6 @@
 import { useEffect } from "react";
 import {
   Bell,
-  CalendarDays,
   CheckCircle2,
   Info,
   Music2,
@@ -54,79 +53,45 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
     localStorage.setItem("vandana-updates-last-read", new Date().toISOString());
   }, []);
 
-  const latest = updates[0];
   const totalSongs = updates.reduce((sum, update) => sum + Math.max(update.song_count, 0), 0);
 
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100dvh",
+        background: "var(--bg-base)",
+        color: "var(--text-primary)",
+        paddingBottom: "calc(var(--nav-clearance) + 16px)",
+      }}
+    >
       <header
         style={{
           position: "sticky",
           top: 0,
           zIndex: 40,
-          background: "color-mix(in srgb, var(--bg-base) 92%, transparent)",
+          display: "flex",
+          alignItems: "center",
+          gap: 12,
+          padding: "16px 20px",
+          background: "var(--bg-base)",
           borderBottom: "1px solid var(--border)",
-          backdropFilter: "blur(16px)",
         }}
       >
-        <div
-          className="page-header-content"
+        <h1
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: 16,
-            padding: "14px 20px",
+            fontSize: "var(--text-lg)",
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
           }}
         >
-          <div>
-            <p
-              style={{
-                color: "var(--accent)",
-                fontSize: "var(--text-xs)",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-                marginBottom: 2,
-              }}
-            >
-              What&apos;s new
-            </p>
-            <h1
-              style={{
-                fontFamily: "var(--font-display)",
-                fontSize: "var(--text-xl)",
-                fontWeight: 600,
-                letterSpacing: 0,
-                margin: 0,
-              }}
-            >
-              Updates
-            </h1>
-          </div>
-          {latest && (
-            <span
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: 6,
-                color: "var(--text-secondary)",
-                fontSize: "var(--text-xs)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              <CalendarDays size={14} aria-hidden="true" />
-              {formatDate(latest.date)}
-            </span>
-          )}
-        </div>
+          Updates
+        </h1>
       </header>
 
       <main
         style={{
-          padding: "18px 20px",
-          paddingBottom: "calc(var(--nav-clearance) + 18px)",
-          maxWidth: "42rem",
+          padding: "24px 20px",
+          maxWidth: 560,
           margin: "0 auto",
         }}
       >
@@ -169,39 +134,52 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
           </div>
         ) : (
           <>
+            <p className="section-label">Library Notes</p>
             <section
               aria-label="Updates summary"
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 16,
-                marginBottom: 22,
-                padding: "2px 0 16px",
-                borderBottom: "1px solid var(--border-subtle)",
+                justifyContent: "space-between",
+                gap: 12,
+                marginBottom: 28,
+                padding: "14px 16px",
+                background: "var(--bg-surface)",
+                borderRadius: "var(--radius-md)",
+                border: "1px solid var(--border)",
               }}
             >
               <SummaryStat label="Published notes" value={updates.length.toString()} />
               <SummaryStat label="Songs added" value={totalSongs.toString()} />
             </section>
 
-            <section style={{ display: "grid", gap: 2 }}>
+            <p className="section-label">Recent Changes</p>
+            <section
+              style={{
+                overflow: "hidden",
+                background: "var(--bg-surface)",
+                borderRadius: "var(--radius-md)",
+                border: "1px solid var(--border)",
+              }}
+            >
               {updates.map((update, index) => {
                 const theme = getTheme(update.type);
                 const Icon = theme.icon;
                 const showMonth =
                   index === 0 || formatMonth(update.date) !== formatMonth(updates[index - 1].date);
+                const isLast = index === updates.length - 1;
 
                 return (
-                  <div key={update.id}>
+                  <div key={update.id} style={{ padding: showMonth ? "14px 16px 0" : "0 16px" }}>
                     {showMonth && (
                       <p
                         style={{
                           color: "var(--text-muted)",
                           fontSize: "var(--text-xs)",
                           fontWeight: 700,
-                          letterSpacing: "0.12em",
+                          letterSpacing: "0.08em",
                           textTransform: "uppercase",
-                          margin: index === 0 ? "0 0 8px" : "14px 0 8px",
+                          margin: 0,
                         }}
                       >
                         {formatMonth(update.date)}
@@ -213,8 +191,8 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                         display: "grid",
                         gridTemplateColumns: "30px 1fr",
                         gap: 13,
-                        padding: "14px 0 16px",
-                        borderBottom: "1px solid var(--border-subtle)",
+                        padding: showMonth ? "12px 0 16px" : "16px 0",
+                        borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
                       }}
                     >
                       <div
@@ -331,7 +309,7 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
                                   overflow: "hidden",
                                   textOverflow: "ellipsis",
                                   color: "var(--text-secondary)",
-                                  background: "color-mix(in srgb, var(--bg-elevated) 58%, transparent)",
+                                  background: "var(--bg-elevated)",
                                   border: "1px solid var(--border-subtle)",
                                   borderRadius: "var(--radius-pill)",
                                   padding: "4px 9px",
@@ -354,7 +332,7 @@ export default function UpdatesContent({ updates }: { updates: UpdateEntry[] }) 
           </>
         )}
       </main>
-    </>
+    </div>
   );
 }
 
