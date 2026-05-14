@@ -1,0 +1,42 @@
+{
+  "id": "ho-teri-aradhana",
+  "title": "Ho Teri Aradhana",
+  "artist": "Joshua Generation India",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "intro": "आराधना, आराधना\nआराधना, आराधना",
+      "verse_1": "दिल में जगह तू दे दे\nबाहों में मुझे तू भर दे",
+      "chorus": "हो तेरी आराधना\nकरता रहूँ तेरी आराधना",
+      "verse_2": "मेरे दिल की तू है ज़रूरत\nकरता रहूँगा तुझसे मोहब्बत",
+      "repeat_chorus": "हो तेरी आराधना\nकरता रहूँ तेरी आराधना"
+    },
+    "hinglish": {
+      "intro": "Aradhana, Aradhana\nAradhana, Aradhana",
+      "verse_1": "Dil mein jagah tu dede\nBaahon mein mujhe tu bhar de",
+      "chorus": "Ho teri aradhana\nKarta rahoon teri aradhana",
+      "verse_2": "Mere dil ki tu hai zarurat\nKarta rahunga tujhse mohabbat",
+      "repeat_chorus": "Ho teri aradhana\nKarta rahoon teri aradhana"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ho Teri Aradhana lyrics in Hindi and Hinglish by Joshua Generation India",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ho-teri-aradhana"
+}

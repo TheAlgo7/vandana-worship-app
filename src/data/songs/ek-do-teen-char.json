@@ -1,0 +1,47 @@
+{
+  "id": "ek-do-teen-char",
+  "title": "Ek Do Teen Char",
+  "artist": "Yeshua Ministries",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse_1": "एक दो तीन चार\nयेशू मुझ से करा है प्यार\nपाँच छे सात आठ\nवो ना छोड़ेगा मेरा हाथ",
+      "chorus": "ना छोड़ेगा मेरा हाथ\nना छोड़ेगा",
+      "verse_2": "तो गये होसन्ना\nयेशू है मेरा राजा\nतो गये होसन्ना\nचाहे बज्जे",
+      "verse_3": "एक दो तीन चार\nचिल्लाएँगे हम बार बार\nपाँच छे सात आठ\nहमेशा है वो मेरे साथ",
+      "bridge": "हमेशा हमेशा\nवो है मेरे साथ",
+      "english_section": "Jesus is the only name\nThat's above every other name\nYesterday, today and forever the same\nJesus is the only name",
+      "outro": "हो चाहे दिन चाहे रात\nवो ना छोड़ेगा मेरा हाथ\nडरने की ना है कोई बात\nहमेशा है वो तेरे साथ"
+    },
+    "hinglish": {
+      "verse_1": "Ek do teen char\nYeshu mujh se kara hai pyaar\nPaanch che saath aath\nVo na chodega mera haath",
+      "chorus": "Na chodega mera haath\nNa chodega",
+      "verse_2": "Toh gaye Hosanna\nYeshu hai mera Raja\nToh gaye Hosanna\nChahe bajje",
+      "verse_3": "Ek do teen char\nChillayenge hum baar baar\nPaanch che saath aath\nHamesha hai vo mere saath",
+      "bridge": "Hamesha hamesha\nVo hai mere saath",
+      "english_section": "Jesus is the only name\nThat's above every other name\nYesterday, today and forever the same\nJesus is the only name",
+      "outro": "Ho chahe din chahe raat\nVo na chodega mera haath\nDarne ki na hai koi baat\nHamesha hai vo tere saath"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "kids",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ek Do Teen Char lyrics in Hindi and Hinglish by Yeshua Ministries",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ek-do-teen-char"
+}

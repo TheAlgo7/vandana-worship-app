@@ -43,10 +43,21 @@ import deewanaMainYeshuKa from "./songs/deewana-main-yeshu-ka.json";
 import doorEkTharaJaaRahaaHai from "./songs/door-ek-thara-jaa-rahaa-hai.json";
 import doorKahinInRaahon from "./songs/door-kahin-in-raahon.json";
 import duniyaKeKonekoneMein from "./songs/duniya-ke-konekone-mein.json";
+import ekAisiAgni from "./songs/ek-aisi-agni.json";
+import ekDoTeenChar from "./songs/ek-do-teen-char.json";
 import ekMahimaKaBaadal from "./songs/ek-mahima-ka-baadal.json";
+import gaakeMujhkoSunaoPhir from "./songs/gaake-mujhko-sunao-phir.json";
+import haiDiAawazFarishtoNe from "./songs/hai-di-aawaz-farishto-ne.json";
+import haiTu from "./songs/hai-tu.json";
+import hallelujahPrabhuMere from "./songs/hallelujah-prabhu-mere.json";
+import halleluyaahHalleluyaahGaayenge from "./songs/halleluyaah-halleluyaah-gaayenge.json";
 import haqTala from "./songs/haq-tala.json";
 import harSubahHarShaam from "./songs/har-subah-har-shaam.json";
 import hazaaronZubane from "./songs/hazaaron-zubane.json";
+import hoSitaish from "./songs/ho-sitaish.json";
+import hoTeriAradhana from "./songs/ho-teri-aradhana.json";
+import hoTeriStutiAurAradhana from "./songs/ho-teri-stuti-aur-aradhana.json";
+import hungama from "./songs/hungama.json";
 import jabSaathHaiMasiha from "./songs/jab-saath-hai-masiha.json";
 import jhuktaSinghasanPe from "./songs/jhukta-singhasan-pe.json";
 import kadoshKadosh from "./songs/kadosh-kadosh.json";
@@ -106,10 +117,21 @@ export const LOCAL_SONGS: Song[] = [
   doorEkTharaJaaRahaaHai,
   doorKahinInRaahon,
   duniyaKeKonekoneMein,
+  ekAisiAgni,
+  ekDoTeenChar,
   ekMahimaKaBaadal,
+  gaakeMujhkoSunaoPhir,
+  haiDiAawazFarishtoNe,
+  haiTu,
+  hallelujahPrabhuMere,
+  halleluyaahHalleluyaahGaayenge,
   haqTala,
   harSubahHarShaam,
   hazaaronZubane,
+  hoSitaish,
+  hoTeriAradhana,
+  hoTeriStutiAurAradhana,
+  hungama,
   jabSaathHaiMasiha,
   jhuktaSinghasanPe,
   kadoshKadosh,

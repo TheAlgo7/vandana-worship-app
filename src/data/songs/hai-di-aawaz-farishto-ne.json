@@ -1,0 +1,45 @@
+{
+  "id": "hai-di-aawaz-farishto-ne",
+  "title": "Hai di aawaz farishto ne",
+  "artist": "Jaago Music",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus_1": "है दी आवाज़ फरिश्तों ने\nज़मीं के लोगो को\nउतर आया जहाँ में अब\nखुदा इंसान बनके\nहै दी आवाज़ (×2)",
+      "pre_chorus": "येशु है उसका नाम (×2)",
+      "chorus_2": "तो करो जय जयकार (×4)",
+      "verse_1": "वो आया है गुनाह की\nक़ैद से आज़ाद करने को\nजो उजड़े ज़िंदगी के बाग़\nउन्हें आबाद करने को\nना हो मायूस, खुदा आया\nउमीदों का जहाँ बनके",
+      "verse_2": "जो बैठे हैं अंधेरों\nमें वो आए रौशनी ले ले\nग़मों में रहने वाले\nज़िंदगी की हर खुशी ले ले\nवो आया है खुदा इंसान,\nमेहरबान बनके",
+      "verse_3": "हमारे वास्ते वो\nआसमानी प्यार लाया है\nनया जीवन, नए रास्ते,\nनया संसार लाया है\nकभी जो खत्म न हो,\nआया ऐसी दास्तां बनके"
+    },
+    "hinglish": {
+      "chorus_1": "Hai di aawaz farishto ne\nZameen ke logo ko\nUtar aaya jahaan mein ab\nKhuda insaan banke\nHai di aawaz (?2)",
+      "pre_chorus": "Yeshu hai uska naam (?2)",
+      "chorus_2": "To karo jai jaikar (?4)",
+      "verse1": "Wo aaya hai gunaah ki\nQaid se aazaad karne ko\nJo ujhde zindagi ke baag\nUnhe aabaad karne ko\nNa ho mayoos, Khuda aaya\nUmeedo ka jahaan banke",
+      "verse2": "Jo baithe hain andheron\nMein wo aaye roshni le le\nGhamon mein rehne wale\nZindagi ki har khushi le le\nWo aaya hai Khuda insaan,\nMehrbaan banke",
+      "verse3": "Hamare vaaste wo\nAasmani pyaar laya hai\nNaya jeevan, naye raaste,\nNaya sansaar laya hai\nKabhi jo khatm na ho,\nAaya aisi dastaan banke"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "christmas",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Hai di aawaz farishto ne lyrics in Hindi and Hinglish by Jaago Music",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/hai-di-aawaz-farishto-ne"
+}

@@ -1,0 +1,38 @@
+{
+  "id": "ho-teri-stuti-aur-aradhana",
+  "title": "Ho Teri Stuti Aur Aradhana",
+  "artist": "Unknown Artist",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "chorus": "हो तेरी स्तुति और आराधना\nकरता हूँ मैं तुझसे ये प्रार्थना\nमहिमा से तेरी तू इस जगह को भर\nजो भी तू चाहे तू यहाँ पर कर\nहाले - हाल्लेलुयाह - हाल्लेलुयाह - हाल्लेलु",
+      "verse_1": "करुणा से तेरी नया दिन दिखता है\nढाल बन कर मेरी मुझे बचाता है\nजब मैं पुकारूं तू दौड़ आता है\nजब मैं गिरूं मुझे उठाता है\nहाले - हाल्लेलुयाह - हाल्लेलुयाह - हाल्लेलु",
+      "verse_2": "सारे जहाँ में तुझ सा कोई नहीं\nतुझको छोड़ कोई प्रभु है ही नहीं\nघुटनों में टेकूं बस तेरे सामने\nतू है मेरा प्रभु, तू मेरा पिता\nहाले - हाल्लेलुयाह - हाल्लेलुयाह - हाल्लेलु"
+    },
+    "hinglish": {
+      "chorus": "Ho teri stuti aur aradhana\nKarta hoon main tujhse yeh prarthana\nMahima se teri tu is jagah ko bhar\nJo bhi tu chahe tu yahan par kar\nHale-hallelujah-hallelujah-hallelu",
+      "verse_1": "Karuna se teri naya din dikhata hai\nDhaal bankar meri mujhe bachata hai\nJab main pukaaru tu daude aata hai\nJab main giru mujhe uthata hai\nHale-hallelujah-hallelujah-hallelu",
+      "verse_2": "Saare jahaan mein tujh sa koi nahi\nTujhko chhod koi Prabhu hai hi nahi\nGhutne main tekun bas tere saamne\nTu hai mera Prabhu, tu mera Pita\nHale-hallelujah-hallelujah-hallelu"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ho Teri Stuti Aur Aradhana lyrics in Hindi and Hinglish by Unknown Artist",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ho-teri-stuti-aur-aradhana"
+}

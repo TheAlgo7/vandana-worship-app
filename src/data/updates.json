@@ -1,5 +1,27 @@
 [
   {
+    "id": "update-016",
+    "date": "2026-05-14",
+    "title": "New E, G & H Worship Songs Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics for 12 worship songs, including Ek Aisi Agni, Ek Do Teen Char, Hai Tu, Ho Sitaish, Ho Teri Aradhana, and Hungama.",
+    "type": "songs_added",
+    "song_count": 12,
+    "song_names": [
+      "Ek Aisi Agni",
+      "Ek Do Teen Char",
+      "Gaake Mujhko Sunao Phir",
+      "Hai di aawaz farishto ne",
+      "Hai Tu",
+      "Hallelujah! Prabhu Mere",
+      "Halleluyaah, halleluyaah gaayenge",
+      "Haq Tala",
+      "Ho Sitaish",
+      "Ho Teri Aradhana",
+      "Ho Teri Stuti Aur Aradhana",
+      "Hungama"
+    ]
+  },
+  {
     "id": "update-015",
     "date": "2026-05-14",
     "title": "More Hindi Worship Songs Added",

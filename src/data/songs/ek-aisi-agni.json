@@ -1,0 +1,42 @@
+{
+  "id": "ek-aisi-agni",
+  "title": "Ek Aisi Agni",
+  "artist": "Praneet Calvin",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse_1": "एक ऐसी अग्नि तू मुझमें लगा दे\nकि जलने पाऊं तुझमें\nएक ऐसी रौशनी तू मुझमें जगा दे\nकि चमकने पाऊं तुझमें",
+      "pre_chorus": "अपने बादल के साये में चला (x2)\nअपने रूह की बारिश में भीगा (x2)",
+      "chorus": "आशा का ज़रिया तू बना (x2)\nजीवन की नदियों को बहा (x2)\nचमकने पाऊं तुझमें (x2)",
+      "verse_2": "एक ऐसी तूफ़ान को ला\nजो अंधकार को कर दे तबाह\nअपने वचन की ज्योति प्रभु\nमेरे जीवन से तू चमका",
+      "bridge": "तेरी आग जलने दे (x2)\nमुझे भस्म करे (x2)\nतुझमें मैं ही नहीं (x2)"
+    },
+    "hinglish": {
+      "verse_1": "Ek aisi agni tu mujhme laga de\nKi jalne paau tujhme\nEk aisi roshni tu mujhme jaga de\nKi chamakne paau tujhme",
+      "pre_chorus": "Apne badal ke saaye mein chala (x2)\nApne ruh ke barish mein bhiga (x2)",
+      "chorus": "Asha ka zariya tu bana (x2)\nJeevan ki nadiyon ko baha (x2)\nChamakne paau tujhme (x2)",
+      "verse_2": "Ek aisi toofan ko la\nJo andhkaar ko kar de tabah\nApne vachan ki jyoti Prabhu\nMere jeevan se tu chamka",
+      "bridge": "Teri aag jalne de (x2)\nMujhe bhasm kare (x2)\nTujhme main hi nahi (x2)"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Ek Aisi Agni lyrics in Hindi and Hinglish by Praneet Calvin",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/ek-aisi-agni"
+}

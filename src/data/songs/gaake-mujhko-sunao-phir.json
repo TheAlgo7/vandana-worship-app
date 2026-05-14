@@ -1,0 +1,41 @@
+{
+  "id": "gaake-mujhko-sunao-phir",
+  "title": "Gaake Mujhko Sunao Phir",
+  "artist": "Traditional",
+  "church": null,
+  "album": null,
+  "language_default": "hindi",
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
+  "lyrics": {
+    "hindi": {
+      "verse_1": "गाके मुझ को सुनाओ फिर, मंगल सुसमाचार,\nसमझूँ मैं उसका अर्थ और सार, मंगल सुसमाचार,\nसुंदर जीवनदायक, धर्म विश्वास का शिक्षक॥",
+      "chorus": "वचन अनुप, वचन अद्भुत,\nमंगल सुसमाचार॥",
+      "verse_2": "यीशु देता है सबों को,\nमंगल सुसमाचार,\nलो अब तुम जो कि भूले हो,",
+      "verse_3": "जाके सबों को दो संदेश,\nमंगल सुसमाचार,\nदेता दिलों को चैन विशेष,"
+    },
+    "hinglish": {
+      "verse_1": "Gaake mujhko sunao phir, mangal susamachar,\nSamjhoon main uska arth aur saar, mangal susamachar,\nSundar jeevandayak, dharm vishwas ka shikshak.",
+      "chorus": "Vachan anup, vachan adbhut,\nMangal susamachar.",
+      "verse_2": "Yeshu deta hai sabko,\nMangal susamachar,\nLo ab tum jo ki bhoole ho,",
+      "verse_3": "Jaake sabko do sandesh,\nMangal susamachar,\nDeta dilon ko chain vishesh,"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "hymn",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Gaake Mujhko Sunao Phir lyrics in Hindi and Hinglish by Traditional",
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/gaake-mujhko-sunao-phir"
+}
