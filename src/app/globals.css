@@ -200,6 +200,89 @@ h1, h2, h3 {
   outline-offset: 2px;
 }
 
+.daily-verse,
+.home-search-wrap,
+.home-side-card,
+.page-aside-card,
+.song-reading-column {
+  position: relative;
+  isolation: isolate;
+}
+
+.daily-verse > *,
+.home-search-wrap > *,
+.home-side-card > *,
+.page-aside-card > *,
+.song-reading-column > * {
+  position: relative;
+  z-index: 1;
+}
+
+.daily-verse::before,
+.home-search-wrap::before,
+.home-side-card::before,
+.page-aside-card::before,
+.song-reading-column::before {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.daily-verse::before {
+  inset: -10px 8px -2px;
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(ellipse at 18% 0%, color-mix(in srgb, var(--accent) 12%, transparent) 0%, transparent 58%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-surface) 38%, transparent) 0%, transparent 82%);
+  opacity: 0.78;
+}
+
+.home-search-wrap::before {
+  inset: -28px 8px -18px;
+  border-radius: calc(var(--radius-xl) + 8px);
+  background:
+    radial-gradient(ellipse at 50% 10%, color-mix(in srgb, var(--accent) 11%, transparent) 0%, transparent 64%),
+    radial-gradient(ellipse at 18% 85%, color-mix(in srgb, var(--text-primary) 4%, transparent) 0%, transparent 60%);
+  opacity: 0.9;
+}
+
+.home-side-card::before,
+.page-aside-card::before {
+  inset: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 22% 0%, color-mix(in srgb, var(--accent) 9%, transparent) 0%, transparent 64%),
+    linear-gradient(180deg, color-mix(in srgb, var(--text-primary) 3%, transparent) 0%, transparent 100%);
+}
+
+.song-view-shell::before {
+  content: "";
+  position: absolute;
+  top: -84px;
+  left: 50%;
+  width: min(620px, calc(100vw - 24px));
+  height: 360px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 68%),
+    radial-gradient(ellipse at center, color-mix(in srgb, var(--text-primary) 4%, transparent) 0%, transparent 72%);
+  opacity: 0.88;
+  pointer-events: none;
+}
+
+.song-reading-column::before {
+  inset: -18px -10px auto;
+  height: 300px;
+  border-radius: calc(var(--radius-xl) + 10px);
+  background:
+    radial-gradient(ellipse at 32% 0%, color-mix(in srgb, var(--accent) 11%, transparent) 0%, transparent 66%),
+    radial-gradient(ellipse at 72% 12%, color-mix(in srgb, var(--text-primary) 4%, transparent) 0%, transparent 64%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-surface) 28%, transparent) 0%, transparent 86%);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.16);
+}
+
 /* ── Skip-to-main link (keyboard only) ── */
 .skip-link {
   position: absolute;

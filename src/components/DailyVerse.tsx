@@ -44,6 +44,7 @@ export default function DailyVerse() {
 
   return (
     <section
+      className="daily-verse"
       lang={verse.isHindi ? "hi" : "en"}
       style={{
         padding: "14px 20px 8px",

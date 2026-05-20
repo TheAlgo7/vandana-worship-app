@@ -207,25 +207,6 @@ export default function SongView({ song }: SongViewProps) {
       {/* Scroll sentinel */}
       <div ref={sentinelRef} style={{ height: 1 }} />
 
-      {/* Radial accent glow */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: "absolute",
-          top: -60,
-          left: "50%",
-          transform: "translateX(-50%)",
-          width: 300,
-          height: 300,
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, var(--accent) 0%, transparent 70%)",
-          opacity: 0.07,
-          pointerEvents: "none",
-          zIndex: -1,
-        }}
-      />
-
       <div className="song-view-grid">
         <div className="song-reading-column">
       {/* Header */}
@@ -252,7 +233,7 @@ export default function SongView({ song }: SongViewProps) {
             fontWeight: 700,
             color: "var(--text-primary)",
             lineHeight: 1.2,
-            letterSpacing: "-0.03em",
+            letterSpacing: 0,
             marginBottom: 4,
           }}
         >
