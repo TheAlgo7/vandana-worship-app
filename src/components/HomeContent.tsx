@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useMemo } from "react";
 import { Search as MagnifyingGlass, SearchX } from "lucide-react";
 import type { SongLibrarySource, SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
@@ -76,11 +76,18 @@ export default function HomeContent({
   librarySource?: SongLibrarySource;
 }) {
   const [query, setQuery] = useState("");
+  const [debouncedQuery, setDebouncedQuery] = useState("");
   const [activeChurch, setActiveChurch] = useState<string | null>(null);
   const [visibleState, setVisibleState] = useState({ key: "", count: SONG_BATCH_SIZE });
   const searchRef = useRef<HTMLInputElement>(null);
   const { isFavourite, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
+
+  /* Debounce query for expensive fuzzy search */
+  useEffect(() => {
+    const id = setTimeout(() => setDebouncedQuery(query), 120);
+    return () => clearTimeout(id);
+  }, [query]);
 
   /* Pull-to-Refresh */
   const pullStartRef = useRef<number | null>(null);
@@ -157,35 +164,39 @@ export default function HomeContent({
     localStorage.removeItem("vandana-recently-viewed");
   };
 
-  const churches = Array.from(
-    new Set(songs.map((s) => s.church).filter(Boolean))
+  const churches = useMemo(
+    () => Array.from(new Set(songs.map((s) => s.church).filter(Boolean))),
+    [songs],
   );
 
-  const normalizedQuery = normalizeSearch(query);
-  const filtered = songs.filter((s) => {
-    const searchable = [
-      s.title,
-      s.artist,
-      s.church ?? "",
-      s.tags.join(" "),
-      s.lyrics_search,
-    ].join(" ");
-    const matchesQuery =
-      !normalizedQuery ||
-      fuzzyIncludes(searchable, normalizedQuery);
-    const matchesChurch = !activeChurch || s.church === activeChurch;
-    return matchesQuery && matchesChurch;
-  });
-  const lyricOnlyMatches = normalizedQuery
-    ? filtered.filter((s) => {
-        const q = normalizedQuery;
-        const titleArtistChurchTags = [s.title, s.artist, s.church ?? "", s.tags.join(" ")].join(" ");
-        return (
-          fuzzyIncludes(s.lyrics_search, q) &&
-          !fuzzyIncludes(titleArtistChurchTags, q)
-        );
-      }).length
-    : 0;
+  const normalizedQuery = useMemo(() => normalizeSearch(debouncedQuery), [debouncedQuery]);
+
+  const filtered = useMemo(() => {
+    return songs.filter((s) => {
+      const searchable = [
+        s.title,
+        s.artist,
+        s.church ?? "",
+        s.tags.join(" "),
+        s.lyrics_search,
+      ].join(" ");
+      const matchesQuery = !normalizedQuery || fuzzyIncludes(searchable, normalizedQuery);
+      const matchesChurch = !activeChurch || s.church === activeChurch;
+      return matchesQuery && matchesChurch;
+    });
+  }, [songs, normalizedQuery, activeChurch]);
+
+  const lyricOnlyMatches = useMemo(() => {
+    if (!normalizedQuery) return 0;
+    return filtered.filter((s) => {
+      const titleArtistChurchTags = [s.title, s.artist, s.church ?? "", s.tags.join(" ")].join(" ");
+      return (
+        fuzzyIncludes(s.lyrics_search, normalizedQuery) &&
+        !fuzzyIncludes(titleArtistChurchTags, normalizedQuery)
+      );
+    }).length;
+  }, [filtered, normalizedQuery]);
+
   const hasActiveFilters = !!query || !!activeChurch;
   const visibleKey = `${normalizedQuery}|${activeChurch ?? ""}`;
   const visibleCount = visibleState.key === visibleKey ? visibleState.count : SONG_BATCH_SIZE;
@@ -245,7 +256,7 @@ export default function HomeContent({
             </div>
 
             {/* Search Bar */}
-            <div className="home-search-wrap" style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px", position: "relative" }}>
+            <div className="home-search-wrap" style={{ maxWidth: "40rem", margin: "6px auto 0", padding: "0 20px", position: "relative" }}>
               <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
                 Search songs, artists, and lyrics
               </label>
@@ -284,13 +295,13 @@ export default function HomeContent({
                   e.currentTarget.style.boxShadow = "none";
                 }}
               />
-              <span style={{ position: "absolute", left: 34, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", display: "flex", alignItems: "center", pointerEvents: "none" }}>
+              <span className="home-search-icon" style={{ position: "absolute", left: 34, top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)", display: "flex", alignItems: "center", pointerEvents: "none" }}>
                 <MagnifyingGlass size={20} strokeWidth={2} />
               </span>
             </div>
 
             {/* Church Filter */}
-            <div className="home-filter-row horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
+            <div role="group" aria-label="Filter by church" className="home-filter-row horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
               <button
                 onClick={() => setActiveChurch(null)}
                 aria-pressed={!activeChurch}
@@ -314,7 +325,7 @@ export default function HomeContent({
             </div>
 
             {/* Song List */}
-            <main className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+            <main id="main-content" className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
               {filtered.length > 0 && lyricOnlyMatches > 0 && (
                 <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", lineHeight: 1.5, margin: "14px 0 0" }}>
                   {lyricOnlyMatches} {lyricOnlyMatches === 1 ? "song matches" : "songs match"} inside lyrics.
@@ -428,9 +439,14 @@ export default function HomeContent({
             )}
 
             {/* Library count */}
-            <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontStyle: "italic", textAlign: "center" }}>
-              {songs.length} songs in the library
-            </p>
+            <div style={{ padding: "14px 16px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)" }}>
+              <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>
+                Library
+              </p>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1, margin: 0 }}>
+                {songs.length} <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", fontWeight: 400, color: "var(--text-muted)" }}>songs</span>
+              </p>
+            </div>
           </aside>
 
         </div>

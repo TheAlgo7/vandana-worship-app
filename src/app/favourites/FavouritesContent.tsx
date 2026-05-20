@@ -5,6 +5,7 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import Link from "next/link";
 import { HeartOff, Search } from "lucide-react";
+import DailyVerse from "@/components/DailyVerse";
 
 export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
   const { favourites, toggleFavourite, isFavourite } = useFavourites();
@@ -17,6 +18,7 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
     <>
       {/* Sticky page header */}
       <header
+        className="page-sticky-header"
         style={{
           position: "sticky",
           top: 0,
@@ -88,16 +90,23 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
           </Link>
         </div>
       ) : (
-        <main className="page-list-main" style={{ padding: "0 20px", paddingTop: 20, paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
-          {favSongs.map((song) => (
-            <SongCard
-              key={song.id}
-              song={song}
-              isFavourite={isFavourite(song.id)}
-              onFavouriteToggle={() => toggleFavourite(song.id)}
-            />
-          ))}
-        </main>
+        <div className="page-desktop-grid">
+          <main id="main-content" className="page-list-main" style={{ padding: "0 20px", paddingTop: 20, paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+            {favSongs.map((song) => (
+              <SongCard
+                key={song.id}
+                song={song}
+                isFavourite={isFavourite(song.id)}
+                onFavouriteToggle={() => toggleFavourite(song.id)}
+              />
+            ))}
+          </main>
+          <aside className="page-aside-col" aria-label="Daily verse">
+            <div className="page-aside-card">
+              <DailyVerse />
+            </div>
+          </aside>
+        </div>
       )}
     </>
   );

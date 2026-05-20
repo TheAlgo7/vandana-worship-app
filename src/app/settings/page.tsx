@@ -2,7 +2,10 @@
 
 import { useState, useCallback } from "react";
 import { useTheme } from "next-themes";
+import { Heart } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
+import DailyVerse from "@/components/DailyVerse";
+import FontSizeControl from "@/components/FontSizeControl";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
@@ -27,7 +30,6 @@ export default function SettingsPage() {
   return (
     <div
       style={{
-        minHeight: "100dvh",
         background: "var(--bg-base)",
         color: "var(--text-primary)",
         paddingBottom: "calc(var(--nav-clearance) + 16px)",
@@ -35,6 +37,7 @@ export default function SettingsPage() {
     >
       {/* ── Header ── */}
       <header
+        className="page-sticky-header"
         style={{
           position: "sticky",
           top: 0,
@@ -58,7 +61,8 @@ export default function SettingsPage() {
         </h1>
       </header>
 
-      <main className="settings-main" style={{ padding: "24px 20px", maxWidth: 560, margin: "0 auto" }}>
+      <div className="page-desktop-grid">
+      <main id="main-content" className="settings-main" style={{ padding: "24px 20px" }}>
         {/* ── Appearance ── */}
         <section style={{ marginBottom: 36 }}>
           <p className="section-label">Appearance</p>
@@ -129,6 +133,8 @@ export default function SettingsPage() {
         <section style={{ marginBottom: 36 }}>
           <p className="section-label">Default Language</p>
           <div
+            role="radiogroup"
+            aria-label="Default language"
             style={{
               display: "flex",
               gap: 10,
@@ -139,6 +145,8 @@ export default function SettingsPage() {
               return (
                 <button
                   key={opt.value}
+                  role="radio"
+                  aria-checked={active}
                   onClick={() => handleLangChange(opt.value)}
                   style={{
                     flex: 1,
@@ -162,8 +170,29 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        {/* ── About ── */}
-        <section>
+        {/* ── Lyrics Font Size ── */}
+        <section style={{ marginBottom: 36 }}>
+          <p className="section-label">Lyrics Font Size</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              padding: "14px 16px",
+              background: "var(--bg-surface)",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <p style={{ fontSize: "var(--text-sm)", color: "var(--text-secondary)", margin: 0 }}>
+              Default size for all songs
+            </p>
+            <FontSizeControl />
+          </div>
+        </section>
+
+        {/* ── About (mobile only — on desktop it moves to the aside) ── */}
+        <section className="settings-about-mobile">
           <p className="section-label">About</p>
           <div
             style={{
@@ -171,63 +200,71 @@ export default function SettingsPage() {
               background: "var(--bg-surface)",
               borderRadius: "var(--radius-md)",
               border: "1px solid var(--border)",
-              fontSize: "var(--text-sm)",
-              lineHeight: 1.65,
-              color: "var(--text-secondary)",
             }}
           >
-            <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: 4, fontSize: "var(--text-base)" }}>
-              Vandana
-            </p>
-            <p style={{ marginBottom: 12, color: "var(--text-muted)", fontSize: "var(--text-xs)", fontStyle: "italic" }}>
-              वंदना means to worship, to praise
-            </p>
-
-            <p style={{ marginBottom: 12 }}>
-              Vandana is a modern, minimal worship lyrics app for the Indian church. Every song is available in both Hinglish and Hindi, with a presentation mode for worship leaders and a dark theme for late-night prayer.
-            </p>
-
-            <p style={{ marginBottom: 12 }}>
-              The library is always growing with ICM, FOLJ, Nations of Worship, Sheldon Bangera, Anil Kant, Dayanidhi Rao, and more artists shaping worship music in India.
-            </p>
-
-            <p style={{ marginBottom: 12 }}>
-              No ads, no clutter, no missing songs. Just a beautiful, accessible way to worship.
-            </p>
-
-            <p>
-              Made with <span style={{ color: "var(--accent)", fontWeight: 600 }}>♥</span> by{' '}
-              <a
-                href="https://thealgothrim.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  minHeight: 44,
-                  color: "var(--accent)",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                }}
-              >
-                Gaurav - The Algothrim
-              </a>
-            </p>
-            <p
-              style={{
-                textAlign: "center",
-                color: "var(--text-muted)",
-                fontSize: 11,
-                marginTop: 16,
-              }}
-            >
-              v2.0.0
-            </p>
+            <AboutCard />
           </div>
         </section>
       </main>
 
+      <aside className="page-aside-col" aria-label="About Vandana">
+        <div className="page-aside-card">
+          <DailyVerse />
+        </div>
+        <div className="page-aside-card" style={{ padding: "18px 20px" }}>
+          <AboutCard />
+        </div>
+      </aside>
+      </div>
+
       <BottomNav />
+    </div>
+  );
+}
+
+function AboutCard() {
+  return (
+    <div
+      style={{
+        fontSize: "var(--text-sm)",
+        lineHeight: 1.65,
+        color: "var(--text-secondary)",
+      }}
+    >
+      <p style={{ fontWeight: 600, color: "var(--text-primary)", marginBottom: 4, fontSize: "var(--text-base)" }}>
+        Vandana
+      </p>
+      <p style={{ marginBottom: 12, color: "var(--text-muted)", fontSize: "var(--text-xs)", fontStyle: "italic" }}>
+        वंदना means to worship, to praise
+      </p>
+      <p style={{ marginBottom: 12 }}>
+        A modern, minimal worship lyrics app for the Indian church. Every song in both Hinglish and Hindi, with a presentation mode for worship leaders.
+      </p>
+      <p style={{ marginBottom: 12 }}>
+        Built with the blessing of{" "}
+        <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Isus Christos Ministries (ICM)</span>
+        {" "}— a personal offering to the Indian worship community from a church member.
+      </p>
+      <p>
+        Made with{" "}
+        <Heart size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" style={{ display: "inline", verticalAlign: "middle", color: "var(--accent)" }} />{" "}
+        by{" "}
+        <a
+          href="https://thealgothrim.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            color: "var(--accent)",
+            textDecoration: "none",
+            fontWeight: 500,
+          }}
+        >
+          Gaurav - The Algothrim
+        </a>
+      </p>
+      <p style={{ textAlign: "center", color: "var(--text-muted)", fontSize: 11, marginTop: 16 }}>
+        v2.1.0
+      </p>
     </div>
   );
 }

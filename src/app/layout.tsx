@@ -81,12 +81,15 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       data-scroll-behavior="smooth"
       className={`${heading.variable} ${body.variable} ${devanagari.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <div className="app-frame">
           <DesktopNav />
           <div className="app-main">

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
+import { ChevronLeft, ChevronRight, Play, Pause, X } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatBlock } from "@/lib/formatLyrics";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
@@ -114,6 +114,16 @@ export default function PresentView({ song }: { song: Song }) {
         position: "relative",
       }}
     >
+      {/* Screen-reader announcement for auto-scroll state */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}
+      >
+        {autoScroll ? "Auto-scroll on" : ""}
+      </div>
+
       {/* ── Top bar ── */}
       <div
         style={{
@@ -147,7 +157,7 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           onClick={(e) => e.stopPropagation()}
         >
-          ✕ Exit
+          <X size={16} aria-hidden="true" /> Exit
         </Link>
         <span
           style={{
@@ -206,7 +216,6 @@ export default function PresentView({ song }: { song: Song }) {
                 paddingRight: 20,
                 fontSize: `${FONT_SIZES[fontIdx]}rem`,
                 lineHeight: 1.7,
-                transition: "font-size var(--transition-fast) ease",
               }}
             >
               {formatBlock(text)}
@@ -296,8 +305,8 @@ export default function PresentView({ song }: { song: Song }) {
           }}
           aria-label={autoScroll ? "Stop auto-scroll" : "Start auto-scroll"}
           style={{
-            background: autoScroll ? "rgba(196,170,126,0.25)" : "var(--present-control-bg)",
-            border: autoScroll ? "1px solid rgba(196,170,126,0.3)" : "1px solid var(--present-control-border)",
+            background: autoScroll ? "var(--accent-dim)" : "var(--present-control-bg)",
+            border: autoScroll ? "1px solid color-mix(in srgb, var(--accent) 30%, transparent)" : "1px solid var(--present-control-border)",
             borderRadius: "var(--radius-pill)",
             color: "var(--present-text)",
             width: 44,

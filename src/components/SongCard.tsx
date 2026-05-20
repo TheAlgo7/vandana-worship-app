@@ -1,13 +1,13 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useState, useCallback, memo } from "react";
 import Link from "next/link";
 import { Heart, ListPlus, ListX, ChevronRight } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 
 const LONG_PRESS_MS = 500;
 
-export default function SongCard({
+const SongCard = memo(function SongCard({
   song,
   isFavourite,
   onLongPress,
@@ -115,15 +115,15 @@ export default function SongCard({
               fontWeight: 600,
               color: "var(--text-primary)",
               lineHeight: 1.3,
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              whiteSpace: "nowrap",
               display: "flex",
               alignItems: "center",
               gap: 6,
+              minWidth: 0,
             }}
           >
-            {song.title}
+            <span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+              {song.title}
+            </span>
             {isFavourite && (
               <Heart
                 size={10}
@@ -131,7 +131,7 @@ export default function SongCard({
                 color="var(--accent)"
                 strokeWidth={0}
                 aria-hidden="true"
-                style={{ opacity: 0.5, flexShrink: 0 }}
+                style={{ opacity: 0.5, flexShrink: 0, minWidth: 10 }}
               />
             )}
           </h2>
@@ -278,4 +278,6 @@ export default function SongCard({
       )}
     </div>
   );
-}
+});
+
+export default SongCard;

@@ -200,6 +200,33 @@ h1, h2, h3 {
   outline-offset: 2px;
 }
 
+/* ── Skip-to-main link (keyboard only) ── */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  text-decoration: none;
+}
+.skip-link:focus-visible {
+  position: fixed;
+  top: 8px;
+  left: 8px;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  padding: 8px 16px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  z-index: 9999;
+}
+
 /* ── Scrollbar (4px, minimal) ── */
 ::-webkit-scrollbar {
   width: 4px;
@@ -250,8 +277,9 @@ a:active {
 /* desktop-only: invisible on mobile */
 .desktop-only { display: none; }
 
-/* home right panel: hidden on mobile */
+/* home right panel + secondary page aside: hidden on mobile */
 .home-side { display: none; }
+.page-aside-col { display: none; }
 
 @media (min-width: 900px) {
   .app-frame {
@@ -308,6 +336,14 @@ a:active {
     padding-right: 0 !important;
   }
 
+  .home-search-wrap input {
+    padding-left: 56px !important;
+  }
+
+  .home-search-wrap .home-search-icon {
+    left: 18px !important;
+  }
+
   /* Right info panel */
   .home-side {
     display: flex;
@@ -336,12 +372,64 @@ a:active {
     max-width: 40rem;
     margin: 0 auto;
   }
+
+  /* ── Secondary page sticky header desktop padding ── */
+  .page-sticky-header {
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+  }
+
+  /* ── Secondary page desktop two-column layout ── */
+  .page-desktop-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 0 32px;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 32px;
+    align-items: start;
+  }
+
+  .page-desktop-grid > .page-list-main,
+  .page-desktop-grid > .updates-main,
+  .page-desktop-grid > .settings-main {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  .page-aside-col {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 20px;
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+    scrollbar-width: none;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  .page-aside-col::-webkit-scrollbar { display: none; }
+
+  .page-aside-card {
+    background: var(--bg-surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-subtle);
+    overflow: hidden;
+  }
 }
 
 .page-list-main,
 .updates-main,
 .settings-main {
   max-width: 40rem;
+}
+
+/* Elements shown on mobile only — hidden on desktop (aside takes over) */
+@media (min-width: 900px) {
+  .settings-about-mobile { display: none !important; }
+  .updates-summary-mobile { display: none !important; }
 }
 
 .song-view-shell {
@@ -418,7 +506,9 @@ a:active {
   }
 
   .song-side-panel {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     position: sticky;
     top: 28px;
   }
@@ -467,7 +557,9 @@ a:active {
 
 .horizontal-fade-scroll {
   -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 32px), transparent 100%);
+  -webkit-mask-mode: alpha;
   mask-image: linear-gradient(90deg, #000 0%, #000 calc(100% - 32px), transparent 100%);
+  mask-mode: alpha;
 }
 
 .song-card-trailing {

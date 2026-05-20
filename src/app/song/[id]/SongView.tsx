@@ -8,6 +8,7 @@ import { formatBlock } from "@/lib/formatLyrics";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
+import DailyVerse from "@/components/DailyVerse";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
 
@@ -287,7 +288,7 @@ export default function SongView({ song }: SongViewProps) {
           background: "var(--bg-surface)",
           borderRadius: "var(--radius-lg)",
           padding: "8px 12px",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.2), 0 1px 0 rgba(255,255,255,0.04) inset",
+          boxShadow: "var(--shadow-sm)",
         }}
       >
         <LanguageToggle
@@ -414,6 +415,9 @@ export default function SongView({ song }: SongViewProps) {
             >
               Present
             </Link>
+          </div>
+          <div className="page-aside-card">
+            <DailyVerse />
           </div>
         </aside>
       </div>

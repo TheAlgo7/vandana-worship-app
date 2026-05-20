@@ -4,29 +4,38 @@ import BottomNav from "@/components/BottomNav";
 export default function Loading() {
   return (
     <>
-      <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "24px 20px" }}>
-        {/* Title + subtitle */}
-        <div style={{ marginBottom: 24 }}>
-          <div className="skeleton-block" style={{ width: "55%", height: 32, marginBottom: 8 }} />
-          <div className="skeleton-block" style={{ width: "70%", height: 16 }} />
-        </div>
+      {/* AppTitle area — mobile only */}
+      <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "14px 20px 0" }}>
+        <div className="skeleton-block" style={{ width: 96, height: 28, borderRadius: "var(--radius-sm)" }} />
+        <div className="skeleton-block" style={{ width: 140, height: 12, marginTop: 8, borderRadius: "var(--radius-sm)" }} />
+      </div>
 
-        {/* Search bar */}
-        <div className="skeleton-block" style={{ width: "100%", height: 52, borderRadius: "var(--radius-pill)", marginBottom: 16 }} />
+      {/* DailyVerse placeholder */}
+      <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "14px 20px 8px" }}>
+        <div className="skeleton-block" style={{ width: 108, height: 11, marginBottom: 12, borderRadius: "var(--radius-sm)" }} />
+        <div className="skeleton-block" style={{ width: "92%", height: 14, marginBottom: 7, borderRadius: "var(--radius-sm)" }} />
+        <div className="skeleton-block" style={{ width: "80%", height: 14, marginBottom: 7, borderRadius: "var(--radius-sm)" }} />
+        <div className="skeleton-block" style={{ width: "55%", height: 14, marginBottom: 10, borderRadius: "var(--radius-sm)" }} />
+        <div className="skeleton-block" style={{ width: 72, height: 11, borderRadius: "var(--radius-sm)" }} />
+      </div>
 
-        {/* Church filter pills */}
-        <div style={{ display: "flex", gap: 8, marginBottom: 24 }}>
-          {[80, 96, 64, 72].map((w, i) => (
-            <div key={i} className="skeleton-block" style={{ width: w, height: 30, borderRadius: "var(--radius-pill)" }} />
-          ))}
-        </div>
+      {/* Search bar */}
+      <div style={{ maxWidth: "40rem", margin: "6px auto 0", padding: "0 20px" }}>
+        <div className="skeleton-block" style={{ width: "100%", height: 52, borderRadius: "var(--radius-pill)" }} />
+      </div>
 
-        {/* Song cards */}
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          {Array.from({ length: 6 }).map((_, i) => (
-            <SongCardSkeleton key={i} />
-          ))}
-        </div>
+      {/* Filter chips */}
+      <div style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflow: "hidden" }}>
+        {[52, 130, 118, 64].map((w, i) => (
+          <div key={i} className="skeleton-block" style={{ width: w, minWidth: w, height: 44, borderRadius: "var(--radius-pill)" }} />
+        ))}
+      </div>
+
+      {/* Song list */}
+      <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
+        {Array.from({ length: 8 }).map((_, i) => (
+          <SongCardSkeleton key={i} />
+        ))}
       </div>
 
       <BottomNav />

@@ -6,6 +6,7 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
+import DailyVerse from "@/components/DailyVerse";
 
 export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
   const { isFavourite, toggleFavourite } = useFavourites();
@@ -19,6 +20,7 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
   return (
     <>
       <header
+        className="page-sticky-header"
         style={{
           position: "sticky",
           top: 0,
@@ -90,7 +92,8 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
           </Link>
         </div>
       ) : (
-        <main className="page-list-main" style={{ padding: "20px 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)", maxWidth: "40rem", margin: "0 auto" }}>
+        <div className="page-desktop-grid">
+        <main className="page-list-main" style={{ padding: "20px 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
           <div style={{ display: "flex", gap: 10, marginBottom: 16 }}>
             {firstSong && (
               <Link
@@ -146,6 +149,12 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
             />
           ))}
         </main>
+        <aside className="page-aside-col" aria-label="Daily verse">
+          <div className="page-aside-card">
+            <DailyVerse />
+          </div>
+        </aside>
+        </div>
       )}
     </>
   );

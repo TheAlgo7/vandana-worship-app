@@ -9,6 +9,7 @@ import {
   Sparkles,
   Wrench,
 } from "lucide-react";
+import DailyVerse from "@/components/DailyVerse";
 
 interface UpdateEntry {
   id: string;
@@ -71,6 +72,7 @@ export default function UpdatesContent({
       }}
     >
       <header
+        className="page-sticky-header"
         style={{
           position: "sticky",
           top: 0,
@@ -94,12 +96,12 @@ export default function UpdatesContent({
         </h1>
       </header>
 
+      <div className="page-desktop-grid">
       <main
+        id="main-content"
         className="updates-main"
         style={{
           padding: "24px 20px",
-          maxWidth: 560,
-          margin: "0 auto",
         }}
       >
         {updates.length === 0 ? (
@@ -141,8 +143,9 @@ export default function UpdatesContent({
           </div>
         ) : (
           <>
-            <p className="section-label">Library Notes</p>
+            <p className="section-label updates-summary-mobile">Library Notes</p>
             <section
+              className="updates-summary-mobile"
               aria-label="Updates summary"
               style={{
                 display: "flex",
@@ -339,6 +342,37 @@ export default function UpdatesContent({
           </>
         )}
       </main>
+
+      <aside className="page-aside-col" aria-label="Daily verse">
+        <div className="page-aside-card">
+          <DailyVerse />
+        </div>
+        <div
+          className="page-aside-card"
+          style={{ padding: "18px 20px" }}
+        >
+          <p className="section-label" style={{ marginBottom: 14 }}>Library</p>
+          <div style={{ display: "grid", gap: 14 }}>
+            <div>
+              <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+                Total Songs
+              </p>
+              <p style={{ color: "var(--text-primary)", fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1, margin: 0 }}>
+                {librarySongCount}
+              </p>
+            </div>
+            <div>
+              <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 4 }}>
+                Latest Update
+              </p>
+              <p style={{ color: "var(--text-primary)", fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1, margin: 0 }}>
+                {latestUpdate}
+              </p>
+            </div>
+          </div>
+        </div>
+      </aside>
+      </div>
     </div>
   );
 }

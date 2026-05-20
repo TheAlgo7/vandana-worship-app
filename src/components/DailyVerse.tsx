@@ -46,7 +46,7 @@ export default function DailyVerse() {
     <section
       lang={verse.isHindi ? "hi" : "en"}
       style={{
-        padding: "12px 20px 0",
+        padding: "14px 20px 8px",
         maxWidth: "40rem",
         margin: "0 auto",
       }}
@@ -58,52 +58,43 @@ export default function DailyVerse() {
             ? "var(--font-devanagari)"
             : "var(--font-body)",
           fontSize: "var(--text-xs)",
-          fontWeight: 600,
+          fontWeight: 700,
           letterSpacing: verse.isHindi ? "0.05em" : "var(--tracking-widest)",
           color: "var(--accent)",
-          opacity: 0.6,
-          margin: "0 0 12px 0",
+          opacity: 0.65,
+          margin: "0 0 10px 0",
           textTransform: verse.isHindi ? "none" : "uppercase" as React.CSSProperties["textTransform"],
         }}
       >
         {verse.isHindi ? "दिन का वचन" : "Verse of the Day"}
       </p>
 
-      {/* ── Verse block with gold left border ── */}
-      <blockquote
-        style={{
-          borderLeft: "2px solid var(--accent)",
-          borderLeftColor: "color-mix(in srgb, var(--accent) 40%, transparent)",
-          paddingLeft: 16,
-          margin: 0,
-        }}
-      >
-        {/* Verse text */}
+      {/* ── Verse text — typography only, no nested box ── */}
+      <blockquote style={{ margin: 0 }}>
         <p
           style={{
             fontFamily: verse.isHindi
               ? "var(--font-devanagari)"
               : "var(--font-display)",
-            fontSize: "var(--text-lg)",
+            fontSize: "var(--text-base)",
             fontStyle: "italic",
             color: "var(--text-primary)",
-            lineHeight: "var(--leading-normal)",
-            margin: 0,
+            lineHeight: 1.6,
+            margin: "0 0 8px",
           }}
         >
           &ldquo;{verse.text}&rdquo;
         </p>
 
-        {/* Reference */}
         <p
           style={{
             fontFamily: verse.isHindi
               ? "var(--font-devanagari)"
               : "var(--font-body)",
-            fontSize: "var(--text-sm)",
+            fontSize: "var(--text-xs)",
             color: "var(--text-muted)",
-            marginTop: 8,
-            marginBottom: 0,
+            margin: 0,
+            letterSpacing: "0.01em",
           }}
         >
           {verse.reference}
