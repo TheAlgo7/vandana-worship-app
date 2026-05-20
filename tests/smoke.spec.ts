@@ -91,4 +91,17 @@ test("song sections keep worship order", async ({ page }) => {
     "Bridge",
     "Repeat Chorus",
   ]);
+
+  await page.goto("/song/rehaai");
+  await expect(page.getByText("Rehaai", { exact: true }).first()).toBeVisible();
+
+  labels = await page.locator(".section-label").allTextContents();
+
+  expect(labels.slice(0, 5)).toEqual([
+    "Intro",
+    "Pre Chorus",
+    "Chorus",
+    "Verse 2",
+    "Verse 3",
+  ]);
 });

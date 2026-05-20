@@ -1,9 +1,9 @@
 {
   "id": "rehaai",
   "title": "Rehaai",
-  "artist": "Hallelujah the Band",
+  "artist": "Hallelujah the Band & Angela Robin",
   "church": null,
-  "album": "Hallelujah The Band Featuring Series 2",
+  "album": "Rehaai - Single",
   "language_default": "hinglish",
   "languages_available": [
     "hinglish",
@@ -11,36 +11,39 @@
   ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Berang Bekal Yeh Alam\nYeh Duniya Harjai\nNa Main Raha Tera Na Jag Ka\nBana Main Saudai",
-      "pre_chorus": "Mere Karam Kahan Hain\nTera Fazal Rawan Hai x2\nKya Rog Kya Dard Kya Maut Kya Marz\nMere Yasu Tu Jo Mujhko Bacha Lay",
-      "chorus": "Yasu Mere Yasu Mere Yasu Tu Rehai Day\nBhatkay Mere Dil Ko Rah Teri He Dikhai Day x2",
-      "verse2": "Miti Da Haan Banya Tay Main\nMiti Vich Na Jana\nMain Yasu Tere Badan Da Hisa\nTere Vich Smana x2\nJag Di Kund Khayali Mere Kam Kisay Na ana\nMere Rab Ayali Mere Dil Nay Thorr Na Pana",
-      "verse3": "Taan Jo Menu Vich Gunah Day\nJamya Meri Mai\nPar Mere Rab Apni Shabi Tay\nMeri Shakal Bnai x2\nMere Papaan Di Khatir Jis Apni Jaan Gawai\nMera Rab Khudawand menu Bakhshay Aap Rehaai"
+      "intro": "Berang Bekal Yeh Alam\nYeh Duniya Harjai\nNa Main Raha Tera Na Jag Ka\nBana Main Saudai",
+      "pre_chorus": "Mere Karam Kahan Hain\nTera Fazal Rawan Hai\n\nKya Rog Kya Dard Kya Maut Kya Marz\nMere Yasu Tu Jo Mujhko Bacha Lay",
+      "chorus": "Yasu Mere Yasu Mere Yasu Tu Rehaai Day\nBhatkay Mere Dil Ko Rah Teri Hi Dikhai Day",
+      "verse2": "Miti Da Haan Banya Tay Main Miti Vich Na Jana\nMain Yasu Tere Badan Da Hissa Tere Vich Smana\nJag Di Kund Khayali Mere Kam Kisay Na Aana\nMere Rab Ayali Mere Dil Nay Thorr Na Pana",
+      "verse3": "Taan Jo Menu Vich Gunah Day Jamya Meri Mai\nPar Mere Rab Apni Shabi Tay Meri Shakal Bnai\nMere Papaan Di Khatir Jis Apni Jaan Gawai\nMera Rab Khudawand Menu Bakhshay Aap Rehaai"
     },
     "hindi": {
-      "verse1": "बेरंग बेकल ये आलम\nये दुनिया हरजाई\nना मैं रहा तेरा ना जग का\nबना मैं सौदाई",
-      "pre_chorus": "मेरे करम कहाँ हैं\nतेरा फ़ज़ल रवाँ है x2\nक्या रोग क्या दर्द क्या मौत क्या मर्ज़\nमेरे येसु तू जो मुझको बचा ले",
-      "chorus": "येसु मेरे येसु मेरे येसु तू रिहाई दे\nभटके मेरे दिल को राह तेरी ही दिखाई दे x2",
-      "verse2": "मिट्टी का हूँ बना तो मैं\nमिट्टी में ना जाना\nमैं येसु तेरे बदन का हिस्सा\nतेरे में समाना x2\nजग दी कुंड ख्याली मेरे काम किसी ना आना\nमेरे रब ऐली मेरे दिल ने तोड़ ना पाना",
-      "verse3": "तां जो मुझे विच गुनाह दे\nजन्मी मेरी माँ\nपर मेरे रब अपनी शबी पे\nमेरी शक्ल बनाई x2\nमेरे पापों की खातिर जिसने अपनी जान गवाई\nमेरा रब खुदावंद मुझे बख्शे आप रिहाई"
+      "intro": "बेरंग बेकल ये आलम\nये दुनिया हरजाई\nना मैं रहा तेरा ना जग का\nबना मैं सौदाई",
+      "pre_chorus": "मेरे करम कहाँ हैं\nतेरा फ़ज़ल रवाँ है\n\nक्या रोग क्या दर्द क्या मौत क्या मर्ज़\nमेरे यासु तू जो मुझको बचा ले",
+      "chorus": "यासु मेरे यासु मेरे यासु तू रिहाई दे\nभटके मेरे दिल को राह तेरी ही दिखाई दे",
+      "verse2": "मिट्टी दा हाँ बन्या तै मैं मिट्टी विच ना जाना\nमैं यासु तेरे बदन दा हिस्सा तेरे विच समाना\nजग दी कुंड ख्याली मेरे काम किसै ना आना\nमेरे रब अयाली मेरे दिल नै थोर ना पाना",
+      "verse3": "तां जो मीनू विच गुनाह दे जम्या मेरी माई\nपर मेरे रब अपनी शबी तै मेरी शकल बनाई\nमेरे पापां दी खातिर जिस अपनी जान गवाई\nमेरा रब खुदावंद मीनू बख्शे आप रिहाई"
     }
   },
   "links": {
     "youtube": null,
     "spotify": null,
-    "apple_music": null
+    "apple_music": "https://music.apple.com/us/album/rehaai-single/1812950883"
   },
   "tags": [
     "worship",
     "redemption",
     "salvation",
     "hallelujah-the-band",
+    "angela-robin",
+    "zeeshan-rafiq",
+    "pakistan",
     "urdu",
     "punjabi",
     "hinglish",
     "2025"
   ],
-  "seo_description": "Rehaai lyrics in Hindi, Urdu and Hinglish by Hallelujah The Band ft. Angela Robin - Yasu Mere Yasu Tu Rehaai De",
+  "seo_description": "Rehaai lyrics in Hindi, Urdu and Hinglish by Hallelujah The Band & Angela Robin, with lyrics and composition by Zeeshan Rafiq - Yasu Mere Yasu Tu Rehaai De",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/rehaai"
 }
