@@ -6,19 +6,23 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "chorus": "हल्लेलुयाह, हल्लेलुयाह गायेंगे\nउसके वचन को सुनाएंगे\nचाहे हर मुसीबत से गुजरना पड़े\nतौभी उसके ही संग हम जाएंगे",
-      "verse1": "भजन करेंगे हम स्तुति करेंगे, और प्रशंसा करेंगे\nजब तक हम में सांस रहेगी, उसके ही गुण गायेंगे (2)",
-      "verse2": "सांझ सवेरे आराधना करेंगे, जीवन के हर पल में\nअर्पण करेंगे जीवन उसी को, उसके ही क्रूस तले (2)"
+      "chorus": "हल्लेलुयाह, हल्लेलुयाह गायेंगे\nउसके वचन को सुनाएंगे\nचाहे हर मुसीबत से गुजरना पड़े\nतब भी उसके ही संग हम जाएंगे",
+      "verse1": "भजन करेंगे,\nहम स्तुति करेंगे और प्रशंसा करेंगे\nजब तक हम में सांस रहेगी,\nउसके ही गुण गायेंगे",
+      "repeat_chorus": "हल्लेलुयाह, हल्लेलुयाह गायेंगे\nउसके वचन को सुनाएंगे\nचाहे हर मुसीबत से गुजरना पड़े\nतब भी उसके ही संग हम जाएंगे",
+      "verse2": "सांझ-सवेरे आराधना करेंगे,\nजीवन के हर पल में\nअर्पण करेंगे जीवन उसी को,\nउसके ही क्रूस तले",
+      "repeat_chorus2": "हल्लेलुयाह, हल्लेलुयाह गायेंगे\nउसके वचन को सुनाएंगे\nचाहे हर मुसीबत से गुजरना पड़े\nतब भी उसके ही संग हम जाएंगे"
     },
     "hinglish": {
-      "chorus": "Halleluyaah, halleluyaah gaayenge\nUsake vachan ko sunaayenge\nChaahe har museebat se guzarana pade\nTaubhee usake hee sang ham jaayenge",
-      "verse1": "Bhajan karenge ham stuti karenge, aur prashansa karenge\nJab tak ham mein saans rahegee, usake hee gun gaayenge (2)",
-      "verse2": "Saanjh savere aaraadhana karenge, jeevan ke har pal mein\nArpan karenge jeevan usee ko, usake hee kroos tale (2)"
+      "chorus": "Halleluyaah, halleluyaah gaayenge\nUsake vachan ko sunaayenge\nChahe har museebat se guzarna pade\nTab bhi usake hi sang hum jaayenge",
+      "verse1": "Bhajan karenge,\nhum stuti karenge,\naur prashansa karenge\nJab tak hum mein saans rahegi,\nusake hi gun gaayenge",
+      "repeat_chorus": "Halleluyaah, halleluyaah gaayenge\nUsake vachan ko sunaayenge\nChahe har museebat se guzarna pade\nTab bhi usake hi sang hum jaayenge",
+      "verse2": "Saanjh savere aaraadhana karenge,\njeevan ke har pal mein\nArpan karenge jeevan usee ko,\nusake hi kroos tale",
+      "repeat_chorus2": "Halleluyaah, halleluyaah gaayenge\nUsake vachan ko sunaayenge\nChahe har museebat se guzarna pade\nTab bhi usake hi sang hum jaayenge"
     }
   },
   "links": {

@@ -6,17 +6,17 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "chorus": "जो कुछ वो तुम से कहे वही करना\nजिस राह पे लेके चले वहीं चलना\nयीशु मेरे यीशु, यीशु मेरे यीशु, तेरे संग जीना",
+      "chorus": "जो कुछ वो तुम से कहे वही करना\nजिस राह पे लेके चले वहीं चलना\nयीशु मेरे यीशु, यीशु मेरे यीशु, तेरे संग जीना\nयीशु मेरे यीशु, यीशु मेरे यीशु, तुझ में ही मरना",
       "verse1": "आँधियां जब चलीं, तू ने ही हमको संभाला\nडगमगाए कदम, तू ही बना था सहारा\nचाहे हो अन्धेरा, हो नहीं सवेरा, तेरे वचन पर चलूं",
       "verse2": "तेरे वचन से बने, आकाश धरती सितारे\nजीवन में भी हो गए, रंगों भरे उजियारे\nअन्धे शहर में, मौत के पहर में, मिल जाएगी जिंदगी"
     },
     "hinglish": {
-      "chorus": "Jo kuchh wo tum se kahe wahi karna\nJis raah pe leke chale wahin chalna\nYeshu mere Yeshu, Yeshu mere Yeshu, tere sang jeena",
+      "chorus": "Jo kuchh wo tum se kahe wahi karna\nJis raah pe leke chale wahin chalna\nYeshu mere Yeshu, Yeshu mere Yeshu, tere sang jeena\nYeshu mere Yeshu, Yeshu mere Yeshu, tujh mein hi marna",
       "verse1": "Aandhiyaan jab chali, tune hi humko sambhala\nDagmagaye kadam, tu hi bana tha sahara\nChahe ho andhera, ho nahin savera, tere vachan par chaloon",
       "verse2": "Tere vachan se bane, aakaash dharti sitaare\nJeevan mein bhi ho gaye, rangon bhare ujiyaare\nAndhe shahar mein, maut ke pahar mein, mil jaayegi zindagi"
     }

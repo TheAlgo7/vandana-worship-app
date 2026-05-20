@@ -1,25 +1,28 @@
 {
   "id": "rehaai",
   "title": "Rehaai",
-  "artist": "Hallelujah The Band ft. Angela Robin",
+  "artist": "Hallelujah the Band",
   "church": null,
   "album": "Hallelujah The Band Featuring Series 2",
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Berang bekal yeh aalam\nYeh duniya harjaai\nNa main raha Tera na jag ka\nBana main saudaai\nMere karam kahaan hain\nTera fazal rawaan hai",
-      "pre_chorus": "Kya rog kya dard kya maut kya marz\nMere Yasu Tu jo mujhko bacha le",
-      "chorus": "Yasu mere Yasu mere Yasu Tu rehaai de\nBhatke mere dil ko raah Teri hi dikhaai de",
-      "verse2": "Mitti da haan banya te main mitti vich na jaana\nMain Yasu Tere badan da hissa Tere vich samaana\nJag di kund khayaali mere kaam kise na aana\nMere Rab ayaali mere dil ne torr na paana",
-      "verse3": "Taan jo menu vich gunaah de jamya meri maai\nPar mere Rab apni shabih te meri shakal banaai\nMere paapaan di khaatir jis apni jaan gavaai\nMera Rab Khudawand menu bakhshe aap rehaai"
+      "verse1": "Berang Bekal Yeh Alam\nYeh Duniya Harjai\nNa Main Raha Tera Na Jag Ka\nBana Main Saudai",
+      "pre_chorus": "Mere Karam Kahan Hain\nTera Fazal Rawan Hai x2\nKya Rog Kya Dard Kya Maut Kya Marz\nMere Yasu Tu Jo Mujhko Bacha Lay",
+      "chorus": "Yasu Mere Yasu Mere Yasu Tu Rehai Day\nBhatkay Mere Dil Ko Rah Teri He Dikhai Day x2",
+      "verse2": "Miti Da Haan Banya Tay Main\nMiti Vich Na Jana\nMain Yasu Tere Badan Da Hisa\nTere Vich Smana x2\nJag Di Kund Khayali Mere Kam Kisay Na ana\nMere Rab Ayali Mere Dil Nay Thorr Na Pana",
+      "verse3": "Taan Jo Menu Vich Gunah Day\nJamya Meri Mai\nPar Mere Rab Apni Shabi Tay\nMeri Shakal Bnai x2\nMere Papaan Di Khatir Jis Apni Jaan Gawai\nMera Rab Khudawand menu Bakhshay Aap Rehaai"
     },
     "hindi": {
-      "verse1": "बेरंग बेकल ये आलम\nये दुनिया हरजाई\nना मैं रहा तेरा ना जग का\nबना मैं सौदाई\nमेरे करम कहाँ हैं\nतेरा फ़ज़ल रवाँ है",
-      "pre_chorus": "क्या रोग क्या दर्द क्या मौत क्या मर्ज़\nमेरे यासू तू जो मुझको बचा ले",
-      "chorus": "यासू मेरे यासू मेरे यासू तू रिहाई दे\nभटके मेरे दिल को राह तेरी ही दिखाई दे",
-      "verse2": "मिट्टी दा हाँ बन्या ते मैं मिट्टी विच ना जाना\nमैं यासू तेरे बदन दा हिस्सा तेरे विच समाना\nजग दी कुंद ख़याली मेरे काम किसे ना आना\nमेरे रब अयाली मेरे दिल ने तोड़ ना पाना",
-      "verse3": "ताँ जो मेनू विच गुनाह दे जम्या मेरी माई\nपर मेरे रब अपनी शबीह ते मेरी शकल बनाई\nमेरे पापाँ दी ख़ातिर जिस अपनी जान गवाई\nमेरा रब ख़ुदावंद मेनू बख़्शे आप रिहाई"
+      "verse1": "बेरंग बेकल ये आलम\nये दुनिया हरजाई\nना मैं रहा तेरा ना जग का\nबना मैं सौदाई",
+      "pre_chorus": "मेरे करम कहाँ हैं\nतेरा फ़ज़ल रवाँ है x2\nक्या रोग क्या दर्द क्या मौत क्या मर्ज़\nमेरे येसु तू जो मुझको बचा ले",
+      "chorus": "येसु मेरे येसु मेरे येसु तू रिहाई दे\nभटके मेरे दिल को राह तेरी ही दिखाई दे x2",
+      "verse2": "मिट्टी का हूँ बना तो मैं\nमिट्टी में ना जाना\nमैं येसु तेरे बदन का हिस्सा\nतेरे में समाना x2\nजग दी कुंड ख्याली मेरे काम किसी ना आना\nमेरे रब ऐली मेरे दिल ने तोड़ ना पाना",
+      "verse3": "तां जो मुझे विच गुनाह दे\nजन्मी मेरी माँ\nपर मेरे रब अपनी शबी पे\nमेरी शक्ल बनाई x2\nमेरे पापों की खातिर जिसने अपनी जान गवाई\nमेरा रब खुदावंद मुझे बख्शे आप रिहाई"
     }
   },
   "links": {
@@ -27,7 +30,17 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "redemption", "salvation", "hallelujah-the-band", "urdu", "punjabi", "hinglish", "2025"],
+  "tags": [
+    "worship",
+    "redemption",
+    "salvation",
+    "hallelujah-the-band",
+    "urdu",
+    "punjabi",
+    "hinglish",
+    "2025"
+  ],
   "seo_description": "Rehaai lyrics in Hindi, Urdu and Hinglish by Hallelujah The Band ft. Angela Robin - Yasu Mere Yasu Tu Rehaai De",
-  "added_by": "Gaurav | Vandana"
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/rehaai"
 }

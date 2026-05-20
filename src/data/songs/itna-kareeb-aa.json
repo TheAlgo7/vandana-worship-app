@@ -6,25 +6,21 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "verse1": "तेरी धड़कनों को सुन सकूँ मैं\nइतना क़रीब आ, इतना क़रीब आ",
+      "verse1": "तेरी धड़कनों को सुन सकूँ मैं\nइतना क़रीब आ, इतना क़रीब आ\nतेरे हाथों थाम कर चल सकूँ मैं\nइतना क़रीब आ, इतना क़रीब आ\nतेरी साँसों की खुशबू मेरे मन में बस जा\nइतना क़रीब आ, इतना क़रीब आ",
       "chorus": "इतना क़रीब आ, इतना क़रीब आ\nइतना क़रीब आ, इतना क़रीब आ",
-      "verse2": "प्यासा तेरी चाहत में, मैं प्रभु\nपाऊं ना राहत तुझ बिन मैं प्रभु",
-      "chorus_repeat": "इतना क़रीब आ, इतना क़रीब आ\nइतना क़रीब आ, इतना क़रीब आ",
-      "bridge": "तेरा नूर देखा, तेरी आत्मा से तू चला\nइतना क़रीब आ, इतना क़रीब आ",
-      "outro_repeat_verse_1": "तेरी धड़कनों को सुन सकूँ मैं\nइतना क़रीब आ, इतना क़रीब आ"
+      "verse2": "प्यासा तेरी चाहत में, मैं प्रभु\nपाऊं ना राहत तुझ बिन मैं प्रभु\nतेरी साँसों की खुशबू मेरे मन बस जा\nइतना क़रीब आ, इतना क़रीब आ\n[Chorus Repeat]\nइतना क़रीब आ, इतना क़रीब आ\nइतना क़रीब आ, इतना क़रीब आ",
+      "bridge": "तेरा नूर देखा, तेरी आत्मा से तू चला\nइतना क़रीब आ, इतना क़रीब आ\n[Outro - Repeat Verse 1]\nतेरी धड़कनों को सुन सकूँ मैं\nइतना क़रीब आ, इतना क़रीब आ"
     },
     "hinglish": {
-      "verse1": "Teri dhadkano ko sun sakun main\nItna qareeb aa, itna qareeb aa",
+      "verse1": "Teri dhadkano ko sun sakun main\nItna qareeb aa, itna qareeb aa\nTere haathon tham kar chal sakun main\nItna qareeb aa, itna qareeb aa\nTeri saanson ki khushboo mere man mein bas ja\nItna qareeb aa, itna qareeb aa",
       "chorus": "Itna qareeb aa, itna qareeb aa\nItna qareeb aa, itna qareeb aa",
-      "verse2": "Pyaasa teri chahat mein, main Prabhu\nPaun na raahat tujh bin main Prabhu",
-      "chorus_repeat": "Itna qareeb aa, itna qareeb aa\nItna qareeb aa, itna qareeb aa",
-      "bridge": "Tera noor dekha, teri atma se tu chala\nItna qareeb aa, itna qareeb aa",
-      "outro_repeat_verse_1": "Teri dhadkano ko sun sakun main\nItna qareeb aa, itna qareeb aa"
+      "verse2": "Pyaasa teri chahat mein, main Prabhu\nPaun na raahat tujh bin main Prabhu\nTeri saanson ki khushboo mere man bas ja\nItna qareeb aa, itna qareeb aa\n[Chorus Repeat]\nItna qareeb aa, itna qareeb aa\nItna qareeb aa, itna qareeb aa",
+      "bridge": "Tera noor dekha, teri atma se tu chala\nItna qareeb aa, itna qareeb aa\n[Outro - Repeat Verse 1]\nTeri dhadkano ko sun sakun main\nItna qareeb aa, itna qareeb aa"
     }
   },
   "links": {

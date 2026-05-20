@@ -1,11 +1,14 @@
 {
   "id": "deewana-main-yeshu-ka",
   "title": "Deewana Main Yeshu Ka",
-  "artist": "Joseph Raj Allam & Akshay Mathews",
+  "artist": "Joseph Raj Allam",
   "church": null,
   "album": null,
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
       "pre_chorus": "Deewana, main Yeshu ka\nMere honton pe uska hi naam\nDeewana, main Yeshu ka\nUske pyaar mein dooba hua\nDeewana, main Yeshu ka\nMere honton pe uska hi naam\nDeewana, main Yeshu ka\nUske pyaar mein dooba\nMain khoya, main zinda rahun",
@@ -15,7 +18,7 @@
       "bridge": "Khoya tha main, bhatka tha main\nMaaf karke, ghar le aaya\nApni pehchaan, mujhko dekar\nApna beta, mujhko kehlaya -2\nDeewana, main Yeshu ka..."
     },
     "hindi": {
-      "pre_chorus": "दीवाना, मैं यीशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं यीशु का\nउसके प्यार में डूबा हुआ",
+      "pre_chorus": "दीवाना, मैं यीशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं यीशु का\nउसके प्यार में डूबा हुआ\nदीवाना, मैं यीशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं यीशु का\nउसके प्यार में डूबा\nमैं खोया, मैं जिंदा रहूँ",
       "chorus": "यीशु का आ आ आ आ,\nमैं दीवाना आ आ आ आ\nयीशु का आ आ आ आ,\nमैं दीवाना",
       "verse1": "तेरी बातों को सुनता रहूँ,\nअपनी मनमानी अब न करूँ\nअब न दाएँ, न बाएँ मुड़ूँ,\nतेरे प्यार में डूबा रहूँ",
       "verse2": "तुझे छोड़ के जाऊँ कहाँ,\nजहाँ देखूँ तू ही है वहाँ\nयीशु, तुझ में ही मिलता सुकून,\nतेरे प्यार में डूबा रहूँ",
@@ -27,7 +30,13 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "devotion", "hindi", "hinglish", "indianchristianlyrics"],
+  "tags": [
+    "worship",
+    "devotion",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
   "seo_description": "Deewana Main Yeshu Ka lyrics in Hindi and Hinglish by Joseph Raj Allam & Akshay Mathews",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/deewana-main-yeshu-ka"

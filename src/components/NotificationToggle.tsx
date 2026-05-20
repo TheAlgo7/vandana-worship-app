@@ -12,16 +12,23 @@ function urlBase64ToUint8Array(base64String: string): ArrayBuffer {
 
 type State = "unsupported" | "denied" | "off" | "loading" | "on";
 
+function getInitialState(): State {
+  if (typeof window === "undefined") return "off";
+  if (!("Notification" in window) || !("serviceWorker" in navigator)) {
+    return "unsupported";
+  }
+  if (Notification.permission === "denied") return "denied";
+  return "off";
+}
+
 export default function NotificationToggle() {
-  const [state, setState] = useState<State>("off");
+  const [state, setState] = useState<State>(getInitialState);
 
   useEffect(() => {
     if (!("Notification" in window) || !("serviceWorker" in navigator)) {
-      setState("unsupported");
       return;
     }
     if (Notification.permission === "denied") {
-      setState("denied");
       return;
     }
     navigator.serviceWorker.ready.then((reg) =>

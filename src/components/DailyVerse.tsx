@@ -69,7 +69,7 @@ export default function DailyVerse() {
         {verse.isHindi ? "दिन का वचन" : "Verse of the Day"}
       </p>
 
-      {/* ── Verse text — typography only, no nested box ── */}
+      {/* Verse text: typography only, no nested box */}
       <blockquote style={{ margin: 0 }}>
         <p
           style={{

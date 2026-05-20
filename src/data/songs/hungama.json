@@ -6,23 +6,23 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "verse_1": "तेरे साथ साथ हम तो चलते रहे\nतेरे हाथ हाथ हम तो थामे रहे",
-      "chorus": "चाहे जहाँ भी हम जायेंगे\nयेशू नाम हम ले जायेंगे\nहम सब एक होकर बोलेंगे",
+      "verse1": "तेरे साथ साथ हम तो चलते रहे\nतेरे हाथ हाथ हम तो थामे रहे",
+      "chorus": "चाहे जहाँ भी हम जायेंगे\nयेशू नाम हम ले जायेंगे\nहम सब एक होकर बोलेंगे\nखुशियों से शोर मचा देंगे\nहंगामा होवे, जश्न मनाएं\nयेशू मसीह की जय गाएं",
       "bridge": "सीटी बजाओ, और ताली बजाओ\nअरे झूमो और नाचो\nऔर आवाज़ उठाओ",
-      "verse_2": "तेरे मंदिर में हम आते रहे\nतेरे जय जयकार हम करते रहे",
-      "repeat_chorus": "चाहे जहाँ भी हम जायेंगे\nयेशू नाम हम ले जायेंगे\nहम सब एक होकर बोलेंगे"
+      "verse2": "तेरे मंदिर में हम आते रहे\nतेरे जय जयकार हम करते रहे",
+      "repeat_chorus": "चाहे जहाँ भी हम जायेंगे\nयेशू नाम हम ले जायेंगे\nहम सब एक होकर बोलेंगे\nखुशियों से शोर मचा देंगे\nहंगामा होवे, जश्न मनाएं\nयेशू मसीह की जय गाएं"
     },
     "hinglish": {
-      "verse_1": "Tere saath saath hum toh chalte rahe\nTere haath haath hum toh thaame rahe",
-      "chorus": "Chahe jahan bhi hum jaayenge\nYeshu naam hum le jaayenge\nHum sab ek hokar bolenge",
+      "verse1": "Tere saath saath hum toh chalte rahe\nTere haath haath hum toh thaame rahe",
+      "chorus": "Chahe jahan bhi hum jaayenge\nYeshu naam hum le jaayenge\nHum sab ek hokar bolenge\nKhushiyon se shor macha denge\nHungama ho ve, jashn manaye\nYeshu Masih ki jai gaye",
       "bridge": "Seeti bajao, aur taali bajao\nArre jhumo aur nacho\nAur awaaz uthao",
-      "verse_2": "Tere mandir mein hum aate rahe\nTere jai jai kaar hum karte rahe",
-      "repeat_chorus": "Chahe jahan bhi hum jaayenge\nYeshu naam hum le jaayenge\nHum sab ek hokar bolenge"
+      "verse2": "Tere mandir mein hum aate rahe\nTere jai jai kaar hum karte rahe",
+      "repeat_chorus": "Chahe jahan bhi hum jaayenge\nYeshu naam hum le jaayenge\nHum sab ek hokar bolenge\nKhushiyon se shor macha denge\nHungama ho ve, jashn manaye\nYeshu Masih ki jai gaye"
     }
   },
   "links": {

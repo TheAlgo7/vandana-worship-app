@@ -1,6 +1,6 @@
 {
   "name": "vandana",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,7 +9,8 @@
     "lint": "eslint",
     "test:e2e": "playwright test",
     "audit:text": "tsx scripts/audit-text-integrity.ts",
-    "import:songs": "tsx scripts/import-song-batch.ts"
+    "import:songs": "tsx scripts/import-song-batch.ts",
+    "import:icl": "tsx scripts/import-icl-text-batch.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.101.1",

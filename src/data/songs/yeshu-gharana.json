@@ -1,25 +1,30 @@
 {
   "id": "yeshu-gharana",
   "title": "Yeshu Gharana",
-  "artist": "Amit Kamble & Cameron Mendes",
+  "artist": "Nations Of Worship",
   "church": "Nations of Worship",
   "album": "Nations of Worship 2025",
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Na koi Yahoodi, na koi Yunaani\nNa koi bhedbhaav\nNa koi rang ya riwaaj\nNa koi gulaam, na koi swaami\nYa ho unch-neech, ya ho nar ya naari\nHum sab Masih mein ek hain\nLahu se khareed'e gaye",
-      "chorus": "Yeshu gharaane ka waaris hoon main\nWaaris hoon, main uska beta hoon",
-      "verse2": "Naya aagaaz hai, nayi pehchaan hai\nNaya dil, teri Rooh se bhara hai mujhe\nNayi aawaaz hai, naya andaaz hai\nTere naam ke libaas mein odha mujhe\nHum sab Masih mein ek hain\nLahu se khareed'e gaye",
-      "bridge": "Rajaon ka raaja tu, mera pita bhi hai tu\nAb koi shastra na roke mujhe, shatru ki ungli na toke\nHaq ke aage hai tu, hai baadshah mera\nMahima bhi tu hi hai\nBolo Masih Yeshu ki jai",
-      "outro": "Yeshu mera\nYeshu mein, Yeshu mein, uska beta hoon main"
+      "verse1": "Na koi Yahudi, na koi Yunani\nNa koi bhedbhaav, na koi rang ya riwaaj\nNa koi gulaam, na koi swaami\nNa ho oonch-neech, na ho nariya-naari",
+      "chorus": "Hum sab Masih mein ek hain\nLahu se khareede gaye\nYeshu gharane ka waaris hoon main\nWaaris hoon main, uska beta hoon main (×2)",
+      "verse2": "Naya aagaaz hai, nayi pehchaan hai\nNaya dil teri Rooh se bhara hai mujhe\nNayi awaaz hai, naya andaaz hai\nTere naam ke libaaz mein odha mujhe",
+      "repeat_chorus": "Hum sab Masih mein ek hain\nLahu se khareede gaye\nYeshu gharane ka waaris hoon main\nWaaris hoon main, uska beta hoon main (×2)",
+      "bridge": "Rajaon ka Raja Tu\nMera Pita bhi hai Tu\nAb koi shastr na roke mujhe\nShatru ki ungli na toke mujhe\nTu hai Badshah mera\nMahima ki Tu hi hai aasha\nBolo Masih Yeshu ki jai\nBolo Masih Yeshu ki jai",
+      "repeat_chorus2": "Hum sab Masih mein ek hain\nLahu se khareede gaye\nYeshu gharane ka waaris hoon main\nWaaris hoon main, uska beta hoon main (×2)"
     },
     "hindi": {
-      "verse1": "ना कोई यहूदी, ना कोई यूनानी\nना कोई भेदभाव\nना कोई रंग या रिवाज़\nना कोई गुलाम, ना कोई स्वामी\nया हो ऊंच-नीच, या हो नर या नारी\nहम सब मसीह में एक हैं\nलहू से ख़रीदे गए",
-      "chorus": "यीशु घराने का वारिस हूं मैं\nवारिस हूं, मैं उसका बेटा हूं",
-      "verse2": "नया आग़ाज़ है, नई पहचान है\nनया दिल, तेरी रूह से भरा है मुझे\nनई आवाज़ है, नया अंदाज़ है\nतेरे नाम के लिबास में ओढ़ा मुझे\nहम सब मसीह में एक हैं\nलहू से ख़रीदे गए",
-      "bridge": "राजाओं का राजा तू, मेरा पिता भी है तू\nअब कोई शस्त्र ना रोके मुझे, शत्रु की उंगली ना टोके\nहक़ के आगे है तू, है बादशाह मेरा\nमहिमा भी तू ही है\nबोलो मसीह यीशु की जय",
-      "outro": "यीशु मेरा\nयीशु में, यीशु में, उसका बेटा हूं मैं"
+      "verse1": "ना कोई यहूदी, ना कोई यूनानी\nना कोई भेदभाव, ना कोई रंग या रिवाज़\nना कोई ग़ुलाम, ना कोई स्वामी\nना हो ऊँच-नीच, ना हो नर-नारी",
+      "chorus": "हम सब मसीह में एक हैं\nलहू से ख़रीदे गए\nयेशु घराने का वारिस हूँ मैं\nवारिस हूँ मैं, उसका बेटा हूँ मैं (×2)",
+      "verse2": "नया आगाज़ है, नई पहचान है\nनया दिल तेरी रूह से भरा है मुझे\nनई आवाज़ है, नया अंदाज़ है\nतेरे नाम के लिबाज़ में ओढ़ा मुझे",
+      "repeat_chorus": "हम सब मसीह में एक हैं\nलहू से ख़रीदे गए\nयेशु घराने का वारिस हूँ मैं\nवारिस हूँ मैं, उसका बेटा हूँ मैं (×2)",
+      "bridge": "राजाओं का राजा तू\nमेरा पिता भी है तू\nअब कोई शस्त्र न रोके मुझे\nशत्रु की उँगली न टोके मुझे\nतू है बादशाह मेरा\nमहिमा की तू ही है आशा\nबोलो मसीह यीशु की जय\nबोलो मसीह यीशु की जय",
+      "repeat_chorus2": "हम सब मसीह में एक हैं\nलहू से ख़रीदे गए\nयेशु घराने का वारिस हूँ मैं\nवारिस हूँ मैं, उसका बेटा हूँ मैं (×2)"
     }
   },
   "links": {
@@ -27,7 +32,15 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "praise", "nations-of-worship", "hindi", "hinglish", "2025"],
+  "tags": [
+    "worship",
+    "praise",
+    "nations-of-worship",
+    "hindi",
+    "hinglish",
+    "2025"
+  ],
   "seo_description": "Yeshu Gharana lyrics in Hindi and Hinglish by Amit Kamble & Cameron Mendes - Nations of Worship 2025",
-  "added_by": "Gaurav | Vandana"
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://indianchristianlyrics.in/songs/yeshu-gharana"
 }

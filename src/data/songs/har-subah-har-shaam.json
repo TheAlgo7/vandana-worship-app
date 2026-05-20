@@ -6,24 +6,24 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
       "verse1": "मेरी आँखों में, मेरी साँसों में\nमेरी होठों में, मेरी बातों में\nइस दिल की हर धड़कन में तू",
       "chorus": "हर सुबह हर शाम\nगाएंगे येशू नाम",
-      "verse2": "तुझे छोड़कर, जाऊ कहाँ\nतू है तो मैं हूँ यहाँ (x2)\nअब ये लम्हा ज़रा, थम जाए यहाँ",
+      "verse2": "तुझे छोड़कर, जाऊ कहाँ\nतू है तो मैं हूँ यहाँ (x2)\nअब ये लम्हा ज़रा, थम जाए यहाँ\nतेरे, मेरे, दरमियाँ (x2)",
       "repeat_chorus": "हर सुबह हर शाम\nगाएंगे येशू नाम",
-      "verse3": "मेरे ही करीब, आओ तुम यहाँ\nपास बैठो न, मेरे ज़रा (x2)\nतेरे खुशबू से, भर जाए जीवन मेरा",
+      "verse3": "मेरे ही करीब, आओ तुम यहाँ\nपास बैठो न, मेरे ज़रा (x2)\nतेरे खुशबू से, भर जाए जीवन मेरा\nरहे ये दिल तेरे ही सदा (x2)",
       "outro": "बोलो नाम येशू नाम, येशू नाम\nबोलो नाम येशू नाम, येशू नाम"
     },
     "hinglish": {
       "verse1": "Meri ankhon me, meri sanson me\nMeri hotoon me, meri batoon me\nIs dil ki har dadkan me Tu",
       "chorus": "Har subah har shaam\nGayenge Yeshu naam",
-      "verse2": "Tujhe chhodkar, jau kahan\nTu hai toh main hoon yahan (x2)\nAb ye lamha zara, tham jaye yahan",
+      "verse2": "Tujhe chhodkar, jau kahan\nTu hai toh main hoon yahan (x2)\nAb ye lamha zara, tham jaye yahan\nTere, mere, darmiyaan (x2)",
       "repeat_chorus": "Har subah har shaam\nGayenge Yeshu naam",
-      "verse3": "Mere hi kareeb, aao tum yahan\nPaas baitho na, mere zara (x2)\nTere khushboo se, bhar jaye jeevan mera",
+      "verse3": "Mere hi kareeb, aao tum yahan\nPaas baitho na, mere zara (x2)\nTere khushboo se, bhar jaye jeevan mera\nRahe ye dil tere hi sada (x2)",
       "outro": "Bolo naam Yeshu naam, Yeshu naam\nBolo naam Yeshu naam, Yeshu naam"
     }
   },

@@ -6,21 +6,25 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
       "pre_chorus": "हो सिताइश तेरी, मेरे मसीह\nतुझसा कोई है ही कहीं नहीं\nज़िंदगी यह मेरी बदल गई\nजब से मुझको राहें तेरी मिलीं\nतारीकी से है निकाला, रौशन किया मुझे\nमेरा है तू ही कफ़ारा, हर गुनाह से",
       "chorus": "हो गाऊँगा मैं हम्द-ओ-सना तेरी\nयीशु में रहूँ, क़ुर्बत में मैं तेरी",
-      "verse_1": "पाप से दी रिहाई\nयीशु नाम में है चंगाई\nरूह से भर के नया दिल दिया हमको\nहो ज़बह जीवन दिया हमको\nइबादतगुज़ार रहूँ, परस्तिश मैं करता रहूँ\nमयस्सर हूँ मेरे ख़ुदा, मैं तेरे लिए",
-      "verse_2": "यीशु तू है रब्ब मेरा\nतू ही है सब कुछ मेरा\nहो जुदा तुझसे ख़ुदा, मैं जाऊँ कहाँ\nमैं रहूँ सदा तेरे पास, है यह मेरी दुआ\nइबादतगुज़ार रहूँ, परस्तिश मैं करता रहूँ\nमयस्सर हूँ मेरे ख़ुदा, मैं तेरे लिए"
+      "verse1": "पाप से दी रिहाई\nयीशु नाम में है चंगाई\nरूह से भर के नया दिल दिया हमको\nहो ज़बह जीवन दिया हमको\nइबादतगुज़ार रहूँ, परस्तिश मैं करता रहूँ\nमयस्सर हूँ मेरे ख़ुदा, मैं तेरे लिए",
+      "repeat_chorus": "हो गाऊँगा मैं हम्द-ओ-सना तेरी\nयीशु में रहूँ, क़ुर्बत में मैं तेरी",
+      "verse2": "यीशु तू है रब्ब मेरा\nतू ही है सब कुछ मेरा\nहो जुदा तुझसे ख़ुदा, मैं जाऊँ कहाँ\nमैं रहूँ सदा तेरे पास, है यह मेरी दुआ\nइबादतगुज़ार रहूँ, परस्तिश मैं करता रहूँ\nमयस्सर हूँ मेरे ख़ुदा, मैं तेरे लिए",
+      "repeat_chorus2": "हो गाऊँगा मैं हम्द-ओ-सना तेरी\nयीशु में रहूँ, क़ुर्बत में मैं तेरी"
     },
     "hinglish": {
       "pre_chorus": "Ho sitaish Teri, mere Masih\nTujhsa koi hai hi kahin nahin\nZindagi yeh meri badal gayi\nJab se mujhko raahen Teri mileen\nTaariki se hai nikaala, raushan kiya mujhe\nMera hai Tu hi kafara, har gunaah se",
       "chorus": "Ho gaaunga main hamd-o-sanna Teri\nYeshu mein rahun, qurbat mein main Teri",
-      "verse_1": "Paap se di rihaai\nYeshu naam mein hai changaai\nRooh se bhar ke naya dil diya humko\nHo zabah jeevan diya humko\nIbadatguzar rahun, parastish main karta rahun\nMayassar hoon mere Khuda, main Tere liye",
-      "verse_2": "Yeshu Tu hai Rabb mera\nTu hi hai sab kuchh mera\nHo juda tujhse Khuda, main jaaun kahaan\nMain rahun sada Tere paas, hai yeh meri dua\nIbadatguzar rahun, parastish main karta rahun\nMayassar hoon mere Khuda, main Tere liye"
+      "verse1": "Paap se di rihaai\nYeshu naam mein hai changaai\nRooh se bhar ke naya dil diya humko\nHo zabah jeevan diya humko\nIbadatguzar rahun, parastish main karta rahun\nMayassar hoon mere Khuda, main Tere liye",
+      "repeat_chorus": "Ho gaaunga main hamd-o-sanna Teri\nYeshu mein rahun, qurbat mein main Teri",
+      "verse2": "Yeshu Tu hai Rabb mera\nTu hi hai sab kuchh mera\nHo juda tujhse Khuda, main jaaun kahaan\nMain rahun sada Tere paas, hai yeh meri dua\nIbadatguzar rahun, parastish main karta rahun\nMayassar hoon mere Khuda, main Tere liye",
+      "repeat_chorus2": "Ho gaaunga main hamd-o-sanna Teri\nYeshu mein rahun, qurbat mein main Teri"
     }
   },
   "links": {

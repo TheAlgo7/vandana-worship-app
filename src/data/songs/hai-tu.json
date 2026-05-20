@@ -11,18 +11,15 @@
   ],
   "lyrics": {
     "hinglish": {
-      "verse_1": "Baarish ki boondon mein hai Tu\nSooraj ki kirno mein\nSagar ki lehron mein\nPhoolon ki khushboo mein\nParindon ke geeton mein",
-      "chorus": "Tu hi tha, Tu hi hai, aur Tu hai sada\nYeshu... dekhun jahaan\nTera nishaan hai har jagah\nTere siwa, koi na hai mera\nTu mera hai jahaan",
-      "verse_2": "Neendon mein, khwaabon mein hai Tu\nMeri har saanson mein\nMeri har baaton mein",
-      "bridge": "Tere hi pyaar ka hai yeh asar\nAb na koi hai darr\nNa hai fikar\nLehron pe aaunga main chal kar\nTera naam hai Yeshu, mera rehguzar",
+      "verse1": "Sooraj ki kirno mein\nSagar ki lehron mein\nBaarish ki boondon mein hai Tu\nPhoolon ki khushboo mein\nParindon ke geeton mein\nBehti hawaon mein hai Tu",
+      "chorus": "Yeshu... dekhun jahaan\nTera nishaan hai har jagah\nTu hi tha, Tu hi hai, aur Tu hai sada\nTere siwa, koi na hai mera\nTu mera hai jahaan",
+      "verse2": "Meri har saanson mein\nMeri har baaton mein\nNeendon mein, khwaabon mein hai Tu",
+      "repeat_chorus": "Yeshu... dekhun jahaan\nTera nishaan hai har jagah\nTu hi tha, Tu hi hai, aur Tu hai sada\nTere siwa, koi na hai mera\nTu mera hai jahaan",
+      "bridge": "Ab na koi hai darr\nNa hai fikar\nTere hi pyaar ka hai yeh asar\nLehron pe aaunga main chal kar\nTera naam hai Yeshu, mera rehguzar",
       "outro": "Yeshu naam... Yeshu naam...\nYeshu... Yeshu naam..."
     },
     "hindi": {
-      "verse_1": "बारिश की बूंदों में है तू\nसूरज की किरणों में\nसागर की लहरों में\nफूलों की खुशबू में\nपरिंदों के गीतों में",
-      "chorus": "तू ही था, तू ही है, और तू है सदा\nयेशु... देखूं जहां\nतेरा निशान है हर जगह\nतेरे सिवा, कोई ना है मेरा\nतू मेरा है जहां",
-      "verse_2": "नींदों में, ख्वाबों में है तू\nमेरी हर सांसों में\nमेरी हर बातों में",
-      "bridge": "तेरे ही प्यार का है यह असर\nअब ना कोई है डर\nना है फिकर\nलहरों पे आऊंगा मैं चल कर\nतेरा नाम है येशु, मेरा रहगुजर",
-      "outro": "येशु नाम... येशु नाम...\nयेशु... येशु नाम..."
+      "verse1": "सूरज की किरणों में\nसागर की लहरों में\nबारिश की बूंदों में है तू\nफूलों की खुशबू में\nपरिंदों के गीतों में\nबहती हवाओं में है तू\nयीशु... देखूं जहाँ\nतेरा निशान है हर जगह\nतू ही था, तू ही है, और तू है सदा\nतेरे सिवा, कोई न है मेरा\nतू मेरा है जहाँ\nमेरी हर साँसों में\nमेरी हर बातों में\nनींदों में, ख्वाबों में है तू\nयीशु... देखूं जहाँ\nतेरा निशान है हर जगह\nतू ही था, तू ही है, और तू है सदा\nतेरे सिवा, कोई न है मेरा\nतू मेरा है जहाँ\nअब न कोई है डर\nन है फिक्र\nतेरे ही प्यार का है ये असर\nलहरों पे आऊँगा मैं चल कर\nतेरा नाम है यीशु, मेरा रहगुज़र\nयीशु नाम... यीशु नाम...\nयीशु... यीशु नाम..."
     }
   },
   "links": {

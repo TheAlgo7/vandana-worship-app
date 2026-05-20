@@ -1,5 +1,27 @@
 [
   {
+    "id": "update-020",
+    "date": "2026-05-20",
+    "title": "65 More Worship Songs Added",
+    "body": "Added 65 new Hindi/Hinglish worship songs and refreshed 25 existing songs with cleaner lyrics, better artist credits where verified, and fuller language coverage. The library now has 332 songs available through search, setlists, favourites, and Present Mode.",
+    "type": "songs_added",
+    "song_count": 65,
+    "song_names": [
+      "Kaise Bataein",
+      "Kharida Tune Apne Lahoo Se",
+      "Khoobsurat",
+      "Lahoo Lahoo Yeshu Ka Lahoo",
+      "Le Chal Mujhe",
+      "Maa Ke Samaan",
+      "Mahan",
+      "Mera Fidiya",
+      "Musafir",
+      "Pankhon tale",
+      "Pehchaan",
+      "Yahweh"
+    ]
+  },
+  {
     "id": "update-019",
     "date": "2026-05-20",
     "title": "v2.1.0: Settings, Font Size & Polish",

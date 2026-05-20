@@ -1,7 +1,7 @@
 export default function SongSkeleton() {
   return (
     <div style={{ background: "var(--bg-base)", minHeight: "100dvh" }}>
-      {/* Topbar — mirrors song-topbar */}
+      {/* Topbar mirrors song-topbar */}
       <div
         style={{
           display: "flex",

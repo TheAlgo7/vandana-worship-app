@@ -6,21 +6,21 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "verse_1": "गाके मुझ को सुनाओ फिर, मंगल सुसमाचार,\nसमझूँ मैं उसका अर्थ और सार, मंगल सुसमाचार,\nसुंदर जीवनदायक, धर्म विश्वास का शिक्षक॥",
+      "verse1": "गाके मुझ को सुनाओ फिर, मंगल सुसमाचार,\nसमझूँ मैं उसका अर्थ और सार, मंगल सुसमाचार,\nसुंदर जीवनदायक, धर्म विश्वास का शिक्षक॥",
       "chorus": "वचन अनुप, वचन अद्भुत,\nमंगल सुसमाचार॥",
-      "verse_2": "यीशु देता है सबों को,\nमंगल सुसमाचार,\nलो अब तुम जो कि भूले हो,",
-      "verse_3": "जाके सबों को दो संदेश,\nमंगल सुसमाचार,\nदेता दिलों को चैन विशेष,"
+      "verse2": "यीशु देता है सबों को,\nमंगल सुसमाचार,\nलो अब तुम जो कि भूले हो,\nमंगल सुसमाचार,\nसंत भेंट हम को देता,\nस्वर्ग की ओर खींच लेता॥",
+      "verse3": "जाके सबों को दो संदेश,\nमंगल सुसमाचार,\nदेता दिलों को चैन विशेष,\nमंगल सुसमाचार,\nयीशु मुक्तिदाता,\nसबों को सुनाता॥"
     },
     "hinglish": {
-      "verse_1": "Gaake mujhko sunao phir, mangal susamachar,\nSamjhoon main uska arth aur saar, mangal susamachar,\nSundar jeevandayak, dharm vishwas ka shikshak.",
+      "verse1": "Gaake mujhko sunao phir, mangal susamachar,\nSamjhoon main uska arth aur saar, mangal susamachar,\nSundar jeevandayak, dharm vishwas ka shikshak.",
       "chorus": "Vachan anup, vachan adbhut,\nMangal susamachar.",
-      "verse_2": "Yeshu deta hai sabko,\nMangal susamachar,\nLo ab tum jo ki bhoole ho,",
-      "verse_3": "Jaake sabko do sandesh,\nMangal susamachar,\nDeta dilon ko chain vishesh,"
+      "verse2": "Yeshu deta hai sabko,\nMangal susamachar,\nLo ab tum jo ki bhoole ho,\nMangal susamachar,\nSant bhent humko deta,\nSwarg ki or kheench leta.",
+      "verse3": "Jaake sabko do sandesh,\nMangal susamachar,\nDeta dilon ko chain vishesh,\nMangal susamachar,\nYeshu mukti daata,\nSabko sunaata."
     }
   },
   "links": {

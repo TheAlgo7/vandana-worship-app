@@ -5,19 +5,28 @@
   "church": null,
   "album": null,
   "language_default": "hindi",
-  "languages_available": ["hindi", "hinglish"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hindi": {
-      "chorus": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को",
+      "chorus": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को\nदूर एक तारा",
       "verse1": "मरियम का बेटा वो है\nचरनी में जो आज आया है (×2)\nतारे आकाश जल खुशियाँ मनाते\nवो ही हमारा राजा है (×2)",
+      "repeat_chorus": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को\nदूर एक तारा",
       "verse2": "आया बचाने को हमें\nडूबे थे जब हम पापों में (×2)\nये बात समझो, मन फिराओ\nक्यों आया जग में प्यारा मसीह (×2)",
-      "verse3": "आएगा फिर से मसीह\nचिन्हों को देखो पूरे होते (×2)\nन्याय करेगा आकर हमारा\nन्याय का दिन अब निकट आया (×2)"
+      "repeat_chorus2": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को\nदूर एक तारा",
+      "verse3": "आएगा फिर से मसीह\nचिन्हों को देखो पूरे होते (×2)\nन्याय करेगा आकर हमारा\nन्याय का दिन अब निकट आया (×2)",
+      "repeat_chorus3": "दूर एक तारा जा रहा है\nपहुँचेगा एक दिन बैथलहम को\nहम भी चलेंगे पीछे उसके\nदंडवत करेंगे क्रिस्ट यीशु को\nदूर एक तारा"
     },
     "hinglish": {
-      "chorus": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko",
+      "chorus": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko\nDoor ek thaaraa",
       "verse1": "Mariyam kaa betaa vo hai\nCharnee me jo aaj aayaa hai (×2)\nThaare aakaash jal kushiyaa manaathe\nVo hee hamaaraa raajaa hai (×2)",
+      "repeat_chorus": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko\nDoor ek thaaraa",
       "verse2": "Aayaa bachaane ko hame\nDoobe the jab ham paapo mein (×2)\nYe baath samjho, man phiraavo\nKyo aayaa jag me pyaaraa Maseeh (×2)",
-      "verse3": "Aayegaa phir se Maseeh\nChinho ko dekho poore hothe (×2)\nNyaay karegaa aakar hamaaraa\nNyaay kaa din ab nikat aayaa (×2)"
+      "repeat_chorus2": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko\nDoor ek thaaraa",
+      "verse3": "Aayegaa phir se Maseeh\nChinho ko dekho poore hothe (×2)\nNyaay karegaa aakar hamaaraa\nNyaay kaa din ab nikat aayaa (×2)",
+      "repeat_chorus3": "Door ek thaaraa jaa rahaa hai\nPahuchegaa ek din Bethlahem ko\nHam bhi chalenge peeche uske\nDandvath karenge Kreesth Yeshu ko\nDoor ek thaaraa"
     }
   },
   "links": {
@@ -25,7 +34,13 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "christmas", "hindi", "hinglish", "indianchristianlyrics"],
+  "tags": [
+    "worship",
+    "christmas",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
   "seo_description": "Door ek thara jaa rahaa hai lyrics in Hindi and Hinglish",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/door-ek-thara-jaa-rahaa-hai"

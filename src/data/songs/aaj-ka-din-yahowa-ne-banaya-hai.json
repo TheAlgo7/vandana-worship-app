@@ -13,14 +13,20 @@
     "hinglish": {
       "chorus": "Aaj ka din Yahowa ne banaya hai\nHum usmein aanandit ho, aanandit ho",
       "verse1": "Prabhu ko mahima mile, chahe ho mera apmaan\nWo badhe main ghatun, rahe usi ka dhyaan",
+      "repeat_chorus": "Aaj ka din Yahowa ne banaya hai\nHum usmein aanandit ho, aanandit ho",
       "verse2": "Stuti prashansa karein, kyon na kuch hota rahe\nUsko hum bhaate rahe, chahe jahaan bhi rahe",
-      "verse3": "Aata hoon tere paas, mujhko hai tujhse aas\nMujhko kabool kar le, paapon se shudh kar de"
+      "repeat_chorus2": "Aaj ka din Yahowa ne banaya hai\nHum usmein aanandit ho, aanandit ho",
+      "verse3": "Aata hoon tere paas, mujhko hai tujhse aas\nMujhko kabool kar le, paapon se shudh kar de",
+      "repeat_chorus3": "Aaj ka din Yahowa ne banaya hai\nHum usmein aanandit ho, aanandit ho"
     },
     "hindi": {
       "chorus": "आज का दिन यहोवा ने बनाया है\nहम उसमें आनंदित हो, आनंदित हो",
       "verse1": "प्रभु को महिमा मिले, चाहे हो मेरा अपमान\nवो बढ़े मैं घटूं, रहे उसी का ध्यान",
+      "repeat_chorus": "आज का दिन यहोवा ने बनाया है\nहम उसमें आनंदित हो, आनंदित हो",
       "verse2": "स्तुति-प्रशंसा करें, क्यों न कुछ होता रहे\nउसको हम भाते रहें, चाहे जहाँ भी रहें",
-      "verse3": "आता हूँ तेरे पास, मुझको है तुझसे आस\nमुझको कबूल कर ले, पापों से शुद्ध कर दे"
+      "repeat_chorus2": "आज का दिन यहोवा ने बनाया है\nहम उसमें आनंदित हो, आनंदित हो",
+      "verse3": "आता हूँ तेरे पास, मुझको है तुझसे आस\nमुझको कबूल कर ले, पापों से शुद्ध कर दे",
+      "repeat_chorus3": "आज का दिन यहोवा ने बनाया है\nहम उसमें आनंदित हो, आनंदित हो"
     }
   },
   "links": {

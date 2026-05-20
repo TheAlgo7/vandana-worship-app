@@ -270,7 +270,7 @@ function AboutCard() {
         </a>
       </p>
       <p style={{ textAlign: "center", color: "var(--text-muted)", fontSize: 11, marginTop: 16 }}>
-        v2.1.0 · Public Beta
+        v2.2.0 · Public Beta
       </p>
     </div>
   );

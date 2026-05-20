@@ -6,20 +6,20 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
       "chorus": "बिनती सुनले येशु प्यारे\nमोरे संग रहो महाराज\nअब तुम राखो मोरी लाज",
-      "verse1": "बिनती करूं तुमसे केर जोरी\nअब तुम बिनती सुनलो मोरी\nमोहे आशा लग रही तोरी\nमोहे दरस दिखा दो आज\nबिनती सुनो मोरी महाराज",
-      "verse2": "आपका मैं शैदा कहलाऊँ\nआस लगी तोरे दर्शन पाऊँ\nयुग युग आपका मैं गुण गाऊँ\nमेरे गरीब नवाज़\nबिनती सुनो मोरी महाराज",
+      "verse1": "बिनती करूं तुमसे केर जोरी\nअब तुम बिनती सुनलो मोरी\nमोहे आशा लग रही तोरी\nमोहे दरस दिखा दो आज\nबिनती सुनो मोरी महाराज\nप्रभु तुम राखो मोरी लाज",
+      "verse2": "आपका मैं शैदा कहलाऊँ\nआस लगी तोरे दर्शन पाऊँ\nयुग युग आपका मैं गुण गाऊँ\nमेरे गरीब नवाज़\nबिनती सुनो मोरी महाराज\nप्रभु तुम राखो मोरी लाज",
       "verse3": "तुम ही हमारे नैनों के तारे\nमन के प्यारे, दिल के दुलारे\nतुम ही हमारे तारन हरे\nहमरे तुम सर-ताज\nअब तुम राखो मोरी लाज"
     },
     "hinglish": {
       "chorus": "Binti sunle Yeshu pyaare\nMore sang raho Maharaj\nAb tum rakho mori laaj",
-      "verse1": "Binti karu tumse ker jori\nAb tum binti sunlo mori\nMohe aasa lag rahi tori\nMohe daras dikha do aaj\nBinti suno mori Maharaj",
-      "verse2": "Aapka main shaida kahlaaun\nAas lagi tore darshan paaun\nYug yug aapka main gun gaaun\nMere gareeb navaaz\nBinti suno mori Maharaj",
+      "verse1": "Binti karu tumse ker jori\nAb tum binti sunlo mori\nMohe aasa lag rahi tori\nMohe daras dikha do aaj\nBinti suno mori Maharaj\nPrabhu tum rakho mori laaj",
+      "verse2": "Aapka main shaida kahlaaun\nAas lagi tore darshan paaun\nYug yug aapka main gun gaaun\nMere gareeb navaaz\nBinti suno mori Maharaj\nPrabhu tum rakho mori laaj",
       "verse3": "Tum hi hamaare naino ke taare\nMan ke pyaare, dil ke dulaare\nTum hi hamaare taaran hare\nHamre tum sar-taaj\nAb tum rakho mori laaj"
     }
   },

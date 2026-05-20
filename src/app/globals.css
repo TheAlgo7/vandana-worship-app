@@ -426,7 +426,7 @@ a:active {
   max-width: 40rem;
 }
 
-/* Elements shown on mobile only — hidden on desktop (aside takes over) */
+/* Elements shown on mobile only; hidden on desktop (aside takes over) */
 @media (min-width: 900px) {
   .settings-about-mobile { display: none !important; }
   .updates-summary-mobile { display: none !important; }

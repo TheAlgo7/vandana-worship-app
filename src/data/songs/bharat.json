@@ -6,24 +6,24 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
-      "verse1": "जहाँ थी खुश्बू प्यार की\nकहाँ से आई नफ़रत की तलवार",
+      "verse1": "जहाँ थी खुश्बू प्यार की\nकहाँ से आई नफ़रत की तलवार\nजहाँ रहते थे साथ मिलके\nकहाँ से आई जात धर्म की दीवार\nयेशू ने सिखाया करो, तुम दुश्मन से भी प्यार",
       "chorus": "है ये मेरी दुआ, सलामत रखना\nभारत को ऐ खुदा, है ये दुआ",
-      "verse2": "जब कहीं बहता है लहू\nहै वही बहती आँसू",
+      "verse2": "जब कहीं बहता है लहू\nहै वही बहती आँसू\nहर तरफ छाया हुआ है मातम\nजो थे अपने वो बन गये दुश्मन",
       "bridge": "जो दे कांटे उसका दामन\nफूलों से भर दो",
-      "repeat_chorus": "है ये मेरी दुआ, सलामत रखना\nभारत को ऐ खुदा, है ये दुआ",
+      "chorus2": "है ये मेरी दुआ, सलामत रखना\nभारत को ऐ खुदा, है ये दुआ",
       "outro": "आओ मिलकर हम बनाए ज़िंदगी\nअंधेरी रातों में जले रोशनी"
     },
     "hinglish": {
-      "verse1": "Jahan thi khushboo pyaar ki\nKahan se aayi nafrat ki talwar",
+      "verse1": "Jahan thi khushboo pyaar ki\nKahan se aayi nafrat ki talwar\nJahan rehte the saath milke\nKahan se aayi jaat dharam ki deewar\nYeshu ne sikhaya karo, tum dushman se bhi pyaar",
       "chorus": "Hai ye meri dua salamat rakhna\nBharat ko ae Khuda, hai ye dua",
-      "verse2": "Jab kahi behta hai lahoo\nHai vahi behti aasu",
+      "verse2": "Jab kahi behta hai lahoo\nHai vahi behti aasu\nHar taraf chhaya hua hai maatam\nJo the apne vo ban gaye dushman",
       "bridge": "Jo de kantein uska daaman\nPhoolon se bhardo",
-      "repeat_chorus": "Hai ye meri dua salamat rakhna\nBharat ko ae Khuda, hai ye dua",
+      "chorus2": "Hai ye meri dua salamat rakhna\nBharat ko ae Khuda, hai ye dua",
       "outro": "Aao milkar hum banaye zindagi\nAndheri raaton mein jale roshini"
     }
   },

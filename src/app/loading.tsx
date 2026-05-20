@@ -4,7 +4,7 @@ import BottomNav from "@/components/BottomNav";
 export default function Loading() {
   return (
     <>
-      {/* AppTitle area — mobile only */}
+      {/* AppTitle area: mobile only */}
       <div style={{ maxWidth: "40rem", margin: "0 auto", padding: "14px 20px 0" }}>
         <div className="skeleton-block" style={{ width: 96, height: 28, borderRadius: "var(--radius-sm)" }} />
         <div className="skeleton-block" style={{ width: 140, height: 12, marginTop: 8, borderRadius: "var(--radius-sm)" }} />

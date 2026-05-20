@@ -6,22 +6,22 @@
   "album": null,
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
       "intro": "आराधना, आराधना\nआराधना, आराधना",
-      "verse_1": "दिल में जगह तू दे दे\nबाहों में मुझे तू भर दे",
+      "verse1": "दिल में जगह तू दे दे\nबाहों में मुझे तू भर दे\nआ रहा हूँ मैं (x2)",
       "chorus": "हो तेरी आराधना\nकरता रहूँ तेरी आराधना",
-      "verse_2": "मेरे दिल की तू है ज़रूरत\nकरता रहूँगा तुझसे मोहब्बत",
+      "verse2": "मेरे दिल की तू है ज़रूरत\nकरता रहूँगा तुझसे मोहब्बत\nआ रहा हूँ मैं (x2)",
       "repeat_chorus": "हो तेरी आराधना\nकरता रहूँ तेरी आराधना"
     },
     "hinglish": {
       "intro": "Aradhana, Aradhana\nAradhana, Aradhana",
-      "verse_1": "Dil mein jagah tu dede\nBaahon mein mujhe tu bhar de",
+      "verse1": "Dil mein jagah tu dede\nBaahon mein mujhe tu bhar de\nAa raha hoon main (x2)",
       "chorus": "Ho teri aradhana\nKarta rahoon teri aradhana",
-      "verse_2": "Mere dil ki tu hai zarurat\nKarta rahunga tujhse mohabbat",
+      "verse2": "Mere dil ki tu hai zarurat\nKarta rahunga tujhse mohabbat\nAa raha hoon main (x2)",
       "repeat_chorus": "Ho teri aradhana\nKarta rahoon teri aradhana"
     }
   },
