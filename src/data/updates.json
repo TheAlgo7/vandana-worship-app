@@ -1,5 +1,27 @@
 [
   {
+    "id": "update-023",
+    "date": "2026-05-20",
+    "title": "405 More Worship Songs Added",
+    "body": "Added 405 more worship songs after a deeper review of all three scraped lyric batches. Clean songs are now allowed even when the source does not name an artist, while duplicate songs, short files, page junk, placeholder lyrics, and regional-language sources needing manual review stay out. The library now has 910 songs.",
+    "type": "songs_added",
+    "song_count": 405,
+    "song_names": [
+      "Gawahi",
+      "Aao Kare Aradhana",
+      "Aatma Undel de",
+      "Dhanyavad ke Sath Stuti Gaunga",
+      "Jeevan Hai Yeshu",
+      "Kuchh Pal",
+      "Mujhko Chhoo le",
+      "Prabhu ka Naam Kitna Pyara Hai",
+      "Teri Aaradhana",
+      "Tu Yogya Hai",
+      "Yesu Naam Jindagi ka Jaam",
+      "Zanjeeron ko Todta Hai"
+    ]
+  },
+  {
     "id": "update-022",
     "date": "2026-05-20",
     "title": "11 Reviewed Worship Songs Added",

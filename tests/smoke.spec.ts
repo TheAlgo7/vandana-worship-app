@@ -79,6 +79,7 @@ test("song sections keep worship order", async ({ page }) => {
   ]);
 
   await page.goto("/song/chattan");
+  await expect(page.getByText("Chattan", { exact: true }).first()).toBeVisible();
 
   labels = await page.locator(".section-label").allTextContents();
 
