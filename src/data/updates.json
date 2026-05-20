@@ -1,5 +1,14 @@
 [
   {
+    "id": "update-019",
+    "date": "2026-05-20",
+    "title": "v2.1.0: Settings, Font Size & Polish",
+    "body": "You can now set your preferred lyrics font size directly in Settings, so every song opens at the size you like. Loading screens now match each page's real layout for a smoother experience. The About section also now credits Isus Christos Ministries (ICM), whose blessing made this app possible.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-018",
     "date": "2026-05-14",
     "title": "Jungli Darkhton Ke Darmiyan Added",

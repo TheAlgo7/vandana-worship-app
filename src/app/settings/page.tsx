@@ -6,6 +6,7 @@ import { Heart } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import DailyVerse from "@/components/DailyVerse";
 import FontSizeControl from "@/components/FontSizeControl";
+import NotificationToggle from "@/components/NotificationToggle";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
@@ -191,7 +192,13 @@ export default function SettingsPage() {
           </div>
         </section>
 
-        {/* ── About (mobile only — on desktop it moves to the aside) ── */}
+        {/* ── Notifications ── */}
+        <section style={{ marginBottom: 36 }}>
+          <p className="section-label">Notifications</p>
+          <NotificationToggle />
+        </section>
+
+        {/* ── About (mobile only, on desktop it moves to the aside) ── */}
         <section className="settings-about-mobile">
           <p className="section-label">About</p>
           <div
@@ -243,11 +250,11 @@ function AboutCard() {
       <p style={{ marginBottom: 12 }}>
         Built with the blessing of{" "}
         <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Isus Christos Ministries (ICM)</span>
-        {" "}— a personal offering to the Indian worship community from a church member.
+        , a personal offering to the Indian worship community from a church member.
       </p>
       <p>
         Made with{" "}
-        <Heart size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" style={{ display: "inline", verticalAlign: "middle", color: "var(--accent)" }} />{" "}
+        <Heart size={13} fill="currentColor" strokeWidth={0} aria-hidden="true" style={{ display: "inline", verticalAlign: "-2px", color: "var(--accent)" }} />{" "}
         by{" "}
         <a
           href="https://thealgothrim.com"

@@ -68,6 +68,35 @@ async function networkFirst(request) {
   }
 }
 
+self.addEventListener("push", (event) => {
+  const data = event.data?.json() ?? {};
+  event.waitUntil(
+    self.registration.showNotification(data.title ?? "Vandana", {
+      body: data.body ?? "",
+      icon: "/icons/icon-192.png",
+      badge: "/icons/favicon-32.png",
+      tag: data.tag ?? "vandana",
+      silent: data.silent ?? false,
+      data: { url: data.url ?? "/" },
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients
+      .matchAll({ type: "window", includeUncontrolled: true })
+      .then((clientList) => {
+        const url = event.notification.data?.url ?? "/";
+        for (const client of clientList) {
+          if ("focus" in client) return client.focus();
+        }
+        return clients.openWindow(url);
+      })
+  );
+});
+
 async function staleWhileRevalidate(request) {
   const cache = await caches.open(RUNTIME_CACHE);
   const cached = await cache.match(request);
