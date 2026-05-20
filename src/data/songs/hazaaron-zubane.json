@@ -5,21 +5,33 @@
   "church": "Nations of Worship",
   "album": "Nations of Worship 2024",
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Saari srishti par tera adhikaar\nTu rajadhiraaj hai Prabhu\nTujhse hai zameen, tujhse aasman\nJag ka tu Maalik Prabhu",
-      "pre_chorus": "Karte hain sajda\nIbadat ho teri sada",
-      "chorus": "Hazaaron zubane gaayein\nTera hi naam dohraayen\nYeshu tu pavitra hai",
-      "verse2": "Unch neech ka na koi wajood\nTere rajya mein, tere rajya mein\nHar kisi ka hai swagat yahan\nTere rajya mein, tere rajya mein\nTeri rehmat mein, tu leta hai sabko kareeb",
-      "bridge": "Shaahon ka shaah hai tu Khuda\nTera na koi muqaabla\nTera hi takht rahe, sabse uncha"
+      "verse1": "/* Responsive Styling */\n@media (max-width: 768px) {\n.lyrics-container {\nflex-direction: column;\n.lyrics-box {\nflex: 1 1 100%;\npadding: 10px;\nborder: none !important;\n.toggle-area {\nflex-direction: column !important;\nalign-items: flex-start !important;\n.toggle-area h3 {\nmargin-bottom: 10px;\n.lyrics-container {\ndisplay: flex;\nflex-wrap: wrap;\njustify-content: center;\npadding: 20px;\ngap: 20px;\n.lyrics-box {\nflex: 1 1 45%;\npadding: 10px;\n/* 🔶 Vertical line between Hindi and English (on desktop) */\n.lyrics-left {\nborder-right: 2px solid #ccc;\n.toggle-button {\nbackground-color: #f57c00;\nborder-radius: 8px;\nborder: none;\ncolor: white;\ncursor: pointer;\nfont-size: 14px;\npadding: 8px 16px;\nHindi Song Lyrics:",
+      "chorus": "Song Lyrics:\nShow English Lyrics",
+      "verse12": "Saari srishti par, tera adhikaar\nTu raajadhiraaj hai Prabhu\nTujhse hai zameen, tujhse aasman\nJag ka tu maalik Prabhu",
+      "pre_chorus": "Karte hain sajda,\nIbaadat ho teri sada",
+      "chorus2": "Hazaroon zubaanen gaayen\nTera hi naam dohraayen\nYeshu tu pavitra hai",
+      "verse2": "Oonch-neech ka, na koi wajood\nTere raajy mein, tere raajy mein\nHar kisi ka hai, swagat yahan\nTere raajy mein, tere raajy mein",
+      "pre_chorus2": "Teri rahmat mein hi,\nTu leta hai sabko kareeb ...",
+      "chorus3": "Hazaroon zubaanen gaayen\nTera hi naam dohraayen\nYeshu tu pavitra hai",
+      "bridge": "Shahon ka shaah hai tu Khuda\nTera na koi muqaabla\nTera hi takht rahe,\nSabse ooncha ........",
+      "chorus4": "Hazaroon zubaanen gaayen\nTera hi naam dohraayen\nYeshu tu pavitra hai",
+      "verse13": "Over all creation, Your authority reigns\nYou are the King of kings, O Lord\nFrom You is the earth, from You the skies\nYou are the Master of the world, O Lord",
+      "pre_chorus3": "We bow down before You,\nMay worship be Yours forever",
+      "chorus5": "Thousands of tongues sing\nThey repeat only Your name\nJesus, You are Holy",
+      "verse22": "There is no status high or low\nIn Your Kingdom, in Your Kingdom\nEveryone is welcomed here\nIn Your Kingdom, in Your Kingdom",
+      "pre_chorus4": "Through Your mercy alone,\nYou draw everyone near...",
+      "chorus6": "Thousands of tongues sing\nThey repeat only Your name\nJesus, You are Holy",
+      "bridge2": "You are the King of all kings, O God\nNone can compare with You\nLet Your throne remain\nHighest of all...",
+      "chorus7": "Thousands of tongues sing\nThey repeat only Your name\nJesus, You are Holy\n[Note: This is not the official English translation. It is only provided to help those who do not understand Hindi.]\nfunction toggleLyrics() {\nconst translit = document.getElementById(\"transliteration\");\nconst trans = document.getElementById(\"translation\");\nconst btn = document.getElementById(\"toggleButton\");\nif (translit.style.display === \"none\") {\ntranslit.style.display = \"block\";\ntrans.style.display = \"none\";\nbtn.textContent = \"Show English Lyrics\";\n} else {\ntranslit.style.display = \"none\";\ntrans.style.display = \"block\";\nbtn.textContent = \"Show English Transliteration\";\nvar videoId = 'kw-FIy8Shk0';\nvar iframe = document.createElement('iframe');\niframe.setAttribute('frameborder', '0');\niframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');\niframe.setAttribute('allowfullscreen', '');\niframe.style.width = '100%';\niframe.style.height = '315px';\nelement.parentNode.replaceChild(iframe, element);\n:: Song Details ::\nSong Name\nHazaaron Zubane\nClick Here\nNations of Worship\n:: Songs Credit Details ::\nCredits -\nNations of Worship;\nProducer - Ian Eskelin\nProject Directors - Allen & Vandana Ganta\nBrand Management - Nithin Raj\nContent Strategy & Writing - Alisha Rallan Watson\nArtists: Ps. Amit Kamble, Prakruthi Angelina, & Hemant Sharma\nSong Writers: Hemant Sharma, Suraj Dogra, Deepak Tusham & Ps. Amit Kamble\nBackup Singers: Sundeep Chinnam, Jevisha Mathias\nMusicians -\nIndian Percussions: Gouni Prabhu Kumar\nDrums: Solomon Raj\nGuitars & Mandolin: Sober Emmanuel\nBass: John Joshua\nElectric Guitar: Noel Bandari\nKeyboard 1 & MD - Stephen Netto\nKeyboard 2 & Backup Singing - Allen Ganta\nCredit:\n\" Nations of Worship \"\n🔥 Trending Worship Songs\nNew Hindi Worship Song Lyrics 2022\nNew Hindi Christian Song Lyrics 2022\nJaago Music | Hindi Christian Song\nFILADELFIA MUSIC | Hindi Song\nLove Catches Me by Surprise\nPrism Sound ft. Akhrieze & Reuben\nBharat Ka Khuda\nCity Youth Movement | Christian Song\nSounds of Zion | Worship Song\nVedi - The Altar\nSheldon Bangera - Red Sea Films"
     },
     "hindi": {
-      "verse1": "सारी सृष्टि पर तेरा अधिकार\nतू राजाधिराज है प्रभु\nतुझसे है ज़मीन, तुझसे आसमान\nजग का तू मालिक प्रभु",
-      "pre_chorus": "करते हैं सजदा\nइबादत हो तेरी सदा",
-      "chorus": "हज़ारों ज़ुबाने गायें\nतेरा ही नाम दोहराएं\nयीशु तू पवित्र है",
-      "verse2": "ऊंच नीच का ना कोई वजूद\nतेरे राज्य में, तेरे राज्य में\nहर किसी का है स्वागत यहाँ\nतेरे राज्य में, तेरे राज्य में\nतेरी रहमत में, तू लेता है सबको करीब",
-      "bridge": "शाहों का शाह है तू ख़ुदा\nतेरा ना कोई मुक़ाबला\nतेरा ही तख़्त रहे, सबसे ऊंचा"
+      "verse1": "NA DAROONGA ( मैं न डरूंगा )\nChanga ( तू चंगा करता है )\nMagan ( मगन मगन तेरे प्यार मे )\nZindagi Ke Safar Mey ( ज़िंदगी के सफर )\nPyaare Pita ( प्यारे पिता )"
     }
   },
   "links": {
@@ -27,7 +39,15 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "praise", "nations-of-worship", "hindi", "hinglish", "2024"],
+  "tags": [
+    "worship",
+    "praise",
+    "nations-of-worship",
+    "hindi",
+    "hinglish",
+    "2024"
+  ],
   "seo_description": "Hazaaron Zubane lyrics in Hindi and Hinglish by Amit Kamble, Prakruthi Angelina & Hemant Sharma - Nations of Worship 2024",
-  "added_by": "Gaurav | Vandana"
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://www.jesussongs4u.com/2025/06/hazaaron-zubane-lyrics-amit-kamble.html"
 }

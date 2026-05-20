@@ -1,27 +1,39 @@
 {
   "id": "shaktishaali",
   "title": "Shaktishaali",
-  "artist": "Amit Kamble, Cameron Mendes, Sam Alex Pasula, Joseph Raj Allam, Prince Mulla",
+  "artist": "Amit Kamble, Prince Mulla, Allen Ganta, Joseph Raj Allam & Abhishek Thomas",
   "church": "Nations of Worship",
   "album": "Nations of Worship 2026",
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Kaun hai wo jo aag se bachaye\nKaun hai wo jo raasta banaye\nKaun hai wo jo aandhi rukwaye\nKaun hai wo jo andhera mitaye\nItihaas ko jisne rachaya, hai wo bada baadshah",
-      "chorus": "Bikhar ja aafat, tu mit ja Yeshu ke shaktishaali naam se\nShraap ko hai kuchla, sab kuch hai badla, Yeshu ke shaktishaali naam se",
-      "verse2": "Kaun hai wo jo jung ko jitaye\nKaun hai wo jo nafrat ko mitaye\nItihaas ko jisne rachaya, hai wo baadshah",
-      "bridge": "Wahi hai baadshah, uska jawaab, uski hukumat bemisal\nTakht pe viraajmaan Yeshu\nO qabr, tere waar hain bekaar, maut tera dank kho gaya\nTujhe to sooli par haraya Yeshu ne",
-      "outro": "Shaitaan ko haraye, Yeshu, Yeshu, Yeshu naam se\nJesus, Name Jesus",
-      "chorus2": "Nikal ja aafat, tu mit ja Yeshu ke shaktishaali naam se\nShraap ko hai kuchla, sab kuch hai badla, Yeshu ke shaktishaali naam se\nPahadiyan pighal ja, aafat tu mit ja, Yeshu ke shaktishaali naam se"
+      "verse1": "/* Responsive Styling */\n@media (max-width: 768px) {\n.lyrics-container {\nflex-direction: column;\n.lyrics-box {\nflex: 1 1 100%;\npadding: 10px;\nborder: none !important;\n.toggle-area {\nflex-direction: column !important;\nalign-items: flex-start !important;\n.toggle-area h3 {\nmargin-bottom: 10px;\n.lyrics-container {\ndisplay: flex;\nflex-wrap: wrap;\njustify-content: center;\npadding: 20px;\ngap: 20px;\n.lyrics-box {\nflex: 1 1 45%;\npadding: 10px;\n/* 🔶 Vertical line between Hindi and English (on desktop) */\n.lyrics-left {\nborder-right: 2px solid #ccc;\n.toggle-button {\nbackground-color: #f57c00;\nborder-radius: 8px;\nborder: none;\ncolor: white;\ncursor: pointer;\nfont-size: 14px;\npadding: 8px 16px;\nHindi Song Lyrics:",
+      "chorus": "[ENGLISH CHORUS]\nDRY BONES ARE RATTLING\nNO GRAVES CAN HOLD THEM IN\nTHEY'RE TREMBLING AT THE MIGHTY NAME OF JESUS.\nPRISON WALLS ARE\nBREAKING DOWN\nEVERY CHAIN WILL\nHIT THE GROUND\nTHEY FALL APART AT THE MIGHTY NAME OF JESUS.\nOH DEATH YOU HAVE NO VICTORY.\nYOU FALL BEFORE THE\nKING OF KINGS\nYOU'RE POWERLESS AT THE MIGHTY NAME OF JESUS\nTHIS IS OUR BATTLE SONG\nYOU CAN'T CONTAIN\nA LION'S ROAR\nTHE EARTH SHAKES AT THE MIGHTY NAME OF JESUS.\nSong Lyrics:\nShow English Lyrics",
+      "verse3": "Kaun hai wo jo aag se bachaye\nKaun hai wo jo rasta banaye\nKaun hai wo jo anndhi rukaye\nKaun hai wo jo andhera mitaye",
+      "pre_chorus": "Itihas ko jisne rachaya hai\nVo khada aalam baadshah",
+      "chorus2": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badla\nYeshu ke shaktishali naam se",
+      "verse4": "Kaun hai wo jo jang ko jetaye\nNafrat ko haraye mitaye",
+      "pre_chorus2": "Itihas ko jisne rachaya hai\nVo khada aalam baadshah",
+      "chorus3": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badla\nYeshu ke shaktishali naam se",
+      "bridge": "Wahi hai baadshah uska jalaal\nUski hukumaat be-misaal\nTakht pe viraajmaan Yeshu\nEh kabr teri fateh kahaan\nEh maut tera dank kahaan\nTujhe toh suuri par haraya\nYeshu ne\nZameen thar-tha-ray\nBadti laherein thum jaaye\nCheer asamaan aaye Yeshu",
+      "chorus4": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badla\nYeshu ke shaktishali naam se",
+      "chorus5": "Rana geet gaye\nShaitan ko haraye\nYeshu ke shakti shali naam se\n[ENGLISH CHORUS]\nDRY BONES ARE RATTLING\nNO GRAVES CAN HOLD THEM IN\nTHEY'RE TREMBLING AT THE MIGHTY NAME OF JESUS.\nPRISON WALLS ARE\nBREAKING DOWN\nEVERY CHAIN WILL\nHIT THE GROUND\nTHEY FALL APART AT THE MIGHTY NAME OF JESUS.\nOH DEATH YOU HAVE NO VICTORY.\nYOU FALL BEFORE THE\nKING OF KINGS\nYOU'RE POWERLESS AT THE MIGHTY NAME OF JESUS\nTHIS IS OUR BATTLE SONG\nYOU CAN'T CONTAIN\nA LION'S ROAR\nTHE EARTH SHAKES AT THE MIGHTY NAME OF JESUS.",
+      "verse5": "Who is He who saves from fire?\nWho is He who makes a way?\nWho is He who calms the storm?\nWho is He who drives out darkness?",
+      "pre_chorus3": "The One who wrote history\nHe stands - the King of all",
+      "chorus6": "Mountains melt away\nDisasters vanish\nIn the mighty name of Jesus\nCurses are crushed\nEverything is changed\nIn the mighty name of Jesus",
+      "verse6": "Who is He who wins the battle?\nDefeats and removes hatred?",
+      "pre_chorus4": "The One who wrote history\nHe stands - the King of all",
+      "chorus7": "Mountains melt away\nDisasters vanish\nIn the mighty name of Jesus\nCurses are crushed\nEverything is changed\nIn the mighty name of Jesus",
+      "bridge2": "He is the King, His glory shines\nHis kingdom is matchless\nJesus reigns on the throne\nOh grave, where is your victory?\nOh death, where is your sting?\nYou were defeated on the cross\nBy Jesus\nThe earth trembles\nRaging waves are stilled\nJesus comes tearing the sky",
+      "chorus8": "Mountains melt away\nDisasters vanish\nIn the mighty name of Jesus\nCurses are crushed\nEverything is changed\nIn the mighty name of Jesus",
+      "chorus9": "Songs of war arise\nSatan is defeated\nIn the mighty name of Jesus\n[ENGLISH CHORUS]\nDRY BONES ARE RATTLING\nNO GRAVES CAN HOLD THEM IN\nTHEY'RE TREMBLING AT THE MIGHTY NAME OF JESUS.\nPRISON WALLS ARE\nBREAKING DOWN\nEVERY CHAIN WILL\nHIT THE GROUND\nTHEY FALL APART AT THE MIGHTY NAME OF JESUS.\nOH DEATH YOU HAVE NO VICTORY.\nYOU FALL BEFORE THE\nKING OF KINGS\nYOU'RE POWERLESS AT THE MIGHTY NAME OF JESUS\nTHIS IS OUR BATTLE SONG\nYOU CAN'T CONTAIN\nA LION'S ROAR\nTHE EARTH SHAKES AT THE MIGHTY NAME OF JESUS.\n[Note: This is not the official English translation. It is only provided to help those who do not understand Hindi.]\nfunction toggleLyrics() {\nconst translit = document.getElementById(\"transliteration\");\nconst trans = document.getElementById(\"translation\");\nconst btn = document.getElementById(\"toggleButton\");\nif (translit.style.display === \"none\") {\ntranslit.style.display = \"block\";\ntrans.style.display = \"none\";\nbtn.textContent = \"Show English Lyrics\";\n} else {\ntranslit.style.display = \"none\";\ntrans.style.display = \"block\";\nbtn.textContent = \"Show English Transliteration\";\nvar videoId = '4fGd48VdjIA';\nvar iframe = document.createElement('iframe');\niframe.setAttribute('frameborder', '0');\niframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');\niframe.setAttribute('allowfullscreen', '');\niframe.style.width = '100%';\niframe.style.height = '315px';\nelement.parentNode.replaceChild(iframe, element);\n:: Song Details ::\nSong Name\nShaktishaali\nClick Here\nNations of Worship\n:: Songs Credit Details ::\nArtists: Amit Kamble, Prince Mulla, Allen Ganta, Joseph Raj Allam & Abhishek Thomas\nWritten by: Prince Mulla, Ian Eskelin, Allen Ganta, Amit Kamble, Abishek Thomas\nArrangement: Robinson Shalu\nGuitars: Samuel Mantode\nMusicians -\nDrums: Jeshrun Vaska\nElectric Guitars & Oud: Sober Emmanuel\nBass: Jubal George\nElectric Guitar: Joel Kothapally\nKeyboard - Stephen Netto\nCello - Shalem Christy\nBackup Singers - Jevisha & Ekta\nCredit:\n\" Nations of Worship\"\n🔥 Trending Worship Songs\nNew Hindi Worship Song Lyrics 2022\nNew Hindi Christian Song Lyrics 2022\nJaago Music | Hindi Christian Song\nFILADELFIA MUSIC | Hindi Song\nLove Catches Me by Surprise\nPrism Sound ft. Akhrieze & Reuben\nBharat Ka Khuda\nCity Youth Movement | Christian Song\nSounds of Zion | Worship Song\nVedi - The Altar\nSheldon Bangera - Red Sea Films"
     },
     "hindi": {
-      "verse1": "कौन है वो जो आग से बचाए\nकौन है वो जो रास्ता बनाए\nकौन है वो जो आंधी रुकवाए\nकौन है वो जो अंधेरा मिटाए\nइतिहास को जिसने रचाया, है वो बड़ा बादशाह",
-      "chorus": "बिखर जा आफत, तू मिट जा यीशु के शक्तिशाली नाम से\nश्राप को है कुचला, सब कुछ है बदला, यीशु के शक्तिशाली नाम से",
-      "verse2": "कौन है वो जो जंग को जिताए\nकौन है वो जो नफरत को मिटाए\nइतिहास को जिसने रचाया, है वो बादशाह",
-      "bridge": "वही है बादशाह, उसका जवाब, उसकी हुकूमत बेमिसाल\nतख्त पे विराजमान यीशु\nओ कब्र, तेरे वार हैं बेकार, मौत तेरा डंक खो गया\nतुझे तो सूली पर हराया यीशु ने",
-      "outro": "शैतान को हराए, यीशु, यीशु, यीशु नाम से\nजीसस, नेम जीसस",
-      "chorus2": "निकल जा आफत, तू मिट जा यीशु के शक्तिशाली नाम से\nश्राप को है कुचला, सब कुछ है बदला, यीशु के शक्तिशाली नाम से\nपहाड़ियां पिघल जा, आफत तू मिट जा, यीशु के शक्तिशाली नाम से"
+      "verse1": "NA DAROONGA ( मैं न डरूंगा )\nChanga ( तू चंगा करता है )\nMagan ( मगन मगन तेरे प्यार मे )\nZindagi Ke Safar Mey ( ज़िंदगी के सफर )\nPyaare Pita ( प्यारे पिता )"
     }
   },
   "links": {
@@ -29,7 +41,16 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "praise", "celebration", "nation-of-worship", "hindi", "hinglish", "2026"],
+  "tags": [
+    "worship",
+    "praise",
+    "celebration",
+    "nation-of-worship",
+    "hindi",
+    "hinglish",
+    "2026"
+  ],
   "seo_description": "Shaktishaali lyrics in Hindi and Hinglish by Amit Kamble, Cameron Mendes, Sam Alex Pasula, Joseph Raj Allam & Prince Mulla - Nations of Worship 2026",
-  "added_by": "Gaurav | Vandana"
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://www.jesussongs4u.com/2025/06/shaktishaali-lyrics-amit-kamble.html"
 }

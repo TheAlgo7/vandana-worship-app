@@ -1,5 +1,27 @@
 [
   {
+    "id": "update-021",
+    "date": "2026-05-20",
+    "title": "162 More Worship Songs Added",
+    "body": "Added the first clean wave from the new lyrics batch: 162 new songs and 7 refreshed songs. The larger scraped folder was screened for duplicates, noisy titles, unsupported regional-language entries, and short files before anything was added. The library now has 494 songs.",
+    "type": "songs_added",
+    "song_count": 162,
+    "song_names": [
+      "Aadar ke Yogya",
+      "Aao Aao Emmanuel",
+      "Aaradhana Dil se",
+      "Aayega",
+      "Intezaar",
+      "Mere Dil ki Tamanna",
+      "Peedhi se Peedhi",
+      "Shukrguzar",
+      "Stuthi Aradhana",
+      "Tera Darshan",
+      "Teri Bhalayi",
+      "Zinda Khuda"
+    ]
+  },
+  {
     "id": "update-020",
     "date": "2026-05-20",
     "title": "65 More Worship Songs Added",

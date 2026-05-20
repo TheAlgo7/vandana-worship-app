@@ -1,17 +1,21 @@
 {
   "id": "vedi",
   "title": "Vedi",
-  "artist": "Allen Ganta, Amit Kamble, Cameron Mendes & Sheldon Bangera",
+  "artist": "Sheldon Bangera",
   "church": null,
   "album": "Red Sea Films",
   "language_default": "hinglish",
-  "languages_available": ["hinglish", "hindi"],
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Vedi ke upar hum khushi se qurbaan\nMar mite hain kab se junooni Tera pyaar\nNa matlab hai iss duniya se hum jeevit balidaan\nTu Zinda karne wala Prabhu punaruthaan",
-      "chorus": "Kya koi Tere jaisa bachane wala\nTu hi hai Khuda\nTera raj ab hai yahaan\nHar raja se ooncha hai Yeshua",
-      "verse2": "Kayi aaye raaja kiya kabza aur sataav\nHukumat ki praja pe talwar se kiya naash\nSirf panne banke reh gaye kitaab-e-itihaas\nPar Yeshu Teri saltanat rahe Tera jalaal",
-      "verse3": "Khudayi jazbe ki hum mein nahi kami\nAag ki saza hamari vedi bani\nJalte marte jaayein tab bhi himmat na hari\nHai jeet hamari ho chuki karte elaan abhi"
+      "verse1": "[Sheldon Bangera- Red Sea Films ]",
+      "verse12": "Vedi ke upar hum khushi se qurbaan\nMar mite hai kab se junooni tera pyaar\nNa matlab hai iss duniya se hum jeevit balidaan\nTu zinda karne wala prabhu punaruthaan",
+      "chorus": "Kya koi tere jaisa bachane wala\nTu hi hai khuda\nTera raj ab hai yahan\nHar raja se uuncha hai Yeshua",
+      "verse2": "Kaiee aaye raaja kiya kabza aur sataav\nHukumat ki praja pe talwar se kiya naash\nSirf panne banke reh gaye kitaab-e-itihaas\nPar Yeshu teri saltanat rahe tera jalaal",
+      "verse3": "Khudayi jazbe ki hum mein nahi kami\nAag ki sazaa humari vedi bani\nJalte marte jaayein tab bhi himmat na hari\nHai Jeet humari ho chuki karte elaan abhi\n[ Sheldon Bangera- Red Sea Films ]\nSong Details\nSong Name:\nVedi - The Altar\nClick Here\nRed Sea Films\nWritten and Composed by: Allen Ganta, Anand Paul, Emmanuel Joseph, Jonathan Wesley, Narsingha Bobbili, Sheldon Bangera and Tali Angh\nVocals\nElec. Guitar - Sober Emmanuel\nKeyboards, Music Production, Arrangement, Mixing & Mastering - Jonathan Wesley\nRed Sea Films"
     },
     "hindi": {
       "verse1": "वेदी के ऊपर हम ख़ुशी से क़ुर्बान\nमर मिटे हैं कब से जुनूनी तेरा प्यार\nना मतलब है इस दुनिया से हम जीवित बलिदान\nतू ज़िन्दा करनेवाला प्रभु पुनरुत्थान",
@@ -25,7 +29,16 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "sacrifice", "declaration", "urdu", "hindi", "hinglish", "2025"],
+  "tags": [
+    "worship",
+    "sacrifice",
+    "declaration",
+    "urdu",
+    "hindi",
+    "hinglish",
+    "2025"
+  ],
   "seo_description": "Vedi worship lyrics in Hindi and Hinglish by Allen Ganta, Amit Kamble, Cameron Mendes & Sheldon Bangera - a sacrificial worship anthem from Red Sea Films",
-  "added_by": "Gaurav | Vandana"
+  "added_by": "Gaurav | Vandana",
+  "source_url": "https://www.jesussongs4u.com/2024/01/vedi-the-altar-worship-song-lyrics-sheldon-bangera.html"
 }
