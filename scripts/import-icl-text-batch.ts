@@ -94,17 +94,24 @@ function slugify(value: string): string {
 function titleCase(value: string): string {
   const sacred = new Set(["yeshu", "yeshua", "masih", "prabhu", "yahweh", "hallelujah"]);
   return value
-    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ")
     .split(/\s+/)
     .filter(Boolean)
-    .map((word, index) => {
-      if (sacred.has(word)) return word.charAt(0).toUpperCase() + word.slice(1);
-      if (word.length <= 2 && index > 0) return word;
-      return word.charAt(0).toUpperCase() + word.slice(1);
+    .map((word) => {
+      if (/^x\d+$/i.test(word)) return word.toLowerCase();
+      return word
+        .split("-")
+        .map((part) => {
+          const lowered = part.toLowerCase();
+          if (sacred.has(lowered)) return lowered.charAt(0).toUpperCase() + lowered.slice(1);
+          return lowered.replace(/(^|[([{'"\/\-\u2013\u2014\u2026])([a-z])/g, (_match, prefix: string, letter: string) => prefix + letter.toUpperCase());
+        })
+        .join("-");
     })
     .join(" ")
     .replace(/\bFt\b/g, "ft")
-    .replace(/\bAnd\b/g, "and");
+    .replace(/\bft\./gi, "ft.");
 }
 
 function firstLyricLine(block: string): string {

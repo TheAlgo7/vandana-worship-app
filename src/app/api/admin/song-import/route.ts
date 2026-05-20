@@ -76,6 +76,24 @@ function slugify(value: string): string {
   return normalizeForCompare(value).replace(/\s+/g, "-");
 }
 
+function titleCase(value: string): string {
+  return value
+    .trim()
+    .replace(/\s+/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => {
+      if (/^x\d+$/i.test(word)) return word.toLowerCase();
+      return word
+        .split("-")
+        .map((part) => part.toLowerCase().replace(/(^|[([{'"\/\-\u2013\u2014\u2026])([a-z])/g, (_match, prefix: string, letter: string) => prefix + letter.toUpperCase()))
+        .join("-");
+    })
+    .join(" ")
+    .replace(/\bFt\b/g, "ft")
+    .replace(/\bft\./gi, "ft.");
+}
+
 function parseInput(input: unknown): RawSong[] {
   if (Array.isArray(input)) return input as RawSong[];
   if (typeof input === "string") return parseInput(JSON.parse(input));
@@ -152,7 +170,7 @@ function cleanSections(sections: LyricsSections): LyricsSections {
 }
 
 function buildDraft(raw: RawSong): DraftSong {
-  const title = raw.title.trim();
+  const title = titleCase(raw.title);
   const hinglish = parseLyrics(raw.lyrics_hinglish ?? raw.lyrics?.hinglish);
   const hindi = parseLyrics(raw.lyrics_hindi ?? raw.lyrics?.hindi);
   const languages: Language[] = [

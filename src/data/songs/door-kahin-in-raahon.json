@@ -1,11 +1,14 @@
 {
   "id": "door-kahin-in-raahon",
-  "title": "Door kahin in raahon",
+  "title": "Door Kahin In Raahon",
   "artist": "Unknown Artist",
   "church": null,
   "album": null,
   "language_default": "hindi",
-  "languages_available": ["hindi", "hinglish"],
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
   "lyrics": {
     "hindi": {
       "chorus": "दूर कहीं इन राहों में हो जाओ तुम जो अकेले\nयाद रखना कोई हर पल साथ चलता है\nदूर कहीं अन्धियारे में जब दिल कभी घबराए\nयाद रखना सूली पे कोई दीप जलता है",
@@ -23,8 +26,14 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "comfort", "hindi", "hinglish", "indianchristianlyrics"],
-  "seo_description": "Door kahin in raahon lyrics in Hindi and Hinglish",
+  "tags": [
+    "worship",
+    "comfort",
+    "hindi",
+    "hinglish",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Door Kahin In Raahon lyrics in Hindi and Hinglish",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/door-kahin-in-raahon"
 }

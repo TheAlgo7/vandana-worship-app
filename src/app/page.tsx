@@ -1,14 +1,11 @@
-import { unstable_cache } from "next/cache";
 import { getAllSongMetasWithSource } from "@/lib/getSongs";
 import HomeContent from "@/components/HomeContent";
 import BottomNav from "@/components/BottomNav";
 
-const getCachedSongMetas = unstable_cache(getAllSongMetasWithSource, ["song-metas"], {
-  revalidate: 3600,
-});
+export const revalidate = 3600;
 
 export default async function Home() {
-  const library = await getCachedSongMetas();
+  const library = await getAllSongMetasWithSource();
 
   return (
     <div style={{ minHeight: "100vh" }}>

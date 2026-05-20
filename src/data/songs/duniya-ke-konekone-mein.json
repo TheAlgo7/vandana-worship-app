@@ -1,11 +1,14 @@
 {
   "id": "duniya-ke-konekone-mein",
-  "title": "Duniya ke kone-kone mein",
+  "title": "Duniya Ke Kone-Kone Mein",
   "artist": "Traditional",
   "church": null,
   "album": null,
   "language_default": "hindi",
-  "languages_available": ["hindi", "hinglish"],
+  "languages_available": [
+    "hindi",
+    "hinglish"
+  ],
   "lyrics": {
     "hindi": {
       "chorus": "दुनिया के कोने-कोने में,\nगूंज रहा यीशु का नाम,\nदुनिया में हालेलूय्याह।\nकैसा प्यारा यीशु का नाम,",
@@ -25,8 +28,14 @@
     "spotify": null,
     "apple_music": null
   },
-  "tags": ["worship", "hindi", "hinglish", "traditional", "indianchristianlyrics"],
-  "seo_description": "Duniya ke kone-kone mein lyrics in Hindi and Hinglish",
+  "tags": [
+    "worship",
+    "hindi",
+    "hinglish",
+    "traditional",
+    "indianchristianlyrics"
+  ],
+  "seo_description": "Duniya Ke Kone-Kone Mein lyrics in Hindi and Hinglish",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/duniya-ke-konekone-mein"
 }
