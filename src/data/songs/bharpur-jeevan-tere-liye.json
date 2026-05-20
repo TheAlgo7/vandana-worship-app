@@ -1,13 +1,13 @@
 {
   "id": "bharpur-jeevan-tere-liye",
   "title": "Bharpur Jeevan Tere Liye",
-  "artist": "Pr. Wilson George",
+  "artist": "P. R. Wilson George",
   "church": null,
   "album": "Bharpur Jeevan",
   "language_default": "hindi",
   "languages_available": [
-    "hindi",
-    "hinglish"
+    "hinglish",
+    "hindi"
   ],
   "lyrics": {
     "hindi": {
@@ -34,7 +34,7 @@
     "hinglish",
     "indianchristianlyrics"
   ],
-  "seo_description": "Bharpur Jeevan Tere Liye lyrics in Hindi and Hinglish by Pr. Wilson George",
+  "seo_description": "Bharpur Jeevan Tere Liye lyrics in Hindi and Hinglish by P. R. Wilson George",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/bharpur-jeevan-tere-liye"
 }

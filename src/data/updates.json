@@ -1,5 +1,26 @@
 [
   {
+    "id": "update-022",
+    "date": "2026-05-20",
+    "title": "11 Reviewed Worship Songs Added",
+    "body": "Added 11 carefully reviewed worship songs from the latest library batches and refreshed 4 existing songs with cleaner credits or lyrics. The library now has 505 songs, while noisier scraped files stay out of the app until they are manually cleaned.",
+    "type": "songs_added",
+    "song_count": 11,
+    "song_names": [
+      "Abhishek",
+      "Arzi",
+      "Emaan",
+      "Hum ne Dekhi Nayi Roshni",
+      "Koi Shaq Nahi",
+      "Lot Aya Hun",
+      "Mahima Teri ho",
+      "Mai hu Anmol",
+      "Na Badalta Kabhi",
+      "Nikal Pade",
+      "Pyaar Karta Hoon"
+    ]
+  },
+  {
     "id": "update-021",
     "date": "2026-05-20",
     "title": "162 More Worship Songs Added",

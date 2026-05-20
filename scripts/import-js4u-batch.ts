@@ -60,42 +60,86 @@ const minConfidence = Number(process.argv.find((arg) => arg.startsWith("--min-co
 dotenv.config({ path: path.join(root, ".env.local") });
 
 const knownArtists = [
+  "5Gen Worship",
   "Amit Kamble",
+  "Anugrah Ministries India",
+  "Anugrah Prasad",
   "Anil Kant",
   "Anish Masih",
+  "Ashu Melodies",
   "Ashley Joseph",
+  "Benison Matthew",
+  "Benson Thomas",
   "Bridge Music",
+  "Carmel Community Church",
+  "Crossover YFC Delhi",
   "Darpan Dua",
+  "Deepak Masih",
+  "Deborah Lazres",
   "Emmanuel Gollar",
   "Filadelfia Music",
+  "Friends of God Ministries",
+  "Gopal Masih",
   "Glory To God India",
   "Jaago Music",
+  "Jaswant Jassa",
   "Jessy Robin",
   "Joseph Raj Allam",
   "Joshua Generation India",
+  "Joshua Jacob John",
   "Justin John",
+  "KR Records",
   "Maria Kolady",
   "Merlyn Salvadi",
+  "Mrutyunjay Ministries",
   "Nations of Worship",
+  "Natasha Datt",
+  "New Life City Church",
+  "Nysa Prashant Pangi",
+  "One Tribe Productions",
+  "Pastor Joy Gill",
+  "Pastor Vishal Samuel",
   "Persis John",
   "Prakruthi Angelina",
+  "Praise Jesus Ministries",
+  "Pramod Lokhande",
+  "Prashant Thorat",
   "Prince Robinson",
   "Rahul Noel Massey",
+  "Rajat Rubina",
   "Ranjit J Abraham",
   "Reena Kant",
   "Robinson Shalu",
   "Roney Maben",
   "Rubina BK",
+  "Rutuja Bandelu",
   "Samarth Shukla",
   "Sekel Jeet",
   "Shalom Ministries",
   "Sheldon Bangera",
   "Sheenu Mariyam",
   "Shelley Reddy",
+  "Tabernacle ABC Aliganj",
   "Thanga Selvam",
   "Vipin Massey",
+  "William Massey",
+  "Worship Warriors",
+  "Worship Waves Studio",
+  "Youth Revival Ministries",
   "Yeshua Ministries",
 ].sort((a, b) => b.length - a.length);
+
+const artistAliases: Array<[RegExp, string]> = [
+  [/\bpr\s*wilson george\b/i, "P. R. Wilson George"],
+  [/\bprwilson george\b/i, "P. R. Wilson George"],
+  [/\bps anil reena and shreya kant\b/i, "Anil Kant"],
+  [/\bseket jeet\b/i, "Sekel Jeet"],
+  [/\baelaan yeshu ka\b/i, "Aelaan Yeshu Ka"],
+  [/\babhishek das\b/i, "Abhishek Das"],
+  [/\banshul dawar\b/i, "Anshul Dawar"],
+  [/\bakshay mathews\b/i, "Akshay Mathews"],
+  [/\babishek darnal\b/i, "Abishek Darnal"],
+];
 
 function normalizeForCompare(value: string): string {
   return value
@@ -152,10 +196,10 @@ function titleCase(value: string): string {
   return value
     .toLowerCase()
     .split(/\s+/)
-    .map((word) => {
+    .map((word, index) => {
       if (word === "i") return "I";
       if (sacred.has(word)) return word.charAt(0).toUpperCase() + word.slice(1);
-      if (word.length <= 2) return word;
+      if (word.length <= 2 && index > 0) return word;
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(" ")
@@ -165,17 +209,22 @@ function titleCase(value: string): string {
     .replace(/\bAnd\b/g, "and");
 }
 
-function extractArtist(sourceTitle: string): string {
+function extractArtist(sourceTitle: string, fileName: string): string {
   const title = normalizeText(sourceTitle);
+  const haystack = normalizeText(`${sourceTitle} ${fileName.replace(/[-_]+/g, " ")}`);
   const byMatch = title.match(/\bby\s+([^|,[\]()/-]+)/i);
   if (byMatch?.[1]) return titleCase(byMatch[1].trim());
 
   const ftMatch = title.match(/\b(?:ft\.?|feat\.?|featuring)\s+([^|[\]()]+)/i);
   if (ftMatch?.[1]) return titleCase(ftMatch[1].trim());
 
+  for (const [alias, artist] of artistAliases) {
+    if (alias.test(haystack)) return artist;
+  }
+
   for (const artist of knownArtists) {
     const re = new RegExp(`\\b${artist.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
-    if (re.test(title)) return artist;
+    if (re.test(haystack)) return artist;
   }
 
   const bracketArtist = title.match(/\[\s*([^[\]]{4,80})\s*\]\s*$/);
@@ -214,7 +263,7 @@ function cleanTitle(sourceTitle: string): string {
     .replace(/\[[^\]]+\]/g, " ")
     .replace(/\([^)]*\b(?:ft\.?|feat\.?|by|lyrics|song|hindi|christian|worship|official|video)\b[^)]*\)/gi, " ")
     .replace(/\(\s*[A-Za-z][^)]+\s*\)\s*$/g, " ")
-    .replace(/\b(?:new|latest|official|video|with lyrics|lyrical|lyric video)\b/gi, " ")
+    .replace(/\b(?:new|latest|official|video|with lyrics|lyrical|lyric video|chords?|chrods?|ppt|version|versions?)\b/gi, " ")
     .replace(/\b(?:hindi|christian|jesus|worship|song|songs|lyrics|lyric|chrsitian|chritian)\b/gi, " ")
     .replace(/\b(?:20[0-9]{2}|19[0-9]{2})\b/g, " ")
     .replace(/\b(?:ft\.?|feat\.?|featuring|by)\b.*$/i, " ")
@@ -228,6 +277,18 @@ function cleanTitle(sourceTitle: string): string {
     const re = new RegExp(`\\b${artist.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b\\s*$`, "i");
     title = title.replace(re, "").trim();
   }
+
+  for (const [alias] of artistAliases) {
+    title = title.replace(alias, "").trim();
+  }
+
+  title = title
+    .replace(/\b(?:christmas|easter)\b$/i, " ")
+    .replace(/\bibadatkaro\b$/i, " ")
+    .replace(/\b'?s\b$/i, " ")
+    .replace(/'/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
   if (/^new\s+/i.test(title)) title = title.replace(/^new\s+/i, "");
   return titleCase(title);
@@ -267,7 +328,8 @@ function isBoilerplateLine(line: string, title: string): boolean {
   const normalizedTitle = normalizeForCompare(title);
   if (!normalized) return true;
   if (/^[-_]+$/.test(line.trim())) return true;
-  if (/https?:\/\/|www\.|jesussongs4u|subscribe|youtube|facebook|instagram/i.test(line)) return true;
+  if (/^\[(?:version|hindi|english|lyrics)[^\]]*\]$/i.test(line.trim())) return true;
+  if (/https?:\/\/|www\.|jesussongs4u|christsquare|subscribe|youtube|facebook|instagram/i.test(line)) return true;
   if (/^(hindi|hinglish)\s+lyrics$/i.test(line.trim())) return true;
   if (normalizedTitle && normalized.includes(normalizedTitle) && /lyrics|song|christian|worship|official/i.test(line)) return true;
   if (/^(lyrics|song|hindi christian song|christian song)$/i.test(line.trim())) return true;
@@ -337,6 +399,11 @@ function hasGujaratiText(text: string): boolean {
   return /[\u0A80-\u0AFF]/.test(text);
 }
 
+function hasPageJunk(sections: LyricsSections): boolean {
+  const text = Object.values(sections).join("\n");
+  return /@media|function\s+\w+|document\.getElementById|const\s+\w+\s*=|var\s+\w+\s*=|lyrics-container|toggle-button|data:image|BlogPosting|Song Details|Song Name|Click Here|Top Tunes|Trending Worship Songs|Read the full lyrics/i.test(text);
+}
+
 function parseFile(filePath: string): Candidate | null {
   const file = path.basename(filePath);
   const text = normalizeText(fs.readFileSync(filePath, "utf8"));
@@ -344,7 +411,7 @@ function parseFile(filePath: string): Candidate | null {
   const sourceTitle = lines[0] ?? "";
   const sourceUrl = lines.find((line) => /^https?:\/\//.test(line)) ?? null;
   const title = cleanTitle(sourceTitle);
-  const artist = extractArtist(sourceTitle);
+  const artist = extractArtist(sourceTitle, file);
   const warnings: string[] = [];
 
   if (!sourceTitle || !title) return null;
@@ -357,7 +424,7 @@ function parseFile(filePath: string): Candidate | null {
     warnings.push("title looks like artist surname only");
   }
   if (title.split(/\s+/).length > 7) warnings.push("title still noisy after cleanup");
-  if (/lyrics|song|christian|worship|official|video/i.test(title)) warnings.push("title still has boilerplate");
+  if (/lyrics|song|christian|worship|official|video|chords?|chrods?|ppt|version/i.test(title)) warnings.push("title still has boilerplate");
 
   const hindiBlock = extractBlock(text, "Hindi Lyrics", "Hinglish Lyrics");
   const hinglishBlock = extractBlock(text, "Hinglish Lyrics");
@@ -379,6 +446,7 @@ function parseFile(filePath: string): Candidate | null {
   if (hindiLength > 0 && hindiLength < 90) warnings.push("Hindi lyrics very short");
   if (hinglishLength > 0 && hinglishLength < 90) warnings.push("Hinglish lyrics very short");
   if (hindiLength === 0 && hinglishLength === 0) warnings.push("missing usable lyrics");
+  if (hasPageJunk(hindiSections) || hasPageJunk(hinglishSections)) warnings.push("page junk in lyrics");
   if (artist === "Unknown Artist") warnings.push("artist unknown");
 
   let confidence = 100;
@@ -387,6 +455,7 @@ function parseFile(filePath: string): Candidate | null {
     else if (warning.includes("short")) confidence -= 20;
     else if (warning.includes("unsupported script")) confidence -= 15;
     else if (warning.includes("romanized")) confidence -= 3;
+    else if (warning.includes("page junk")) confidence -= 45;
     else confidence -= 25;
   }
   confidence = Math.max(0, Math.min(100, confidence));
@@ -444,7 +513,8 @@ function toSupabaseRow(song: Candidate, existing?: ExistingSong) {
     ...(hasHindi ? ["hindi"] as const : []),
   ];
   const artist = song.artist !== "Unknown Artist" ? song.artist : existing?.artist ?? song.artist;
-  const tags = Array.from(new Set([...(existing?.tags ?? []), "worship", ...languages, "jesussongs4u"]));
+  const sourceTag = song.sourceUrl?.includes("christsquare.com") ? "christsquare" : "jesussongs4u";
+  const tags = Array.from(new Set([...(existing?.tags ?? []), "worship", ...languages, sourceTag]));
 
   return {
     id: existing?.id ?? song.id,
