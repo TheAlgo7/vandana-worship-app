@@ -3,10 +3,12 @@ export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 
-const db = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getDb() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
 
 export async function POST(request: Request) {
   const sub = await request.json().catch(() => null);
@@ -14,7 +16,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid subscription" }, { status: 400 });
   }
 
-  const { error } = await db.from("push_subscriptions").upsert(
+  const { error } = await getDb().from("push_subscriptions").upsert(
     { endpoint: sub.endpoint, p256dh: sub.keys.p256dh, auth: sub.keys.auth },
     { onConflict: "endpoint" }
   );
@@ -27,6 +29,6 @@ export async function DELETE(request: Request) {
   const { endpoint } = await request.json().catch(() => ({}));
   if (!endpoint) return NextResponse.json({ error: "Missing endpoint" }, { status: 400 });
 
-  await db.from("push_subscriptions").delete().eq("endpoint", endpoint);
+  await getDb().from("push_subscriptions").delete().eq("endpoint", endpoint);
   return NextResponse.json({ ok: true });
 }

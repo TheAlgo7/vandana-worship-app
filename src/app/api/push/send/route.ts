@@ -5,22 +5,28 @@ import webpush from "web-push";
 import { createClient } from "@supabase/supabase-js";
 import verses from "@/data/verses.json";
 
-const db = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
-
-webpush.setVapidDetails(
-  "mailto:gauravtiger60@gmail.com",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-);
-
 type VersePeriod = keyof typeof verses;
-
 type PushPayload = { title: string; body: string; silent: boolean; url: string; tag: string };
 
+function getDb() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!
+  );
+}
+
+function initWebPush() {
+  webpush.setVapidDetails(
+    "mailto:gauravtiger60@gmail.com",
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!,
+    process.env.VAPID_PRIVATE_KEY!
+  );
+}
+
 async function broadcast(payload: PushPayload) {
+  initWebPush();
+  const db = getDb();
+
   const { data: subs, error } = await db
     .from("push_subscriptions")
     .select("endpoint, p256dh, auth");
@@ -36,7 +42,6 @@ async function broadcast(payload: PushPayload) {
     )
   );
 
-  // Clean up subscriptions where the device has revoked permission
   const expired = results
     .map((r, i) => ({ r, sub: subs![i] }))
     .filter(({ r }) => r.status === "rejected" && (r.reason as { statusCode?: number })?.statusCode === 410)
@@ -63,7 +68,6 @@ function buildVersePayload(): PushPayload {
   };
 }
 
-// GET: called by Vercel cron daily at 8am IST (02:30 UTC)
 export async function GET(request: Request) {
   const auth = request.headers.get("authorization");
   if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
@@ -72,7 +76,6 @@ export async function GET(request: Request) {
   return broadcast(buildVersePayload());
 }
 
-// POST: called manually to send verse or a custom update notification
 export async function POST(request: Request) {
   const auth = request.headers.get("authorization");
   if (auth !== `Bearer ${process.env.CRON_SECRET}`) {
