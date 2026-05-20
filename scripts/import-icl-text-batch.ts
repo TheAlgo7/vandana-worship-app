@@ -8,11 +8,13 @@ type LyricsSections = Record<string, string>;
 
 interface ParsedSong {
   id: string;
+  file: string;
   title: string;
   artist: string;
   church: string | null;
   sourceUrl: string | null;
   lyrics: Record<Language, LyricsSections>;
+  score: number;
 }
 
 interface ExistingSong {
@@ -36,6 +38,8 @@ interface ExistingSong {
 interface ImportReport {
   sourceDir: string;
   totalFiles: number;
+  duplicateGroups: number;
+  selectedCandidates: number;
   inserted: string[];
   updated: string[];
   skipped: Array<{ id: string; title: string; reason: string }>;
@@ -59,6 +63,21 @@ const artistOverrides: Record<string, string> = {
   "tune-mujhe-aage-piche-gher-rakha-hai": "Dayanidhi Rao",
 };
 
+const knownArtistHints = [
+  "Amit Kamble",
+  "Anil Kant",
+  "Bridge Music",
+  "Celestial Reverie",
+  "Darpan Dua",
+  "Glory To God India",
+  "Hallelujah the Band",
+  "Jaago Music",
+  "Joseph Raj Allam",
+  "Nations of Worship",
+  "Sheldon Bangera",
+  "Yeshua Ministries",
+].sort((a, b) => b.length - a.length);
+
 function normalizeForCompare(value: string): string {
   return value
     .toLowerCase()
@@ -70,6 +89,77 @@ function normalizeForCompare(value: string): string {
 
 function slugify(value: string): string {
   return normalizeForCompare(value).replace(/\s+/g, "-");
+}
+
+function titleCase(value: string): string {
+  const sacred = new Set(["yeshu", "yeshua", "masih", "prabhu", "yahweh", "hallelujah"]);
+  return value
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word, index) => {
+      if (sacred.has(word)) return word.charAt(0).toUpperCase() + word.slice(1);
+      if (word.length <= 2 && index > 0) return word;
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ")
+    .replace(/\bFt\b/g, "ft")
+    .replace(/\bAnd\b/g, "and");
+}
+
+function firstLyricLine(block: string): string {
+  return block
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((line) => line.trim())
+    .find((line) => line && !/^[-_]+$/.test(line) && !/^(\d+\.?\s*)?$/.test(line))
+    ?.replace(/^\s*\d+[\s.)-]+/, "") ?? "";
+}
+
+function cleanTitle(rawTitle: string, hinglishBlock: string): string {
+  const sourceTitle = rawTitle.trim();
+  const titleSource = /[A-Za-z]{3}/.test(sourceTitle) ? sourceTitle : firstLyricLine(hinglishBlock) || sourceTitle;
+  const firstPart = titleSource.split("|")[0] ?? titleSource;
+  const cleaned = firstPart
+    .replace(/^\s*\d+[\s.)-]+/, "")
+    .replace(/\([^)]*\b(?:lyrics|song|hindi|christian|official|video)\b[^)]*\)/gi, " ")
+    .replace(/\b(?:lyrics|lyric|hindi|christian|song|official|video|chords?|ppt)\b/gi, " ")
+    .replace(/\s+-\s+.*$/g, " ")
+    .replace(/[^A-Za-z0-9' ]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  return /[A-Za-z]{3}/.test(cleaned) ? titleCase(cleaned) : sourceTitle;
+}
+
+function hasSafeImportTitle(song: ParsedSong): boolean {
+  if (!song.id) return false;
+  if (song.title.length > 80) return false;
+  if (/^\d+\s/.test(song.title)) return false;
+  if (/[\u0900-\u097F]/.test(song.title)) return false;
+  if (/lyrics|songcode|source:|https?:/i.test(song.title)) return false;
+  return true;
+}
+
+function extractArtist(rawTitle: string, id: string): string {
+  if (artistOverrides[id]) return artistOverrides[id];
+
+  const parts = rawTitle.split("|").map((part) => part.trim()).filter(Boolean);
+  if (parts.length > 1 && /[A-Za-z]{3}/.test(parts[1])) {
+    const ft = parts.find((part) => /\b(?:ft\.?|feat\.?|featuring)\b/i.test(part));
+    return titleCase([parts[1], ft && ft !== parts[1] ? ft : ""].filter(Boolean).join(" "));
+  }
+
+  const ftMatch = rawTitle.match(/\b(?:ft\.?|feat\.?|featuring)\s+([^|[\]()]+)/i);
+  if (ftMatch?.[1]) return titleCase(ftMatch[1].trim());
+
+  const haystack = `${rawTitle} ${id.replace(/[-_]+/g, " ")}`;
+  for (const artist of knownArtistHints) {
+    const re = new RegExp(`\\b${artist.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+    if (re.test(haystack)) return artist;
+  }
+
+  return "Unknown Artist";
 }
 
 function parseSectionHeading(line: string): string | null {
@@ -157,35 +247,38 @@ function extractBlock(text: string, startLabel: string, endLabel?: string): stri
 }
 
 function parseTextFile(filePath: string): ParsedSong {
-  const id = path.basename(filePath, ".txt");
+  const file = path.basename(filePath);
+  const fallbackId = path.basename(filePath, ".txt");
   const text = fs.readFileSync(filePath, "utf8").replace(/\r\n/g, "\n");
   const lines = text.split("\n").map((line) => line.trim());
-  const title = lines[0];
-  const rawArtist = lines[1] || "Unknown Artist";
-  const artist = artistOverrides[id] ?? (rawArtist === "Unknown Artist" ? artistOverrides[slugify(title)] ?? rawArtist : rawArtist);
-  const urls = lines.filter((line) => /^https?:\/\//.test(line));
+  const rawTitle = lines.find(Boolean) ?? fallbackId;
+  const urls = lines
+    .map((line) => line.replace(/^Source:\s*/i, "").trim())
+    .filter((line) => /^https?:\/\//.test(line));
   const hindiBlock = extractBlock(text, "Hindi Lyrics", "Hinglish Lyrics");
   const hinglishBlock = extractBlock(text, "Hinglish Lyrics");
+  const title = cleanTitle(rawTitle, hinglishBlock);
+  const id = slugify(title) || slugify(fallbackId);
+  const artist = artistOverrides[id] ?? extractArtist(rawTitle, id);
+  const lyrics = {
+    hinglish: parseLyricsBlock(hinglishBlock),
+    hindi: parseLyricsBlock(hindiBlock),
+  };
 
   return {
     id,
+    file,
     title,
     artist,
     church: null,
     sourceUrl: urls[0] ?? null,
-    lyrics: {
-      hinglish: parseLyricsBlock(hinglishBlock),
-      hindi: parseLyricsBlock(hindiBlock),
-    },
+    lyrics,
+    score: textLength(lyrics.hinglish) + textLength(lyrics.hindi) + (artist !== "Unknown Artist" ? 100 : 0),
   };
 }
 
 function textLength(sections: LyricsSections | null | undefined): number {
   return Object.values(sections ?? {}).join("\n").replace(/\s+/g, "").length;
-}
-
-function sectionCount(sections: LyricsSections | null | undefined): number {
-  return Object.keys(sections ?? {}).length;
 }
 
 function hasInlineChords(sections: LyricsSections | null | undefined): boolean {
@@ -198,26 +291,47 @@ function hasUsableLyrics(song: ParsedSong): boolean {
   return textLength(song.lyrics.hinglish) > 0 || textLength(song.lyrics.hindi) > 0;
 }
 
+function selectBestCandidates(songs: ParsedSong[]) {
+  const byTitle = new Map<string, ParsedSong[]>();
+  for (const song of songs) {
+    const key = normalizeForCompare(song.title);
+    const group = byTitle.get(key) ?? [];
+    group.push(song);
+    byTitle.set(key, group);
+  }
+
+  const selected: ParsedSong[] = [];
+  const duplicateGroups = [...byTitle.values()].filter((group) => group.length > 1).length;
+  for (const group of byTitle.values()) {
+    selected.push(group.sort((a, b) => b.score - a.score)[0]);
+  }
+
+  return { selected: selected.sort((a, b) => a.title.localeCompare(b.title)), duplicateGroups };
+}
+
 function shouldUpdate(existing: ExistingSong, incoming: ParsedSong): boolean {
   if (existing.artist === "Unknown Artist" && incoming.artist !== "Unknown Artist") return true;
   if (!existing.lyrics_hindi && textLength(incoming.lyrics.hindi) > 0) return true;
   if (!existing.lyrics_hinglish && textLength(incoming.lyrics.hinglish) > 0) return true;
   if (hasInlineChords(existing.lyrics_hindi) || hasInlineChords(existing.lyrics_hinglish)) return true;
-  if (sectionCount(incoming.lyrics.hindi) > sectionCount(existing.lyrics_hindi)) return true;
-  if (sectionCount(incoming.lyrics.hinglish) > sectionCount(existing.lyrics_hinglish)) return true;
-  if (textLength(incoming.lyrics.hindi) > textLength(existing.lyrics_hindi) + 40) return true;
-  if (textLength(incoming.lyrics.hinglish) > textLength(existing.lyrics_hinglish) + 40) return true;
   return false;
 }
 
 function toSupabaseRow(song: ParsedSong, existing?: ExistingSong) {
   const hasHinglish = textLength(song.lyrics.hinglish) > 0;
   const hasHindi = textLength(song.lyrics.hindi) > 0;
+  const keepsExistingHinglish = !hasHinglish && textLength(existing?.lyrics_hinglish) > 0;
+  const keepsExistingHindi = !hasHindi && textLength(existing?.lyrics_hindi) > 0;
+  const useIncomingHinglish =
+    hasHinglish && (!existing?.lyrics_hinglish || hasInlineChords(existing.lyrics_hinglish));
+  const useIncomingHindi =
+    hasHindi && (!existing?.lyrics_hindi || hasInlineChords(existing.lyrics_hindi));
   const languages = [
-    ...(hasHinglish ? ["hinglish"] as const : []),
-    ...(hasHindi ? ["hindi"] as const : []),
+    ...(useIncomingHinglish || keepsExistingHinglish || textLength(existing?.lyrics_hinglish) > 0 ? ["hinglish"] as const : []),
+    ...(useIncomingHindi || keepsExistingHindi || textLength(existing?.lyrics_hindi) > 0 ? ["hindi"] as const : []),
   ];
-  const tags = Array.from(new Set([...(existing?.tags ?? []), "worship", ...languages, "indianchristianlyrics"]));
+  const sourceTag = song.sourceUrl?.includes("hindichristiansongs.in") ? "hindichristiansongs" : "indianchristianlyrics";
+  const tags = Array.from(new Set([...(existing?.tags ?? []), "worship", ...languages, sourceTag]));
 
   return {
     id: existing?.id ?? song.id,
@@ -227,8 +341,8 @@ function toSupabaseRow(song: ParsedSong, existing?: ExistingSong) {
     album: existing?.album ?? null,
     language_default: languages.includes("hinglish") ? "hinglish" : "hindi",
     languages_available: languages,
-    lyrics_hinglish: hasHinglish ? song.lyrics.hinglish : existing?.lyrics_hinglish ?? null,
-    lyrics_hindi: hasHindi ? song.lyrics.hindi : existing?.lyrics_hindi ?? null,
+    lyrics_hinglish: useIncomingHinglish ? song.lyrics.hinglish : existing?.lyrics_hinglish ?? (hasHinglish ? song.lyrics.hinglish : null),
+    lyrics_hindi: useIncomingHindi ? song.lyrics.hindi : existing?.lyrics_hindi ?? (hasHindi ? song.lyrics.hindi : null),
     link_youtube: existing?.link_youtube ?? null,
     link_spotify: existing?.link_spotify ?? null,
     link_apple_music: existing?.link_apple_music ?? null,
@@ -243,11 +357,21 @@ function updateLocalIfExists(song: ParsedSong, existing?: ExistingSong) {
   if (!fs.existsSync(localPath)) return;
 
   const local = JSON.parse(fs.readFileSync(localPath, "utf8"));
-  local.artist = song.artist !== "Unknown Artist" ? song.artist : local.artist;
+  if (!local.artist || local.artist === "Unknown Artist") {
+    local.artist = song.artist !== "Unknown Artist" ? song.artist : local.artist;
+  }
+  const localHinglishLength = textLength(local.lyrics?.hinglish);
+  const localHindiLength = textLength(local.lyrics?.hindi);
   local.lyrics = {
     ...local.lyrics,
-    hinglish: textLength(song.lyrics.hinglish) > 0 ? song.lyrics.hinglish : local.lyrics?.hinglish,
-    hindi: textLength(song.lyrics.hindi) > 0 ? song.lyrics.hindi : local.lyrics?.hindi,
+    hinglish:
+      localHinglishLength === 0 && textLength(song.lyrics.hinglish) > 0
+        ? song.lyrics.hinglish
+        : local.lyrics?.hinglish,
+    hindi:
+      localHindiLength === 0 && textLength(song.lyrics.hindi) > 0
+        ? song.lyrics.hindi
+        : local.lyrics?.hindi,
   };
   local.languages_available = [
     ...(local.lyrics?.hinglish ? ["hinglish"] as const : []),
@@ -264,6 +388,7 @@ async function main() {
 
   const files = fs.readdirSync(sourceDir).filter((file) => file.endsWith(".txt")).sort();
   const songs = files.map((file) => parseTextFile(path.join(sourceDir, file)));
+  const { selected, duplicateGroups } = selectBestCandidates(songs);
 
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
@@ -279,13 +404,20 @@ async function main() {
   const report: ImportReport = {
     sourceDir,
     totalFiles: files.length,
+    duplicateGroups,
+    selectedCandidates: selected.length,
     inserted: [],
     updated: [],
     skipped: [],
     unknownArtists: [],
   };
 
-  for (const song of songs) {
+  for (const song of selected) {
+    if (!hasSafeImportTitle(song)) {
+      report.skipped.push({ id: song.id || song.file, title: song.title, reason: "title needs manual cleanup" });
+      continue;
+    }
+
     if (!hasUsableLyrics(song)) {
       report.skipped.push({ id: song.id, title: song.title, reason: "missing lyrics" });
       continue;
@@ -316,6 +448,8 @@ async function main() {
   fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
 
   console.log(`${shouldPublish ? "Published" : "Dry run"} ${files.length} files from ${sourceDir}`);
+  console.log(`Duplicate title groups: ${report.duplicateGroups}`);
+  console.log(`Selected candidates: ${report.selectedCandidates}`);
   console.log(`Inserted: ${report.inserted.length}`);
   console.log(`Updated: ${report.updated.length}`);
   console.log(`Skipped: ${report.skipped.length}`);

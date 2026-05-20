@@ -101,6 +101,7 @@ function mapDbRowToSong(row: DbSongRow): Song {
 
 const CACHE_KEY = "vandana-songs-cache";
 const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+const SUPABASE_PAGE_SIZE = 1000;
 
 interface CacheEntry {
   timestamp: number;
@@ -139,16 +140,25 @@ function setCachedSongs(data: Song[]): void {
 async function fetchFromSupabase(): Promise<Song[] | null> {
   try {
     const timeout = new Promise<null>((resolve) =>
-      setTimeout(() => resolve(null), 5000)
+      setTimeout(() => resolve(null), 12000)
     );
-    const query = supabase
-      .from("songs")
-      .select("*")
-      .order("title")
-      .then(({ data, error }) => {
-        if (error || !data || data.length === 0) return null;
-        return (data as DbSongRow[]).map(mapDbRowToSong);
-      });
+    const query = (async () => {
+      const rows: DbSongRow[] = [];
+      for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+        const to = from + SUPABASE_PAGE_SIZE - 1;
+        const { data, error } = await supabase
+          .from("songs")
+          .select("*")
+          .order("title")
+          .range(from, to);
+
+        if (error || !data) return null;
+        rows.push(...(data as DbSongRow[]));
+        if (data.length < SUPABASE_PAGE_SIZE) break;
+      }
+
+      return rows.length > 0 ? rows.map(mapDbRowToSong) : null;
+    })();
     return await Promise.race([query, timeout]);
   } catch {
     return null;
@@ -247,13 +257,23 @@ export async function getAllSongMetasWithSource(): Promise<SongMetaLibraryResult
 
 export async function getSongIds(): Promise<string[]> {
   try {
-    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
-    const query = supabase
-      .from("songs")
-      .select("id")
-      .then(({ data, error }) =>
-        error || !data ? null : data.map((row: { id: string }) => row.id)
-      );
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 12000));
+    const query = (async () => {
+      const ids: string[] = [];
+      for (let from = 0; ; from += SUPABASE_PAGE_SIZE) {
+        const to = from + SUPABASE_PAGE_SIZE - 1;
+        const { data, error } = await supabase
+          .from("songs")
+          .select("id")
+          .order("id")
+          .range(from, to);
+
+        if (error || !data) return null;
+        ids.push(...data.map((row: { id: string }) => row.id));
+        if (data.length < SUPABASE_PAGE_SIZE) break;
+      }
+      return ids;
+    })();
     return (await Promise.race([query, timeout])) ?? LOCAL_SONGS.map((s) => s.id);
   } catch {
     return LOCAL_SONGS.map((s) => s.id);

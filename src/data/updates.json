@@ -1,5 +1,25 @@
 [
   {
+    "id": "update-024",
+    "date": "2026-05-20",
+    "title": "2,010 More Worship Songs Added",
+    "body": "Added 2,010 more Hindi and Hinglish worship songs from the fourth reviewed batch. The importer now repairs this source's Hindi encoding, collapses duplicate files, keeps already-curated songs from being overwritten, and leaves messy title cases for manual review. The library now has 2,920 songs.",
+    "type": "songs_added",
+    "song_count": 2010,
+    "song_names": [
+      "Aa Yeeshu Mere Kareeb Bann Mera Aguva",
+      "Aadi Aur Ant Too Hee Hai",
+      "Aaj ka ye Din Yahovah ne Banaya Hai",
+      "Aao Hum Yahova ka Dhanyavaad Karen",
+      "Jo Kuch Hai Tune Diya",
+      "Tere Aradhana Karu",
+      "Aatma Pavitr Aatma",
+      "Keval Yeeshu Keval Yeeshu",
+      "Yeshu ke Paas Aao",
+      "Zindagi ke Safar Mey"
+    ]
+  },
+  {
     "id": "update-023",
     "date": "2026-05-20",
     "title": "405 More Worship Songs Added",
