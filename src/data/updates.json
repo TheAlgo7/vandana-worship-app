@@ -1,5 +1,16 @@
 [
   {
+    "id": "update-025",
+    "date": "2026-05-21",
+    "title": "Aaradhana Lyrics Cleaned",
+    "body": "Improved Aaradhana Mein Hai Chhutkara with complete Hindi and Hinglish lyrics, cleaner spelling, and clearer worship sections.",
+    "type": "songs_updated",
+    "song_count": 1,
+    "song_names": [
+      "Aaradhana Mein Hai Chhutkara"
+    ]
+  },
+  {
     "id": "update-024",
     "date": "2026-05-20",
     "title": "1,998 More Worship Songs Added",
