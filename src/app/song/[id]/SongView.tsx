@@ -4,11 +4,11 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ChevronLeft, Heart, ListPlus, ListX, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
-import { formatBlock } from "@/lib/formatLyrics";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 import DailyVerse from "@/components/DailyVerse";
+import LyricsBlock from "@/components/LyricsBlock";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
 
@@ -285,7 +285,7 @@ export default function SongView({ song }: SongViewProps) {
         {sectionEntries.map(([key, text]) => (
           <section key={key} style={{ marginBottom: 28 }}>
             <span className="section-label">{formatSectionLabel(key)}</span>
-            <p style={{ whiteSpace: "pre-line" }}>{formatBlock(text)}</p>
+            <LyricsBlock text={text} />
           </section>
         ))}
       </div>

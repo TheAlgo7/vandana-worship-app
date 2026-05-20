@@ -5,8 +5,8 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Play, Pause, X } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
-import { formatBlock } from "@/lib/formatLyrics";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
+import LyricsBlock from "@/components/LyricsBlock";
 import { useSetlist } from "@/contexts/SetlistContext";
 
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
@@ -207,9 +207,10 @@ export default function PresentView({ song }: { song: Song }) {
             >
               {formatSectionLabel(key)}
             </span>
-            <p
+            <LyricsBlock
+              text={text}
+              className="present-lyrics-block"
               style={{
-                whiteSpace: "pre-line",
                 wordBreak: "keep-all",
                 overflowWrap: "break-word",
                 paddingLeft: 20,
@@ -217,9 +218,7 @@ export default function PresentView({ song }: { song: Song }) {
                 fontSize: `${FONT_SIZES[fontIdx]}rem`,
                 lineHeight: 1.7,
               }}
-            >
-              {formatBlock(text)}
-            </p>
+            />
           </section>
         ))}
       </div>

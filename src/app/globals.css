@@ -604,11 +604,43 @@ a:active {
 .lyrics-text {
   font-size: var(--lyrics-size, var(--text-lg));
   line-height: var(--leading-lyrics);
-  white-space: pre-line;
   word-break: keep-all;
   overflow-wrap: break-word;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+.lyrics-block {
+  margin: 0;
+}
+
+.lyrics-line {
+  display: block;
+}
+
+.lyrics-line-empty {
+  min-height: 0.95em;
+}
+
+.lyrics-repeat-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.05em;
+  min-height: 1.35em;
+  margin-left: 0.42em;
+  padding: 0 0.48em;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, transparent);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--accent);
+  font-family: var(--font-body, system-ui, sans-serif);
+  font-size: 0.68em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+  vertical-align: 0.08em;
+  transform: translateY(-0.08em);
 }
 
 .lyrics-text-hindi {
