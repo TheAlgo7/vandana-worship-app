@@ -66,6 +66,26 @@ function fuzzyIncludes(haystack: string, query: string): boolean {
   });
 }
 
+function normalizeChurchKey(value: string): string {
+  return value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function formatChurchLabel(value: string): string {
+  const normalized = normalizeChurchKey(value);
+  if (normalized === "yeshua ministries") return "Yeshua Ministries";
+  if (normalized === "icm") return "ICM";
+
+  return value
+    .trim()
+    .replace(/\s+/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+}
+
 const SONG_BATCH_SIZE = 80;
 
 export default function HomeContent({
@@ -77,7 +97,7 @@ export default function HomeContent({
 }) {
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
-  const [activeChurch, setActiveChurch] = useState<string | null>(null);
+  const [activeChurchKey, setActiveChurchKey] = useState<string | null>(null);
   const [visibleState, setVisibleState] = useState({ key: "", count: SONG_BATCH_SIZE });
   const searchRef = useRef<HTMLInputElement>(null);
   const { isFavourite, toggleFavourite } = useFavourites();
@@ -164,10 +184,18 @@ export default function HomeContent({
     localStorage.removeItem("vandana-recently-viewed");
   };
 
-  const churches = useMemo(
-    () => Array.from(new Set(songs.map((s) => s.church).filter(Boolean))),
-    [songs],
-  );
+  const churches = useMemo(() => {
+    const byKey = new Map<string, string>();
+
+    for (const song of songs) {
+      if (!song.church) continue;
+      const key = normalizeChurchKey(song.church);
+      if (!key || byKey.has(key)) continue;
+      byKey.set(key, formatChurchLabel(song.church));
+    }
+
+    return Array.from(byKey.entries()).map(([key, label]) => ({ key, label }));
+  }, [songs]);
 
   const normalizedQuery = useMemo(() => normalizeSearch(debouncedQuery), [debouncedQuery]);
 
@@ -181,10 +209,10 @@ export default function HomeContent({
         s.lyrics_search,
       ].join(" ");
       const matchesQuery = !normalizedQuery || fuzzyIncludes(searchable, normalizedQuery);
-      const matchesChurch = !activeChurch || s.church === activeChurch;
+      const matchesChurch = !activeChurchKey || normalizeChurchKey(s.church ?? "") === activeChurchKey;
       return matchesQuery && matchesChurch;
     });
-  }, [songs, normalizedQuery, activeChurch]);
+  }, [songs, normalizedQuery, activeChurchKey]);
 
   const lyricOnlyMatches = useMemo(() => {
     if (!normalizedQuery) return 0;
@@ -197,8 +225,8 @@ export default function HomeContent({
     }).length;
   }, [filtered, normalizedQuery]);
 
-  const hasActiveFilters = !!query || !!activeChurch;
-  const visibleKey = `${normalizedQuery}|${activeChurch ?? ""}`;
+  const hasActiveFilters = !!query || !!activeChurchKey;
+  const visibleKey = `${normalizedQuery}|${activeChurchKey ?? ""}`;
   const visibleCount = visibleState.key === visibleKey ? visibleState.count : SONG_BATCH_SIZE;
   const visibleSongs = hasActiveFilters ? filtered : filtered.slice(0, visibleCount);
   const canShowMore = !hasActiveFilters && visibleSongs.length < filtered.length;
@@ -303,22 +331,22 @@ export default function HomeContent({
             {/* Church Filter */}
             <div role="group" aria-label="Filter by church" className="home-filter-row horizontal-fade-scroll" style={{ display: "flex", gap: 8, margin: "16px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}>
               <button
-                onClick={() => setActiveChurch(null)}
-                aria-pressed={!activeChurch}
-                style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: !activeChurch ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: !activeChurch ? "var(--accent)" : "transparent", color: !activeChurch ? "var(--bg-base)" : "var(--text-secondary)" }}
+                onClick={() => setActiveChurchKey(null)}
+                aria-pressed={!activeChurchKey}
+                style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: !activeChurchKey ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: !activeChurchKey ? "var(--accent)" : "transparent", color: !activeChurchKey ? "var(--bg-base)" : "var(--text-secondary)" }}
               >
                 All
               </button>
               {churches.map((ch) => {
-                const active = activeChurch === ch;
+                const active = activeChurchKey === ch.key;
                 return (
                   <button
-                    key={ch}
-                    onClick={() => setActiveChurch(active ? null : ch)}
+                    key={ch.key}
+                    onClick={() => setActiveChurchKey(active ? null : ch.key)}
                     aria-pressed={active}
                     style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: active ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: active ? "var(--accent)" : "transparent", color: active ? "var(--bg-base)" : "var(--text-secondary)" }}
                   >
-                    {ch}
+                    {ch.label}
                   </button>
                 );
               })}
@@ -337,20 +365,20 @@ export default function HomeContent({
                   <p style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.3, margin: 0 }}>
                     {query
                       ? "No matching songs"
-                      : activeChurch
+                      : activeChurchKey
                       ? "No songs in this filter"
                       : "No songs yet."}
                   </p>
                   <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.55, maxWidth: 280, margin: 0 }}>
                     {query
                       ? `Try a shorter lyric phrase, artist name, or clear filters for "${query}". Fuzzy search catches close spellings too.`
-                      : activeChurch
-                      ? `${activeChurch} does not have songs in this library yet.`
+                      : activeChurchKey
+                      ? "No songs are available for this ministry filter yet."
                       : "The bundled library did not return songs."}
                   </p>
                   {hasActiveFilters && (
                     <button
-                      onClick={() => { setQuery(""); setActiveChurch(null); }}
+                      onClick={() => { setQuery(""); setActiveChurchKey(null); }}
                       style={{ padding: "6px 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", cursor: "pointer" }}
                     >
                       Clear filters
