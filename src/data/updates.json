@@ -2,10 +2,10 @@
   {
     "id": "update-024",
     "date": "2026-05-20",
-    "title": "1,999 More Worship Songs Added",
-    "body": "Added 1,999 more Hindi and Hinglish worship songs from the fourth reviewed batch after duplicate, page-junk, and broken Hindi-tab cleanup. The importer repairs this source's Hindi encoding, collapses duplicate files, and keeps already-curated songs from being overwritten. The library now has 2,909 songs.",
+    "title": "1,998 More Worship Songs Added",
+    "body": "Added 1,998 more Hindi and Hinglish worship songs from the fourth reviewed batch after duplicate, page-junk, broken Hindi-tab, and lyric spelling cleanup. The importer repairs this source's Hindi encoding, collapses duplicate files, and keeps already-curated songs from being overwritten. The library now has 2,908 songs.",
     "type": "songs_added",
-    "song_count": 1999,
+    "song_count": 1998,
     "song_names": [
       "Aa Yeeshu Mere Kareeb Bann Mera Aguva",
       "Aadi Aur Ant Too Hee Hai",
