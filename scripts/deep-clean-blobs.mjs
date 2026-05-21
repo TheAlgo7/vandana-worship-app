@@ -91,6 +91,11 @@ function deepClean(text) {
   // Inline URLs
   t = t.replace(/https?:\/\/\S+/g, "");
 
+  // Guitar chord notation: [C], [Am], [F#m], [G/B], [Dsus4], etc.
+  t = t.replace(/\[[A-G][b#]?[a-zA-Z0-9\/]*\]/g, "");
+  // Clean up any lines that are now empty after chord removal (only had chords)
+  t = t.replace(/^\s*\s*$/gm, "");
+
   // Section labels embedded inline — strip them (we don't fake-label blobs)
   // e.g. "Verse 1:", "Chorus:", "Bridge:", "[Verse 1]", "[Chorus]"
   t = t.replace(/^\s*\[?(verse\s*\d*|chorus\s*\d*|pre[-\s]?chorus\s*\d*|bridge\s*\d*|tag\s*\d*|outro|intro|interlude|refrain|stanza\s*\d*)\]?\s*:?\s*$/gim, "");
