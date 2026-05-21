@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|verse2|pre_chorus|chorus|bridge",
       "verse1": "Ye kaisa pyaar hai tera\nKi aisa tune hi kiya\nTera praan de diya\nTaaki main bhi jeeyu sada",
       "verse2": "Meri or se ladhega\nKabhi haath na chhodega\nDar hataakar bal diya\nJeet tune mujhe diya",
       "pre_chorus": "Shaitaan ko hara diya\nPaapon ko jad se ukhaad diya\nMujhe gher liya naye geet se\nAb main jeeta nayee shakti se",
@@ -18,6 +19,7 @@
       "bridge": "Kehna hi kya hai\nKhuda mere paksh mein\nKaun ab mera\nVirodhi thahrega"
     },
     "hindi": {
+      "__order": "verse1|verse2|pre_chorus|chorus|bridge",
       "verse1": "ये कैसा प्यार है तेरा\nकि ऐसा तू ने ही किया\nतेरा प्राण दे दिया\nताकि मैं भी जीऊं सदा",
       "verse2": "मेरी ओर से लड़ेगा\nकभी हाथ न छोड़ेगा\nडर हटाकर बल दिया\nजीत तूने मुझे दिया",
       "pre_chorus": "शैतान को हरा दिया\nपापों को जड़ से उखाड़ दिया\nमुझे घेर लिया नए गीत से\nअब मैं जीता नई शक्ति से",

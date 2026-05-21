@@ -11,16 +11,18 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|chorus|verse2|chorus2",
       "verse1": "Meri ummeed aur rihayi hai tu\nHar gham mein tu hi mera meet\nRakhe mujhe apne kareeb\nAe Khuda, tu mera yakeen",
       "chorus": "Tufaan mein tu panah\nTu hamraahi mera\nMarham toote dil ka\nYeshu, Raja mera",
       "verse2": "Saanson se bhi zyada azeez\nTu hi hai meri zindagi\nBin tere main, kuch bhi nahi\nYeshu tu hi, manzil meri",
       "chorus2": "Tufaan mein tu panah\nTu hamraahi mera"
     },
     "hindi": {
-      "verse1": ",",
-      "chorus": ",",
-      "verse2": ",\n  ,",
-      "chorus2": ""
+      "__order": "verse1|chorus|verse2|chorus2",
+      "verse1": "मेरी उम्मीद और रिहाई है तू\nहर गम में तू ही मेरा मीत\nरखे मुझे अपने करीब\nऐ खुदा, तू मेरा यकीन",
+      "chorus": "तूफान में तू पनाह\nतू हमराही मेरा\nमरहम टूटे दिल का\nयेशु, राजा मेरा",
+      "verse2": "सांसों से भी ज्यादा अजीज\nतू ही है मेरी जिंदगी\nबिन तेरे मैं, कुछ भी नहीं\nयेशु तू ही, मंजिल मेरी",
+      "chorus2": "तूफान में तू पनाह\nतू हमराही मेरा"
     }
   },
   "links": {

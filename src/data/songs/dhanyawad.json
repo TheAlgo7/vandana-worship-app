@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|pre_chorus2|pre_chorus3|bridge|verse2|backing_vocals",
       "verse1": "Meri har chahat ko\nPura tune hai kiya Yeshua\nAashayein meri\nSampoorna ho gayi tujh mein Yeshua",
       "pre_chorus": "Har bhook meri tune hai jaana\nBaahon mein lekar\nMujh ko sambhaala (x2)",
       "chorus": "Dhanyawad Yeshua tera\nDhanyawad Yeshua",
@@ -21,6 +22,7 @@
       "backing_vocals": "Badle mein kya doon tere\nAnmol pyaar ke\nYeshua dhanyawad"
     },
     "hindi": {
+      "__order": "verse1|pre_chorus|chorus|pre_chorus2|pre_chorus3|bridge|verse2|backing_vocals",
       "verse1": "मेरी हर चाहत को\nपूरा तूने है किया येशुआ\nआशाएं मेरी\nसंपूर्ण हो गयी तुझ में येशुआ",
       "pre_chorus": "हर भूख मेरी तूने है जाना\nबाहों में लेकर\nमुझ को संभाला (x2)",
       "chorus": "धन्यवाद येशुआ तेरा\nधन्यवाद येशुआ",

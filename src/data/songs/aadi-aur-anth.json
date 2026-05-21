@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge",
       "verse1": "Sab kuch hai tujh mein\nTujhse, tere liye\nSrishti mein sab kuch, jo hai bana\nTune racha (x2)\nTu hai Aadi aur Anth bhi\nTeri saanson se mili yeh zindagi",
       "chorus": "Tu yogya hai, pavitra hai, sabse mahaan hai\nTu shresht hai, anant hai, aur khoobsurat hai (x2)",
       "verse2": "Hum jo hain tujh mein\nTujh se, tere liye\nCharanon mein tere, ab hum rahen\nSajda karen (x2)\nTere noor ko niharte hue\nAnsh ansh se hum tujhsa bane (x2)",
@@ -18,6 +19,7 @@
       "bridge": "Tu jo kal tha, aaj vahi hai\nAur hamesha, rahega ek samaan\nAb har jaati, aur prajati\nHar ek zubaan bhi, bas teri jai gaaye (x2)"
     },
     "hindi": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge",
       "verse1": "सब कुछ है तुझ में\nतुझसे, तेरे लिए\nसृष्टि में सब कुछ, जो है बना\nतूने रचा (x2)\nतू है आदि और अंत भी\nतेरी सांसों से मिली ये ज़िंदगी",
       "chorus": "तू योग्य है, पवित्र है, सबसे महान है\nतू श्रेष्ठ है, अनंत है, और खूबसूरत है (x2)",
       "verse2": "हम जो हैं तुझ में\nतुझ से, तेरे लिए\nचरणों में तेरे, अब हम रहें\nसजदा करें (x2)\nतेरे नूर को निहारते हुए\nअंश अंश से हम तुझसा बने (x2)",

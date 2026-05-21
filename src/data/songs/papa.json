@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|tag|bridge|chorus3|tag2",
       "verse1": "Tujhe chhod main chal pada\nDhoondne ghar har jagah\nKhoj mein main kho gaya\nKhud ko pehchan na saka",
       "pre_chorus": "Rehmat ke dariya mein dubaya mujhe\nUs se zariya banakar chalaya mujhe (x2)",
       "chorus": "Papa, Papa\nBeta main tera (x2)",
@@ -23,6 +24,7 @@
       "tag2": "Teri aankhon ki putli hoon Papa\nMain, aankhon ki putli hoon Papa\nTeri aankhon ki putli hoon Papa\nTeri aankhon ki putli hoon Papa"
     },
     "hindi": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|tag|bridge|chorus3|tag2",
       "verse1": "तुझे छोड़ मैं चल पड़ा\nढूंढने घर हर जगह\nखोज में मैं खो गया\nखुद को पहचान ना सका",
       "pre_chorus": "रहमत के दरिया में डुबाया मुझे\nउस से ज़रिया बनाकर चलाया मुझे (x2)",
       "chorus": "पापा, पापा\nबेटा मैं तेरा (x2)",

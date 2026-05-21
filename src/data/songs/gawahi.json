@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|verse2|bridge",
       "verse1": "Aanand se bhar diya, sab kuch kiya naya\nWoh beeta hua jeevan tune dafna diya\nTeri daya se hi sab kuch badal gaya\nUmad raha hai yeh jeevan mera",
       "pre_chorus": "Teri chahat, meri bhalayi, meri samriddhi hai\nTeri mohabbat, saari ibaadat, Yeshu bas teri hai",
       "chorus": "Toh main gaaunga bhalayi teri\nSabko sunaunga yeh gawahi meri",
@@ -18,6 +19,7 @@
       "bridge": "Har pal jab main tere prem ko yaad karoon\nDoor nahi hai Yeshu, mere saath hai tu"
     },
     "hindi": {
+      "__order": "verse1|pre_chorus|chorus|verse2|bridge",
       "verse1": "आनंद से भर दिया, सब कुछ किया नया\nवो बीता हुआ जीवन तूने दफना दिया\nतेरी दया से ही सब कुछ बदल गया\nउमड़ रहा है ये जीवन मेरा",
       "pre_chorus": "तेरी चाहत, मेरी भलाई, मेरी समृद्धि है\nतेरी मोहब्बत, सारी इबादत, यीशु बस तेरी है",
       "chorus": "तो मैं गाऊंगा भलाई तेरी\nसबको सुनाऊंगा ये गवाही मेरी",

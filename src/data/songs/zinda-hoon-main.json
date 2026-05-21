@@ -1,0 +1,44 @@
+{
+  "id": "zinda-hoon-main",
+  "title": "Zinda Hoon Main",
+  "artist": "Joseph Raj Allam, Akshay Mathews & Gwen Dias",
+  "church": "Nations of Worship",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge",
+      "verse1": "Sharmindagi mein tha main dooba\nIss dard ko main na seh saka\nMain tha bejaan\nTere bina\nSaansein thi par zinda main na tha\nNakamiyo se tha bharahua\nMain tha bejaan\nTere bina",
+      "chorus": "Pukara tu ne\nZinda hua main\nAndhero mein se\nTeri mahima mein (x2)",
+      "verse2": "Karuna ne teri bachaya mujhe\nAzadi teri hai pai maine\nHua sab naya\nYeshu tu jab se mila",
+      "chorus2": "Pukara tu ne\nZinda hua main\nAndhero mein se\nTeri mahima mein (x2)",
+      "bridge": "Khoya hua tha\nBandha hua tha\nPar tune har zanjeer todi\nBeghar tha main\nMili panah mujhe\nPehchaan mujhe tujh mein mili\nToota hua tha tu ne sambhala\nTeri mohabbat saanson mein hai basi\nMili hai manzil hua sab haasil\nJabse pukara tu ne\nZinda hua main\nAndhero mein se\nTeri mahima mein\nPukara tu ne\nZinda hua main\nAndhero mein se\nTeri mahima mein"
+    },
+    "hindi": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge",
+      "verse1": "शर्मिंदगी में था मैं डूबा\nइस दर्द को मैं न सह सका\nमैं था बेजान\nतेरे बिना\nसाँसें थी पर ज़िंदा मैं न था\nनाकामियों से था भरा हुआ\nमैं था बेजान\nतेरे बिना",
+      "chorus": "पुकारा तू ने\nज़िंदा हुआ मैं\nअंधेरों में से\nतेरी महिमा में (x2)",
+      "verse2": "करुणा ने तेरी बचाया मुझे\nआज़ादी तेरी है पाई मैंने\nहुआ सब नया\nयेशु तू जब से मिला",
+      "chorus2": "पुकारा तू ने\nज़िंदा हुआ मैं\nअंधेरों में से\nतेरी महिमा में (x2)",
+      "bridge": "खोया हुआ था\nबंधा हुआ था\nपर तूने हर ज़ंजीर तोड़ी\nबेघर था मैं\nमिली पनाह मुझे\nपहचान मुझे तुझमें मिली\nटूटा हुआ था तू ने संभाला\nतेरी मोहब्बत साँसों में है बसी\nमिली है मंज़िल हुआ सब हासिल\nजबसे पुकारा तू ने\nज़िंदा हुआ मैं\nअंधेरों में से\nतेरी महिमा में\nपुकारा तू ने\nज़िंदा हुआ मैं\nअंधेरों में से\nतेरी महिमा में"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "life",
+    "nations-of-worship",
+    "hindi",
+    "hinglish"
+  ],
+  "seo_description": "Zinda Hoon Main lyrics in Hindi and Hinglish by Joseph Raj Allam, Akshay Mathews and Gwen Dias - Nations of Worship.",
+  "added_by": "Gaurav | Vandana"
+}

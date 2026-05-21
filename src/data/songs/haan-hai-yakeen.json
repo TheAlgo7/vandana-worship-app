@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge|chorus3",
       "verse1": "Kyun main daroon jab jaanu main ye\nTu wafadar hai sada ke liye\nHar intehaan mein sambhala tune\nPehle kiya jo tune, karega phirse",
       "chorus": "Yeshu haan hai yakeen\nHar zarurat ka jawab hai tu\nYeshu haan hai yakeen\nKarega tu chamatkar mere khatir\nHaan hai yakeen, haan hai yakeen\nYeshu haan hai yakeen",
       "verse2": "Tu jo kahe poora karega\nTere hi haathon mein zindagi meri\nChaahe jo ho, tu na haare kabhi\nTere waade Prabhu hai taakat meri\nTere waade Prabhu hai taakat meri",
@@ -19,12 +20,13 @@
       "chorus3": "Yeshu haan hai yakeen\nHar zarurat ka jawab hai tu\nYeshu haan hai yakeen\nKarega tu chamatkar mere khatir\nKarega tu chamatkar mere khatir\nHaan hai yakeen, haan hai yakeen\nYeshu haan hai yakeen"
     },
     "hindi": {
-      "verse1": ",",
-      "chorus": ",",
-      "verse2": ",",
-      "chorus2": ",",
-      "bridge": ",\n       (x2)",
-      "chorus3": ","
+      "__order": "verse1|chorus|verse2|chorus2|bridge|chorus3",
+      "verse1": "क्यों मैं डरूं जब जानूं मैं ये\nतू वफ़ादार है सदा के लिए\nहर इम्तिहां में संभाला तूने\nपहले किया जो तूने करेगा फिरसे",
+      "chorus": "येशु हां है यकीन\nहर ज़रूरत का जवाब है तू\nयेशु हां है यकीन\nकरेगा तू चमत्कार मेरे खातिर\nहां है यकीन हां है यकीन\nयेशु हां है यकीन",
+      "verse2": "तू जो कहे पूरा करेगा\nतेरे ही हाथों में जिंदगी मेरी\nचाहे जो हो तू ना हारे कभी\nतेरे वादे प्रभु है ताकत मेरी\nतेरे वादे प्रभु है ताकत मेरी",
+      "chorus2": "येशु हां है यकीन\nहर ज़रूरत का जवाब है तू\nयेशु हां है यकीन\nकरेगा तू चमत्कार मेरे खातिर\nहां है यकीन हां है यकीन\nयेशु हां है यकीन",
+      "bridge": "तेरा समर्थ समर्थ येशु तेरा समर्थ\nआ रहा है हम पर इस समय (x2)",
+      "chorus3": "येशु हां है यकीन\nहर ज़रूरत का जवाब है तू\nयेशु हां है यकीन\nकरेगा तू चमत्कार मेरे खातिर\nकरेगा तू चमत्कार मेरे खातिर\nहां है यकीन हां है यकीन\nयेशु हां है यकीन"
     }
   },
   "links": {

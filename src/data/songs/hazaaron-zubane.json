@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|bridge",
       "verse1": "Saari srishti par\nTera adhikaar\nTu Rajadhiraaj hai Prabhu\nTujhse hai zameen\nTujhi se aasmaan\nJag ka tu maalik Prabhu",
       "pre_chorus": "Karte hain sajda\nIbaadat ho teri sadaa",
       "chorus": "Hazaaron zubaanein gaayen\nTera hi naam dohraayen\nYeshu tu pavitra hai",
@@ -20,13 +21,14 @@
       "bridge": "Shahon ka Shah hai tu Khuda\nTera na koi muqaabla\nTera hi takht rahe sabse uncha"
     },
     "hindi": {
-      "verse1": "",
-      "pre_chorus": "",
-      "chorus": "",
-      "verse2": "",
-      "pre_chorus2": "",
-      "chorus2": "",
-      "bridge": ""
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|bridge",
+      "verse1": "सारी श्रृष्टि पर\nतेरा अधिकार\nतू राजाधिराज है प्रभु\nतुझसे है ज़मीन\nतुझी से आसमान\nजग का तू मालिक प्रभु",
+      "pre_chorus": "करते हैं सजदा\nइबादत हो तेरी सदा",
+      "chorus": "हज़ारों ज़ुबाने गाएं\nतेरा ही नाम दोहराएं\nयेशु तू पवित्र है",
+      "verse2": "ऊंच नीच का\nना कोई वजूद\nतेरे राज्य में\nतेरे राज्य में\nहर किसी का है\nस्वागत यहाँ\nतेरे राज्य में\nतेरे राज्य में",
+      "pre_chorus2": "तेरी रहमत में ही\nतू लेता है सबको करीब",
+      "chorus2": "हज़ारों ज़ुबाने गाएं\nतेरा ही नाम दोहराएं\nयेशु तू पवित्र है",
+      "bridge": "शहों का शाह है तू खुदा\nतेरा न कोई मुकाबला\nतेरा ही तख्त रहे सबसे ऊंचा"
     }
   },
   "links": {

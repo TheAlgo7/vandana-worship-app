@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|bridge|final_chorus|chorus_additional|english_chorus",
       "verse1": "Kaun hai wo jo aag se bachaye\nKaun hai wo jo rasta banaye\nKaun hai wo jo aandhi rukaye\nKaun hai wo jo andhera mitaye",
       "pre_chorus": "Itihas ko jisne rachaya hai\nVo khada Aalam Baadshah",
       "chorus": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badlaa\nYeshu ke shaktishali naam se",
@@ -22,6 +23,7 @@
       "english_chorus": "Dry bones are rattling\nNo graves can hold them in\nThey're trembling at\nThe mighty name of Jesus\n\nPrison walls are\nBreaking down\nEvery chain will\nHit the ground\nThey fall apart at\nThe mighty name of Jesus\n\nOh death you have no victory\nYou fall before the\nKing of kings\nYou're powerless at\nThe mighty name of Jesus\n\nThis is our battle song\nYou can't contain\nA lion's roar\nThe earth shakes at\nThe mighty name of Jesus"
     },
     "hindi": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|bridge|final_chorus|chorus_additional|english_chorus",
       "verse1": "कौन है वो जो आग से बचाए\nकौन है वो जो रास्ता बनाए\nकौन है वो जो आंधी रुकाए\nकौन है वो जो अंधेरा मिटाए",
       "pre_chorus": "इतिहास को जिसने रचाया है\nवो खड़ा आलम बादशाह",
       "chorus": "पहाड़ियां पिघल जा\nआफत तू मिट जा\nयीशु के शक्तिशाली नाम से\nश्राप को है कुचला\nसब कुछ है बदला\nयीशु के शक्तिशाली नाम से",

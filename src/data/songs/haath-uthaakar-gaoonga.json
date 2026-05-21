@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|bridge|chorus3",
       "verse1": "Yeshu Maseeh bharosa mera\nTu hi sahaara mera\nMushkil samay mein tu hi dilasa\nSaath rahega tu sada",
       "pre_chorus": "Karuna bhalai teri\nSada rahegi mujh par\nTeri vishvaas yogyata\nDekhoonga main umr bhar",
       "chorus": "Main haath uthakar gaaunga\nYeshu tera naam rahe ooncha\nMain haath uthakar gaaunga\nYeshu tera naam rahe ooncha",
@@ -21,6 +22,7 @@
       "chorus3": "Hum haath uthakar gayenge\nYeshu tera naam rahe ooncha"
     },
     "hindi": {
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|bridge|chorus3",
       "verse1": "येशु मसीह भरोसा मेरा\nतू ही सहारा मेरा\nमुश्किल समय में तू ही दिलासा\nसाथ रहेगा तू सदा",
       "pre_chorus": "करुणा भलाई तेरी\nसदा रहेगी मुझ पर\nतेरी विश्वास योग्यता\nदेखूंगा मैं उम्र भर",
       "chorus": "मैं हाथ उठाकर गाऊंगा\nयेशु तेरा नाम रहे ऊंचा\nमैं हाथ उठाकर गाऊंगा\nयेशु तेरा नाम रहे ऊंचा",

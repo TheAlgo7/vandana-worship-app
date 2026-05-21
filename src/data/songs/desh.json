@@ -11,12 +11,14 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|chorus|verse2|bridge",
       "verse1": "Yeh nafrat ki diwaar\nKyun ek duje se juda\nBhai-bhai ke khilaaf\nKyun rota desh mera\nMere watan ki, tu hi raza hai\nTere bharose, Hindustan hai (x2)",
       "chorus": "Is desh ka Khuda tu hai\nBachchon ka Pita tu hai\nJaati-paati dharm se bada\nAb door nahi kisi se\nPaas hai tu har ik dil ke\nSaath tu kabhi na chhodega",
       "verse2": "Hum sab ik parivaar\nYahi hai hamari pehchan\nBhinntaaon mein ekta\nBharat hamara hai mahaan\nReham-o-karam se, badhte chale hain\nTeri wafa se, girke uthe hain",
       "bridge": "Mere watan\nMere watan, kyun hai ruka\nTere geeton ki kahaan hai aawaaz (x2)\nKyun nafratein, kyun barbadiyan\nTere jism ke tukde yahaan ghire hue hain\nMere watan, kyun hai ruka\nChal saath milkar gaaye\nGeet naya (x3)\nMere watan, uth jaag ja\nTera samay ab aa gaya\nMere watan, hum ek hain\nTu pyaar ka jhanda utha\nIs desh ki aawaaz hai hum\nAazadi ka saaz hain hum\nMilkar ek mann hokar gaaye\nGulami se rehaa hue ab\nEkta ka atoot bandhan\nPyaar se badal dein ye jahaan"
     },
     "hindi": {
+      "__order": "verse1|chorus|verse2|bridge",
       "verse1": "ये नफ़रत की दीवार\nक्यों एक दूजे से जुदा\nभाई-भाई के खिलाफ\nक्यों रोता देश मेरा\nमेरे वतन की, तू ही रज़ा है\nतेरे भरोसे, हिंदुस्तान है (x2)",
       "chorus": "इस देश का खुदा तू है\nबच्चों का पिता तू है\nजाति-पाति धर्म से बड़ा\nअब दूर नहीं किसी से\nपास है तू हर इक दिल के\nसाथ तू कभी न छोड़ेगा",
       "verse2": "हम सब इक परिवार\nयही है हमारी पहचान\nभिन्नताओं में एकता\nभारत हमारा है महान\nरहम-ओ-करम से, बढ़ते चले हैं\nतेरी वफ़ा से, गिरके उठे हैं",

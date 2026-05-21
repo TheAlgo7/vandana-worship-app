@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "verse1|chorus|verse2|chorus2|bridge|verse3|chorus3",
       "verse1": "Sune unse kisse hazaaron\nVichar tere baare mein\nRaat ki khaamoshi mein suna hai\nPyaar ki dheemi aawaz\nAur tab kahe, khush tu hai mujhse\nAur main ab tanha nahi",
       "chorus": "Tu bhala Pita, tu hi hai\nHaan tu hi hai, sirf tu hi hai\nAur main tera, azeez hoon\nHaan main hoon, haan main hoon",
       "verse2": "Dekha hai maine logon ko\nKhojte hal sawalon ke\nYakeen hai ye mujhko\nDhoondhe hum jawaab\nJo tu hi de maangne se\nPehle jaane tu har\nGuzarish meri",
@@ -20,13 +21,14 @@
       "chorus3": "Tu bhala Pita, tu hi hai\nHaan tu hi hai, sirf tu hi hai\nAur main tera, azeez hoon\nHaan main hoon, haan main hoon"
     },
     "hindi": {
-      "verse1": ",",
-      "chorus": ",\n   ,\n  ,\n  ,",
-      "verse2": "",
-      "chorus2": ",\n   ,\n  ,\n  ,",
-      "bridge": "(x3)\n      (x3)",
-      "verse3": "",
-      "chorus3": ",\n   ,\n  ,\n  ,"
+      "__order": "verse1|chorus|verse2|chorus2|bridge|verse3|chorus3",
+      "verse1": "सुने उनसे किस्से हज़ारों\nविचार तेरे बारे में\nरात की खामोशी में सुना है\nप्यार की धीमी आवाज़\nऔर तब कहे खुश तू है मुझसे\nऔर मैं अब तन्हा नहीं",
+      "chorus": "तू भला पिता, तू ही है\nहाँ तू ही है, सिर्फ तू ही है\nऔर मैं तेरा, अज़ीज़ हूँ\nहाँ मैं हूँ, हाँ मैं हूँ",
+      "verse2": "देखा है मैंने लोगों को\nखोजते हल सवालों के\nयकीन है ये मुझको\nढूंढे हम जवाब\nजो तू ही दे मांगने से\nपहले जाने तू हर\nगुज़ारिश मेरी",
+      "chorus2": "तू भला पिता, तू ही है\nहाँ तू ही है, सिर्फ तू ही है\nऔर मैं तेरा, अज़ीज़ हूँ\nहाँ मैं हूँ, हाँ मैं हूँ",
+      "bridge": "हर तरीके में कामिल है तू (x3)\nहमारे लिए\nहर तरीके में कामिल है तू (x3)\nहमारे लिए",
+      "verse3": "मोहब्बत खालिस ऐसी के\nबयान ना कर पाऊँ\nसुकून जो समझ के परे\nगौर भी मैं ना कर पाऊँ\nगहराई में बुलाय मुझे\nऔर गहराई में बुलाय मुझे\nगहराई में बुलाय मुझे\nतेरे प्यार प्यार में",
+      "chorus3": "तू भला पिता, तू ही है\nहाँ तू ही है, सिर्फ तू ही है\nऔर मैं तेरा, अज़ीज़ हूँ\nहाँ मैं हूँ, हाँ मैं हूँ"
     }
   },
   "links": {
