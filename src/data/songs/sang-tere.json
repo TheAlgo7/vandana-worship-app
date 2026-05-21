@@ -1,8 +1,8 @@
 {
   "id": "sang-tere",
   "title": "Sang Tere",
-  "artist": "Nehemiah K ft. Bridge Music, Amit Kamble & Rachel Francis",
-  "church": "Bridge Music",
+  "artist": "Nehemiah Kulothungan, Amit Kamble & Rachel Francis",
+  "church": "Red Sea Films",
   "album": null,
   "language_default": "hinglish",
   "languages_available": [
@@ -11,19 +11,19 @@
   ],
   "lyrics": {
     "hinglish": {
-      "__order": "verse1|verse2|pre_chorus|chorus|bridge",
-      "verse1": "Ye kaisa pyaar hai tera\nKi aisa tune hi kiya\nTera praan de diya\nTaaki main bhi jeeyu sada",
-      "verse2": "Meri or se ladhega\nKabhi haath na chhodega\nDar hataakar bal diya\nJeet tune mujhe diya",
-      "pre_chorus": "Shaitaan ko hara diya\nPaapon ko jad se ukhaad diya\nMujhe gher liya naye geet se\nAb main jeeta nayee shakti se",
+      "__order": "verse1|pre_chorus|chorus|verse2|bridge",
+      "verse1": "Ye kaisa pyaar hai tera\nKi aisa tune hai kiya\nTera praan de diya\nTaaki jeeyu main sada",
+      "pre_chorus": "Shaitaan ko hara diya\nPaapon ko jad se ukhaad diya\nMujhe gher liya naye geet se\nAb main jee utha nayee shakti se",
       "chorus": "Peeche nahi hatunga\nHaar nahi manunga\nBadhta rahunga\nSang tere",
+      "verse2": "Meri or se ladhega\nKabhi haath na chhodega\nDar hataakar bal diya\nJeet tune mujhe diya",
       "bridge": "Kehna hi kya hai\nKhuda mere paksh mein\nKaun ab mera\nVirodhi thahrega"
     },
     "hindi": {
-      "__order": "verse1|verse2|pre_chorus|chorus|bridge",
-      "verse1": "ये कैसा प्यार है तेरा\nकि ऐसा तू ने ही किया\nतेरा प्राण दे दिया\nताकि मैं भी जीऊं सदा",
+      "__order": "verse1|pre_chorus|chorus|verse2|bridge",
+      "verse1": "ये कैसा प्यार है तेरा\nकि ऐसा तूने है किया\nतेरा प्राण दे दिया\nताकि जीयूं मैं सदा",
+      "pre_chorus": "शैतान को हरा दिया\nपापों को जड़ से उखाड़ दिया\nमुझे घेर लिया नए गीत से\nअब मैं जी उठा नयी शक्ति से",
+      "chorus": "पीछे नहीं हटूंगा\nहार नहीं मानूंगा\nबढ़ता रहूंगा\nसंग तेरे",
       "verse2": "मेरी ओर से लड़ेगा\nकभी हाथ न छोड़ेगा\nडर हटाकर बल दिया\nजीत तूने मुझे दिया",
-      "pre_chorus": "शैतान को हरा दिया\nपापों को जड़ से उखाड़ दिया\nमुझे घेर लिया नए गीत से\nअब मैं जीता नई शक्ति से",
-      "chorus": "पीछे नहीं हटूंगा\nहार नहीं मानूंगा\nबढ़ता रहूँगा\nसंग तेरे",
       "bridge": "कहना ही क्या है\nखुदा मेरे पक्ष में\nकौन अब मेरा\nविरोधी ठहरेगा"
     }
   },
@@ -34,12 +34,13 @@
   },
   "tags": [
     "worship",
-    "bridge-music",
+    "encouragement",
+    "red-sea-films",
     "hindi",
     "hinglish",
     "faith",
     "victory"
   ],
-  "seo_description": "Sang Tere lyrics in Hindi and Hinglish by Nehemiah K ft. Bridge Music, Amit Kamble and Rachel Francis.",
+  "seo_description": "Sang Tere lyrics in Hindi and Hinglish by Nehemiah Kulothungan, Amit Kamble and Rachel Francis - Red Sea Films.",
   "added_by": "Gaurav | Vandana"
 }
