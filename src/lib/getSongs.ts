@@ -99,7 +99,7 @@ function mapDbRowToSong(row: DbSongRow): Song {
 
 /* ── Offline cache (localStorage, client-side only) ── */
 
-const CACHE_KEY = "vandana-songs-cache";
+const CACHE_KEY = "vandana-songs-cache-v2";
 const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 const SUPABASE_PAGE_SIZE = 1000;
 
@@ -149,6 +149,8 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
         const { data, error } = await supabase
           .from("songs")
           .select("*")
+          .neq("artist", "Unknown Artist")
+          .not("lyrics_hinglish", "is", null)
           .order("title")
           .range(from, to);
 
@@ -265,6 +267,8 @@ export async function getSongIds(): Promise<string[]> {
         const { data, error } = await supabase
           .from("songs")
           .select("id")
+          .neq("artist", "Unknown Artist")
+          .not("lyrics_hinglish", "is", null)
           .order("id")
           .range(from, to);
 
