@@ -29,6 +29,7 @@ import aurKisiBaatKiBadaaiNaKarein from "./songs/aur-kisi-baat-ki-badaai-na-kare
 import aayaHaiYeshuAayaHai from "./songs/aaya-hai-yeshu-aaya-hai.json";
 import bharat from "./songs/bharat.json";
 import bharpurJeevanTereLiye from "./songs/bharpur-jeevan-tere-liye.json";
+import bhalaPita from "./songs/bhala-pita.json";
 import bintiSunleYeshuPyare from "./songs/binti-sunle-yeshu-pyare.json";
 import boloJaiMilkarJai from "./songs/bolo-jai-milkar-jai.json";
 import chaakParApniRakhMujhe from "./songs/chaak-par-apni-rakh-mujhe.json";
@@ -53,6 +54,7 @@ import hallelujahPrabhuMere from "./songs/hallelujah-prabhu-mere.json";
 import halleluyaahHalleluyaahGaayenge from "./songs/halleluyaah-halleluyaah-gaayenge.json";
 import haqTala from "./songs/haq-tala.json";
 import harSubahHarShaam from "./songs/har-subah-har-shaam.json";
+import haanHaiYakeen from "./songs/haan-hai-yakeen.json";
 import hazaaronZubane from "./songs/hazaaron-zubane.json";
 import hoSitaish from "./songs/ho-sitaish.json";
 import hoTeriAradhana from "./songs/ho-teri-aradhana.json";
@@ -72,6 +74,7 @@ import kuchNaya from "./songs/kuch-naya.json";
 import mainNachdaNahiKade from "./songs/main-nachda-nahi-kade.json";
 import oshimiriAtata from "./songs/oshimiri-atata.json";
 import paakRuhTu from "./songs/paak-ruh-tu.json";
+import panah from "./songs/panah.json";
 import pankhonTaley from "./songs/pankhon-taley.json";
 import rangLiya from "./songs/rang-liya.json";
 import rehaai from "./songs/rehaai.json";
@@ -109,6 +112,7 @@ export const LOCAL_SONGS: Song[] = [
   aayaHaiYeshuAayaHai,
   bharat,
   bharpurJeevanTereLiye,
+  bhalaPita,
   bintiSunleYeshuPyare,
   boloJaiMilkarJai,
   chaakParApniRakhMujhe,
@@ -133,6 +137,7 @@ export const LOCAL_SONGS: Song[] = [
   halleluyaahHalleluyaahGaayenge,
   haqTala,
   harSubahHarShaam,
+  haanHaiYakeen,
   hazaaronZubane,
   hoSitaish,
   hoTeriAradhana,
@@ -152,6 +157,7 @@ export const LOCAL_SONGS: Song[] = [
   mainNachdaNahiKade,
   oshimiriAtata,
   paakRuhTu,
+  panah,
   pankhonTaley,
   rangLiya,
   rehaai,

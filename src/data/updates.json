@@ -1,5 +1,20 @@
 [
   {
+    "id": "update-026",
+    "date": "2026-05-21",
+    "title": "Nations of Worship Songs Refreshed",
+    "body": "Added Bhala Pita and Panah, merged the duplicate Haan Hai Yakeen entry, and replaced noisy scraped lyrics for Shaktishaali and Hazaaron Zubane with clean Hindi and Hinglish sections.",
+    "type": "songs_updated",
+    "song_count": 5,
+    "song_names": [
+      "Bhala Pita",
+      "Panah",
+      "Haan Hai Yakeen",
+      "Shaktishaali",
+      "Hazaaron Zubane"
+    ]
+  },
+  {
     "id": "update-025",
     "date": "2026-05-21",
     "title": "Aaradhana Lyrics Cleaned",

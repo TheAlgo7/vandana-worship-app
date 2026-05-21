@@ -1,0 +1,40 @@
+{
+  "id": "panah",
+  "title": "Panah",
+  "artist": "Jobin David & Sheldon Bangera",
+  "church": "Nations of Worship",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Meri ummeed aur rihayi hai tu\nHar gham mein tu hi mera meet\nRakhe mujhe apne kareeb\nAe Khuda, tu mera yakeen",
+      "chorus": "Tufaan mein tu panah\nTu hamraahi mera\nMarham toote dil ka\nYeshu, Raja mera",
+      "verse2": "Saanson se bhi zyada azeez\nTu hi hai meri zindagi\nBin tere main, kuch bhi nahi\nYeshu tu hi, manzil meri",
+      "chorus2": "Tufaan mein tu panah\nTu hamraahi mera"
+    },
+    "hindi": {
+      "verse1": ",",
+      "chorus": ",",
+      "verse2": ",\n  ,",
+      "chorus2": ""
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watchv=RPKgdvQjMf0",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "shelter",
+    "nations-of-worship",
+    "hindi",
+    "hinglish"
+  ],
+  "seo_description": "Panah lyrics in Hindi and Hinglish by Jobin David and Sheldon Bangera - Nations of Worship.",
+  "added_by": "Gaurav | Vandana"
+}
