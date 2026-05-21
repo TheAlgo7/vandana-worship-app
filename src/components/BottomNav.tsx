@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 import type { LucideIcon } from "lucide-react";
 import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
@@ -25,14 +25,7 @@ const NAV_ITEMS: {
 
 export default function BottomNav() {
   const pathname = usePathname();
-  const router = useRouter();
   const [hasUnread, setHasUnread] = useState(false);
-  const [scrubIndex, setScrubIndex] = useState<number | null>(null);
-  const [isScrubbing, setIsScrubbing] = useState(false);
-  const navRef = useRef<HTMLElement | null>(null);
-  const isScrubbingRef = useRef(false);
-  const activeIndexRef = useRef(0);
-  const suppressClickRef = useRef(false);
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -48,120 +41,25 @@ export default function BottomNav() {
   const isActive = (href: string, exact: boolean) =>
     exact ? pathname === href : pathname.startsWith(href);
 
-  const activeIndex = Math.max(
-    NAV_ITEMS.findIndex(({ href, exact }) => isActive(href, exact)),
-    0,
-  );
-  const visualIndex = scrubIndex ?? activeIndex;
-
-  const getIndexFromClientX = useCallback((clientX: number): number => {
-    const links = Array.from(
-      navRef.current?.querySelectorAll<HTMLElement>("[data-nav-index]") ?? [],
-    );
-    if (links.length === 0) return activeIndex;
-
-    return links.reduce(
-      (closest, link) => {
-        const rect = link.getBoundingClientRect();
-        const center = rect.left + rect.width / 2;
-        const distance = Math.abs(clientX - center);
-        return distance < closest.distance
-          ? { index: Number(link.dataset.navIndex), distance }
-          : closest;
-      },
-      { index: activeIndex, distance: Number.POSITIVE_INFINITY },
-    ).index;
-  }, [activeIndex]);
-
-  useEffect(() => {
-    activeIndexRef.current = activeIndex;
-  }, [activeIndex]);
-
-  useEffect(() => {
-    const nav = navRef.current;
-    if (!nav) return;
-
-    const move = (event: PointerEvent) => {
-      if (!isScrubbingRef.current) return;
-      setScrubIndex(getIndexFromClientX(event.clientX));
-    };
-
-    const end = (event: PointerEvent) => {
-      if (!isScrubbingRef.current) return;
-      const nextIndex = getIndexFromClientX(event.clientX);
-      isScrubbingRef.current = false;
-      setIsScrubbing(false);
-      setScrubIndex(null);
-
-      if (nextIndex !== activeIndexRef.current) {
-        suppressClickRef.current = true;
-        router.push(NAV_ITEMS[nextIndex].href);
-        window.setTimeout(() => {
-          suppressClickRef.current = false;
-        }, 0);
-      }
-    };
-
-    const cancel = () => {
-      if (!isScrubbingRef.current) return;
-      isScrubbingRef.current = false;
-      setIsScrubbing(false);
-      setScrubIndex(null);
-    };
-
-    const start = (event: PointerEvent) => {
-      if (event.pointerType === "mouse" && event.button !== 0) return;
-      event.preventDefault();
-      isScrubbingRef.current = true;
-      setIsScrubbing(true);
-      setScrubIndex(getIndexFromClientX(event.clientX));
-      window.addEventListener("pointermove", move);
-      window.addEventListener("pointerup", end, { once: true });
-      window.addEventListener("pointercancel", cancel, { once: true });
-    };
-
-    nav.addEventListener("pointerdown", start);
-
-    return () => {
-      nav.removeEventListener("pointerdown", start);
-      window.removeEventListener("pointermove", move);
-      window.removeEventListener("pointerup", end);
-      window.removeEventListener("pointercancel", cancel);
-    };
-  }, [getIndexFromClientX, router]);
-
   return (
     <>
       <div aria-hidden className={styles.fade} />
 
-      <nav
-        ref={navRef}
-        aria-label="Main navigation"
-        className={`${styles.pill}${isScrubbing ? ` ${styles.scrubbing}` : ""}`}
-        style={{ "--nav-index": visualIndex } as React.CSSProperties}
-      >
-        <span aria-hidden className={styles.thumb} />
-        {NAV_ITEMS.map(({ href, label, shortLabel, Icon, exact, badge }, index) => {
+      <nav aria-label="Main navigation" className={styles.pill}>
+        {NAV_ITEMS.map(({ href, label, shortLabel, Icon, exact, badge }) => {
           const active = isActive(href, exact);
-          const visuallyActive = index === visualIndex;
           const showDot = badge === "updates" && hasUnread && !active;
 
           return (
             <Link
               key={href}
               href={href}
-              data-nav-index={index}
               aria-label={label}
               aria-current={active ? "page" : undefined}
-              className={`${styles.item}${visuallyActive ? ` ${styles.active}` : ""}`}
-              onClick={(event) => {
-                if (!suppressClickRef.current) return;
-                event.preventDefault();
-                suppressClickRef.current = false;
-              }}
+              className={`${styles.item}${active ? ` ${styles.active}` : ""}`}
             >
               <span className={styles.icon}>
-                <Icon size={20} strokeWidth={visuallyActive ? 2.1 : 1.7} aria-hidden />
+                <Icon size={20} strokeWidth={active ? 2.1 : 1.7} aria-hidden />
                 {showDot && (
                   <span aria-label="Unread updates" className={styles.dot} />
                 )}
