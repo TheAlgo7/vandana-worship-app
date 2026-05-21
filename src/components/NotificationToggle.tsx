@@ -12,26 +12,21 @@ import {
 
 type State = "unsupported" | "blocked" | "off" | "checking" | "loading" | "on" | "error";
 
-function getInitialState(): State {
-  if (typeof window === "undefined") return "off";
-  if (!isPushSupported()) return "unsupported";
-  if (Notification.permission === "denied") return "blocked";
-  return "checking";
-}
-
 async function readError(response: Response) {
   const data = await response.json().catch(() => null);
   return data?.error ? String(data.error) : "Could not save this device for notifications.";
 }
 
 export default function NotificationToggle() {
-  const [state, setState] = useState<State>(getInitialState);
+  const [state, setState] = useState<State>("off");
   const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
     let cancelled = false;
 
     async function syncSubscription() {
+      setState("checking");
+
       if (!isPushSupported()) {
         if (!cancelled) setState("unsupported");
         return;

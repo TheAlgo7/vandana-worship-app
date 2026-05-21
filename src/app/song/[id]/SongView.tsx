@@ -12,6 +12,7 @@ import DailyVerse from "@/components/DailyVerse";
 import LyricsBlock from "@/components/LyricsBlock";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
+import { useSetlistEnabled } from "@/lib/setlistPreference";
 
 type SongViewProps = {
   song: Song;
@@ -43,6 +44,7 @@ export default function SongView({ song }: SongViewProps) {
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const { favourites, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
+  const [setlistEnabled] = useSetlistEnabled();
   const isFavourite = favourites.includes(song.id);
   const queued = isInSetlist(song.id);
 
@@ -184,26 +186,28 @@ export default function SongView({ song }: SongViewProps) {
           <Share2 size={18} />
         </button>
 
-        <button
-          onClick={() => toggleSetlist(song.id)}
-          aria-label={queued ? "Remove from setlist" : "Add to setlist"}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 44,
-            height: 44,
-            background: queued ? "var(--accent-dim)" : "none",
-            border: "none",
-            borderRadius: "var(--radius-pill)",
-            cursor: "pointer",
-            padding: 0,
-            flexShrink: 0,
-            color: queued ? "var(--accent)" : "var(--text-secondary)",
-          }}
-        >
-          {queued ? <ListX size={19} /> : <ListPlus size={19} />}
-        </button>
+        {setlistEnabled && (
+          <button
+            onClick={() => toggleSetlist(song.id)}
+            aria-label={queued ? "Remove from setlist" : "Add to setlist"}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 44,
+              height: 44,
+              background: queued ? "var(--accent-dim)" : "none",
+              border: "none",
+              borderRadius: "var(--radius-pill)",
+              cursor: "pointer",
+              padding: 0,
+              flexShrink: 0,
+              color: queued ? "var(--accent)" : "var(--text-secondary)",
+            }}
+          >
+            {queued ? <ListX size={19} /> : <ListPlus size={19} />}
+          </button>
+        )}
 
         {/* Present button always visible */}
         <Link

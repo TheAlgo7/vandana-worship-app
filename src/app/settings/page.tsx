@@ -2,11 +2,12 @@
 
 import { useState, useCallback } from "react";
 import { useTheme } from "next-themes";
-import { Heart } from "lucide-react";
+import { Heart, ListMusic } from "lucide-react";
 import BottomNav from "@/components/BottomNav";
 import DailyVerse from "@/components/DailyVerse";
 import FontSizeControl from "@/components/FontSizeControl";
 import NotificationToggle from "@/components/NotificationToggle";
+import { useSetlistEnabled } from "@/lib/setlistPreference";
 import {
   DEFAULT_LANGUAGE_STORAGE_KEY,
   getStoredDefaultLanguage,
@@ -21,6 +22,7 @@ const LANG_OPTIONS = [
 export default function SettingsPage() {
   const { theme, setTheme } = useTheme();
   const isDark = theme !== "light";
+  const [setlistEnabled, setSetlistEnabled] = useSetlistEnabled();
 
   const [lang, setLang] = useState<string>(() => {
     return getStoredDefaultLanguage();
@@ -193,6 +195,95 @@ export default function SettingsPage() {
               Default size for all songs
             </p>
             <FontSizeControl />
+          </div>
+        </section>
+
+        <section style={{ marginBottom: 36 }}>
+          <p className="section-label">Worship Planning</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 14,
+              padding: "14px 16px",
+              background: "var(--bg-surface)",
+              borderRadius: "var(--radius-md)",
+              border: "1px solid var(--border)",
+            }}
+          >
+            <div style={{ display: "flex", alignItems: "center", gap: 12, minWidth: 0 }}>
+              <span
+                aria-hidden="true"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: 34,
+                  height: 34,
+                  borderRadius: "var(--radius-pill)",
+                  background: "var(--accent-dim)",
+                  color: "var(--accent)",
+                  flexShrink: 0,
+                }}
+              >
+                <ListMusic size={17} strokeWidth={1.8} />
+              </span>
+              <div style={{ minWidth: 0 }}>
+                <p style={{ fontSize: "var(--text-base)", fontWeight: 500, margin: 0 }}>
+                  Show Setlist
+                </p>
+                <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", lineHeight: 1.45, marginTop: 2 }}>
+                  Adds planning tools for worship leaders and teams.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              role="switch"
+              onClick={() => setSetlistEnabled(!setlistEnabled)}
+              aria-checked={setlistEnabled}
+              aria-label={setlistEnabled ? "Hide Setlist from navigation" : "Show Setlist in navigation"}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 48,
+                minHeight: 44,
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                flexShrink: 0,
+                padding: 0,
+              }}
+            >
+              <span
+                style={{
+                  position: "relative",
+                  display: "block",
+                  width: 48,
+                  height: 28,
+                  borderRadius: "var(--radius-pill)",
+                  background: setlistEnabled ? "var(--accent)" : "var(--border)",
+                  transition: "background var(--transition-fast)",
+                  flexShrink: 0,
+                }}
+              >
+                <span
+                  style={{
+                    position: "absolute",
+                    top: 3,
+                    left: setlistEnabled ? 23 : 3,
+                    width: 22,
+                    height: 22,
+                    borderRadius: "50%",
+                    background: setlistEnabled ? "var(--bg-base)" : "var(--bg-surface)",
+                    transition: "left var(--transition-fast)",
+                    boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                  }}
+                />
+              </span>
+            </button>
           </div>
         </section>
 

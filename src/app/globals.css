@@ -706,11 +706,6 @@ a:active {
 .route-fade {
   animation: fadeIn 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
-@media (prefers-reduced-motion: reduce) {
-  .route-fade {
-    animation: none;
-  }
-}
 
 /* ── Theme flash overlay ── */
 @keyframes themeFlash {

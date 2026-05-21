@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import type { LucideIcon } from "lucide-react";
 import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
+import { useSetlistEnabled } from "@/lib/setlistPreference";
 import styles from "./BottomNav.module.css";
 
 const NAV_ITEMS: {
@@ -15,10 +16,11 @@ const NAV_ITEMS: {
   Icon: LucideIcon;
   exact: boolean;
   badge?: "updates";
+  feature?: "setlist";
 }[] = [
   { href: "/",           label: "Home",       Icon: House,    exact: true  },
   { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true, badge: "updates" },
-  { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false },
+  { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false, feature: "setlist" },
   { href: "/favourites", label: "Favourites", shortLabel: "Saved", Icon: Heart, exact: false },
   { href: "/settings",   label: "Settings",   Icon: Settings, exact: false },
 ];
@@ -26,6 +28,7 @@ const NAV_ITEMS: {
 export default function BottomNav() {
   const pathname = usePathname();
   const [hasUnread, setHasUnread] = useState(false);
+  const [setlistEnabled, , setlistRevealPulse] = useSetlistEnabled();
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -46,7 +49,9 @@ export default function BottomNav() {
       <div aria-hidden className={styles.fade} />
 
       <nav aria-label="Main navigation" className={styles.pill}>
-        {NAV_ITEMS.map(({ href, label, shortLabel, Icon, exact, badge }) => {
+        {NAV_ITEMS
+          .filter((item) => item.feature !== "setlist" || setlistEnabled)
+          .map(({ href, label, shortLabel, Icon, exact, badge, feature }) => {
           const active = isActive(href, exact);
           const showDot = badge === "updates" && hasUnread && !active;
 
@@ -56,7 +61,11 @@ export default function BottomNav() {
               href={href}
               aria-label={label}
               aria-current={active ? "page" : undefined}
-              className={`${styles.item}${active ? ` ${styles.active}` : ""}`}
+              className={[
+                styles.item,
+                active ? styles.active : "",
+                feature === "setlist" && setlistRevealPulse > 0 ? styles.setlistPop : "",
+              ].filter(Boolean).join(" ")}
             >
               <span className={styles.icon}>
                 <Icon size={20} strokeWidth={active ? 2.1 : 1.7} aria-hidden />

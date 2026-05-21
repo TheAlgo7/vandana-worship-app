@@ -8,6 +8,7 @@ import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
+import { useSetlistEnabled } from "@/lib/setlistPreference";
 import Link from "next/link";
 
 function normalizeSearch(value: string): string {
@@ -47,14 +48,27 @@ function levenshteinWithin(a: string, b: string, maxDistance: number): boolean {
   return previous[b.length] <= maxDistance;
 }
 
-function fuzzyIncludes(haystack: string, query: string): boolean {
-  const normalizedHaystack = normalizeSearch(haystack);
-  const normalizedQuery = normalizeSearch(query);
+type SearchIndexEntry = {
+  song: SongMeta;
+  title: string;
+  artist: string;
+  church: string;
+  churchKey: string;
+  tags: string;
+  metadata: string;
+  metadataWords: string[];
+  lyrics: string;
+};
+
+function fuzzyIncludesPrepared(
+  normalizedHaystack: string,
+  words: string[],
+  normalizedQuery: string,
+  queryWords: string[],
+): boolean {
   if (!normalizedQuery) return true;
   if (normalizedHaystack.includes(normalizedQuery)) return true;
 
-  const words = normalizedHaystack.split(" ").filter(Boolean);
-  const queryWords = normalizedQuery.split(" ").filter(Boolean);
   if (queryWords.length === 0) return true;
 
   return queryWords.every((queryWord) => {
@@ -88,27 +102,44 @@ function formatChurchLabel(value: string): string {
 
 type SearchMatchKind = "title" | "related";
 
-function getSearchMatch(song: SongMeta, normalizedQuery: string): SearchMatchKind | null {
-  if (!normalizedQuery) return "title";
-
+function createSearchIndexEntry(song: SongMeta): SearchIndexEntry {
   const title = normalizeSearch(song.title);
   const artist = normalizeSearch(song.artist);
   const church = normalizeSearch(song.church ?? "");
   const tags = normalizeSearch(song.tags.join(" "));
+  const metadata = [artist, church, tags].filter(Boolean).join(" ");
+
+  return {
+    song,
+    title,
+    artist,
+    church,
+    churchKey: normalizeChurchKey(song.church ?? ""),
+    tags,
+    metadata,
+    metadataWords: metadata.split(" ").filter(Boolean),
+    lyrics: normalizeSearch(song.lyrics_search),
+  };
+}
+
+function getSearchMatch(
+  entry: SearchIndexEntry,
+  normalizedQuery: string,
+  queryWords: string[],
+): SearchMatchKind | null {
+  if (!normalizedQuery) return "title";
 
   if (
-    title === normalizedQuery ||
-    title.startsWith(normalizedQuery) ||
-    title.includes(normalizedQuery)
+    entry.title === normalizedQuery ||
+    entry.title.startsWith(normalizedQuery) ||
+    entry.title.includes(normalizedQuery)
   ) {
     return "title";
   }
 
   if (
-    fuzzyIncludes(artist, normalizedQuery) ||
-    fuzzyIncludes(church, normalizedQuery) ||
-    fuzzyIncludes(tags, normalizedQuery) ||
-    fuzzyIncludes(song.lyrics_search, normalizedQuery)
+    fuzzyIncludesPrepared(entry.metadata, entry.metadataWords, normalizedQuery, queryWords) ||
+    (normalizedQuery.length >= 3 && entry.lyrics.includes(normalizedQuery))
   ) {
     return "related";
   }
@@ -116,13 +147,12 @@ function getSearchMatch(song: SongMeta, normalizedQuery: string): SearchMatchKin
   return null;
 }
 
-function getTitleSearchScore(song: SongMeta, normalizedQuery: string): number {
+function getTitleSearchScore(entry: SearchIndexEntry, normalizedQuery: string): number {
   if (!normalizedQuery) return 0;
 
-  const title = normalizeSearch(song.title);
-  if (title === normalizedQuery) return 0;
-  if (title.startsWith(normalizedQuery)) return 1;
-  if (title.includes(normalizedQuery)) return 2;
+  if (entry.title === normalizedQuery) return 0;
+  if (entry.title.startsWith(normalizedQuery)) return 1;
+  if (entry.title.includes(normalizedQuery)) return 2;
   return 3;
 }
 
@@ -143,6 +173,7 @@ export default function HomeContent({
   const searchRef = useRef<HTMLInputElement>(null);
   const { isFavourite, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
+  const [setlistEnabled] = useSetlistEnabled();
 
   /* Debounce query for expensive fuzzy search */
   useEffect(() => {
@@ -238,44 +269,49 @@ export default function HomeContent({
     return Array.from(byKey.entries()).map(([key, label]) => ({ key, label }));
   }, [songs]);
 
+  const searchIndex = useMemo(() => songs.map(createSearchIndexEntry), [songs]);
   const normalizedQuery = useMemo(() => normalizeSearch(debouncedQuery), [debouncedQuery]);
-
-  const filtered = useMemo(() => {
-    return songs.filter((s) => {
-      const matchesQuery = !normalizedQuery || getSearchMatch(s, normalizedQuery) !== null;
-      const matchesChurch = !activeChurchKey || normalizeChurchKey(s.church ?? "") === activeChurchKey;
-      return matchesQuery && matchesChurch;
-    });
-  }, [songs, normalizedQuery, activeChurchKey]);
+  const queryWords = useMemo(
+    () => normalizedQuery.split(" ").filter(Boolean),
+    [normalizedQuery],
+  );
 
   const searchGroups = useMemo(() => {
+    const scopedEntries = activeChurchKey
+      ? searchIndex.filter((entry) => entry.churchKey === activeChurchKey)
+      : searchIndex;
+
     if (!normalizedQuery) {
       return {
-        best: filtered,
+        best: scopedEntries.map((entry) => entry.song),
         related: [] as SongMeta[],
       };
     }
 
-    const best: SongMeta[] = [];
+    const best: SearchIndexEntry[] = [];
     const related: SongMeta[] = [];
 
-    for (const song of filtered) {
-      const matchKind = getSearchMatch(song, normalizedQuery);
-      if (matchKind === "title") best.push(song);
-      else if (matchKind === "related") related.push(song);
+    for (const entry of scopedEntries) {
+      const matchKind = getSearchMatch(entry, normalizedQuery, queryWords);
+      if (matchKind === "title") best.push(entry);
+      else if (matchKind === "related") related.push(entry.song);
     }
 
     best.sort((a, b) => {
       const scoreDiff = getTitleSearchScore(a, normalizedQuery) - getTitleSearchScore(b, normalizedQuery);
       if (scoreDiff !== 0) return scoreDiff;
-      return a.title.localeCompare(b.title);
+      return a.song.title.localeCompare(b.song.title);
     });
 
-    return { best, related };
-  }, [filtered, normalizedQuery]);
+    return { best: best.map((entry) => entry.song), related };
+  }, [searchIndex, normalizedQuery, queryWords, activeChurchKey]);
 
   const hasSearch = !!normalizedQuery;
   const hasActiveFilters = hasSearch || !!activeChurchKey;
+  const filtered = useMemo(
+    () => hasSearch ? [...searchGroups.best, ...searchGroups.related] : searchGroups.best,
+    [hasSearch, searchGroups],
+  );
   const visibleKey = `${normalizedQuery}|${activeChurchKey ?? ""}`;
   const visibleCount = visibleState.key === visibleKey
     ? visibleState.count
@@ -458,8 +494,8 @@ export default function HomeContent({
                               isFavourite={isFavourite(song.id)}
                               onLongPress={() => toggleFavourite(song.id)}
                               onFavouriteToggle={() => toggleFavourite(song.id)}
-                              isInSetlist={isInSetlist(song.id)}
-                              onSetlistToggle={() => toggleSetlist(song.id)}
+                              isInSetlist={setlistEnabled && isInSetlist(song.id)}
+                              onSetlistToggle={setlistEnabled ? () => toggleSetlist(song.id) : undefined}
                             />
                           ))}
                         </section>
@@ -477,8 +513,8 @@ export default function HomeContent({
                               isFavourite={isFavourite(song.id)}
                               onLongPress={() => toggleFavourite(song.id)}
                               onFavouriteToggle={() => toggleFavourite(song.id)}
-                              isInSetlist={isInSetlist(song.id)}
-                              onSetlistToggle={() => toggleSetlist(song.id)}
+                              isInSetlist={setlistEnabled && isInSetlist(song.id)}
+                              onSetlistToggle={setlistEnabled ? () => toggleSetlist(song.id) : undefined}
                             />
                           ))}
                         </section>
@@ -492,8 +528,8 @@ export default function HomeContent({
                         isFavourite={isFavourite(song.id)}
                         onLongPress={() => toggleFavourite(song.id)}
                         onFavouriteToggle={() => toggleFavourite(song.id)}
-                        isInSetlist={isInSetlist(song.id)}
-                        onSetlistToggle={() => toggleSetlist(song.id)}
+                        isInSetlist={setlistEnabled && isInSetlist(song.id)}
+                        onSetlistToggle={setlistEnabled ? () => toggleSetlist(song.id) : undefined}
                       />
                     ))
                   )}
