@@ -62,7 +62,7 @@ function buildVersePayload(): PushPayload {
   return {
     title: "Verse of the Day",
     body: `${verse.english}\n${verse.reference}`,
-    silent: true,
+    silent: false,
     url: "/",
     tag: "daily-verse",
   };

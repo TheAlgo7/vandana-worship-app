@@ -1,85 +1,178 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import {
+  ensurePushRegistration,
+  getCurrentPushSubscription,
+  getVapidPublicKey,
+  isPushSupported,
+  showLocalNotification,
+  urlBase64ToUint8Array,
+} from "@/lib/pushNotifications";
 
-function urlBase64ToUint8Array(base64String: string): ArrayBuffer {
-  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
-  const rawData = atob(base64);
-  const arr = Uint8Array.from([...rawData].map((c) => c.charCodeAt(0)));
-  return arr.buffer;
-}
-
-type State = "unsupported" | "denied" | "off" | "loading" | "on";
+type State = "unsupported" | "blocked" | "off" | "checking" | "loading" | "on" | "error";
 
 function getInitialState(): State {
   if (typeof window === "undefined") return "off";
-  if (!("Notification" in window) || !("serviceWorker" in navigator)) {
-    return "unsupported";
-  }
-  if (Notification.permission === "denied") return "denied";
-  return "off";
+  if (!isPushSupported()) return "unsupported";
+  if (Notification.permission === "denied") return "blocked";
+  return "checking";
+}
+
+async function readError(response: Response) {
+  const data = await response.json().catch(() => null);
+  return data?.error ? String(data.error) : "Could not save this device for notifications.";
 }
 
 export default function NotificationToggle() {
   const [state, setState] = useState<State>(getInitialState);
+  const [message, setMessage] = useState<string>("");
 
   useEffect(() => {
-    if (!("Notification" in window) || !("serviceWorker" in navigator)) {
-      return;
-    }
-    if (Notification.permission === "denied") {
-      return;
-    }
-    navigator.serviceWorker.ready.then((reg) =>
-      reg.pushManager.getSubscription().then((sub) => {
+    let cancelled = false;
+
+    async function syncSubscription() {
+      if (!isPushSupported()) {
+        if (!cancelled) setState("unsupported");
+        return;
+      }
+
+      if (Notification.permission === "denied") {
+        if (!cancelled) setState("blocked");
+        return;
+      }
+
+      if (Notification.permission !== "granted") {
+        if (!cancelled) setState("off");
+        return;
+      }
+
+      try {
+        const sub = await getCurrentPushSubscription();
+        if (cancelled) return;
         setState(sub ? "on" : "off");
-      })
-    );
+        setMessage(
+          sub
+            ? "This device is subscribed."
+            : "Permission is allowed, but this device is not subscribed yet."
+        );
+      } catch (error) {
+        if (cancelled) return;
+        setState("error");
+        setMessage(error instanceof Error ? error.message : "Could not check notification status.");
+      }
+    }
+
+    void syncSubscription();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   async function enable() {
     setState("loading");
-    try {
-      const permission = await Notification.requestPermission();
-      if (permission !== "granted") { setState("denied"); return; }
+    setMessage("");
 
-      const reg = await navigator.serviceWorker.ready;
-      const sub = await reg.pushManager.subscribe({
-        userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(
-          process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY!
-        ),
-      });
+    try {
+      const vapidPublicKey = getVapidPublicKey();
+      if (!vapidPublicKey) {
+        setState("error");
+        setMessage("Notifications are not configured for this build.");
+        return;
+      }
+
+      const permission =
+        Notification.permission === "granted"
+          ? "granted"
+          : await Notification.requestPermission();
+
+      if (permission === "denied") {
+        setState("blocked");
+        setMessage("Notifications are blocked. Enable them in browser or Android app settings.");
+        return;
+      }
+
+      if (permission !== "granted") {
+        setState("off");
+        setMessage("Notifications were not enabled. Tap again when you are ready to allow them.");
+        return;
+      }
+
+      const registration = await ensurePushRegistration();
+      const existing = await registration.pushManager.getSubscription();
+      const subscription =
+        existing ??
+        (await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(vapidPublicKey),
+        }));
 
       const res = await fetch("/api/push/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(sub.toJSON()),
+        body: JSON.stringify(subscription.toJSON()),
       });
 
-      setState(res.ok ? "on" : "off");
-    } catch {
-      setState("off");
+      if (!res.ok) {
+        await subscription.unsubscribe().catch(() => undefined);
+        setState("error");
+        setMessage(await readError(res));
+        return;
+      }
+
+      setState("on");
+      setMessage("Notifications are on for this device.");
+      await showLocalNotification(
+        registration,
+        "Vandana notifications are on",
+        "Daily verse alerts are ready on this device."
+      ).catch(() => undefined);
+    } catch (error) {
+      setState("error");
+      setMessage(error instanceof Error ? error.message : "Could not enable notifications.");
     }
   }
 
   async function disable() {
     setState("loading");
+    setMessage("");
+
     try {
-      const reg = await navigator.serviceWorker.ready;
-      const sub = await reg.pushManager.getSubscription();
-      if (sub) {
+      const registration = await ensurePushRegistration();
+      const subscription = await registration.pushManager.getSubscription();
+
+      if (subscription) {
         await fetch("/api/push/subscribe", {
           method: "DELETE",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ endpoint: sub.endpoint }),
-        });
-        await sub.unsubscribe();
+          body: JSON.stringify({ endpoint: subscription.endpoint }),
+        }).catch(() => undefined);
+        await subscription.unsubscribe();
       }
+
       setState("off");
-    } catch {
-      setState("off");
+      setMessage("Notifications are off for this device.");
+    } catch (error) {
+      setState("error");
+      setMessage(error instanceof Error ? error.message : "Could not disable notifications.");
+    }
+  }
+
+  async function sendTest() {
+    if (state !== "on") return;
+    setMessage("");
+
+    try {
+      const registration = await ensurePushRegistration();
+      await showLocalNotification(
+        registration,
+        "Vandana test notification",
+        "Your device can show Vandana notifications."
+      );
+      setMessage("Test notification sent to this device.");
+    } catch (error) {
+      setState("error");
+      setMessage(error instanceof Error ? error.message : "Could not send a test notification.");
     }
   }
 
@@ -91,9 +184,10 @@ export default function NotificationToggle() {
     );
   }
 
-  const isDenied = state === "denied";
+  const isBlocked = state === "blocked";
   const isOn = state === "on";
-  const isLoading = state === "loading";
+  const isBusy = state === "loading" || state === "checking";
+  const statusLabel = isBusy ? "Checking" : isOn ? "On" : isBlocked ? "Blocked" : "Off";
 
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -102,6 +196,7 @@ export default function NotificationToggle() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          gap: 14,
           padding: "14px 16px",
           background: "var(--bg-surface)",
           borderRadius: "var(--radius-md)",
@@ -113,59 +208,108 @@ export default function NotificationToggle() {
             Push Notifications
           </p>
           <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", margin: "2px 0 0" }}>
-            Daily verse and new song alerts
+            Daily verse alerts
           </p>
         </div>
-        <button
-          onClick={isOn ? disable : enable}
-          disabled={isLoading || isDenied}
-          aria-label={isOn ? "Disable notifications" : "Enable notifications"}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 48,
-            minHeight: 44,
-            background: "none",
-            border: "none",
-            cursor: isLoading || isDenied ? "not-allowed" : "pointer",
-            flexShrink: 0,
-            padding: 0,
-            opacity: isLoading ? 0.5 : 1,
-          }}
-        >
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0 }}>
           <span
+            aria-live="polite"
             style={{
-              position: "relative",
-              display: "block",
+              color: isOn ? "var(--accent)" : "var(--text-muted)",
+              fontSize: "var(--text-xs)",
+              fontWeight: 700,
+            }}
+          >
+            {statusLabel}
+          </span>
+          <button
+            type="button"
+            role="switch"
+            aria-checked={isOn}
+            onClick={isOn ? disable : enable}
+            disabled={isBusy || isBlocked}
+            aria-label={isOn ? "Disable notifications" : "Enable notifications"}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
               width: 48,
-              height: 28,
-              borderRadius: "var(--radius-pill)",
-              background: isOn ? "var(--accent)" : "var(--border)",
-              transition: "background var(--transition-fast)",
+              minHeight: 44,
+              background: "none",
+              border: "none",
+              cursor: isBusy || isBlocked ? "not-allowed" : "pointer",
+              flexShrink: 0,
+              padding: 0,
+              opacity: isBusy ? 0.55 : 1,
             }}
           >
             <span
               style={{
-                position: "absolute",
-                top: 3,
-                left: isOn ? 23 : 3,
-                width: 22,
-                height: 22,
-                borderRadius: "50%",
-                background: isOn ? "var(--bg-base)" : "var(--bg-surface)",
-                transition: "left var(--transition-fast)",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                position: "relative",
+                display: "block",
+                width: 48,
+                height: 28,
+                borderRadius: "var(--radius-pill)",
+                background: isOn ? "var(--accent)" : "var(--border)",
+                transition: "background var(--transition-fast)",
               }}
-            />
-          </span>
-        </button>
+            >
+              <span
+                style={{
+                  position: "absolute",
+                  top: 3,
+                  left: isOn ? 23 : 3,
+                  width: 22,
+                  height: 22,
+                  borderRadius: "50%",
+                  background: isOn ? "var(--bg-base)" : "var(--bg-surface)",
+                  transition: "left var(--transition-fast)",
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                }}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
-      {isDenied && (
-        <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", margin: 0, paddingLeft: 4 }}>
-          Notifications are blocked. Enable them in your browser settings to continue.
-        </p>
+      {(message || isBlocked || isOn) && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 12,
+            paddingLeft: 4,
+          }}
+        >
+          <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", margin: 0, lineHeight: 1.5 }}>
+            {message ||
+              (isBlocked
+                ? "Notifications are blocked. Enable them in browser or Android app settings."
+                : "Notifications are on for this device.")}
+          </p>
+          {isOn && (
+            <button
+              type="button"
+              onClick={sendTest}
+              style={{
+                border: "1px solid var(--border)",
+                borderRadius: "var(--radius-pill)",
+                background: "transparent",
+                color: "var(--text-secondary)",
+                minHeight: 34,
+                padding: "0 12px",
+                fontSize: "var(--text-xs)",
+                fontWeight: 700,
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              Test
+            </button>
+          )}
+        </div>
       )}
     </div>
   );
