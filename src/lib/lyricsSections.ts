@@ -12,15 +12,21 @@ function getSectionNumber(normalizedKey: string): number {
 
 function getSectionRank(key: string): number {
   const normalized = normalizeSectionKey(key);
+  const sectionNumber = getSectionNumber(normalized);
 
   if (normalized.startsWith("intro")) return 0;
-  if (normalized === "pre_chorus" || normalized === "prechorus") return 1;
-  if (normalized === "chorus") return 2;
-  if (normalized.startsWith("verse")) return 3;
-  if (normalized.startsWith("bridge")) return 5;
-  if (normalized.startsWith("repeat_chorus") || normalized.startsWith("chorus")) return 5;
-  if (normalized.startsWith("outro")) return 6;
-  return 4;
+  if (normalized.startsWith("verse")) return 100 + sectionNumber * 10;
+  if (normalized.startsWith("pre_chorus") || normalized.startsWith("prechorus")) {
+    return 100 + (sectionNumber || 1) * 10 + 1;
+  }
+  if (normalized === "chorus" || normalized === "chorus1") return 112;
+  if (normalized.startsWith("bridge")) return 900 + sectionNumber;
+  if (normalized.startsWith("final_chorus") || normalized.startsWith("repeat_chorus")) return 920 + sectionNumber;
+  if (normalized.startsWith("chorus")) return 930 + sectionNumber;
+  if (normalized.includes("english_chorus")) return 940;
+  if (normalized.includes("chorus_additional")) return 950;
+  if (normalized.startsWith("outro")) return 980 + sectionNumber;
+  return 800;
 }
 
 export function getOrderedSectionEntries(sections: LyricsMap): SectionEntry[] {
@@ -45,6 +51,9 @@ export function getOrderedSectionEntries(sections: LyricsMap): SectionEntry[] {
 }
 
 export function formatSectionLabel(key: string): string {
+  if (/^final[-_\s]?chorus\d*$/i.test(key)) return "Chorus";
+  if (/^chorus[-_\s]?additional$/i.test(key)) return "Chorus Additional";
+  if (/^english[-_\s]?chorus$/i.test(key)) return "English Chorus";
   if (/^pre[-_\s]?chorus$/i.test(key)) return "Pre Chorus";
 
   return key

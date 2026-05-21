@@ -11,28 +11,26 @@
   ],
   "lyrics": {
     "hinglish": {
-      "verse1": "Kaun hai wo, jo aag se bachaye\nKaun hai wo, jo rasta banaye\nKaun hai wo, jo aandhi rukaye\nKaun hai wo, jo andhera mitaye",
-      "pre_chorus": "Itihas ko jisne rachaya hai\nWo khada aalam badshah",
-      "chorus": "Pahadiya pighal ja\nAafat tu mit ja\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuchh hai badlaa\nYeshu ke shaktishali naam se",
-      "verse2": "Kaun hai wo, jo jang ko jitaye\nKaun hai wo, jo nafrat ko mitaye",
-      "pre_chorus2": "Itihas ko jisne rachaya hai\nWo khada aalam badshah",
-      "chorus2": "Pahadiya pighal ja\nAafat tu mit ja\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuchh hai badlaa\nYeshu ke shaktishali naam se",
-      "bridge": "Wahi hai badshah, uska jalaal\nUski hukumat be-misaal\nTakht pe virajmaan Yeshu (x2)\nAye kabr teri fateh kahan\nAye maut tera dank kahan\nTujhe to suli par haraya, Yeshu ne (x2)\nZameen thartharaye\nBadti laherein tham jaaye\nCheer aasmaan aaye, Yeshu (x2)",
-      "chorus3": "Pahadiya pighal ja\nAafat tu mit ja\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuchh hai badlaa\nYeshu ke shaktishali naam se",
-      "chorus4": "Ran geet gaye\nShaitan ko haraye\nYeshu, Yeshu, Yeshu naam se\nShaktishali, shaktishali\nShaktishali, shaktishali",
-      "english_chorus": "Dry bones are rattling\nNo graves can hold them in\nThey're trembling at the mighty name of Jesus\nPrison walls are breaking down\nEvery chain will hit the ground\nThey fall apart at the mighty name of Jesus\nOh death, you have no victory\nYou fall before the King of kings\nYou're powerless at the mighty name of Jesus\nThis is our battle song\nYou can't contain a lion's roar\nThe earth shakes at the mighty name of Jesus\nShaktishali, shaktishali\nShaktishali, shaktishali (x2)"
+      "verse1": "Kaun hai wo jo aag se bachaye\nKaun hai wo jo rasta banaye\nKaun hai wo jo aandhi rukaye\nKaun hai wo jo andhera mitaye",
+      "pre_chorus": "Itihas ko jisne rachaya hai\nVo khada Aalam Baadshah",
+      "chorus": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badlaa\nYeshu ke shaktishali naam se",
+      "verse2": "Kaun hai wo jo jang ko jeetaye\nKaun hai wo jo nafrat ko mitaye",
+      "pre_chorus2": "Itihas ko jisne rachaya hai\nVo khada Aalam Baadshah",
+      "bridge": "Wahi hai baadshah uska jalaal\nUski hukumat be-misaal\nTakht pe virajmaan Yeshu (2)\nEh kabr teri fateh kahaa\nEh maut tera dank kahaa\nTujhe toh suuli par haraya\nYeshu ne (2)\n\nZameen thartharaye\nBadti laherein thum jaaye\nCheer asamaaan aaye Yeshu\nZameen thartharaye\nBadti laherein thum jaaye\nCheer asamaaan aaye Yeshu",
+      "final_chorus": "Pahadiya pighal ja\nAafat tu mit jaa\nYeshu ke shaktishali naam se\nShraap ko hai kuchla\nSab kuch hai badlaa\nYeshu ke shaktishali naam se",
+      "chorus_additional": "Rana geet gaye\nShaitan ko haraye\nYeshu Yeshu Yeshu se",
+      "english_chorus": "Dry bones are rattling\nNo graves can hold them in\nThey're trembling at\nThe mighty name of Jesus\n\nPrison walls are\nBreaking down\nEvery chain will\nHit the ground\nThey fall apart at\nThe mighty name of Jesus\n\nOh death you have no victory\nYou fall before the\nKing of kings\nYou're powerless at\nThe mighty name of Jesus\n\nThis is our battle song\nYou can't contain\nA lion's roar\nThe earth shakes at\nThe mighty name of Jesus"
     },
     "hindi": {
-      "verse1": ",\n  ,\n  ,\n  ,",
-      "pre_chorus": "",
-      "chorus": "",
-      "verse2": ",\n  ,",
-      "pre_chorus2": "",
-      "chorus2": "",
-      "bridge": ",\n  -\n  ,  (x2)\n    ,   (x2)\n  ,  (x2)",
-      "chorus3": "",
-      "chorus4": ", ,\n,\n,",
-      "english_chorus": "Dry bones are rattling\nNo graves can hold them in\nThey're trembling at the mighty name of Jesus\nPrison walls are breaking down\nEvery chain will hit the ground\nThey fall apart at the mighty name of Jesus\nOh death, you have no victory\nYou fall before the King of kings\nYou're powerless at the mighty name of Jesus\nThis is our battle song\nYou can't contain a lion's roar\nThe earth shakes at the mighty name of Jesus\nShaktishali, shaktishali\nShaktishali, shaktishali (x2)"
+      "verse1": "कौन है वो जो आग से बचाए\nकौन है वो जो रास्ता बनाए\nकौन है वो जो आंधी रुकाए\nकौन है वो जो अंधेरा मिटाए",
+      "pre_chorus": "इतिहास को जिसने रचाया है\nवो खड़ा आलम बादशाह",
+      "chorus": "पहाड़ियां पिघल जा\nआफत तू मिट जा\nयीशु के शक्तिशाली नाम से\nश्राप को है कुचला\nसब कुछ है बदला\nयीशु के शक्तिशाली नाम से",
+      "verse2": "कौन है वो जो जंग को जिताए\nकौन है वो जो नफरत को मिटाए",
+      "pre_chorus2": "इतिहास को जिसने रचाया है\nवो खड़ा आलम बादशाह",
+      "bridge": "वही है बादशाह उसका जलाल\nउसकी हुकूमत बेमिसाल\nतख्त पे विराजमान यीशु (2)\nऐ कब्र तेरी फतेह कहां\nऐ मौत तेरा डंक कहां\nतुझे तो सूली पर हराया\nयीशु ने (2)\n\nज़मीन थरथराए\nबढ़ती लहरें थम जाए\nचीर आसमान आए यीशु\nज़मीन थरथराए\nबढ़ती लहरें थम जाए\nचीर आसमान आए यीशु",
+      "final_chorus": "पहाड़ियां पिघल जा\nआफत तू मिट जा\nयीशु के शक्तिशाली नाम से\nश्राप को है कुचला\nसब कुछ है बदला\nयीशु के शक्तिशाली नाम से",
+      "chorus_additional": "रण गीत गाए\nशैतान को हराए\nयीशु यीशु यीशु से",
+      "english_chorus": "Dry bones are rattling\nNo graves can hold them in\nThey're trembling at\nThe mighty name of Jesus\n\nPrison walls are\nBreaking down\nEvery chain will\nHit the ground\nThey fall apart at\nThe mighty name of Jesus\n\nOh death you have no victory\nYou fall before the\nKing of kings\nYou're powerless at\nThe mighty name of Jesus\n\nThis is our battle song\nYou can't contain\nA lion's roar\nThe earth shakes at\nThe mighty name of Jesus"
     }
   },
   "links": {
