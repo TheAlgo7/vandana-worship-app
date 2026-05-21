@@ -13,6 +13,7 @@ import aaBhiJaa from "./songs/aa-bhi-jaa.json";
 import aajHaiMahaAnandKaSusamay from "./songs/aaj-hai-maha-anand-ka-susamay.json";
 import aajKaDinYahowaNeBanayaHai from "./songs/aaj-ka-din-yahowa-ne-banaya-hai.json";
 import aajaRe from "./songs/aaja-re.json";
+import aadiAurAnth from "./songs/aadi-aur-anth.json";
 import aasmaanoMeinHoga from "./songs/aasmaano-mein-hoga.json";
 import aashaMeri from "./songs/aasha-meri.json";
 import aashiqTera from "./songs/aashiq-tera.json";
@@ -41,6 +42,8 @@ import chooLeMujhe from "./songs/choo-le-mujhe.json";
 import chillakarGaoonga from "./songs/chillakar-gaoonga.json";
 import deewana from "./songs/deewana.json";
 import deewanaMainYeshuKa from "./songs/deewana-main-yeshu-ka.json";
+import desh from "./songs/desh.json";
+import dhanyawad from "./songs/dhanyawad.json";
 import doorEkTharaJaaRahaaHai from "./songs/door-ek-thara-jaa-rahaa-hai.json";
 import doorKahinInRaahon from "./songs/door-kahin-in-raahon.json";
 import duniyaKeKonekoneMein from "./songs/duniya-ke-konekone-mein.json";
@@ -48,8 +51,10 @@ import ekAisiAgni from "./songs/ek-aisi-agni.json";
 import ekDoTeenChar from "./songs/ek-do-teen-char.json";
 import ekMahimaKaBaadal from "./songs/ek-mahima-ka-baadal.json";
 import gaakeMujhkoSunaoPhir from "./songs/gaake-mujhko-sunao-phir.json";
+import gawahi from "./songs/gawahi.json";
 import haiDiAawazFarishtoNe from "./songs/hai-di-aawaz-farishto-ne.json";
 import haiTu from "./songs/hai-tu.json";
+import haathUthaakarGaoonga from "./songs/haath-uthaakar-gaoonga.json";
 import hallelujahPrabhuMere from "./songs/hallelujah-prabhu-mere.json";
 import halleluyaahHalleluyaahGaayenge from "./songs/halleluyaah-halleluyaah-gaayenge.json";
 import haqTala from "./songs/haq-tala.json";
@@ -75,10 +80,13 @@ import mainNachdaNahiKade from "./songs/main-nachda-nahi-kade.json";
 import oshimiriAtata from "./songs/oshimiri-atata.json";
 import paakRuhTu from "./songs/paak-ruh-tu.json";
 import panah from "./songs/panah.json";
+import papa from "./songs/papa.json";
 import pankhonTaley from "./songs/pankhon-taley.json";
 import rangLiya from "./songs/rang-liya.json";
 import rehaai from "./songs/rehaai.json";
 import shaktishaali from "./songs/shaktishaali.json";
+import sangTere from "./songs/sang-tere.json";
+import teriMarzi from "./songs/teri-marzi.json";
 import teriOreJabMasih from "./songs/teri-ore-jab-masih.json";
 import toreSiwa from "./songs/tore-siwa.json";
 import tuRajKare from "./songs/tu-raj-kare.json";
@@ -96,6 +104,7 @@ export const LOCAL_SONGS: Song[] = [
   aajHaiMahaAnandKaSusamay,
   aajKaDinYahowaNeBanayaHai,
   aajaRe,
+  aadiAurAnth,
   aasmaanoMeinHoga,
   aashaMeri,
   aashiqTera,
@@ -124,6 +133,8 @@ export const LOCAL_SONGS: Song[] = [
   chillakarGaoonga,
   deewana,
   deewanaMainYeshuKa,
+  desh,
+  dhanyawad,
   doorEkTharaJaaRahaaHai,
   doorKahinInRaahon,
   duniyaKeKonekoneMein,
@@ -131,8 +142,10 @@ export const LOCAL_SONGS: Song[] = [
   ekDoTeenChar,
   ekMahimaKaBaadal,
   gaakeMujhkoSunaoPhir,
+  gawahi,
   haiDiAawazFarishtoNe,
   haiTu,
+  haathUthaakarGaoonga,
   hallelujahPrabhuMere,
   halleluyaahHalleluyaahGaayenge,
   haqTala,
@@ -158,10 +171,13 @@ export const LOCAL_SONGS: Song[] = [
   oshimiriAtata,
   paakRuhTu,
   panah,
+  papa,
   pankhonTaley,
   rangLiya,
   rehaai,
   shaktishaali,
+  sangTere,
+  teriMarzi,
   teriOreJabMasih,
   toreSiwa,
   tuRajKare,

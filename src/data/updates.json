@@ -1,5 +1,23 @@
 [
   {
+    "id": "update-027",
+    "date": "2026-05-21",
+    "title": "Bridge Music Songs Refreshed",
+    "body": "Added and refreshed key Bridge Music songs with clean Hindi and Hinglish lyrics, including Gawahi, Haath Uthaakar Gaoonga, Dhanyawad, Sang Tere, Teri Marzi, Desh, Aadi Aur Anth, and Papa.",
+    "type": "songs_updated",
+    "song_count": 8,
+    "song_names": [
+      "Gawahi",
+      "Haath Uthaakar Gaoonga",
+      "Dhanyawad",
+      "Sang Tere",
+      "Teri Marzi",
+      "Desh",
+      "Aadi Aur Anth",
+      "Papa"
+    ]
+  },
+  {
     "id": "update-026",
     "date": "2026-05-21",
     "title": "Nations of Worship Songs Refreshed",

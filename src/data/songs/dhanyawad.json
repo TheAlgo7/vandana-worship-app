@@ -1,0 +1,49 @@
+{
+  "id": "dhanyawad",
+  "title": "Dhanyawad",
+  "artist": "Bridge Music ft. Sam Alex Pasula, Rachel Francis & Hemant Sharma",
+  "church": "Bridge Music",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Meri har chahat ko\nPura tune hai kiya Yeshua\nAashayein meri\nSampoorna ho gayi tujh mein Yeshua",
+      "pre_chorus": "Har bhook meri tune hai jaana\nBaahon mein lekar\nMujh ko sambhaala (x2)",
+      "chorus": "Dhanyawad Yeshua tera\nDhanyawad Yeshua",
+      "pre_chorus2": "Meri soch se pare\nAshcharya kaamon se\nTune panah di har ek kami mein (x2)",
+      "pre_chorus3": "Kathinaiyon mein sab ujda lage par\nTere haath ki parchayi\nKabhi na hategi",
+      "bridge": "Teri raahon se main khoya bhi agar\nPhir bhi teri kripa chhode na mujhe (x2)",
+      "verse2": "Har guzarish ko qabool\nTune hai kiya Yeshua\nMere sawaalon ka jawab\nTu hi Yeshua, Yeshua (x2)",
+      "backing_vocals": "Badle mein kya doon tere\nAnmol pyaar ke\nYeshua dhanyawad"
+    },
+    "hindi": {
+      "verse1": "मेरी हर चाहत को\nपूरा तूने है किया येशुआ\nआशाएं मेरी\nसंपूर्ण हो गयी तुझ में येशुआ",
+      "pre_chorus": "हर भूख मेरी तूने है जाना\nबाहों में लेकर\nमुझ को संभाला (x2)",
+      "chorus": "धन्यवाद येशुआ तेरा\nधन्यवाद येशुआ",
+      "pre_chorus2": "मेरी सोच से परे\nआश्चर्य कामों से\nतूने पनाह दी हर एक कमी में (x2)",
+      "pre_chorus3": "कठिनाइयों में सब उजड़ा लगे पर\nतेरे हाथ की परछाई\nकभी ना हटेगी",
+      "bridge": "तेरी राहों से मैं खोया भी अगर\nफिर भी तेरी कृपा छोड़े न मुझे (x2)",
+      "verse2": "हर गुज़ारिश को क़बूल\nतूने है किया येशुआ\nमेरे सवालों का जवाब\nतू ही येशुआ, येशुआ (x2)",
+      "backing_vocals": "बदले में क्या दूं तेरे\nअनमोल प्यार के\nयेशुआ धन्यवाद"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watch?v=ZB5sEqs37gU",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "bridge-music",
+    "hindi",
+    "hinglish",
+    "thanksgiving",
+    "gratitude"
+  ],
+  "seo_description": "Dhanyawad lyrics in Hindi and Hinglish by Bridge Music ft. Sam Alex Pasula, Rachel Francis and Hemant Sharma.",
+  "added_by": "Gaurav | Vandana"
+}

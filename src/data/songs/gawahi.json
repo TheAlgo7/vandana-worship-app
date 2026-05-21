@@ -1,0 +1,44 @@
+{
+  "id": "gawahi",
+  "title": "Gawahi",
+  "artist": "Bridge Music ft. Sam Alex Pasula, Devin D'Souza, Sheenu Mariam & Adina Grace",
+  "church": "Bridge Music",
+  "album": "Gawahi (Live)",
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Aanand se bhar diya, sab kuch kiya naya\nWoh beeta hua jeevan tune dafna diya\nTeri daya se hi sab kuch badal gaya\nUmad raha hai yeh jeevan mera",
+      "pre_chorus": "Teri chahat, meri bhalayi, meri samriddhi hai\nTeri mohabbat, saari ibaadat, Yeshu bas teri hai",
+      "chorus": "Toh main gaaunga bhalayi teri\nSabko sunaunga yeh gawahi meri",
+      "verse2": "Beemari se changayi, bandhan se rihayi\nAazad kiya hai Yeshu tune mujhe",
+      "bridge": "Har pal jab main tere prem ko yaad karoon\nDoor nahi hai Yeshu, mere saath hai tu"
+    },
+    "hindi": {
+      "verse1": "आनंद से भर दिया, सब कुछ किया नया\nवो बीता हुआ जीवन तूने दफना दिया\nतेरी दया से ही सब कुछ बदल गया\nउमड़ रहा है ये जीवन मेरा",
+      "pre_chorus": "तेरी चाहत, मेरी भलाई, मेरी समृद्धि है\nतेरी मोहब्बत, सारी इबादत, यीशु बस तेरी है",
+      "chorus": "तो मैं गाऊंगा भलाई तेरी\nसबको सुनाऊंगा ये गवाही मेरी",
+      "verse2": "बीमारी से चंगाई, बंधन से रिहाई\nआजाद किया है यीशु तूने मुझे",
+      "bridge": "हर पल जब मैं तेरे प्रेम को याद करूं\nदूर नहीं है यीशु, मेरे साथ है तू"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "bridge-music",
+    "hindi",
+    "hinglish",
+    "testimony",
+    "goodness",
+    "2026"
+  ],
+  "seo_description": "Gawahi lyrics in Hindi and Hinglish by Bridge Music ft. Sam Alex Pasula, Devin D'Souza, Sheenu Mariam and Adina Grace.",
+  "added_by": "Gaurav | Vandana"
+}

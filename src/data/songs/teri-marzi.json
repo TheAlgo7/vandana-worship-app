@@ -1,0 +1,44 @@
+{
+  "id": "teri-marzi",
+  "title": "Teri Marzi",
+  "artist": "Allen Ganta, Nehemiah Kulothungan, Sam Alex Pasula & Rachel Francis",
+  "church": "Bridge Music",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Main jahan hoon\nTeri yojana hai\nMain jaisa hoon\nTeri rachna hoon\nMera jeevan\nTere haathon mein",
+      "chorus": "Teri marzi mere liye haani aur naash ki nahin\nTu chahe sirf bhalai\nMere jeevan mein sada",
+      "verse2": "Main hoon atal\nTere vaadon pe\nNa koi shastra rokega mujhe\nZanjeeron ko toda hai tune\nToda hai tune, tod diya tune",
+      "chorus2": "Teri marzi mere liye haani aur naash ki nahin\nTu chahe sirf bhalai\nMere jeevan mein sada",
+      "bridge": "Tu mera Khuda Pita\nBhi tu mera\nBaahon mein tere\nMain rahun sada"
+    },
+    "hindi": {
+      "verse1": "मैं जहां हूं\nतेरी योजना है\nमैं जैसा हूं\nतेरी रचना हूं\nमेरा जीवन\nतेरे हाथों में",
+      "chorus": "तेरी मर्ज़ी मेरे लिए हानि और नाश की नहीं\nतू चाहे सिर्फ भलाई\nमेरे जीवन में सदा",
+      "verse2": "मैं हूं अटल\nतेरे वादों पे\nना कोई शस्त्र रोकेगा मुझे\nज़ंजीरों को तोड़ा है तूने\nतोड़ा है तूने, तोड़ दिया तूने",
+      "chorus2": "तेरी मर्ज़ी मेरे लिए हानि और नाश की नहीं\nतू चाहे सिर्फ भलाई\nमेरे जीवन में सदा",
+      "bridge": "तू मेरा खुदा पिता\nभी तू मेरा\nबाहों में तेरे\nमैं रहूं सदा"
+    }
+  },
+  "links": {
+    "youtube": null,
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "bridge-music",
+    "hindi",
+    "hinglish",
+    "will",
+    "goodness",
+    "red-sea-films"
+  ],
+  "seo_description": "Teri Marzi lyrics in Hindi and Hinglish by Allen Ganta, Nehemiah Kulothungan, Sam Alex Pasula and Rachel Francis.",
+  "added_by": "Gaurav | Vandana"
+}

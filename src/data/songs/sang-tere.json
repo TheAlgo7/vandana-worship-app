@@ -1,0 +1,43 @@
+{
+  "id": "sang-tere",
+  "title": "Sang Tere",
+  "artist": "Nehemiah K ft. Bridge Music, Amit Kamble & Rachel Francis",
+  "church": "Bridge Music",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "verse1": "Ye kaisa pyaar hai tera\nKi aisa tune hi kiya\nTera praan de diya\nTaaki main bhi jeeyu sada",
+      "verse2": "Meri or se ladhega\nKabhi haath na chhodega\nDar hataakar bal diya\nJeet tune mujhe diya",
+      "pre_chorus": "Shaitaan ko hara diya\nPaapon ko jad se ukhaad diya\nMujhe gher liya naye geet se\nAb main jeeta nayee shakti se",
+      "chorus": "Peeche nahi hatunga\nHaar nahi manunga\nBadhta rahunga\nSang tere",
+      "bridge": "Kehna hi kya hai\nKhuda mere paksh mein\nKaun ab mera\nVirodhi thahrega"
+    },
+    "hindi": {
+      "verse1": "ये कैसा प्यार है तेरा\nकि ऐसा तू ने ही किया\nतेरा प्राण दे दिया\nताकि मैं भी जीऊं सदा",
+      "verse2": "मेरी ओर से लड़ेगा\nकभी हाथ न छोड़ेगा\nडर हटाकर बल दिया\nजीत तूने मुझे दिया",
+      "pre_chorus": "शैतान को हरा दिया\nपापों को जड़ से उखाड़ दिया\nमुझे घेर लिया नए गीत से\nअब मैं जीता नई शक्ति से",
+      "chorus": "पीछे नहीं हटूंगा\nहार नहीं मानूंगा\nबढ़ता रहूँगा\nसंग तेरे",
+      "bridge": "कहना ही क्या है\nखुदा मेरे पक्ष में\nकौन अब मेरा\nविरोधी ठहरेगा"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watch?v=getozwPDpNc",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "bridge-music",
+    "hindi",
+    "hinglish",
+    "faith",
+    "victory"
+  ],
+  "seo_description": "Sang Tere lyrics in Hindi and Hinglish by Nehemiah K ft. Bridge Music, Amit Kamble and Rachel Francis.",
+  "added_by": "Gaurav | Vandana"
+}
