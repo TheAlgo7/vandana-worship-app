@@ -7,6 +7,11 @@ import BottomNav from "@/components/BottomNav";
 import DailyVerse from "@/components/DailyVerse";
 import FontSizeControl from "@/components/FontSizeControl";
 import NotificationToggle from "@/components/NotificationToggle";
+import {
+  DEFAULT_LANGUAGE_STORAGE_KEY,
+  getStoredDefaultLanguage,
+  isLanguage,
+} from "@/lib/languagePreference";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
@@ -18,14 +23,13 @@ export default function SettingsPage() {
   const isDark = theme !== "light";
 
   const [lang, setLang] = useState<string>(() => {
-    if (typeof window === "undefined") return "hinglish";
-    const stored = localStorage.getItem("vandana-default-lang");
-    return stored === "hindi" || stored === "hinglish" ? stored : "hinglish";
+    return getStoredDefaultLanguage();
   });
 
   const handleLangChange = useCallback((val: string) => {
+    if (!isLanguage(val)) return;
     setLang(val);
-    localStorage.setItem("vandana-default-lang", val);
+    localStorage.setItem(DEFAULT_LANGUAGE_STORAGE_KEY, val);
   }, []);
 
   return (

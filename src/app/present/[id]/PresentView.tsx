@@ -6,6 +6,11 @@ import Link from "next/link";
 import { ChevronLeft, ChevronRight, Play, Pause, X } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
+import {
+  getOrderedLanguages,
+  getStoredDefaultLanguage,
+  pickPreferredLanguage,
+} from "@/lib/languagePreference";
 import LyricsBlock from "@/components/LyricsBlock";
 import { useSetlist } from "@/contexts/SetlistContext";
 
@@ -13,7 +18,26 @@ const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
 const FONT_LABELS = ["A", "A", "A"] as const;
 
 export default function PresentView({ song }: { song: Song }) {
-  const [lang, setLang] = useState<Language>(song.language_default);
+  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language }>(() => ({
+    songId: song.id,
+    lang: pickPreferredLanguage(
+      song.languages_available,
+      getStoredDefaultLanguage(),
+      song.language_default,
+    ),
+  }));
+  const lang =
+    languageState.songId === song.id && song.languages_available.includes(languageState.lang)
+      ? languageState.lang
+      : pickPreferredLanguage(
+          song.languages_available,
+          getStoredDefaultLanguage(),
+          song.language_default,
+        );
+  const setLang = useCallback(
+    (nextLang: Language) => setLanguageState({ songId: song.id, lang: nextLang }),
+    [song.id],
+  );
   const [showControls, setShowControls] = useState(true);
   const [fontIdx, setFontIdx] = useState(0);
   const [autoScroll, setAutoScroll] = useState(false);
@@ -61,13 +85,11 @@ export default function PresentView({ song }: { song: Song }) {
 
   /* cycle language */
   const cycleLang = useCallback(() => {
-    const langs = song.languages_available;
+    const langs = getOrderedLanguages(song.languages_available);
     if (langs.length < 2) return;
-    setLang((cur) => {
-      const i = langs.indexOf(cur);
-      return langs[(i + 1) % langs.length];
-    });
-  }, [song.languages_available]);
+    const i = langs.indexOf(lang);
+    setLang(langs[(i + 1) % langs.length]);
+  }, [lang, setLang, song.languages_available]);
 
   /* auto-scroll */
   useEffect(() => {

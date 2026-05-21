@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ChevronLeft, Heart, ListPlus, ListX, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
+import { getStoredDefaultLanguage, pickPreferredLanguage } from "@/lib/languagePreference";
 import LanguageToggle from "@/components/LanguageToggle";
 import FontSizeControl from "@/components/FontSizeControl";
 import DailyVerse from "@/components/DailyVerse";
@@ -17,7 +18,26 @@ type SongViewProps = {
 };
 
 export default function SongView({ song }: SongViewProps) {
-  const [lang, setLang] = useState<Language>(song.languages_available[0]);
+  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language }>(() => ({
+    songId: song.id,
+    lang: pickPreferredLanguage(
+      song.languages_available,
+      getStoredDefaultLanguage(),
+      song.language_default,
+    ),
+  }));
+  const lang =
+    languageState.songId === song.id && song.languages_available.includes(languageState.lang)
+      ? languageState.lang
+      : pickPreferredLanguage(
+          song.languages_available,
+          getStoredDefaultLanguage(),
+          song.language_default,
+        );
+  const setLang = useCallback(
+    (nextLang: Language) => setLanguageState({ songId: song.id, lang: nextLang }),
+    [song.id],
+  );
   const [scrolled, setScrolled] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);

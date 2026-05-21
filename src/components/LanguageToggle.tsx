@@ -1,6 +1,7 @@
 "use client";
 
 import type { Language } from "@/lib/getSongs";
+import { getOrderedLanguages } from "@/lib/languagePreference";
 
 interface LanguageToggleProps {
   available: Language[];
@@ -14,6 +15,7 @@ export default function LanguageToggle({
   onChange,
 }: LanguageToggleProps) {
   if (available.length < 2) return null;
+  const languages = getOrderedLanguages(available);
 
   return (
     <div
@@ -25,7 +27,7 @@ export default function LanguageToggle({
         overflow: "hidden",
       }}
     >
-      {available.map((lang) => (
+      {languages.map((lang) => (
         <button
           key={lang}
           onClick={() => onChange(lang)}
