@@ -86,7 +86,48 @@ function formatChurchLabel(value: string): string {
     .replace(/\b\w/g, (char) => char.toUpperCase());
 }
 
+type SearchMatchKind = "title" | "related";
+
+function getSearchMatch(song: SongMeta, normalizedQuery: string): SearchMatchKind | null {
+  if (!normalizedQuery) return "title";
+
+  const title = normalizeSearch(song.title);
+  const artist = normalizeSearch(song.artist);
+  const church = normalizeSearch(song.church ?? "");
+  const tags = normalizeSearch(song.tags.join(" "));
+
+  if (
+    title === normalizedQuery ||
+    title.startsWith(normalizedQuery) ||
+    title.includes(normalizedQuery)
+  ) {
+    return "title";
+  }
+
+  if (
+    fuzzyIncludes(artist, normalizedQuery) ||
+    fuzzyIncludes(church, normalizedQuery) ||
+    fuzzyIncludes(tags, normalizedQuery) ||
+    fuzzyIncludes(song.lyrics_search, normalizedQuery)
+  ) {
+    return "related";
+  }
+
+  return null;
+}
+
+function getTitleSearchScore(song: SongMeta, normalizedQuery: string): number {
+  if (!normalizedQuery) return 0;
+
+  const title = normalizeSearch(song.title);
+  if (title === normalizedQuery) return 0;
+  if (title.startsWith(normalizedQuery)) return 1;
+  if (title.includes(normalizedQuery)) return 2;
+  return 3;
+}
+
 const SONG_BATCH_SIZE = 80;
+const SEARCH_BATCH_SIZE = 36;
 
 export default function HomeContent({
   songs,
@@ -201,35 +242,55 @@ export default function HomeContent({
 
   const filtered = useMemo(() => {
     return songs.filter((s) => {
-      const searchable = [
-        s.title,
-        s.artist,
-        s.church ?? "",
-        s.tags.join(" "),
-        s.lyrics_search,
-      ].join(" ");
-      const matchesQuery = !normalizedQuery || fuzzyIncludes(searchable, normalizedQuery);
+      const matchesQuery = !normalizedQuery || getSearchMatch(s, normalizedQuery) !== null;
       const matchesChurch = !activeChurchKey || normalizeChurchKey(s.church ?? "") === activeChurchKey;
       return matchesQuery && matchesChurch;
     });
   }, [songs, normalizedQuery, activeChurchKey]);
 
-  const lyricOnlyMatches = useMemo(() => {
-    if (!normalizedQuery) return 0;
-    return filtered.filter((s) => {
-      const titleArtistChurchTags = [s.title, s.artist, s.church ?? "", s.tags.join(" ")].join(" ");
-      return (
-        fuzzyIncludes(s.lyrics_search, normalizedQuery) &&
-        !fuzzyIncludes(titleArtistChurchTags, normalizedQuery)
-      );
-    }).length;
+  const searchGroups = useMemo(() => {
+    if (!normalizedQuery) {
+      return {
+        best: filtered,
+        related: [] as SongMeta[],
+      };
+    }
+
+    const best: SongMeta[] = [];
+    const related: SongMeta[] = [];
+
+    for (const song of filtered) {
+      const matchKind = getSearchMatch(song, normalizedQuery);
+      if (matchKind === "title") best.push(song);
+      else if (matchKind === "related") related.push(song);
+    }
+
+    best.sort((a, b) => {
+      const scoreDiff = getTitleSearchScore(a, normalizedQuery) - getTitleSearchScore(b, normalizedQuery);
+      if (scoreDiff !== 0) return scoreDiff;
+      return a.title.localeCompare(b.title);
+    });
+
+    return { best, related };
   }, [filtered, normalizedQuery]);
 
-  const hasActiveFilters = !!query || !!activeChurchKey;
+  const hasSearch = !!normalizedQuery;
+  const hasActiveFilters = hasSearch || !!activeChurchKey;
   const visibleKey = `${normalizedQuery}|${activeChurchKey ?? ""}`;
-  const visibleCount = visibleState.key === visibleKey ? visibleState.count : SONG_BATCH_SIZE;
-  const visibleSongs = hasActiveFilters ? filtered : filtered.slice(0, visibleCount);
+  const visibleCount = visibleState.key === visibleKey
+    ? visibleState.count
+    : hasSearch
+    ? SEARCH_BATCH_SIZE
+    : SONG_BATCH_SIZE;
+  const visibleSongs = hasActiveFilters ? filtered.slice(0, visibleCount) : filtered.slice(0, visibleCount);
   const canShowMore = !hasActiveFilters && visibleSongs.length < filtered.length;
+  const visibleBestSongs = hasSearch ? searchGroups.best.slice(0, visibleCount) : [];
+  const relatedBudget = Math.max(0, visibleCount - visibleBestSongs.length);
+  const visibleRelatedSongs = hasSearch ? searchGroups.related.slice(0, relatedBudget) : [];
+  const visibleSearchCount = visibleBestSongs.length + visibleRelatedSongs.length;
+  const totalSearchCount = searchGroups.best.length + searchGroups.related.length;
+  const canShowMoreSearch = hasSearch && visibleSearchCount < totalSearchCount;
+  const searchHasGroups = !!normalizedQuery && (searchGroups.best.length > 0 || searchGroups.related.length > 0);
 
   return (
     <>
@@ -354,11 +415,6 @@ export default function HomeContent({
 
             {/* Song List */}
             <main id="main-content" className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
-              {filtered.length > 0 && lyricOnlyMatches > 0 && (
-                <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", lineHeight: 1.5, margin: "14px 0 0" }}>
-                  {lyricOnlyMatches} {lyricOnlyMatches === 1 ? "song matches" : "songs match"} inside lyrics.
-                </p>
-              )}
               {filtered.length === 0 ? (
                 <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, padding: "48px 24px", textAlign: "center" }}>
                   <SearchX size={48} strokeWidth={1.2} style={{ color: "var(--text-muted)", opacity: 0.4 }} />
@@ -387,17 +443,83 @@ export default function HomeContent({
                 </div>
               ) : (
                 <>
-                  {visibleSongs.map((song) => (
-                    <SongCard
-                      key={song.id}
-                      song={song}
-                      isFavourite={isFavourite(song.id)}
-                      onLongPress={() => toggleFavourite(song.id)}
-                      onFavouriteToggle={() => toggleFavourite(song.id)}
-                      isInSetlist={isInSetlist(song.id)}
-                      onSetlistToggle={() => toggleSetlist(song.id)}
-                    />
-                  ))}
+                  {searchHasGroups ? (
+                    <>
+                      {searchGroups.best.length > 0 && (
+                        <section className="home-search-section" aria-label="Best song matches">
+                          <div className="home-search-section-header">
+                            <p className="home-search-section-label">Songs</p>
+                            <span>{searchGroups.best.length}</span>
+                          </div>
+                          {visibleBestSongs.map((song) => (
+                            <SongCard
+                              key={song.id}
+                              song={song}
+                              isFavourite={isFavourite(song.id)}
+                              onLongPress={() => toggleFavourite(song.id)}
+                              onFavouriteToggle={() => toggleFavourite(song.id)}
+                              isInSetlist={isInSetlist(song.id)}
+                              onSetlistToggle={() => toggleSetlist(song.id)}
+                            />
+                          ))}
+                        </section>
+                      )}
+                      {visibleRelatedSongs.length > 0 && (
+                        <section className="home-search-section" aria-label="Related search matches">
+                          <div className="home-search-section-header">
+                            <p className="home-search-section-label">More Results</p>
+                            <span>{searchGroups.related.length}</span>
+                          </div>
+                          {visibleRelatedSongs.map((song) => (
+                            <SongCard
+                              key={song.id}
+                              song={song}
+                              isFavourite={isFavourite(song.id)}
+                              onLongPress={() => toggleFavourite(song.id)}
+                              onFavouriteToggle={() => toggleFavourite(song.id)}
+                              isInSetlist={isInSetlist(song.id)}
+                              onSetlistToggle={() => toggleSetlist(song.id)}
+                            />
+                          ))}
+                        </section>
+                      )}
+                    </>
+                  ) : (
+                    visibleSongs.map((song) => (
+                      <SongCard
+                        key={song.id}
+                        song={song}
+                        isFavourite={isFavourite(song.id)}
+                        onLongPress={() => toggleFavourite(song.id)}
+                        onFavouriteToggle={() => toggleFavourite(song.id)}
+                        isInSetlist={isInSetlist(song.id)}
+                        onSetlistToggle={() => toggleSetlist(song.id)}
+                      />
+                    ))
+                  )}
+                  {canShowMoreSearch && (
+                    <button
+                      type="button"
+                      onClick={() => setVisibleState({ key: visibleKey, count: visibleCount + SEARCH_BATCH_SIZE })}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "100%",
+                        minHeight: 44,
+                        marginTop: 14,
+                        borderRadius: "var(--radius-pill)",
+                        border: "1px solid var(--border)",
+                        background: "var(--bg-surface)",
+                        color: "var(--text-secondary)",
+                        fontSize: "var(--text-sm)",
+                        fontWeight: 700,
+                        cursor: "pointer",
+                      }}
+                    >
+                      Show more results
+                    </button>
+                  )}
                   {canShowMore && (
                     <button
                       type="button"

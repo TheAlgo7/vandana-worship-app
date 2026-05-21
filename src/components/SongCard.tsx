@@ -7,7 +7,7 @@ import type { SongMeta } from "@/lib/getSongs";
 
 const LONG_PRESS_MS = 500;
 
-const SongCard = memo(function SongCard({
+function SongCardInner({
   song,
   isFavourite,
   onLongPress,
@@ -278,6 +278,15 @@ const SongCard = memo(function SongCard({
       )}
     </div>
   );
-});
+}
+
+const SongCard = memo(SongCardInner, (prev, next) => (
+  prev.song.id === next.song.id &&
+  prev.song.title === next.song.title &&
+  prev.song.artist === next.song.artist &&
+  prev.song.church === next.song.church &&
+  prev.isFavourite === next.isFavourite &&
+  prev.isInSetlist === next.isInSetlist
+));
 
 export default SongCard;
