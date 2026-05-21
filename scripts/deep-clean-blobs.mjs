@@ -86,7 +86,27 @@ function deepClean(text) {
 
   let t = lines.join("\n");
 
-  // ── Pass 2: Inline artifact removal ────────────────────────────────────────
+  // ── Pass 2: Strip scraper-injected English translation blocks ──────────────
+  // Detect 3+ consecutive lines that are clearly English (has English function
+  // words, no Hinglish markers, pure ASCII) and truncate from the first such run.
+
+  const ENG_WORDS = /\b(you|your|me|my|we|our|him|his|her|its|they|their|the|is|are|was|were|be|been|have|has|had|will|would|could|should|may|might|must|can|who|what|which|how|why|when|where|life|love|heart|come|give|bring|brought|save|free|truth|light|sing|bless|grace|mercy|glory|peace|joy|eternal|forever|always|never|faith|hope|away|near|still|again|sad|tired|empty|thirst|water|afraid|strong|weak|broken|filled|soul|spirit)\b/g;
+  const HIN_WORDS = /\b(hai|hain|mein|ko|se|ke|ki|ka|aur|nahi|tu|tere|mere|tera|mera|yeh|woh|hum|bhi|toh|ne|tha|thi|gaya|liya|liye|raha|diya|kiya|prabhu|yeshu|yesu|eeshvar|khuda|masih|pyaar|jeevan|stuti|naam|dil|aatma|pavitra|rab|duniya|zindagi|anand|karo|kare|karu|hoga|hogi|rahoon|baitha|dekho|suno|jao|aao)\b/i;
+
+  const isEngLine = (l) => /^[a-zA-Z\s,.'!?()\-"]+$/.test(l) && !HIN_WORDS.test(l) && (l.match(ENG_WORDS) || []).length >= 2;
+
+  {
+    const lns = t.split("\n");
+    let run = 0, runStart = -1;
+    for (let i = 0; i < lns.length; i++) {
+      const trimmed = lns[i].trim();
+      if (!trimmed) { run = 0; runStart = -1; continue; }
+      if (isEngLine(trimmed)) { if (run === 0) runStart = i; run++; if (run >= 3) { t = lns.slice(0, runStart).join("\n"); break; } }
+      else { run = 0; runStart = -1; }
+    }
+  }
+
+  // ── Pass 4: Inline artifact removal ────────────────────────────────────────
 
   // Inline URLs
   t = t.replace(/https?:\/\/\S+/g, "");
