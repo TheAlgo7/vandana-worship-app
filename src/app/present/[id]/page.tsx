@@ -16,7 +16,11 @@ export async function generateMetadata({
   const { id } = await params;
   const song = await getSongById(id);
   if (!song) return {};
-  return { title: `${song.title}: Present` };
+  return {
+    title: `${song.title}: Present`,
+    robots: { index: false, follow: false },
+    alternates: { canonical: `https://vandanaapp.vercel.app/song/${id}` },
+  };
 }
 
 export default async function PresentPage({

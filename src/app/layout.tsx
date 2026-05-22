@@ -28,6 +28,8 @@ const devanagari = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
   weight: ["400", "500"],
   display: "swap",
+  adjustFontFallback: true,
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const viewport: Viewport = {
@@ -36,13 +38,17 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
+const SITE_URL = "https://vandanaapp.vercel.app";
+const SITE_DESCRIPTION =
+  "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 80+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. By Isus Christos Ministries (ICM).";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vandanaapp.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Vandana - Worship Lyrics",
     template: "%s | Vandana",
   },
-  description: "Worship in your language",
+  description: SITE_DESCRIPTION,
   manifest: "/manifest.json",
   icons: {
     icon: [
@@ -54,17 +60,18 @@ export const metadata: Metadata = {
     shortcut: ["/icons/favicon-32.png"],
   },
   openGraph: {
-    title: "Vandana - Worship Lyrics",
-    description: "Worship in your language",
-    url: "https://vandanaapp.vercel.app",
+    title: "Vandana - Hindi & Hinglish Worship Lyrics",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
     siteName: "Vandana",
     images: [{ url: "/icons/og-image.png", width: 1200, height: 630 }],
     type: "website",
+    locale: "hi_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Vandana - Worship Lyrics",
-    description: "Worship in your language",
+    title: "Vandana - Hindi & Hinglish Worship Lyrics",
+    description: SITE_DESCRIPTION,
     images: ["/icons/og-image.png"],
   },
   appleWebApp: {
@@ -72,6 +79,42 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Vandana",
   },
+};
+
+const siteSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: "Vandana",
+      url: SITE_URL,
+      description: "Hindi and Hinglish Christian worship lyrics for the Indian church",
+      inLanguage: "hi-IN",
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "WebApplication",
+      "@id": `${SITE_URL}/#webapplication`,
+      name: "Vandana",
+      url: SITE_URL,
+      applicationCategory: "MusicApplication",
+      operatingSystem: "Any",
+      description: SITE_DESCRIPTION,
+      inLanguage: ["hi", "en-IN"],
+      offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: "Isus Christos Ministries",
+      alternateName: "ICM",
+      url: SITE_URL,
+      description:
+        "Indian Christian ministry publishing Hindi and Hinglish worship lyrics through the Vandana app.",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -87,6 +130,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+        />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

@@ -223,6 +223,28 @@ export async function getSongById(id: string): Promise<Song | null> {
   }
 }
 
+export async function getSongsByMinistry(
+  filterBy: "church" | "artist",
+  filterValue: string,
+): Promise<Song[]> {
+  try {
+    const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));
+    const query = supabase
+      .from("songs")
+      .select("*")
+      .eq(filterBy === "church" ? "church" : "artist", filterValue)
+      .order("title")
+      .then(({ data, error }) =>
+        error || !data ? null : (data as DbSongRow[]).map(mapDbRowToSong),
+      );
+    const result = await Promise.race([query, timeout]);
+    if (result) return result;
+  } catch { /* fall through */ }
+  return LOCAL_SONGS.filter((s) =>
+    filterBy === "church" ? s.church === filterValue : s.artist === filterValue,
+  ).sort((a, b) => a.title.localeCompare(b.title));
+}
+
 export async function getSongsByChurch(church: string): Promise<Song[]> {
   try {
     const timeout = new Promise<null>((resolve) => setTimeout(() => resolve(null), 5000));

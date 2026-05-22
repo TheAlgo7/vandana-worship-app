@@ -308,7 +308,9 @@ export default function SongView({ song }: SongViewProps) {
       <div className="lyrics-text" lang={lang === "hindi" ? "hi" : "en"}>
         {sectionEntries.map(([key, text]) => (
           <section key={key} style={{ marginBottom: 28 }}>
-            <span className="section-label">{formatSectionLabel(key)}</span>
+            <h2 className="section-label" aria-label={formatSectionLabel(key)}>
+              {formatSectionLabel(key)}
+            </h2>
             <LyricsBlock text={text} />
           </section>
         ))}
@@ -400,6 +402,31 @@ export default function SongView({ song }: SongViewProps) {
                   {song.languages_available.map((item) => (item === "hindi" ? "Hindi" : "Hinglish")).join(", ")}
                 </p>
               </div>
+              {song.tags.length > 0 && (
+                <div>
+                  <p style={{ color: "var(--text-muted)", fontSize: "var(--text-xs)", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>
+                    Tags
+                  </p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
+                    {song.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        style={{
+                          fontSize: "var(--text-xs)",
+                          color: "var(--text-muted)",
+                          background: "var(--bg-base)",
+                          border: "1px solid var(--border-subtle)",
+                          borderRadius: "var(--radius-pill)",
+                          padding: "2px 8px",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
             <Link
               href={`/present/${song.id}`}

@@ -160,6 +160,19 @@
   border-top: 1px solid var(--border-subtle);
 }
 
+.aboutLink {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 150ms ease;
+}
+
+.aboutLink:hover {
+  color: var(--accent);
+}
+
 .version {
   font-size: var(--text-xs);
   color: var(--text-muted);

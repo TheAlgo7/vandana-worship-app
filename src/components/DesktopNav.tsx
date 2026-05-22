@@ -91,6 +91,7 @@ export default function DesktopNav() {
 
       {/* Footer */}
       <div className={styles.footer}>
+        <Link href="/about" className={styles.aboutLink}>About</Link>
         <p className={styles.version}>v2.5.0 Public Beta</p>
       </div>
     </aside>

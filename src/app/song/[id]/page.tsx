@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import { getSongById, getSongIds } from "@/lib/getSongs";
+import { buildSongSchema } from "@/lib/schema";
 import type { Metadata } from "next";
 import SongView from "./SongView";
+
+const BASE_URL = "https://vandanaapp.vercel.app";
 
 export async function generateStaticParams() {
   const ids = await getSongIds();
@@ -16,7 +19,18 @@ export async function generateMetadata({
   const { id } = await params;
   const song = await getSongById(id);
   if (!song) return {};
-  return { title: song.title, description: song.seo_description };
+  return {
+    title: `${song.title} Lyrics`,
+    description: song.seo_description,
+    alternates: { canonical: `${BASE_URL}/song/${id}` },
+    openGraph: {
+      title: `${song.title} Lyrics — Vandana`,
+      description: song.seo_description,
+      url: `${BASE_URL}/song/${id}`,
+      type: "article",
+      locale: "hi_IN",
+    },
+  };
 }
 
 export default async function SongPage({
@@ -28,5 +42,15 @@ export default async function SongPage({
   const song = await getSongById(id);
   if (!song) notFound();
 
-  return <SongView song={song} />;
+  const schema = buildSongSchema(song);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <SongView song={song} />
+    </>
+  );
 }
