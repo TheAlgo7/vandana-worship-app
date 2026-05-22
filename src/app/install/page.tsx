@@ -78,7 +78,7 @@ export default function InstallPage() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           className={styles.appIcon}
-          src="/icons/icon-192.png"
+          src="/icons/icon-512.png"
           alt="Vandana app icon"
         />
         <h1 className={styles.heroH1}>

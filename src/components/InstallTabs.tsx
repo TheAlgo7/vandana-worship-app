@@ -68,6 +68,12 @@ const ThreeDotsV = ({ hi }: { hi?: boolean }) => (
     <circle cx="12" cy="5" r="2" /><circle cx="12" cy="12" r="2" /><circle cx="12" cy="19" r="2" />
   </svg>
 );
+const ArrowRightLong = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
+    <line x1="4" y1="12" x2="20" y2="12" />
+    <polyline points="14 6 20 12 14 18" />
+  </svg>
+);
 const PlayIcon = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>
     <polygon points="6 4 20 12 6 20" />
@@ -219,6 +225,7 @@ export default function InstallTabs() {
               <h3 className={styles.stepH3}>Open in Chrome</h3>
               <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Chrome (or another Chromium browser — Brave, Edge, Samsung Internet all work).</p>
               <div className={styles.mock}>
+                <div className={styles.mockIc}><ArrowRightLong /></div>
                 <div className={styles.mockUrl}>https://vandanaapp.vercel.app</div>
                 <div className={styles.mockIc}><ThreeDotsV /></div>
               </div>
