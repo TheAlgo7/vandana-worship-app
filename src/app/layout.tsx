@@ -79,6 +79,10 @@ export const metadata: Metadata = {
     statusBarStyle: "black-translucent",
     title: "Vandana",
   },
+  verification: {
+    google: "1JHrQVJdLIR24UtyhUbz-NrEH6FFmGKOTGBs1ULxO6o",
+    other: { "msvalidate.01": "4E30504FDDA8C50529375865890F6A2D" },
+  },
 };
 
 const siteSchema = {
