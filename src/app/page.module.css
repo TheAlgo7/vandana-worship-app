@@ -481,7 +481,10 @@
   .topbarNav { gap: 10px; }
   .navMinor { display: none; }
   .hero { padding: 110px 20px 56px; min-height: unset; }
-  .section { padding: 56px 20px; }
+  .section { padding: 56px 20px; text-align: center; }
+  .sectionLabel { text-align: center; }
+  .sectionH2 { text-align: center; }
+  .lede { text-align: center; margin-left: auto; margin-right: auto; }
   .bilingual { grid-template-columns: 1fr; }
   .bilingualDivider {
     width: 60%;
@@ -491,6 +494,7 @@
   .bilingualCol { padding: 24px 0; }
   .bilingualLine { font-size: 24px; }
   .pillars { grid-template-columns: 1fr; gap: 32px; }
+  .pillar { text-align: center; }
   .church { font-size: 18px; }
   .churches { gap: 20px 40px; }
   .final { padding: 72px 20px 60px; }
