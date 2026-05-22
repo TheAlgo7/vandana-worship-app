@@ -565,6 +565,9 @@
   .tabBtn { padding: 10px 16px; flex-shrink: 0; }
   .hero { padding: 60px 20px 40px; }
   .outroCard { padding: 28px 22px; }
+  .outro { margin-top: 60px; }
+  .outroList { grid-template-columns: 1fr 1fr; }
   .panel { padding: 0 20px; }
   .topbar { padding: 14px 18px; }
+  .openCta { margin-top: 44px; padding-bottom: 60px; }
 }

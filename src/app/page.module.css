@@ -480,8 +480,8 @@
   .topbar { padding: 14px 18px; }
   .topbarNav { gap: 10px; }
   .navMinor { display: none; }
-  .hero { padding: 110px 20px 60px; }
-  .section { padding: 70px 20px; }
+  .hero { padding: 110px 20px 56px; min-height: unset; }
+  .section { padding: 56px 20px; }
   .bilingual { grid-template-columns: 1fr; }
   .bilingualDivider {
     width: 60%;
@@ -489,7 +489,11 @@
     background: linear-gradient(90deg, transparent, rgba(196,170,126,0.30), transparent);
   }
   .bilingualCol { padding: 24px 0; }
-  .pillars { grid-template-columns: 1fr; gap: 36px; }
+  .bilingualLine { font-size: 24px; }
+  .pillars { grid-template-columns: 1fr; gap: 32px; }
+  .church { font-size: 18px; }
+  .churches { gap: 20px 40px; }
+  .final { padding: 72px 20px 60px; }
   .footer { flex-direction: column; gap: 8px; text-align: center; margin-left: 0; margin-right: 0; }
   .footerLink { margin: 0 8px; }
 }
