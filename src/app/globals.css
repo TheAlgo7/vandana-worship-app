@@ -85,6 +85,8 @@
 
   --accent: #C4AA7E;
   --accent-dim: rgba(196, 170, 126, 0.10);
+  --accent-glow: rgba(196, 170, 126, 0.25);
+  --accent-muted: rgba(196, 170, 126, 0.45);
   --accent-hover: #D4BC94;
   --status-error: #D38F8F;
 
@@ -117,6 +119,8 @@
 
   --accent: #7A6340;
   --accent-dim: rgba(122, 99, 64, 0.08);
+  --accent-glow: rgba(122, 99, 64, 0.20);
+  --accent-muted: rgba(122, 99, 64, 0.40);
   --accent-hover: #6A5535;
   --status-error: #9B3F48;
 

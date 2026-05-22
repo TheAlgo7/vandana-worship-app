@@ -1,7 +1,7 @@
 {
   "id": "chattan",
   "title": "Chattan",
-  "artist": "Bridge Music",
+  "artist": "Bridge Music ft. Prakruthi Angelina, Samarth Shukla & Zayvan",
   "church": "Bridge Music",
   "album": null,
   "language_default": "hindi",
@@ -11,22 +11,30 @@
   ],
   "lyrics": {
     "hindi": {
-      "verse1": "भँवर के बीच में,\nतू कहता है थाम जा,\nतू मेरी ताकत है,\nतू ही मेरा ईमान",
-      "pre_chorus": "बीते कल में तू,\nसाथ मेरे था,\nआज भी मेरे,\nसाथ है कड़ा,\nआने वाले कल में भी होगा",
-      "chorus": "उठे हुए उफानों में,\nतू ही मेरी चट्टान,\nबढ़ती हुई लहरों पे,\nतेरे कदमों के निशान",
-      "verse2": "बीमारियों में,\nतू कहता है उठ जा,\nयहोवा राफा,\nतू ही मेरी शिफा",
-      "repeat_chorus": "उठे हुए उफानों में,\nतू ही मेरी चट्टान,\nबढ़ती हुई लहरों पे,\nतेरे कदमों के निशान",
-      "bridge": "बीमारी, देख तेरा सर झुका,\nमुझ पर तेरा बस न चल सका,\nऐसा कोई शस्त्र न बना,\nजो कर सकेगा मेरा सामना",
-      "repeat_chorus2": "उठे हुए उफानों में,\nतू ही मेरी चट्टान,\nबढ़ती हुई लहरों पे,\nतेरे कदमों के निशान"
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|rap|bridge|chorus3|outro",
+      "verse1": "भंवर के बीच में\nतू कहता है थम जा\nतू मेरी ताकत है\nतू ही मेरा ईमान",
+      "pre_chorus": "बीते कल में तू\nसाथ मेरे था\nआज भी मेरे\nसाथ है खड़ा\nआने वाले कल में भी होगा",
+      "chorus": "उठते हुए उफ्फानो में, तू ही मेरी चट्टान\nबढ़ती हुई लहरों पे, तेरे कदमों के निशान",
+      "verse2": "बीमारियों में\nतू कहता है उठ जा\nयहोवा राफा\nतू ही मेरी शिफा",
+      "pre_chorus2": "बीते कल में तू\nसाथ मेरे था\nआज भी मेरे\nसाथ है खड़ा\nआने वाले कल में भी होगा",
+      "chorus2": "उठते हुए उफ्फानो में, तू ही मेरी चट्टान\nबढ़ती हुई लहरों पे, तेरे कदमों के निशान",
+      "rap": "आते मेरे खिलाफ\nजब शत्रु के जलते तीर\nया जब दुश्मन ले आता\nमुझको बाँधने ज़ंजीर\nतू ढाल बनकर मेरी\nकरता हर एक तीर तबाह\nतेरे नाम से ही हो जाता\nहर एक ज़ंजीर का नाश\nमहामारी, जादू-टोना या\nजो कुछ भी दुनिया में हो\nमुझे छू भी सके\nमेरे पास भी आये\nजब तू है तो अनहोना\nमैंने देखा परखा जान लिया\nतुझको मैंने अपना मान लिया\nतेरे होते हुए मुझे आंच भी आये\nऐसा होने न दे तूने ठान लिया\nईमान भी तू, चट्टान भी तू\nमेरा दिल और मेरी जान भी तू\nतूने दे दी जो जीत मुझे\nउस जश्न का ऐलान भी तू\nमैं गाऊंगा चिल्लाऊंगा\nजी भर के ख़ुशी मनाऊंगा\nलहरों पे चलते कदमों के निशान तेरे\nमेरी शान भी तू",
+      "bridge": "बीमारी देख तेरा सर झुका\nमुझ पर तेरा बस न चल सका\nऐसा कोई शास्त्र न बना\nजो कर सकेगा मेरा सामना\n\nबीमारी देख तेरा सर झुका\nमुझ पर तेरा बस न चल सका\nऐसा कोई शास्त्र न बना\nजो कर सकेगा मेरा सामना",
+      "chorus3": "उठते हुए उफ्फानो में, तू ही मेरी चट्टान\nबढ़ती हुई लहरों पे, तेरे कदमों के निशान",
+      "outro": "मेरा भरोसा\nतुझ पे खड़ा है\nमेरा विश्वास तुझमे\nतुझमे बना है\nतुझमे ही है"
     },
     "hinglish": {
-      "verse1": "Bhawar Ke Beech Me,\nTu Kehta Hai Tham Ja,\nTu Meri Taakat Hai,\nTu Hi Mera Imaan",
-      "pre_chorus": "Beetay Kal Me Tu,\nSaath Mere Tha,\nAaj Bhi Mere,\nSaath Hai Kada,\nAane Wale Kal Me Bhi Hoga",
-      "chorus": "Utt The Hue Uffano Mein,\nTu Hi Meri Chattan,\nBadti Hui Lehron Pe,\nTere Kadmo Ke Nishaan",
-      "verse2": "Binariyoon Mein,\nTu Kehta Hai Ut Ja,\nYehova Raafa,\nTu Hi Meri Shifa",
-      "repeat_chorus": "Utt The Hue Uffano Mein,\nTu Hi Meri Chattan,\nBadti Hui Lehron Pe,\nTere Kadmo Ke Nishaan",
-      "bridge": "Bimiari, Dekh Tera Sar Jhuka,\nMujh Par Tera Bas Na Chal Saka,\nAisa Koi Shastr Na Bana,\nJo Kar Sakega Mera Samma",
-      "repeat_chorus2": "Utt The Hue Uffano Mein,\nTu Hi Meri Chattan,\nBadti Hui Lehron Pe,\nTere Kadmo Ke Nishaan"
+      "__order": "verse1|pre_chorus|chorus|verse2|pre_chorus2|chorus2|rap|bridge|chorus3|outro",
+      "verse1": "Bhawar ke beech me\nTu kehta hai tham ja\nTu meri taakat hai\nTu hi mera imaan",
+      "pre_chorus": "Beete kal me tu\nSaath mere tha\nAaj bhi mere\nSaath hai khada\nAane wale kal me bhi hoga",
+      "chorus": "Uthte hue uffano mein, tu hi meri Chattan\nBadhti hui lehron pe, tere kadmo ke nishaan",
+      "verse2": "Bimariyon mein\nTu kehta hai uth ja\nYahovah Raafa\nTu hi meri shifa",
+      "pre_chorus2": "Beete kal me tu\nSaath mere tha\nAaj bhi mere\nSaath hai khada\nAane wale kal me bhi hoga",
+      "chorus2": "Uthte hue uffano mein, tu hi meri Chattan\nBadhti hui lehron pe, tere kadmo ke nishaan",
+      "rap": "Aate mere khilaaf\nJab shatru ke jalte teer\nYa jab dushman le aata\nMujhko baandhne zanjeer\nTu dhal bankar meri\nKarta har ek teer tabah\nTere naam se hi ho jata\nHar ek zanjeer ka nash\nMahamari, jaadu-tona ya\nJo kuch bhi duniya mein ho\nMujhe chhu bhi sake\nMere paas bhi aaye\nJab tu hai toh anhona\nMaine dekha parkha jaan liya\nTujhko maine apna maan liya\nTere hote hue mujhe aanch bhi aaye\nAisa hone na de tune thaan liya\nImaan bhi tu, Chattan bhi tu\nMera dil aur meri jaan bhi tu\nTune de di jo jeet mujhe\nUs jashn ka ailaan bhi tu\nMain gaaunga chillaunga\nJi bhar ke khushi manaunga\nLehron pe chalte kadmo ke nishaan tere\nMeri shaan bhi tu",
+      "bridge": "Bimari, dekh tera sar jhuka\nMujh par tera bas na chal saka\nAisa koi shastra na bana\nJo kar sakega mera saamna\n\nBimari, dekh tera sar jhuka\nMujh par tera bas na chal saka\nAisa koi shastra na bana\nJo kar sakega mera saamna",
+      "chorus3": "Uthte hue uffano mein, tu hi meri Chattan\nBadhti hui lehron pe, tere kadmo ke nishaan",
+      "outro": "Mera bharosa\nTujh pe khada hai\nMera vishwas tujhme\nTujhme bana hai\nTujhme hi hai"
     }
   },
   "links": {
@@ -41,7 +49,7 @@
     "bridge-music",
     "indianchristianlyrics"
   ],
-  "seo_description": "Chattan lyrics in Hindi and Hinglish by Bridge Music",
+  "seo_description": "Chattan lyrics in Hindi and Hinglish by Bridge Music ft. Prakruthi Angelina, Samarth Shukla and Zayvan",
   "added_by": "Gaurav | Vandana",
   "source_url": "https://indianchristianlyrics.in/songs/chattan"
 }

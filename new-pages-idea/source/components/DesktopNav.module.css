@@ -1,0 +1,180 @@
+/* Hidden on mobile - only revealed at the desktop breakpoint */
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--bg-surface);
+    border-right: 1px solid var(--border);
+    padding: 28px 12px 24px;
+    overflow-y: auto;
+  }
+}
+
+/* ── Logo area ── */
+.logoArea {
+  padding: 0 8px 32px;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--font-brand);
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.wordmarkLine {
+  display: block;
+  width: 28px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.4;
+  margin-top: 6px;
+}
+
+.tagline {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  margin-top: 8px;
+  letter-spacing: 0.01em;
+  font-style: italic;
+}
+
+/* ── Nav list ── */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+/* ── Nav item ── */
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--nav-inactive);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  overflow: hidden;
+  transition: color 200ms ease, background 200ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+  Gold fill via ::before so opacity can animate.
+  Cannot interpolate transparent ↔ gradient directly in CSS.
+*/
+.item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.20),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.10);
+}
+
+/* Hover: subtle surface lift for inactive items only */
+.item:hover:not(.active) {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.item.active {
+  color: var(--nav-active-text);
+}
+
+.item.active::before {
+  opacity: 1;
+}
+
+.setlistPop {
+  animation: setlistPop 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes setlistPop {
+  0% {
+    opacity: 0;
+    transform: translateX(-4px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* ── Icon + label ── */
+.icon {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.label {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Unread dot ── */
+.dot {
+  position: relative;
+  z-index: 1;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* ── Footer ── */
+.footer {
+  padding: 20px 8px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.aboutLink {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 150ms ease;
+}
+
+.aboutLink:hover {
+  color: var(--accent);
+}
+
+.version {
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}

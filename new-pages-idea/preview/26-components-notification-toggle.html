@@ -1,0 +1,74 @@
+<!doctype html>
+<html data-theme="dark"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #0A0A0E; margin: 0; padding: 0;
+    font-family: var(--font-body); color: var(--text-primary); }
+  .card { padding: 22px 24px; }
+  .label { font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--accent); margin-bottom: 14px; }
+  .row {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 14px; padding: 14px 16px;
+    background: var(--bg-surface); border-radius: 12px;
+    border: 1px solid var(--border); margin-bottom: 8px;
+  }
+  .title { font-size: 15px; color: var(--text-primary); margin: 0; font-weight: 500; }
+  .sub { font-size: 11px; color: var(--text-muted); margin: 2px 0 0; }
+  .toggle-wrap { display: flex; align-items: center; gap: 10px; }
+  .status { font-size: 11px; font-weight: 700; }
+  .status.on { color: var(--accent); }
+  .status.off { color: var(--text-muted); }
+  .switch {
+    position: relative; width: 48px; height: 28px;
+    border-radius: 999px; transition: background 200ms ease;
+  }
+  .switch.on { background: var(--accent); }
+  .switch.off { background: var(--border); }
+  .knob {
+    position: absolute; top: 3px;
+    width: 22px; height: 22px; border-radius: 50%;
+    transition: left 200ms ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  }
+  .switch.on .knob { left: 23px; background: var(--bg-base); }
+  .switch.off .knob { left: 3px; background: var(--bg-surface); }
+  .hint {
+    font-size: 11px; color: var(--text-muted);
+    padding-left: 4px;
+  }
+  .test {
+    border: 1px solid var(--border); border-radius: 999px;
+    background: transparent; color: var(--text-secondary);
+    padding: 4px 10px; font-size: 11px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+  }
+</style></head>
+<body><div class="card">
+  <div class="label">Notification Toggle</div>
+
+  <div class="row">
+    <div>
+      <p class="title">Push Notifications</p>
+      <p class="sub">Daily verse alerts</p>
+    </div>
+    <div class="toggle-wrap">
+      <span class="status on">On</span>
+      <div class="switch on"><span class="knob"></span></div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: center; padding-left: 4px;">
+    <p class="hint" style="margin: 0;">Notifications are on for this device.</p>
+    <button class="test">Test</button>
+  </div>
+
+  <div class="row" style="margin-top: 16px;">
+    <div>
+      <p class="title">Push Notifications</p>
+      <p class="sub">Daily verse alerts</p>
+    </div>
+    <div class="toggle-wrap">
+      <span class="status off">Off</span>
+      <div class="switch off"><span class="knob"></span></div>
+    </div>
+  </div>
+</div></body></html>

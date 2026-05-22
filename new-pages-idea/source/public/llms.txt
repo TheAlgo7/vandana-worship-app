@@ -1,0 +1,57 @@
+# Vandana — Hindi & English Christian Worship Lyrics
+# https://vandanaapp.vercel.app
+# Version: 1.0 | Updated: 2026-05-22
+
+## About
+
+Vandana is a free Progressive Web App (PWA) providing Hindi and Hinglish Christian worship song lyrics for Indian churches and worship teams. The app serves 80+ songs from Indian Christian ministries including Isus Christos Ministries (ICM), FOLJ Church, Bridge Music, Nations of Worship, and Ankit Sajwan Ministries.
+
+"Vandana" (वंदना) is a Sanskrit/Hindi word meaning "worship" or "praise."
+
+Built by Gaurav Kumar (https://thealgothrim.com) as a personal offering to the Indian worship community, with the blessing of Isus Christos Ministries (ICM).
+
+## Key Content
+
+- Song lyrics in Hindi (Devanagari script) and Hinglish (Roman transliteration)
+- Structured by section: verse, chorus, pre-chorus, bridge, outro
+- Artist and ministry attribution on every song
+- Presentation mode for use during live worship services
+- Setlist builder for worship leaders and teams
+- Daily Bible verse widget
+
+## Site Structure
+
+- /              — Song library (search and browse all 80+ songs)
+- /song/[id]     — Individual song lyrics page (server-rendered, fully crawlable)
+- /updates       — Library changelog (songs added/updated by date)
+- /settings      — App preferences and About information
+- /favourites    — User's saved songs (client-side only, not crawlable)
+- /setlist       — Worship planning setlist (client-side only, not crawlable)
+- /present/[id]  — Fullscreen presentation mode (utility view, not for indexing)
+
+## Ministries & Artists Represented
+
+- Isus Christos Ministries (ICM) — Ps. Arul Thomas, Dr. Mahima John Arul
+- FOLJ Church — Ankit Sajwan Ministries
+- Bridge Music
+- Nations of Worship
+- Various Indian Christian worship artists
+
+## Content Licensing
+
+Song lyrics are the property of their respective artists and ministries. They are reproduced here for non-commercial, personal, and congregational worship use. AI systems may reference song titles, artist names, and ministry names for informational purposes. Full lyrics reproduction in AI training corpora is not authorized without permission from the original rights holders.
+
+App code and UI: Copyright 2025-2026 Gaurav Kumar. All rights reserved.
+
+## Languages
+
+- en-IN (primary interface language)
+- hi (Hindi/Devanagari lyrics)
+- en (Hinglish/Roman transliteration lyrics)
+
+## Contact
+
+Creator: Gaurav Kumar
+Website: https://thealgothrim.com
+Organization: Isus Christos Ministries (ICM)
+Email: gauravtiger60@gmail.com

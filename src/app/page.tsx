@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import LandingTagline from "@/components/LandingTagline";
+import LandingNav from "@/components/LandingNav";
 import styles from "./page.module.css";
 
 const SITE_URL = "https://vandanaapp.vercel.app";
 const DESC =
-  "A reverent, dark-first worship lyrics app for Hindi-speaking Christians. 80+ songs in Hinglish and Devanagari. Free, offline-first, no tracking. By ICM New Delhi.";
+  "A reverent worship lyrics app for Hindi-speaking Christians. 80+ songs in Hinglish and Devanagari. Free, offline-first, no tracking.";
 
 export const metadata: Metadata = {
   title: "Vandana — Worship in your language",
@@ -93,29 +94,14 @@ export default function LandingPage() {
 
       {/* ── Topbar ── */}
       <header className={styles.topbar}>
-        <a className={styles.brand} href="/">
-          Vandana<span className={styles.brandDev}>वंदना</span>
-        </a>
-        <nav className={styles.topbarNav}>
-          <a
-            className={styles.navMinor}
-            href="https://github.com/TheAlgo7/vandana-worship-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GitHub
-          </a>
-          <a className={styles.navMinor} href="#about">
-            About
-          </a>
-          <Link className={styles.navCta} href="/app">
-            Open app
-          </Link>
-        </nav>
+        <Link className={styles.brand} href="/">
+          Vandana
+        </Link>
+        <LandingNav />
       </header>
 
       {/* ── Hero ── */}
-      <section className={styles.hero}>
+      <section className={styles.hero} id="main-content">
         <div className={styles.heroGlow} aria-hidden />
 
         <div className={styles.eyebrow}>
@@ -125,18 +111,16 @@ export default function LandingPage() {
           </span>
         </div>
 
-        <h1 className={styles.wordmark}>
-          Vandana<span className={styles.wordmarkDev}>वंदना</span>
-        </h1>
+        <h1 className={styles.wordmark}>Vandana</h1>
 
         <div className={styles.taglineWrap}>
           <LandingTagline />
         </div>
 
         <p className={styles.subline}>
-          A reverent, dark-first lyrics app for Hindi-speaking worshippers.
-          Every song in both Devanagari and Hinglish. Built for dim rooms, late
-          prayers, and Sunday mornings without WiFi.
+          A reverent lyrics app for Hindi-speaking worshippers. Every song in
+          both Devanagari and Hinglish. Built for dim rooms, late prayers, and
+          Sunday mornings without WiFi.
         </p>
 
         <div className={styles.ctas}>
@@ -182,7 +166,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className={styles.bilingualDivider} aria-hidden />
-          <div className={`${styles.bilingualCol} ${styles.bilingualHindi}`}>
+          <div className={`${styles.bilingualCol} ${styles.bilingualHindi}`} lang="hi">
             <div className={styles.bilingualTag}>हिंदी</div>
             <div className={styles.bilingualLine}>
               &ldquo;येशु महिमा
@@ -222,7 +206,7 @@ export default function LandingPage() {
             </p>
           </div>
           <div className={styles.pillar}>
-            <div className={styles.pillarGlyph}>▸</div>
+            <div className={styles.pillarGlyph}>▶</div>
             <h3 className={styles.pillarH3}>Present mode</h3>
             <p className={styles.pillarP}>
               Full-screen, block-by-block lyrics for projection. Switch
@@ -303,19 +287,11 @@ export default function LandingPage() {
       <footer className={styles.footer}>
         <span className={styles.footerLeft}>
           <StarSVG size={12} />
-          Vandana · वंदना — to worship, to praise
+          Vandana — to worship, to praise
         </span>
-        <div>
-          Made with{" "}
-          <span style={{ color: "var(--accent)" }}>♥</span> by{" "}
-          <a
-            className={styles.footerLink}
-            href="https://thealgothrim.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Gaurav · The Algothrim
-          </a>
+        <div className={styles.footerRight}>
+          <span>Made with <span style={{ color: "var(--accent)" }}>♥</span> by <a className={styles.footerLink} href="https://thealgothrim.com" target="_blank" rel="noopener noreferrer">Gaurav · The Algothrim</a></span>
+          <span className={styles.footerDot}>·</span>
           <a
             className={styles.footerLink}
             href="https://github.com/TheAlgo7/vandana-worship-app"

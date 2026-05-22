@@ -16,20 +16,26 @@ export default function LandingTagline() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    let timeout: ReturnType<typeof setTimeout>;
+    const interval = setInterval(() => {
       setVisible(false);
-      setTimeout(() => {
+      timeout = setTimeout(() => {
         setIdx((i) => (i + 1) % LINES.length);
         setVisible(true);
       }, 600);
     }, 3400);
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const line = LINES[idx];
 
   return (
     <span
+      aria-live="polite"
+      aria-atomic="true"
       style={{
         fontFamily:
           line.lang === "hi" ? "var(--font-devanagari)" : "var(--font-display)",
@@ -43,6 +49,7 @@ export default function LandingTagline() {
         letterSpacing: "-0.005em",
         display: "block",
       }}
+      lang={line.lang === "hi" ? "hi" : undefined}
     >
       {line.text}
     </span>

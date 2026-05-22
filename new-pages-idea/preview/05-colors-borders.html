@@ -1,0 +1,20 @@
+<!doctype html>
+<html data-theme="dark"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #0A0A0E; margin: 0; padding: 0; }
+  .card { padding: 20px 24px; font-family: var(--font-body); color: var(--text-primary); }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .sw { border-radius: 10px; padding: 14px; min-height: 88px; display:flex; flex-direction: column; justify-content: space-between; background:#141418; }
+  .sw.border { border: 1px solid #242330; }
+  .sw.subtle { border: 1px solid #1C1B26; }
+  .name { font-size: 11px; font-weight: 600; }
+  .hex { font-family: ui-monospace, monospace; font-size: 10px; color: #87849A; }
+  .label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.18em; color: var(--accent); margin-bottom: 10px; }
+</style></head>
+<body><div class="card">
+  <div class="label">Borders</div>
+  <div class="row">
+    <div class="sw border"><div class="name">border</div><div class="hex">#242330 · 1px — visible</div></div>
+    <div class="sw subtle"><div class="name">border-subtle</div><div class="hex">#1C1B26 · 1px — dividers</div></div>
+  </div>
+</div></body></html>

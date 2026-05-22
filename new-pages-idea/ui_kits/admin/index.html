@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vandana — Admin / Song Import</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #0A0908;
+    font-family: var(--font-body); color: var(--text-primary);
+    -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  .stage { padding: 40px; max-width: 1280px; margin: 0 auto; }
+  .lede {
+    font-size: 13px; color: var(--text-muted);
+    margin-bottom: 16px; letter-spacing: 0.04em;
+  }
+  .lede b { color: var(--accent); }
+  .frame {
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+  }
+  .chrome {
+    height: 38px; background: #1A1A1F;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; padding: 0 14px; gap: 12px;
+  }
+  .traffic { display: flex; gap: 6px; }
+  .traffic span { width: 10px; height: 10px; border-radius: 50%; }
+  .traffic .r { background: #FF5F57; }
+  .traffic .y { background: #FEBC2E; }
+  .traffic .g { background: #28C840; }
+  .url {
+    flex: 1; max-width: 480px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px; height: 24px; padding: 0 12px;
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: rgba(255,255,255,0.6);
+    font-family: ui-monospace, monospace;
+  }
+  .url::before { content: "●"; color: var(--accent); font-size: 9px; }
+  .root {
+    background: var(--bg-base); padding: 48px 56px 64px;
+    min-height: 760px;
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+  <p class="lede">Admin <b>/ Song Import</b> · localhost only · ImportClient.tsx</p>
+
+  <div class="frame">
+    <div class="chrome">
+      <div class="traffic"><span class="r"></span><span class="y"></span><span class="g"></span></div>
+      <div class="url">localhost:3000/admin/import</div>
+      <div style="margin-left:auto; color:rgba(255,255,255,0.4); font-size:13px;">⋮</div>
+    </div>
+    <div class="root">
+      <div id="admin-root"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel">
+const { useState, useMemo } = React;
+
+const EXAMPLE = JSON.stringify([{
+  title: "Example Worship Song",
+  artist: "Example Artist",
+  church: "Example Church",
+  source_url: "https://example.com/source-page",
+  tags: ["example"],
+  lyrics_hinglish: "[Verse 1]\nPaste Hinglish lyrics here\n\n[Chorus]\nPaste chorus here",
+  lyrics_hindi: "[Verse 1]\nयहां हिंदी गीत पेस्ट करें\n\n[Chorus]\nयहां कोरस पेस्ट करें",
+}], null, 2);
+
+// Simulated drafts + report for prototype purposes
+const MOCK_DRAFTS = [
+  { id: "tu-jisa-koi-naahi", title: "Tu Jisa Koi Naahi",   artist: "Ankit Sajwan",          languages: ["hinglish","hindi"] },
+  { id: "rab-rooh-aur-jaan", title: "Rab Rooh Aur Jaan",   artist: "Bridge Music",          languages: ["hinglish","hindi"] },
+  { id: "khoyaa-paayaa",      title: "Khoya Paaya",         artist: "Sheldon Bangera",       languages: ["hinglish","hindi"] },
+  { id: "yeshu-tu-mera-hai",  title: "Yeshu Tu Mera Hai",   artist: "Yeshua Band",           languages: ["hinglish"] },
+];
+const MOCK_REPORT = [
+  { id: "tu-jisa-koi-naahi", title: "Tu Jisa Koi Naahi",   status: "drafted",   reason: "ready to publish" },
+  { id: "rab-rooh-aur-jaan", title: "Rab Rooh Aur Jaan",   status: "drafted",   reason: "ready to publish" },
+  { id: "khoyaa-paayaa",      title: "Khoya Paaya",         status: "drafted",   reason: "ready to publish" },
+  { id: "yeshu-tu-mera-hai",  title: "Yeshu Tu Mera Hai",   status: "drafted",   reason: "Hindi lyrics missing — Hinglish only" },
+  { id: "jaago",              title: "Jaago",               status: "duplicate", duplicateOf: "jaago-uthho" },
+  { id: "(bad-entry)",        title: "(bad entry)",         status: "invalid",   reason: "title is empty" },
+];
+
+function StatusPill({ status }) {
+  const colors = {
+    drafted:   "var(--accent)",
+    published: "var(--accent)",
+    duplicate: "var(--text-secondary)",
+    invalid:   "var(--status-error)",
+  };
+  return (
+    <span style={{
+      marginLeft: 8, color: colors[status] || "var(--text-secondary)",
+      fontSize: 12, fontWeight: 700,
+      letterSpacing: "0.06em", textTransform: "uppercase",
+    }}>{status}</span>
+  );
+}
+
+function AdminImport() {
+  const [input, setInput] = useState(EXAMPLE);
+  const [drafts, setDrafts] = useState([]);
+  const [report, setReport] = useState([]);
+  const [selected, setSelected] = useState(new Set());
+  const [message, setMessage] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const selectedIds = useMemo(() => Array.from(selected), [selected]);
+
+  const generateDrafts = () => {
+    setBusy(true);
+    setMessage("");
+    setTimeout(() => {
+      setDrafts(MOCK_DRAFTS);
+      setReport(MOCK_REPORT);
+      setSelected(new Set(MOCK_DRAFTS.map(d => d.id)));
+      setMessage(`Generated ${MOCK_DRAFTS.length} drafts.`);
+      setBusy(false);
+    }, 320);
+  };
+
+  const publishSelected = () => {
+    setBusy(true);
+    setMessage("");
+    setTimeout(() => {
+      setMessage(`Published ${selectedIds.length} songs to Supabase.`);
+      setBusy(false);
+    }, 320);
+  };
+
+  const toggle = (id) => setSelected(p => {
+    const n = new Set(p);
+    if (n.has(id)) n.delete(id); else n.add(id);
+    return n;
+  });
+
+  const btn = (variant) => ({
+    height: 44, padding: "0 22px",
+    fontFamily: "inherit", fontSize: 13, fontWeight: 600,
+    borderRadius: 999, cursor: "pointer",
+    border: variant === "ghost" ? "1px solid var(--border)" : "none",
+    background: variant === "ghost" ? "transparent"
+      : "linear-gradient(180deg, #D4BC94 0%, #B89B70 100%)",
+    color: variant === "ghost" ? "var(--text-primary)" : "var(--bg-base)",
+    boxShadow: variant === "ghost" ? "none"
+      : "0 4px 14px rgba(196,170,126,0.30), inset 0 1px 0 rgba(255,255,255,0.35)",
+    transition: "all 200ms ease",
+    opacity: busy ? 0.6 : 1,
+    letterSpacing: "-0.005em",
+  });
+
+  return (
+    <main style={{ maxWidth: 960, margin: "0 auto" }}>
+      <header style={{ marginBottom: 32 }}>
+        <p style={{ fontSize: 11, fontWeight: 700,
+          letterSpacing: "0.22em", textTransform: "uppercase",
+          color: "var(--accent)", opacity: 0.7, margin: "0 0 6px 0" }}>
+          Admin
+        </p>
+        <h1 style={{ fontFamily: "var(--font-display)", fontSize: 36,
+          fontWeight: 600, margin: "0 0 14px 0", letterSpacing: "-0.02em",
+          color: "var(--text-primary)" }}>
+          Song Import
+        </h1>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14,
+          lineHeight: 1.7, maxWidth: 640, margin: 0 }}>
+          Paste a JSON batch, generate review drafts, then publish selected songs.
+          This route is local/dev only and does not scrape websites.
+        </p>
+      </header>
+
+      <section style={{ display: "grid", gap: 16 }}>
+        <textarea value={input} onChange={(e) => setInput(e.target.value)} spellCheck={false}
+          style={{ width: "100%", minHeight: 320,
+            padding: 18, borderRadius: 12,
+            border: "1px solid var(--border)",
+            background: "var(--bg-surface)", color: "var(--text-primary)",
+            fontFamily: "ui-monospace, SFMono-Regular, Consolas, monospace",
+            fontSize: 13, lineHeight: 1.6, outline: "none",
+            resize: "vertical", boxSizing: "border-box" }} />
+
+        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+          <button onClick={generateDrafts} disabled={busy} style={btn("primary")}>
+            Generate drafts
+          </button>
+          <button onClick={publishSelected} disabled={busy || selectedIds.length === 0} style={btn("ghost")}>
+            Publish selected ({selectedIds.length})
+          </button>
+        </div>
+
+        {message && (
+          <p style={{ color: "var(--accent)", fontSize: 13, fontWeight: 600,
+            margin: "4px 0 0", letterSpacing: "0.01em" }}>{message}</p>
+        )}
+      </section>
+
+      {drafts.length > 0 && (
+        <section style={{ marginTop: 36 }}>
+          <p style={{ fontSize: 11, fontWeight: 700,
+            letterSpacing: "0.22em", textTransform: "uppercase",
+            color: "var(--accent)", opacity: 0.7, margin: "0 0 12px 0" }}>
+            Drafts
+          </p>
+          <div style={{ display: "grid", gap: 8 }}>
+            {drafts.map(d => (
+              <label key={d.id}
+                style={{ display: "flex", alignItems: "center", gap: 14,
+                  padding: 16, borderRadius: 12,
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-surface)",
+                  cursor: "pointer",
+                  transition: "border-color 200ms ease" }}>
+                <input type="checkbox" checked={selected.has(d.id)}
+                  onChange={() => toggle(d.id)}
+                  style={{ accentColor: "var(--accent)", width: 18, height: 18, cursor: "pointer" }} />
+                <span style={{ flex: 1 }}>
+                  <strong style={{ color: "var(--text-primary)",
+                    fontFamily: "var(--font-display)", fontSize: 17,
+                    fontWeight: 600 }}>{d.title}</strong>
+                  <span style={{ color: "var(--text-muted)", marginLeft: 10,
+                    fontSize: 13 }}>
+                    {d.artist} · {d.languages.join(", ")}
+                  </span>
+                </span>
+                <span style={{ fontSize: 11, color: "var(--text-muted)",
+                  letterSpacing: "0.04em" }}>{d.id}</span>
+              </label>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {report.length > 0 && (
+        <section style={{ marginTop: 36 }}>
+          <p style={{ fontSize: 11, fontWeight: 700,
+            letterSpacing: "0.22em", textTransform: "uppercase",
+            color: "var(--accent)", opacity: 0.7, margin: "0 0 12px 0" }}>
+            Report
+          </p>
+          <div style={{ display: "grid", gap: 8 }}>
+            {report.map((entry, i) => (
+              <div key={i}
+                style={{ padding: 16, borderRadius: 12,
+                  border: "1px solid var(--border)",
+                  background: "var(--bg-surface)",
+                  color: "var(--text-secondary)",
+                  fontSize: 13, display: "flex", alignItems: "center", gap: 8 }}>
+                <strong style={{ color: "var(--text-primary)",
+                  fontFamily: "var(--font-display)", fontSize: 15,
+                  fontWeight: 600 }}>{entry.title}</strong>
+                <StatusPill status={entry.status} />
+                {(entry.duplicateOf || entry.reason) && (
+                  <span style={{ marginLeft: 8, fontSize: 13,
+                    color: "var(--text-muted)" }}>
+                    {entry.duplicateOf ? `duplicate of ${entry.duplicateOf}` : entry.reason}
+                  </span>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+    </main>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("admin-root")).render(<AdminImport />);
+</script>
+
+</body>
+</html>

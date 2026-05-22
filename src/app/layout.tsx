@@ -40,7 +40,7 @@ export const viewport: Viewport = {
 
 const SITE_URL = "https://vandanaapp.vercel.app";
 const SITE_DESCRIPTION =
-  "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 80+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. By Isus Christos Ministries (ICM).";
+  "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 80+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. Built by The Algothrim.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -112,11 +112,10 @@ const siteSchema = {
     {
       "@type": "Organization",
       "@id": `${SITE_URL}/#organization`,
-      name: "Isus Christos Ministries",
-      alternateName: "ICM",
-      url: SITE_URL,
+      name: "The Algothrim",
+      url: "https://thealgothrim.com",
       description:
-        "Indian Christian ministry publishing Hindi and Hinglish worship lyrics through the Vandana app.",
+        "Independent developer studio building Vandana, a free Hindi and Hinglish worship lyrics app for the Indian church.",
     },
   ],
 };

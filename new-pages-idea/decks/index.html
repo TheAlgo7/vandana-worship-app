@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Vandana — Stakeholder Deck</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  /* ─── deck-stage hide before defined ─── */
+  deck-stage:not(:defined) { visibility: hidden; }
+
+  html, body { margin: 0; padding: 0; background: #050507; }
+  body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Each slide section — 1920×1080 dark canvas, ambient grain */
+  deck-stage section {
+    width: 1920px; height: 1080px;
+    background: var(--bg-base);
+    position: relative; overflow: hidden;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+    color: var(--text-primary);
+  }
+  deck-stage section::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.02) 1px, transparent 0);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay; pointer-events: none;
+    z-index: 1;
+  }
+
+  /* Slide-specific tokens */
+  .lab {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); opacity: 0.7;
+  }
+  .pageno {
+    position: absolute; right: 48px; bottom: 48px;
+    font-size: 13px; color: var(--text-muted);
+    letter-spacing: 0.18em; z-index: 2;
+  }
+  .brand-mini {
+    position: absolute; left: 48px; bottom: 48px;
+    font-family: var(--font-brand);
+    font-size: 22px; color: var(--accent);
+    letter-spacing: 0.04em; opacity: 0.6;
+    z-index: 2;
+  }
+  .brand-mini .dev {
+    font-family: var(--font-devanagari);
+    font-size: 14px; margin-left: 6px; opacity: 0.8;
+  }
+
+  /* ─── Slide 1: Title ─── */
+  .s-title {
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .s-title::after {
+    content: ""; position: absolute; top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 1400px; height: 1400px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,170,126,0.14) 0%, transparent 55%);
+    z-index: 0; pointer-events: none;
+  }
+  .s-title .word {
+    font-family: var(--font-brand);
+    font-size: 360px; line-height: 0.9;
+    color: var(--accent);
+    letter-spacing: -0.005em;
+    text-shadow: 0 0 120px rgba(196,170,126,0.35);
+    margin: 0; position: relative; z-index: 2;
+  }
+  .s-title .dev {
+    font-family: var(--font-devanagari);
+    font-size: 230px; color: var(--accent);
+    opacity: 0.85; line-height: 1; margin-top: -20px;
+    position: relative; z-index: 2;
+  }
+  .s-title .tag {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 42px; color: var(--text-primary);
+    margin-top: 48px;
+    letter-spacing: -0.005em;
+    position: relative; z-index: 2;
+  }
+  .s-title .line {
+    width: 60px; height: 1px;
+    background: var(--accent); opacity: 0.4;
+    margin: 36px auto 0;
+    position: relative; z-index: 2;
+  }
+  .s-title .sub {
+    font-size: 18px; color: var(--text-muted);
+    letter-spacing: 0.18em; text-transform: uppercase;
+    margin-top: 28px; position: relative; z-index: 2;
+  }
+
+  /* ─── Slide 2: The need ─── */
+  .s-need {
+    padding: 140px 160px;
+    justify-content: center;
+  }
+  .s-need .lab { margin-bottom: 40px; }
+  .s-need h1 {
+    font-family: var(--font-display);
+    font-size: 96px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 56px; color: var(--text-primary);
+    max-width: 1500px;
+  }
+  .s-need h1 em {
+    font-style: italic; color: var(--accent); font-weight: 500;
+  }
+  .s-need p {
+    font-size: 28px; line-height: 1.65;
+    color: var(--text-secondary);
+    max-width: 1200px; margin: 0;
+  }
+
+  /* ─── Slide 3: Two scripts ─── */
+  .s-bilingual {
+    align-items: center; justify-content: center;
+    padding: 100px 100px 140px;
+  }
+  .s-bilingual .lab { margin-bottom: 64px; position: relative; z-index: 2; }
+  .s-bilingual .grid {
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    align-items: center; gap: 0;
+    width: 100%; max-width: 1600px;
+    position: relative; z-index: 2;
+  }
+  .s-bilingual .col { padding: 0 80px; text-align: center; }
+  .s-bilingual .colhead {
+    font-size: 18px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--text-muted); margin-bottom: 48px;
+  }
+  .s-bilingual .line-latin {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 64px; line-height: 1.35;
+    color: var(--text-primary); letter-spacing: -0.005em;
+  }
+  .s-bilingual .line-hindi {
+    font-family: var(--font-devanagari); font-weight: 500;
+    font-size: 66px; line-height: 1.4;
+    color: var(--text-primary);
+  }
+  .s-bilingual .divider {
+    width: 1px; height: 380px;
+    background: linear-gradient(180deg, transparent, rgba(196,170,126,0.35), transparent);
+  }
+  .s-bilingual .caption {
+    margin-top: 80px; font-size: 22px;
+    color: var(--text-muted); font-style: italic;
+    position: relative; z-index: 2;
+  }
+
+  /* ─── Slide 4: Four pillars ─── */
+  .s-pillars { padding: 140px 160px 100px; }
+  .s-pillars .lab { margin-bottom: 24px; }
+  .s-pillars h2 {
+    font-family: var(--font-display);
+    font-size: 80px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 80px; color: var(--text-primary);
+    max-width: 1500px;
+  }
+  .s-pillars h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-pillars .grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px;
+  }
+  .s-pillars .pillar {
+    padding: 36px;
+    background: rgba(255,255,255,0.02);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    height: 380px; display: flex; flex-direction: column;
+  }
+  .s-pillars .glyph {
+    font-family: var(--font-display);
+    font-size: 64px; color: var(--accent);
+    line-height: 1; margin-bottom: 28px; font-weight: 500;
+  }
+  .s-pillars h3 {
+    font-family: var(--font-display);
+    font-size: 30px; font-weight: 600;
+    color: var(--text-primary); margin: 0 0 16px;
+    letter-spacing: -0.01em;
+  }
+  .s-pillars .pillar p {
+    font-size: 17px; line-height: 1.6;
+    color: var(--text-secondary); margin: 0;
+  }
+
+  /* ─── Slide 5: Sacred Noir ─── */
+  .s-design { padding: 140px 160px; }
+  .s-design .lab { margin-bottom: 24px; }
+  .s-design h2 {
+    font-family: var(--font-display);
+    font-size: 80px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 60px; max-width: 1400px;
+  }
+  .s-design h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-design .row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  }
+  .s-design .panel {
+    padding: 36px;
+    border-radius: 24px;
+    background: rgba(255,255,255,0.02);
+    border: 0.5px solid rgba(255,255,255,0.06);
+  }
+  .s-design .panel-head {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); opacity: 0.7;
+    margin-bottom: 28px;
+  }
+  .s-design .swatches {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin-bottom: 28px;
+  }
+  .s-design .sw {
+    height: 110px; border-radius: 14px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 14px;
+    box-sizing: border-box;
+  }
+  .s-design .sw .h {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .s-design .sw .v {
+    font-size: 11px; opacity: 0.65;
+    font-family: ui-monospace, monospace; margin-top: 2px;
+  }
+  .s-design .palette-cap {
+    font-size: 14px; color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .s-design .type-row {
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .s-design .specimen {
+    display: flex; align-items: baseline; gap: 22px;
+  }
+  .s-design .specimen .demo {
+    flex: 1; color: var(--text-primary);
+    line-height: 1.1;
+  }
+  .s-design .specimen .meta {
+    font-size: 12px; color: var(--text-muted);
+    font-family: ui-monospace, monospace;
+    white-space: nowrap;
+  }
+
+  /* ─── Slide 6: Library ─── */
+  .s-library {
+    padding: 140px 160px; justify-content: center;
+  }
+  .s-library .lab { margin-bottom: 56px; }
+  .s-library h2 {
+    font-family: var(--font-display);
+    font-size: 220px; font-weight: 600;
+    line-height: 0.95; letter-spacing: -0.04em;
+    margin: 0; color: var(--text-primary);
+  }
+  .s-library h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-library .subhead {
+    font-size: 30px; color: var(--text-secondary);
+    line-height: 1.45; margin: 56px 0 0;
+    max-width: 1500px;
+  }
+  .s-library .chips {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-top: 64px;
+  }
+  .s-library .chip {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: rgba(196,170,126,0.08);
+    border: 0.5px solid rgba(196,170,126,0.20);
+    font-size: 18px; color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ─── Slide 7: ICM ─── */
+  .s-icm {
+    padding: 140px 160px; justify-content: center;
+  }
+  .s-icm .lab { margin-bottom: 36px; }
+  .s-icm h2 {
+    font-family: var(--font-display);
+    font-size: 84px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 48px; max-width: 1500px;
+  }
+  .s-icm h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-icm .quote {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 32px; line-height: 1.55;
+    color: var(--text-secondary);
+    max-width: 1300px;
+    border-left: 3px solid color-mix(in srgb, var(--accent) 40%, transparent);
+    padding: 16px 0 16px 36px;
+    margin-bottom: 48px;
+  }
+  .s-icm .people {
+    display: flex; gap: 64px; margin-top: 24px;
+  }
+  .s-icm .person {
+    border-left: 2px solid var(--accent);
+    padding-left: 24px;
+  }
+  .s-icm .person .role {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); opacity: 0.7; margin-bottom: 6px;
+  }
+  .s-icm .person .name {
+    font-family: var(--font-display);
+    font-size: 28px; color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ─── Slide 8: How to use ─── */
+  .s-how { padding: 140px 160px; }
+  .s-how .lab { margin-bottom: 24px; }
+  .s-how h2 {
+    font-family: var(--font-display);
+    font-size: 80px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 80px;
+  }
+  .s-how h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-how .steps {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .s-how .step {
+    padding: 40px;
+    background: rgba(255,255,255,0.02);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    border-radius: 24px;
+    height: 380px;
+    display: flex; flex-direction: column;
+  }
+  .s-how .num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: rgba(196,170,126,0.12);
+    border: 0.5px solid rgba(196,170,126,0.30);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    color: var(--accent); font-weight: 600;
+    font-size: 22px; margin-bottom: 28px;
+  }
+  .s-how h3 {
+    font-family: var(--font-display);
+    font-size: 32px; font-weight: 600;
+    margin: 0 0 16px; line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .s-how .step p {
+    font-size: 18px; line-height: 1.6;
+    color: var(--text-secondary); margin: 0;
+  }
+
+  /* ─── Slide 9: Roadmap ─── */
+  .s-road { padding: 140px 160px; }
+  .s-road .lab { margin-bottom: 24px; }
+  .s-road h2 {
+    font-family: var(--font-display);
+    font-size: 80px; font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.02em;
+    margin: 0 0 64px;
+  }
+  .s-road h2 em { font-style: italic; color: var(--accent); font-weight: 500; }
+  .s-road .road {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+  }
+  .s-road .lane {
+    padding: 32px;
+    border-top: 2px solid var(--accent);
+    background: linear-gradient(180deg, rgba(196,170,126,0.04) 0%, transparent 50%);
+    border-radius: 0 0 16px 16px;
+  }
+  .s-road .lane .when {
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+  }
+  .s-road .lane ul {
+    list-style: none; margin: 0; padding: 0;
+    display: flex; flex-direction: column; gap: 16px;
+  }
+  .s-road .lane li {
+    font-size: 18px; line-height: 1.5; color: var(--text-primary);
+    padding-left: 24px; position: relative;
+  }
+  .s-road .lane li::before {
+    content: ""; position: absolute; left: 0; top: 0.55em;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent); opacity: 0.7;
+  }
+  .s-road .lane li .note {
+    display: block;
+    font-size: 14px; color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ─── Slide 10: Thank you ─── */
+  .s-thanks {
+    align-items: center; justify-content: center;
+    text-align: center;
+  }
+  .s-thanks::after {
+    content: ""; position: absolute; bottom: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 1200px; height: 1200px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,170,126,0.10) 0%, transparent 55%);
+    z-index: 0;
+  }
+  .s-thanks .star { margin: 0 auto 48px; opacity: 0.55; z-index: 2; position: relative; }
+  .s-thanks .verse {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 56px; line-height: 1.4;
+    color: var(--text-primary); max-width: 1300px;
+    margin: 0 auto 24px; z-index: 2; position: relative;
+  }
+  .s-thanks .verse-ref {
+    font-size: 22px; color: var(--text-muted);
+    letter-spacing: 0.04em; margin-bottom: 80px;
+    z-index: 2; position: relative;
+  }
+  .s-thanks .word {
+    font-family: var(--font-brand);
+    font-size: 96px; color: var(--accent);
+    letter-spacing: 0.04em; line-height: 1;
+    z-index: 2; position: relative;
+  }
+  .s-thanks .word .dev {
+    font-family: var(--font-devanagari);
+    font-size: 58px; margin-left: 18px;
+  }
+  .s-thanks .url {
+    margin-top: 64px; font-size: 22px;
+    color: var(--text-secondary);
+    letter-spacing: 0.04em;
+    z-index: 2; position: relative;
+  }
+  .s-thanks .url a { color: var(--accent); text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<deck-stage width="1920" height="1080">
+
+  <!-- ─── 1. Title ─── -->
+  <section class="s-title" data-screen-label="01 Title">
+    <div class="word">Vandana</div>
+    <div class="dev">वंदना</div>
+    <div class="tag">Worship in your language.</div>
+    <div class="line"></div>
+    <div class="sub">v2.5.0 Public Beta · 2026</div>
+    <div class="pageno">01 / 10</div>
+  </section>
+
+  <!-- ─── 2. The need ─── -->
+  <section class="s-need" data-screen-label="02 The need">
+    <p class="lab">Why this exists</p>
+    <h1>The Indian church deserved <em>better</em> than a mobile website with bad fonts and missing songs.</h1>
+    <p>For years, worship leaders in Hindi-speaking churches projected lyrics from cluttered PDFs and PowerPoint files, or scrolled through Facebook posts mid-service. Apps existed — but they were built for English worship, with English fonts. Hindi was an afterthought. Devanagari rendered like a fax. Hinglish was missing entirely. We had to build it ourselves.</p>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">02 / 10</div>
+  </section>
+
+  <!-- ─── 3. Two scripts ─── -->
+  <section class="s-bilingual" data-screen-label="03 Two scripts">
+    <p class="lab">Two scripts. One worship.</p>
+    <div class="grid">
+      <div class="col">
+        <div class="colhead">Hinglish</div>
+        <div class="line-latin">“Yeshu mahima<br/>Teri mahima”</div>
+      </div>
+      <div class="divider"></div>
+      <div class="col">
+        <div class="colhead">हिंदी</div>
+        <div class="line-hindi">“येशु महिमा<br/>तेरी महिमा”</div>
+      </div>
+    </div>
+    <div class="caption">However you read, worship sounds the same.</div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">03 / 10</div>
+  </section>
+
+  <!-- ─── 4. Four pillars ─── -->
+  <section class="s-pillars" data-screen-label="04 Pillars">
+    <p class="lab">Built for actual worship</p>
+    <h2>Not a generic app<br/>with a worship <em>skin</em>.</h2>
+    <div class="grid">
+      <div class="pillar">
+        <div class="glyph">Aa</div>
+        <h3>Readable</h3>
+        <p>Lora, Plus Jakarta Sans, Noto Sans Devanagari — typography a leader can read on a phone in dim light. Three font sizes, persisted per device.</p>
+      </div>
+      <div class="pillar">
+        <div class="glyph">☰</div>
+        <h3>Setlist</h3>
+        <p>Build tonight's flow. Add songs in order, then tap <i>Present setlist</i> when the band starts. Skip ahead with one tap.</p>
+      </div>
+      <div class="pillar">
+        <div class="glyph">▸</div>
+        <h3>Present mode</h3>
+        <p>Full-screen block-by-block lyrics for projection. Switch languages live mid-song. Worship leaders project from phones — built for that.</p>
+      </div>
+      <div class="pillar">
+        <div class="glyph">∅</div>
+        <h3>Offline</h3>
+        <p>Every song pre-rendered. Works in basement rooms and church halls with no WiFi. No ads, no popups, no tracking. Ever.</p>
+      </div>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">04 / 10</div>
+  </section>
+
+  <!-- ─── 5. Sacred Noir ─── -->
+  <section class="s-design" data-screen-label="05 Sacred Noir">
+    <p class="lab">A design language</p>
+    <h2>Sacred Noir — dark like a church<br/>at <em>evening prayer</em>.</h2>
+    <div class="row">
+      <div class="panel">
+        <p class="panel-head">Palette</p>
+        <div class="swatches">
+          <div class="sw" style="background:#0A0A0E; color:#ECEAE4;"><div class="h">Base</div><div class="v">#0A0A0E</div></div>
+          <div class="sw" style="background:#141418; color:#ECEAE4;"><div class="h">Surface</div><div class="v">#141418</div></div>
+          <div class="sw" style="background:#1E1E26; color:#ECEAE4;"><div class="h">Elevated</div><div class="v">#1E1E26</div></div>
+          <div class="sw" style="background:#C4AA7E; color:#0A0A0E;"><div class="h">Accent</div><div class="v">#C4AA7E</div></div>
+        </div>
+        <p class="palette-cap">Three-tier dark surface system. A single desaturated gold accent — like candlelight on old paper. No other hues. Depth comes from stacked surfaces, not borders.</p>
+      </div>
+      <div class="panel">
+        <p class="panel-head">Type</p>
+        <div class="type-row">
+          <div class="specimen">
+            <div class="demo" style="font-family: var(--font-brand); font-size: 56px; color: var(--accent);">Vandana</div>
+            <div class="meta">Cathez · brand</div>
+          </div>
+          <div class="specimen">
+            <div class="demo" style="font-family: var(--font-display); font-style: italic; font-size: 36px;">Chamka Sitara</div>
+            <div class="meta">Lora · display</div>
+          </div>
+          <div class="specimen">
+            <div class="demo" style="font-family: var(--font-devanagari); font-size: 40px; font-weight: 500;">तेरी महिमा</div>
+            <div class="meta">Noto Devanagari</div>
+          </div>
+          <div class="specimen">
+            <div class="demo" style="font-family: var(--font-body); font-size: 20px;">Worship in your language.</div>
+            <div class="meta">Plus Jakarta · body</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">05 / 10</div>
+  </section>
+
+  <!-- ─── 6. Library ─── -->
+  <section class="s-library" data-screen-label="06 Library">
+    <p class="lab">The library</p>
+    <h2><em>80+</em> songs · 12 ministries</h2>
+    <p class="subhead">Growing month by month. Authored in both Hinglish and Devanagari by hand. Every entry curated, attributed, and verified — no scraping, no AI translation, no ads.</p>
+    <div class="chips">
+      <span class="chip">ICM</span>
+      <span class="chip">FOLJ Church</span>
+      <span class="chip">Nations of Worship</span>
+      <span class="chip">Bridge Music</span>
+      <span class="chip">Yeshua Band</span>
+      <span class="chip">Sheldon Bangera</span>
+      <span class="chip">Anil Kant</span>
+      <span class="chip">Filadelfia Music</span>
+      <span class="chip">Ankit Sajwan Ministries</span>
+      <span class="chip">Jaago Music</span>
+      <span class="chip">Amit Kamble</span>
+      <span class="chip">Ernest Mall</span>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">06 / 10</div>
+  </section>
+
+  <!-- ─── 7. ICM ─── -->
+  <section class="s-icm" data-screen-label="07 ICM">
+    <p class="lab">Built with the blessing of</p>
+    <h2>Isus Christos Ministries<br/><em>ICM</em>, New Delhi.</h2>
+    <blockquote class="quote">Born inside ICM Church — the worship team, the leaders, the songwriters whose songs fill the first chapter of this library. Built by Gaurav Kumar (The Algothrim) as a personal offering to the Indian worship community.</blockquote>
+    <div class="people">
+      <div class="person">
+        <p class="role">Pastor</p>
+        <p class="name">Ps. Arul Thomas</p>
+      </div>
+      <div class="person">
+        <p class="role">Co-Pastor</p>
+        <p class="name">Dr. Mahima John Arul</p>
+      </div>
+      <div class="person">
+        <p class="role">Built by</p>
+        <p class="name">Gaurav Kumar</p>
+      </div>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">07 / 10</div>
+  </section>
+
+  <!-- ─── 8. How to use ─── -->
+  <section class="s-how" data-screen-label="08 How to use">
+    <p class="lab">Three steps</p>
+    <h2>Open, install, <em>present</em>.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Open in any browser</h3>
+        <p>vandanaapp.vercel.app — works on iPhone, Android, Mac, Windows. No App Store. No Play Store. No login.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Add to Home Screen</h3>
+        <p>iOS Safari → Share → Add to Home Screen. Android Chrome → ⋮ menu → Install. Desktop → install icon in the address bar.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Build a setlist, hit Present</h3>
+        <p>Pick tonight's songs. Tap each to add to setlist. When the band starts, hit Present — block-by-block lyrics, full-screen, in either script.</p>
+      </div>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">08 / 10</div>
+  </section>
+
+  <!-- ─── 9. Roadmap ─── -->
+  <section class="s-road" data-screen-label="09 Roadmap">
+    <p class="lab">Where we&rsquo;re going</p>
+    <h2>The next <em>chapters</em>.</h2>
+    <div class="road">
+      <div class="lane">
+        <p class="when">Now · v2.5.0</p>
+        <ul>
+          <li>Setlist builder<span class="note">Worship-leader playlist with present-in-order</span></li>
+          <li>Ministry pages<span class="note">SEO-friendly /ministry/[slug] for each artist</span></li>
+          <li>Push notifications<span class="note">Opt-in daily verse alerts</span></li>
+          <li>Desktop sidebar<span class="note">Sticky nav at ≥900px</span></li>
+        </ul>
+      </div>
+      <div class="lane">
+        <p class="when">Next · v3.0</p>
+        <ul>
+          <li>Chord charts<span class="note">For musicians, behind a toggle</span></li>
+          <li>Song key + BPM<span class="note">For worship-team prep</span></li>
+          <li>Request a song<span class="note">Inline form, moderated by ICM</span></li>
+          <li>vandanaapp.in domain<span class="note">Custom domain, India-first</span></li>
+        </ul>
+      </div>
+      <div class="lane">
+        <p class="when">Later · v4+</p>
+        <ul>
+          <li>200+ song library<span class="note">FOLJ, Nation, Sheldon full catalogues</span></li>
+          <li>Verse sharing<span class="note">Share individual Bible verses as cards</span></li>
+          <li>Community submissions<span class="note">Moderated lyric contributions</span></li>
+          <li>Keyboard shortcuts<span class="note">In present mode, for laptop projection</span></li>
+        </ul>
+      </div>
+    </div>
+    <span class="brand-mini">Vandana<span class="dev">वंदना</span></span>
+    <div class="pageno">09 / 10</div>
+  </section>
+
+  <!-- ─── 10. Thank you ─── -->
+  <section class="s-thanks" data-screen-label="10 Thank you">
+    <svg class="star" width="36" height="36" viewBox="0 0 16 16" fill="none">
+      <path d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
+        stroke="var(--accent)" stroke-width="0.8" fill="none"/>
+    </svg>
+    <p class="verse">&ldquo;Let everything that has breath praise the Lord.&rdquo;</p>
+    <p class="verse-ref">— Psalm 150:6</p>
+    <div class="word">Vandana<span class="dev">वंदना</span></div>
+    <p class="url"><a href="https://vandanaapp.vercel.app">vandanaapp.vercel.app</a> · gauravtiger60@gmail.com</p>
+    <div class="pageno">10 / 10</div>
+  </section>
+
+</deck-stage>
+
+<script src="deck-stage.js"></script>
+
+</body>
+</html>

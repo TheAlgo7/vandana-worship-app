@@ -45,8 +45,10 @@ export default async function AppHome() {
 
       {/* Crawler-only song directory — server-rendered static links */}
       <section
+        hidden
         aria-label="Song directory"
         style={{
+          display: "none",
           padding: "32px 20px 48px",
           borderTop: "1px solid var(--border-subtle)",
           maxWidth: "100%",

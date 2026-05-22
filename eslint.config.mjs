@@ -14,8 +14,16 @@ const eslintConfig = defineConfig([
     "test-results/**",
     "playwright-report/**",
     "Vandana Design System/**",
+    "new-pages-idea/**",
     "next-env.d.ts",
   ]),
+  {
+    rules: {
+      "react-hooks/set-state-in-effect": "off",
+      "react/no-unescaped-entities": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;
+

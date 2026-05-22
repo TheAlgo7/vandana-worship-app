@@ -1,0 +1,390 @@
+[
+  {
+    "id": "update-027",
+    "date": "2026-05-21",
+    "title": "Bridge Music Songs Refreshed",
+    "body": "Added and refreshed key Bridge Music songs with clean Hindi and Hinglish lyrics, including Gawahi, Haath Uthaakar Gaoonga, Dhanyawad, Sang Tere, Teri Marzi, Desh, Aadi Aur Anth, and Papa.",
+    "type": "songs_updated",
+    "song_count": 8,
+    "song_names": [
+      "Gawahi",
+      "Haath Uthaakar Gaoonga",
+      "Dhanyawad",
+      "Sang Tere",
+      "Teri Marzi",
+      "Desh",
+      "Aadi Aur Anth",
+      "Papa"
+    ]
+  },
+  {
+    "id": "update-026",
+    "date": "2026-05-21",
+    "title": "Nations of Worship Songs Refreshed",
+    "body": "Added Bhala Pita and Panah, merged the duplicate Haan Hai Yakeen entry, and replaced noisy scraped lyrics for Shaktishaali and Hazaaron Zubane with clean Hindi and Hinglish sections.",
+    "type": "songs_updated",
+    "song_count": 5,
+    "song_names": [
+      "Bhala Pita",
+      "Panah",
+      "Haan Hai Yakeen",
+      "Shaktishaali",
+      "Hazaaron Zubane"
+    ]
+  },
+  {
+    "id": "update-025",
+    "date": "2026-05-21",
+    "title": "Aaradhana Lyrics Cleaned",
+    "body": "Improved Aaradhana Mein Hai Chhutkara with complete Hindi and Hinglish lyrics, cleaner spelling, and clearer worship sections.",
+    "type": "songs_updated",
+    "song_count": 1,
+    "song_names": [
+      "Aaradhana Mein Hai Chhutkara"
+    ]
+  },
+  {
+    "id": "update-024",
+    "date": "2026-05-20",
+    "title": "1,998 More Worship Songs Added",
+    "body": "Added 1,998 more Hindi and Hinglish worship songs from the fourth reviewed batch after duplicate, page-junk, broken Hindi-tab, and lyric spelling cleanup. The importer repairs this source's Hindi encoding, collapses duplicate files, and keeps already-curated songs from being overwritten. The library now has 2,908 songs.",
+    "type": "songs_added",
+    "song_count": 1998,
+    "song_names": [
+      "Aa Yeeshu Mere Kareeb Bann Mera Aguva",
+      "Aadi Aur Ant Too Hee Hai",
+      "Aaj ka ye Din Yahovah ne Banaya Hai",
+      "Aao Hum Yahova ka Dhanyavaad Karen",
+      "Jo Kuch Hai Tune Diya",
+      "Tere Aradhana Karu",
+      "Aatma Pavitr Aatma",
+      "Keval Yeeshu Keval Yeeshu",
+      "Yeshu ke Paas Aao",
+      "Zindagi ke Safar Mey"
+    ]
+  },
+  {
+    "id": "update-023",
+    "date": "2026-05-20",
+    "title": "405 More Worship Songs Added",
+    "body": "Added 405 more worship songs after a deeper review of all three scraped lyric batches. Clean songs are now allowed even when the source does not name an artist, while duplicate songs, short files, page junk, placeholder lyrics, and regional-language sources needing manual review stay out. The library now has 910 songs.",
+    "type": "songs_added",
+    "song_count": 405,
+    "song_names": [
+      "Gawahi",
+      "Aao Kare Aradhana",
+      "Aatma Undel de",
+      "Dhanyavad ke Sath Stuti Gaunga",
+      "Jeevan Hai Yeshu",
+      "Kuchh Pal",
+      "Mujhko Chhoo le",
+      "Prabhu ka Naam Kitna Pyara Hai",
+      "Teri Aaradhana",
+      "Tu Yogya Hai",
+      "Yesu Naam Jindagi ka Jaam",
+      "Zanjeeron ko Todta Hai"
+    ]
+  },
+  {
+    "id": "update-022",
+    "date": "2026-05-20",
+    "title": "11 Reviewed Worship Songs Added",
+    "body": "Added 11 carefully reviewed worship songs from the latest library batches and refreshed 4 existing songs with cleaner credits or lyrics. The library now has 505 songs, while noisier scraped files stay out of the app until they are manually cleaned.",
+    "type": "songs_added",
+    "song_count": 11,
+    "song_names": [
+      "Abhishek",
+      "Arzi",
+      "Emaan",
+      "Hum ne Dekhi Nayi Roshni",
+      "Koi Shaq Nahi",
+      "Lot Aya Hun",
+      "Mahima Teri ho",
+      "Mai hu Anmol",
+      "Na Badalta Kabhi",
+      "Nikal Pade",
+      "Pyaar Karta Hoon"
+    ]
+  },
+  {
+    "id": "update-021",
+    "date": "2026-05-20",
+    "title": "162 More Worship Songs Added",
+    "body": "Added the first clean wave from the new lyrics batch: 162 new songs and 7 refreshed songs. The larger scraped folder was screened for duplicates, noisy titles, unsupported regional-language entries, and short files before anything was added. The library now has 494 songs.",
+    "type": "songs_added",
+    "song_count": 162,
+    "song_names": [
+      "Aadar ke Yogya",
+      "Aao Aao Emmanuel",
+      "Aaradhana Dil se",
+      "Aayega",
+      "Intezaar",
+      "Mere Dil ki Tamanna",
+      "Peedhi se Peedhi",
+      "Shukrguzar",
+      "Stuthi Aradhana",
+      "Tera Darshan",
+      "Teri Bhalayi",
+      "Zinda Khuda"
+    ]
+  },
+  {
+    "id": "update-020",
+    "date": "2026-05-20",
+    "title": "65 More Worship Songs Added",
+    "body": "Added 65 new Hindi/Hinglish worship songs and refreshed 25 existing songs with cleaner lyrics, better artist credits where verified, and fuller language coverage. The library now has 332 songs available through search, setlists, favourites, and Present Mode.",
+    "type": "songs_added",
+    "song_count": 65,
+    "song_names": [
+      "Kaise Bataein",
+      "Kharida Tune Apne Lahoo Se",
+      "Khoobsurat",
+      "Lahoo Lahoo Yeshu Ka Lahoo",
+      "Le Chal Mujhe",
+      "Maa Ke Samaan",
+      "Mahan",
+      "Mera Fidiya",
+      "Musafir",
+      "Pankhon tale",
+      "Pehchaan",
+      "Yahweh"
+    ]
+  },
+  {
+    "id": "update-019",
+    "date": "2026-05-20",
+    "title": "v2.1.0: Settings, Font Size & Polish",
+    "body": "You can now set your preferred lyrics font size directly in Settings, so every song opens at the size you like. Loading screens now match each page's real layout for a smoother experience. The About section also now credits Isus Christos Ministries (ICM), whose blessing made this app possible.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-018",
+    "date": "2026-05-14",
+    "title": "Jungli Darkhton Ke Darmiyan Added",
+    "body": "Added Hindi/Hinglish lyrics for Jungli Darkhton Ke Darmiyan from the reviewed screenshots, so it is now available in the library, setlists, and Present Mode.",
+    "type": "songs_added",
+    "song_count": 1,
+    "song_names": [
+      "Jungli Darkhton Ke Darmiyan"
+    ]
+  },
+  {
+    "id": "update-017",
+    "date": "2026-05-14",
+    "title": "Fresh Worship Songs Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics for Itna Kareeb Aa, Jai Jai Prabhu Yeshu Ki, Janma hai Emmanuel, Jee Utha Hai Masiha, and Jo Kuchh Wo Tum Se Kahe.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Itna Kareeb Aa",
+      "Jai Jai Prabhu Yeshu Ki",
+      "Janma hai Emmanuel",
+      "Jee Utha Hai Masiha",
+      "Jo Kuchh Wo Tum Se Kahe"
+    ]
+  },
+  {
+    "id": "update-016",
+    "date": "2026-05-14",
+    "title": "New E, G & H Worship Songs Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics for 12 worship songs, including Ek Aisi Agni, Ek Do Teen Char, Hai Tu, Ho Sitaish, Ho Teri Aradhana, and Hungama.",
+    "type": "songs_added",
+    "song_count": 12,
+    "song_names": [
+      "Ek Aisi Agni",
+      "Ek Do Teen Char",
+      "Gaake Mujhko Sunao Phir",
+      "Hai di aawaz farishto ne",
+      "Hai Tu",
+      "Hallelujah! Prabhu Mere",
+      "Halleluyaah, halleluyaah gaayenge",
+      "Haq Tala",
+      "Ho Sitaish",
+      "Ho Teri Aradhana",
+      "Ho Teri Stuti Aur Aradhana",
+      "Hungama"
+    ]
+  },
+  {
+    "id": "update-015",
+    "date": "2026-05-14",
+    "title": "More Hindi Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Deewana, Deewana Main Yeshu Ka, Door ek thara jaa rahaa hai, Door kahin in raahon, and Duniya ke kone-kone mein.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Deewana",
+      "Deewana Main Yeshu Ka",
+      "Door ek thara jaa rahaa hai",
+      "Door kahin in raahon",
+      "Duniya ke kone-kone mein"
+    ]
+  },
+  {
+    "id": "update-014",
+    "date": "2026-05-14",
+    "title": "New Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Chaak Par Apni Rakh Mujhe, Charano Mein Tere, Chattan, and Chillakar Gaoonga.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Chaak Par Apni Rakh Mujhe",
+      "Chale jaana hai door se door talak",
+      "Charano Mein Tere",
+      "Chattan",
+      "Chillakar Gaoonga"
+    ]
+  },
+  {
+    "id": "update-013",
+    "date": "2026-05-14",
+    "title": "More Worship Songs Added",
+    "body": "Added and cleaned five Hindi/Hinglish worship songs, including Bhajan (Har Subah Har Shaam), Bharat, Bharpur Jeevan Tere Liye, Binti Sunle Yeshu Pyare, and Bolo Jai Milkar Jai.",
+    "type": "songs_added",
+    "song_count": 5,
+    "song_names": [
+      "Bhajan (Har Subah Har Shaam)",
+      "Bharat",
+      "Bharpur Jeevan Tere Liye",
+      "Binti Sunle Yeshu Pyare",
+      "Bolo Jai Milkar Jai"
+    ]
+  },
+  {
+    "id": "update-012",
+    "date": "2026-05-14",
+    "title": "Screenshot Lyrics Added",
+    "body": "Added and cleaned Hindi/Hinglish lyrics from reviewed screenshots for Aasmaano mein hoga, Aatmare, and Anand Ki Bharpuri.",
+    "type": "songs_updated",
+    "song_count": 3,
+    "song_names": [
+      "Aasmaano mein hoga",
+      "Aatmare",
+      "Anand Ki Bharpuri"
+    ]
+  },
+  {
+    "id": "update-011",
+    "date": "2026-05-14",
+    "title": "Song Credits Refined",
+    "body": "Updated verified artist and source credits for several recently added songs, including Aaj Ka Din Yahowa Ne Banaya Hai, Aaya Hai Yeshu Aaya Hai, Ab Aao Vishwasiyo, and Ae Lashkaron Ke Rab.",
+    "type": "metadata",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-010",
+    "date": "2026-05-14",
+    "title": "Hindi Worship Songs Added",
+    "body": "Added a new batch of Hindi and Hinglish worship songs, including Aa Bhi Jaa, Aaja Re, Ab Aao Vishwasiyo, Ae Lashkaron Ke Rab, and more. These songs are available in the library and can be used in setlists and Present Mode.",
+    "type": "songs_added",
+    "song_count": 10,
+    "song_names": [
+      "Aa Bhi Jaa",
+      "Aaj Hai Maha Anand Ka Susamay",
+      "Aaj Ka Din Yahowa Ne Banaya Hai",
+      "Aaja Re",
+      "Aao Hum Yahova Ka Dhanyavaad Karein",
+      "Aaya Hai Yeshu Aaya Hai",
+      "Ab Aao Vishwasiyo",
+      "Ae Lashkaron Ke Rab",
+      "Ae Mere Dil Jhoom Ke Gaa",
+      "Aur Kisi Baat Ki Badaai Na Karein"
+    ]
+  },
+  {
+    "id": "update-009",
+    "date": "2026-05-12",
+    "title": "Setlists, Better Search & Smoother Navigation",
+    "body": "Added setlists for worship planning, next and previous controls in Present Mode, lyrics-aware search with fuzzy matching, clearer empty states, visible favourite and setlist buttons, smoother tab switching, offline/update notices, and a more balanced floating navigation bar.",
+    "type": "feature",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-008",
+    "date": "2026-04-14",
+    "title": "Bug Fixes & Long-Press to Favourite",
+    "body": "Hold any song on the home screen to instantly save it to favourites, no need to open the song. Also fixed skeleton loading screens, corrected swipe behaviour on recently viewed, and songs now appear in Recently Viewed after you visit them.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-007",
+    "date": "2026-04-10",
+    "title": "11 New Songs Added",
+    "body": "Added new worship songs from Nations of Worship, Sheldon Bangera, and Immanuel Community Church.",
+    "type": "songs_added",
+    "song_count": 11,
+    "song_names": [
+      "Phir Se Vo Aag Barsa De",
+      "Zindagi Yeshu Bina",
+      "Uski Mahima Karo, Bandhan Toot Jaayenge",
+      "Neele Aasman Ke Paar",
+      "Han Hai Yakeen",
+      "Zinda Hoon Main",
+      "Main Khuda Ka Beta Hoon",
+      "Aag Mein Ek Aur",
+      "Gaaoon Hallelujah",
+      "Aasha Meri",
+      "Mera Yeshu Zinda Hai"
+    ]
+  },
+  {
+    "id": "update-006",
+    "date": "2026-04-10",
+    "title": "Missing Artists Recovered",
+    "body": "Added accurate artist and church information mapping to 189 existing songs in the database. You can now properly browse and search these songs by their artists.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-005",
+    "date": "2026-04-05",
+    "title": "Improved Hindi Lyrics",
+    "body": "All Hindi song lyrics have been re-transliterated for better accuracy. Fixed edge cases in transliteration so the text reads more naturally.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-004",
+    "date": "2026-04-05",
+    "title": "Refreshed Icons & Visuals",
+    "body": "All icons across the app have been upgraded to a cleaner, more consistent design. The Vandana wordmark has also been improved.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-003",
+    "date": "2026-04-05",
+    "title": "Mobile Layout Fixes",
+    "body": "Fixed church filter overflow, search icon alignment, and empty state sizing on smaller screens for a smoother mobile experience.",
+    "type": "fix",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-002",
+    "date": "2026-04-04",
+    "title": "New Feature: Favourites",
+    "body": "You can now save your favourite songs and access them instantly.",
+    "type": "feature",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-001",
+    "date": "2026-04-04",
+    "title": "100 Songs Added",
+    "body": "We've added 100 new worship songs from ICM, Nations of Worship, Sheldon Bangera and more.",
+    "type": "songs_added",
+    "song_count": 100,
+    "song_names": []
+  }
+]

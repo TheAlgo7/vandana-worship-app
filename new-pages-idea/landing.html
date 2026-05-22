@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vandana — Worship in your language</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  /* ──────────────────────────────────────────
+     Vandana — Landing
+     Reverent, dark, single-page.
+     Inspired by single-page launches (opencut.app etc.)
+     Gives a 'smell' of the product — never shows the app UI.
+     ────────────────────────────────────────── */
+
+  html, body { margin: 0; padding: 0; background: var(--bg-base); }
+  body {
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Ambient grain (very subtle) */
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 1;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.018) 1px, transparent 0);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay;
+  }
+
+  /* ── Top bar ── */
+  .topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 28px;
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    background: linear-gradient(180deg, rgba(10,10,14,0.78) 0%, rgba(10,10,14,0.45) 100%);
+    border-bottom: 0.5px solid rgba(255,255,255,0.04);
+  }
+  .topbar .brand {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    font-family: var(--font-brand);
+    font-size: 22px; color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .topbar .brand .dev {
+    font-family: var(--font-devanagari);
+    font-size: 16px; opacity: 0.7;
+  }
+  .topbar nav {
+    display: inline-flex; align-items: center; gap: 20px;
+  }
+  .topbar a.minor {
+    color: var(--text-secondary); text-decoration: none;
+    font-size: 13px; font-weight: 500;
+    transition: color 200ms ease;
+  }
+  .topbar a.minor:hover { color: var(--text-primary); }
+  .topbar a.cta-mini {
+    color: var(--text-primary); text-decoration: none;
+    font-size: 13px; font-weight: 600;
+    padding: 7px 14px; border-radius: 999px;
+    background: rgba(196,170,126,0.10);
+    border: 0.5px solid rgba(196,170,126,0.30);
+    transition: all 200ms ease;
+  }
+  .topbar a.cta-mini:hover {
+    background: rgba(196,170,126,0.18);
+    border-color: rgba(196,170,126,0.45);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative; z-index: 2;
+    min-height: 100vh; padding: 140px 28px 80px;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ""; position: absolute;
+    top: -250px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 900px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(196,170,126,0.16) 0%, rgba(196,170,126,0.04) 35%, transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 6px 14px 6px 8px; margin-bottom: 36px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.025);
+    border: 0.5px solid rgba(255,255,255,0.08);
+    font-size: 12px; color: var(--text-secondary);
+    letter-spacing: 0.04em;
+  }
+  .eyebrow .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px rgba(196,170,126,0.7);
+    margin-left: 2px;
+  }
+  .eyebrow b { color: var(--text-primary); font-weight: 600; }
+
+  .wordmark {
+    font-family: var(--font-brand);
+    font-size: clamp(72px, 14vw, 200px);
+    line-height: 0.92;
+    color: var(--accent);
+    margin: 0;
+    letter-spacing: -0.01em;
+    text-shadow:
+      0 1px 0 rgba(255,255,255,0.05),
+      0 0 80px rgba(196,170,126,0.25);
+  }
+  .wordmark .dev {
+    font-family: var(--font-devanagari);
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 0.66em;
+    margin-left: 0.16em;
+    opacity: 0.85;
+    vertical-align: 0.05em;
+  }
+
+  /* Tagline that morphs between languages */
+  .tagline-wrap {
+    margin-top: 28px;
+    min-height: 56px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(20px, 2.6vw, 32px);
+    color: var(--text-primary);
+    line-height: 1.4;
+    transition: opacity 600ms ease;
+    letter-spacing: -0.005em;
+  }
+  .tagline.hi {
+    font-family: var(--font-devanagari);
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .subline {
+    color: var(--text-secondary);
+    font-size: 15px;
+    margin-top: 24px;
+    max-width: 540px;
+    line-height: 1.6;
+  }
+
+  /* CTAs */
+  .ctas {
+    margin-top: 40px;
+    display: inline-flex; flex-wrap: wrap; gap: 12px;
+    justify-content: center;
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; height: 52px; padding: 0 22px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 15px; font-weight: 600;
+    text-decoration: none;
+    cursor: pointer; border: none;
+    transition: all 200ms ease;
+    letter-spacing: -0.005em;
+  }
+  .btn.primary {
+    background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+    color: #0A0A0E;
+    box-shadow:
+      0 6px 24px rgba(196,170,126,0.30),
+      inset 0 1px 0 rgba(255,255,255,0.35),
+      inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+  .btn.primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 10px 32px rgba(196,170,126,0.42),
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      inset 0 -1px 0 rgba(0,0,0,0.15);
+  }
+  .btn.primary:active { transform: scale(0.98); }
+  .btn.ghost {
+    background: rgba(255,255,255,0.04);
+    border: 0.5px solid rgba(255,255,255,0.10);
+    color: var(--text-primary);
+  }
+  .btn.ghost:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(255,255,255,0.18);
+  }
+
+  .platform-hint {
+    margin-top: 22px;
+    font-size: 12px; color: var(--text-muted);
+    letter-spacing: 0.04em;
+    display: inline-flex; align-items: center; gap: 6px;
+  }
+
+  /* ── Quiet section: bilingual peer ── */
+  section.section {
+    position: relative; z-index: 2;
+    padding: 100px 28px;
+    max-width: 1080px; margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    color: var(--accent); opacity: 0.7; text-transform: uppercase;
+    margin: 0 0 18px;
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4.5vw, 56px);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 16px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .section p.lede {
+    color: var(--text-secondary);
+    font-size: 17px; line-height: 1.7;
+    max-width: 640px; margin: 0;
+  }
+
+  /* Bilingual specimen */
+  .bilingual {
+    margin-top: 56px;
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    gap: 0; align-items: center;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    padding: 56px 0;
+  }
+  .bilingual .col { padding: 0 40px; text-align: center; }
+  .bilingual .col .tag {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+    color: var(--text-muted); text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .bilingual .col .line {
+    font-size: 28px; line-height: 1.5;
+    color: var(--text-primary);
+  }
+  .bilingual .col.latin .line {
+    font-family: var(--font-display); font-style: italic;
+    letter-spacing: -0.005em;
+  }
+  .bilingual .col.hindi .line {
+    font-family: var(--font-devanagari);
+    font-weight: 500;
+  }
+  .bilingual .divider {
+    background: linear-gradient(180deg, transparent, rgba(196,170,126,0.30), transparent);
+    width: 1px; height: 80%; margin: 0 auto;
+  }
+
+  /* ── Three pillars ── */
+  .pillars {
+    margin-top: 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px;
+  }
+  .pillar { padding-top: 4px; }
+  .pillar .glyph {
+    font-family: var(--font-display);
+    font-size: 36px;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    font-weight: 500;
+    line-height: 1;
+  }
+  .pillar h3 {
+    font-family: var(--font-display);
+    font-size: 21px; font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+  }
+  .pillar p {
+    color: var(--text-secondary);
+    font-size: 14px; line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── Churches ── */
+  .churches {
+    margin-top: 56px; padding: 32px 0;
+    display: flex; flex-wrap: wrap; gap: 32px 56px;
+    justify-content: center; align-items: center;
+  }
+  .church {
+    font-family: var(--font-display);
+    font-size: 22px; color: var(--text-muted);
+    font-weight: 500; letter-spacing: -0.01em;
+    transition: color 240ms ease;
+  }
+  .church:hover { color: var(--text-secondary); }
+
+  /* ── Final CTA ── */
+  .final {
+    position: relative; z-index: 2;
+    padding: 120px 28px 80px;
+    text-align: center;
+    max-width: 720px; margin: 0 auto;
+  }
+  .final::before {
+    content: ""; position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(196,170,126,0.08) 0%, transparent 60%);
+    pointer-events: none; z-index: -1;
+  }
+  .final h2 {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5vw, 64px);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 24px;
+  }
+  .final h2 em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 500;
+  }
+  .final p {
+    color: var(--text-secondary);
+    font-size: 16px; line-height: 1.7;
+    margin: 0 auto 36px; max-width: 480px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 0.5px solid rgba(255,255,255,0.05);
+    padding: 32px 28px; margin-top: 40px;
+    display: flex; flex-wrap: wrap; gap: 16px;
+    justify-content: space-between; align-items: center;
+    font-size: 12px; color: var(--text-muted);
+    max-width: 1080px; margin-left: auto; margin-right: auto;
+    position: relative; z-index: 2;
+  }
+  footer a { color: var(--text-secondary); text-decoration: none; margin-left: 18px; }
+  footer a:hover { color: var(--text-primary); }
+  footer .left { display: inline-flex; align-items: center; gap: 14px; }
+  footer .star {
+    width: 12px; height: 12px;
+  }
+
+  /* Devotional star flourish */
+  .star-flourish {
+    margin: 0 auto 32px;
+    opacity: 0.4;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .topbar { padding: 14px 18px; }
+    .topbar nav { gap: 10px; }
+    .topbar a.minor { display: none; }
+    .hero { padding: 110px 20px 60px; }
+    .section { padding: 70px 20px; }
+    .bilingual { grid-template-columns: 1fr; }
+    .bilingual .divider {
+      width: 60%; height: 0.5px;
+      background: linear-gradient(90deg, transparent, rgba(196,170,126,0.30), transparent);
+    }
+    .bilingual .col { padding: 24px 0; }
+    .pillars { grid-template-columns: 1fr; gap: 36px; }
+    footer { flex-direction: column; gap: 8px; text-align: center; }
+    footer a { margin: 0 8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── Top bar ─── -->
+<header class="topbar">
+  <a class="brand" href="#">Vandana<span class="dev">वंदना</span></a>
+  <nav>
+    <a class="minor" href="https://github.com/TheAlgo7/vandana-worship-app" target="_blank" rel="noopener">GitHub</a>
+    <a class="minor" href="#about">About</a>
+    <a class="cta-mini" href="https://vandanaapp.vercel.app">Open app</a>
+  </nav>
+</header>
+
+<!-- ─── Hero ─── -->
+<section class="hero">
+
+  <div class="eyebrow">
+    <span class="dot"></span>
+    <span><b>v2.5.0 Public Beta</b> · 80+ songs · Hindi · Hinglish · offline</span>
+  </div>
+
+  <h1 class="wordmark">Vandana<span class="dev">वंदना</span></h1>
+
+  <div class="tagline-wrap">
+    <span id="tagline" class="tagline">Worship in your language.</span>
+  </div>
+
+  <p class="subline">
+    A reverent, dark-first lyrics app for Hindi-speaking worshippers.
+    Every song in both Devanagari and Hinglish. Built for dim rooms, late prayers,
+    and Sunday mornings without WiFi.
+  </p>
+
+  <div class="ctas">
+    <a class="btn primary" href="https://vandanaapp.vercel.app">
+      Open the app
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </a>
+    <a class="btn ghost" href="install.html">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="6" y="2" width="12" height="20" rx="2.5"/>
+        <line x1="11" y1="18" x2="13" y2="18"/>
+      </svg>
+      Install on phone
+    </a>
+  </div>
+
+  <div class="platform-hint">
+    <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+      <path d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
+        stroke="currentColor" stroke-width="1" fill="none"/>
+    </svg>
+    <a href="install.html" style="color: inherit; text-decoration: none; border-bottom: 0.5px dashed rgba(196,170,126,0.4); padding-bottom: 1px;">Add to Home Screen — iOS, Android, Desktop</a>
+  </div>
+</section>
+
+<!-- ─── Bilingual ─── -->
+<section class="section" id="about">
+  <p class="section-label">Two scripts. One worship.</p>
+  <h2>However you read,<br>worship sounds the same.</h2>
+  <p class="lede">
+    Hinglish for the generation that grew up on Roman script. Devanagari for those
+    who learned to read in Hindi. Both are first-class. Both are authored together.
+    One tap to switch.
+  </p>
+
+  <div class="bilingual">
+    <div class="col latin">
+      <div class="tag">Hinglish</div>
+      <div class="line">“Yeshu mahima<br>Teri mahima”</div>
+    </div>
+    <div class="divider"></div>
+    <div class="col hindi">
+      <div class="tag">हिंदी</div>
+      <div class="line">“येशु महिमा<br>तेरी महिमा”</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Three pillars ─── -->
+<section class="section" style="padding-top: 0;">
+  <p class="section-label">Built for actual worship</p>
+  <h2>Not a generic app<br>with a worship skin.</h2>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="glyph">Aa</div>
+      <h3>Readable</h3>
+      <p>Lora, Plus Jakarta Sans, Noto Sans Devanagari at sizes a worship leader can read on a phone in low light. Three discrete font sizes, persisted.</p>
+    </div>
+    <div class="pillar">
+      <div class="glyph">☰</div>
+      <h3>Setlist</h3>
+      <p>Build tonight&rsquo;s flow. Add songs from the library in order, then hit <em>Present setlist</em> when the band starts. Skip ahead with one tap.</p>
+    </div>
+    <div class="pillar">
+      <div class="glyph">▸</div>
+      <h3>Present mode</h3>
+      <p>Full-screen, block-by-block lyrics for projection. Switch languages live, scroll on auto. Worship leaders project from phones — we built for that.</p>
+    </div>
+    <div class="pillar">
+      <div class="glyph">∅</div>
+      <h3>Offline-first</h3>
+      <p>Every song page pre-rendered. Works in basement rooms and church halls with no signal. No ads, no popups, no tracking. Ever.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Churches ─── -->
+<section class="section" style="text-align: center; padding-top: 40px;">
+  <p class="section-label">A growing library</p>
+  <h2 style="font-size: clamp(28px, 3.6vw, 42px);">
+    Songs from churches<br>across India.
+  </h2>
+  <div class="churches">
+    <span class="church">ICM</span>
+    <span class="church">FOLJ Church</span>
+    <span class="church">Nations of Worship</span>
+    <span class="church">Bridge Music</span>
+    <span class="church">Yeshua Band</span>
+    <span class="church">Sheldon Bangera</span>
+    <span class="church">Anil Kant</span>
+    <span class="church">Filadelfia Music</span>
+    <span class="church">Ankit Sajwan Ministries</span>
+  </div>
+</section>
+
+<!-- ─── Final CTA ─── -->
+<section class="final">
+  <svg class="star-flourish" width="22" height="22" viewBox="0 0 16 16" fill="none">
+    <path d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
+      stroke="var(--accent)" stroke-width="1" fill="none"/>
+  </svg>
+  <h2>Come <em>worship</em>.</h2>
+  <p>Open Vandana in any browser — it&rsquo;ll save itself to your phone or desktop.
+    Then it works wherever you do.</p>
+  <div class="ctas" style="justify-content: center;">
+    <a class="btn primary" href="https://vandanaapp.vercel.app">
+      Open the app
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/>
+        <polyline points="13 6 19 12 13 18"/>
+      </svg>
+    </a>
+    <a class="btn ghost" href="https://github.com/TheAlgo7/vandana-worship-app" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+      </svg>
+      View on GitHub
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span class="left">
+    <svg class="star" viewBox="0 0 16 16" fill="none">
+      <path d="M8 0 L9.5 6.5 L16 8 L9.5 9.5 L8 16 L6.5 9.5 L0 8 L6.5 6.5 Z"
+        stroke="var(--accent)" stroke-width="1" fill="none"/>
+    </svg>
+    Vandana · वंदना — to worship, to praise
+  </span>
+  <div>
+    Made with <span style="color: var(--accent);">♥</span> by
+    <a href="https://thealgothrim.com" target="_blank" rel="noopener">Gaurav · The Algothrim</a>
+    <a href="https://github.com/TheAlgo7/vandana-worship-app" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</footer>
+
+<script>
+  // Rotate the tagline gently between Hinglish, English, and Devanagari.
+  // Gives the page a 'smell' of the bilingual product without showing the UI.
+  const lines = [
+    { text: "Worship in your language.",                    lang: "en" },
+    { text: "तेरी वंदना गाएँ शामों सवेरे",                    lang: "hi" },
+    { text: "Teri vandana gaayein shaamon savere",          lang: "en" },
+    { text: "धरती झूमे हालेलुया",                              lang: "hi" },
+    { text: "Dharti jhoome Hallelujah",                     lang: "en" },
+    { text: "Worship shouldn't need WiFi.",                 lang: "en" },
+  ];
+  let i = 0;
+  const el = document.getElementById("tagline");
+  function next() {
+    el.style.opacity = "0";
+    setTimeout(() => {
+      i = (i + 1) % lines.length;
+      el.textContent = lines[i].text;
+      el.className = "tagline " + (lines[i].lang === "hi" ? "hi" : "");
+      el.style.opacity = "1";
+    }, 600);
+  }
+  setInterval(next, 3400);
+</script>
+
+</body>
+</html>

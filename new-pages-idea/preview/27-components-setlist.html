@@ -1,0 +1,102 @@
+<!doctype html>
+<html data-theme="dark"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #0A0A0E; margin: 0; padding: 0;
+    font-family: var(--font-body); color: var(--text-primary); }
+  .card { padding: 16px 20px 24px; }
+  .label { font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--accent); margin-bottom: 14px; }
+  .h1 { font-family: var(--font-display); font-size: 18px; font-weight: 600;
+    margin: 0; color: var(--text-primary); }
+  .meta { font-size: 11px; color: var(--text-muted); margin: 2px 0 0; }
+  .topbar {
+    display: flex; align-items: center; gap: 10px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .actions { display: flex; gap: 8px; margin-top: 14px; }
+  .btn {
+    flex: 1; height: 40px; border-radius: 999px;
+    border: none; background: var(--accent);
+    color: var(--bg-base); font-size: 13px; font-weight: 700;
+    cursor: pointer; font-family: inherit;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    box-shadow: 0 2px 8px rgba(196,170,126,0.25);
+  }
+  .ic {
+    width: 40px; height: 40px; border-radius: 999px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-secondary);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; flex-shrink: 0;
+  }
+  .row {
+    display: flex; align-items: center; min-height: 56px;
+    padding: 12px 0; border-bottom: 1px solid var(--border-subtle);
+  }
+  .tt { font-family: var(--font-display); font-size: 15px; font-weight: 600;
+    color: var(--text-primary); margin: 0; line-height: 1.3;
+    display: flex; align-items: center; gap: 6px; }
+  .ar { font-size: 12px; color: var(--text-secondary); margin: 2px 0 0; }
+  .heart { width: 8px; height: 8px; color: var(--accent); opacity: 0.5; fill: currentColor; }
+  .row .left { flex: 1; min-width: 0; }
+  .row .chip {
+    font-size: 10px; color: var(--text-muted); margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .row svg.chev { width: 16px; height: 16px; color: var(--text-muted); flex-shrink: 0; }
+  .row .listx {
+    background: var(--accent-dim); color: var(--accent);
+    border-radius: 999px; width: 36px; height: 36px; margin-left: 6px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pl-ic svg { width: 14px; height: 14px; }
+</style></head>
+<body><div class="card">
+  <div class="topbar">
+    <h1 class="h1">Setlist</h1>
+    <span class="meta">3 songs</span>
+  </div>
+
+  <div class="actions">
+    <button class="btn">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21"/></svg>
+      Present setlist
+    </button>
+    <button class="ic" aria-label="Clear setlist">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+    </button>
+  </div>
+
+  <!-- Song rows -->
+  <div class="row" style="margin-top: 14px;">
+    <div class="left">
+      <h2 class="tt">Vandana
+        <svg class="heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.7 0-3 .5-4.5 2-1.5-1.5-2.8-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7Z"/></svg>
+      </h2>
+      <p class="ar">Ankit Sajwan Ministries</p>
+    </div>
+    <span class="chip">FOLJ Church</span>
+    <div class="listx pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12H3"/><path d="M16 6H3"/><path d="M11 18H3"/><path d="m17 17 4-4"/><path d="m17 13 4 4"/></svg></div>
+  </div>
+
+  <div class="row">
+    <div class="left">
+      <h2 class="tt">Chamka Sitara
+        <svg class="heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.7 0-3 .5-4.5 2-1.5-1.5-2.8-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.2 1.5 4 3 5.5l7 7Z"/></svg>
+      </h2>
+      <p class="ar">Br. Ankur Masih &amp; Ps. Bharat</p>
+    </div>
+    <span class="chip">ICM</span>
+    <div class="listx pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12H3"/><path d="M16 6H3"/><path d="M11 18H3"/><path d="m17 17 4-4"/><path d="m17 13 4 4"/></svg></div>
+  </div>
+
+  <div class="row" style="border-bottom: none;">
+    <div class="left">
+      <h2 class="tt">Kadosh Kadosh</h2>
+      <p class="ar">ICM Church Worship Team</p>
+    </div>
+    <span class="chip">ICM</span>
+    <div class="listx pl-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 12H3"/><path d="M16 6H3"/><path d="M11 18H3"/><path d="m17 17 4-4"/><path d="m17 13 4 4"/></svg></div>
+  </div>
+</div></body></html>

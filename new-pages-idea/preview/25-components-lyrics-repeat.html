@@ -1,0 +1,65 @@
+<!doctype html>
+<html data-theme="dark"><head><meta charset="utf-8"><link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #0A0A0E; margin: 0; padding: 0;
+    font-family: var(--font-body); color: var(--text-primary); }
+  .card { padding: 22px 24px; }
+  .label { font-size: 10px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.18em; color: var(--accent); margin-bottom: 14px; }
+  .lyric { padding: 14px 16px; }
+  .lyric p { margin: 0; font-family: var(--font-display);
+    font-size: 19px; line-height: 1.85; color: var(--text-primary); }
+  .lyric span { display: block; position: relative; padding-right: 44px; }
+  .lyric mark {
+    position: absolute; right: 0; top: 0.4em;
+    font-family: var(--font-body);
+    font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
+    color: var(--accent); opacity: 0.7;
+    padding: 2px 8px;
+    background: var(--accent-dim);
+    border-radius: 999px;
+    background-color: rgba(196,170,126,0.10);
+  }
+  .lyric .hi p { font-family: var(--font-devanagari); line-height: 2.15; }
+  .col {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+  .pane {
+    background: var(--bg-surface);
+    border-radius: 12px;
+    padding: 16px;
+    border: 1px solid var(--border-subtle);
+  }
+  .pane-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+</style></head>
+<body><div class="card">
+  <div class="label">Lyrics Block — repeat markers (x2, ×3)</div>
+  <div class="col">
+    <div class="pane">
+      <div class="pane-label">Hinglish</div>
+      <div class="lyric">
+        <p>
+          <span>Yeshu mahima Teri mahima<mark>x2</mark></span>
+          <span>Mere Raja Yeshua gaoon Teri mahima</span>
+          <span>Prem jo kiya hai Tune<mark>x3</mark></span>
+          <span>Kaise na karein mahima</span>
+        </p>
+      </div>
+    </div>
+    <div class="pane">
+      <div class="pane-label">हिंदी</div>
+      <div class="lyric hi">
+        <p>
+          <span>येशु महिमा तेरी महिमा<mark>x2</mark></span>
+          <span>मेरे राजा येशुआ गाऊँ तेरी महिमा</span>
+          <span>प्रेम जो किया है तूने<mark>x3</mark></span>
+          <span>कैसे ना करें महिमा</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div></body></html>
