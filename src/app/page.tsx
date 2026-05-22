@@ -246,11 +246,8 @@ export default function LandingPage() {
         className={styles.section}
         style={{ textAlign: "center", paddingTop: 40 }}
       >
-        <p className={styles.sectionLabel}>A growing library</p>
-        <h2
-          className={styles.sectionH2}
-          style={{ fontSize: "clamp(28px, 3.6vw, 42px)" }}
-        >
+        <p className={`${styles.sectionLabel} ${styles.churchesSectionLabel}`}>A growing library</p>
+        <h2 className={styles.churchesH2}>
           Songs from churches
           <br />
           across India.

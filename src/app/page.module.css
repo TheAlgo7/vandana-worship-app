@@ -369,6 +369,22 @@
   margin: 0;
 }
 
+/* ── Churches section heading ── */
+.churchesSectionLabel {
+  text-align: center;
+}
+
+.churchesH2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 42px);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 16px;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-align: center;
+}
+
 /* ── Churches ── */
 .churches {
   margin-top: 56px;
@@ -495,8 +511,6 @@
   .bilingualLine { font-size: 24px; }
   .pillars { grid-template-columns: 1fr; gap: 32px; }
   .pillar { text-align: center; }
-  .church { font-size: 18px; }
-  .churches { gap: 20px 40px; }
   .final { padding: 72px 20px 60px; }
   .footer { flex-direction: column; gap: 8px; text-align: center; margin-left: 0; margin-right: 0; }
   .footerLink { margin: 0 8px; }
