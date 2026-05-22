@@ -1,4 +1,9 @@
-/* ── Install page styles ── */
+/* ──────────────────────────────────────────
+   Vandana — /install
+   Steps for iOS, Android, Desktop.
+   Mini OS-chrome mockups instead of screenshots.
+   Pixel-matched to new-pages-idea/install.html
+   ────────────────────────────────────────── */
 
 .page {
   background: var(--bg-base);
@@ -10,6 +15,7 @@
   min-height: 100vh;
 }
 
+/* Ambient grain */
 .grain {
   position: fixed;
   inset: 0;
@@ -20,7 +26,7 @@
   mix-blend-mode: overlay;
 }
 
-/* ─── Topbar ─── */
+/* ─── Topbar (matches landing) ─── */
 .topbar {
   position: sticky;
   top: 0;
@@ -129,7 +135,6 @@
   margin: 0 0 18px;
   color: var(--text-primary);
 }
-
 .heroH1 em { font-style: italic; color: var(--accent); font-weight: 500; }
 
 .heroIntro {
@@ -145,13 +150,14 @@
   position: relative;
   z-index: 2;
   margin: 48px auto 0;
-  display: flex;
+  display: inline-flex;
   padding: 6px;
   border-radius: 999px;
   background: rgba(255,255,255,0.03);
   border: 0.5px solid rgba(255,255,255,0.06);
   gap: 4px;
-  width: fit-content;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .tabBtn {
@@ -171,7 +177,9 @@
   letter-spacing: -0.005em;
 }
 .tabBtn:hover { color: var(--text-primary); }
-.tabBtn.active {
+.tabBtn svg { width: 16px; height: 16px; }
+
+.active.tabBtn {
   background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
   color: #0A0A0E;
   box-shadow:
@@ -190,7 +198,7 @@
 }
 
 .pane { display: none; }
-.pane.active {
+.active.pane {
   display: block;
   animation: fadeIn 260ms ease both;
 }
@@ -233,6 +241,7 @@
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
+  letter-spacing: 0;
   border: 0.5px solid rgba(196,170,126,0.25);
   flex-shrink: 0;
 }
@@ -253,6 +262,19 @@
   line-height: 1.6;
   margin: 0;
 }
+.stepP b { color: var(--text-primary); font-weight: 600; }
+.stepP kbd {
+  display: inline-block;
+  padding: 1px 7px;
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid rgba(255,255,255,0.10);
+  border-bottom-width: 1.5px;
+  border-radius: 5px;
+  font-family: ui-monospace, "SF Mono", monospace;
+  font-size: 12px;
+  color: var(--text-primary);
+  margin: 0 1px;
+}
 
 /* ─── Mini OS-chrome mockups ─── */
 .mock {
@@ -268,6 +290,7 @@
   position: relative;
   overflow: hidden;
 }
+.mock svg { width: 16px; height: 16px; }
 
 .mockUrl {
   flex: 1;
@@ -293,6 +316,7 @@
   background: rgba(255,255,255,0.06);
   color: rgba(255,255,255,0.7);
   flex-shrink: 0;
+  transition: all 200ms ease;
 }
 
 .mockIcHi {
@@ -301,9 +325,7 @@
   box-shadow: 0 0 0 2px rgba(196,170,126,0.25);
 }
 
-.mock svg { width: 16px; height: 16px; }
-
-/* iOS share sheet */
+/* ─── iOS share sheet ─── */
 .shareSheet {
   background: linear-gradient(180deg, #2A2A2E 0%, #1F1F23 100%);
   border-radius: 14px;
@@ -317,8 +339,10 @@
   gap: 12px;
   padding: 10px 8px;
   border-radius: 10px;
+  transition: background 180ms ease;
 }
 .shareRow + .shareRow { border-top: 0.5px solid rgba(255,255,255,0.05); }
+.shareRow svg { width: 18px; height: 18px; }
 
 .shareRowHi { background: rgba(196,170,126,0.10); }
 
@@ -330,7 +354,7 @@
 }
 .shareRowHi .shareLabel { color: var(--accent); font-weight: 600; }
 
-/* Android menu */
+/* ─── Android menu ─── */
 .androidMenu {
   background: #1C1C20;
   border-radius: 10px;
@@ -347,13 +371,15 @@
   align-items: center;
   gap: 10px;
 }
+.androidRow svg { width: 14px; height: 14px; flex-shrink: 0; }
+
 .androidRowHi {
   background: rgba(196,170,126,0.10);
   color: var(--accent);
   font-weight: 600;
 }
 
-/* Desktop browser bar */
+/* ─── Desktop browser bar ─── */
 .desktopBar {
   background: #1A1A1F;
   border: 0.5px solid rgba(255,255,255,0.08);
@@ -405,7 +431,7 @@
 }
 .installIcon svg { width: 13px; height: 13px; }
 
-/* Install confirm dialog */
+/* ─── Install confirm dialog ─── */
 .dialog {
   background: #232328;
   border-radius: 10px;
@@ -559,9 +585,9 @@
 }
 .footerLink:hover { color: var(--text-primary); }
 
-/* Responsive */
+/* ─── Responsive ─── */
 @media (max-width: 720px) {
-  .tabs { width: calc(100% - 40px); overflow-x: auto; }
+  .tabs { left: auto; transform: none; width: calc(100% - 40px); box-sizing: border-box; overflow-x: auto; }
   .tabBtn { padding: 10px 16px; flex-shrink: 0; }
   .hero { padding: 60px 20px 40px; }
   .outroCard { padding: 28px 22px; }
