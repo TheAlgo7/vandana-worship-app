@@ -99,7 +99,7 @@ function mapDbRowToSong(row: DbSongRow): Song {
 
 /* ── Offline cache (localStorage, client-side only) ── */
 
-const CACHE_KEY = "vandana-songs-cache-v2";
+const CACHE_KEY = "vandana-songs-cache-v3";
 const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 const SUPABASE_PAGE_SIZE = 1000;
 
@@ -149,7 +149,6 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
         const { data, error } = await supabase
           .from("songs")
           .select("*")
-          .neq("artist", "Unknown Artist")
           .not("lyrics_hinglish", "is", null)
           .order("title")
           .range(from, to);
@@ -159,7 +158,16 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
         if (data.length < SUPABASE_PAGE_SIZE) break;
       }
 
-      return rows.length > 0 ? rows.map(mapDbRowToSong) : null;
+      if (rows.length === 0) return null;
+      const songs = rows.map(mapDbRowToSong);
+      // Known-artist songs first, then Unknown Artist — each group sorted by title
+      songs.sort((a, b) => {
+        const aUnknown = a.artist === "Unknown Artist" ? 1 : 0;
+        const bUnknown = b.artist === "Unknown Artist" ? 1 : 0;
+        if (aUnknown !== bUnknown) return aUnknown - bUnknown;
+        return a.title.localeCompare(b.title);
+      });
+      return songs;
     })();
     return await Promise.race([query, timeout]);
   } catch {
@@ -267,7 +275,6 @@ export async function getSongIds(): Promise<string[]> {
         const { data, error } = await supabase
           .from("songs")
           .select("id")
-          .neq("artist", "Unknown Artist")
           .not("lyrics_hinglish", "is", null)
           .order("id")
           .range(from, to);
