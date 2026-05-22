@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { ListMusic, Play, Trash2 } from "lucide-react";
@@ -71,7 +71,7 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
             Add songs from the library, then present them in order during worship.
           </p>
           <Link
-            href="/"
+            href="/app"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -159,3 +159,4 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
     </>
   );
 }
+

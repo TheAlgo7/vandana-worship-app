@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 const BASE_URL = "https://vandanaapp.vercel.app";
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Vandana is a free Hindi and Hinglish Christian worship lyrics app for Indian churches, built by Gaurav Kumar with the blessing of Isus Christos Ministries (ICM).",
   alternates: { canonical: `${BASE_URL}/about` },
   openGraph: {
-    title: "About Vandana — Hindi & Hinglish Worship Lyrics App",
+    title: "About Vandana â€” Hindi & Hinglish Worship Lyrics App",
     description:
       "Vandana is a free Hindi and Hinglish Christian worship lyrics app for Indian churches, built by Gaurav Kumar with the blessing of Isus Christos Ministries (ICM).",
     url: `${BASE_URL}/about`,
@@ -128,14 +128,14 @@ export default function AboutPage() {
                   marginBottom: 16,
                 }}
               >
-                वंदना — to worship, to praise
+                à¤µà¤‚à¤¦à¤¨à¤¾ â€” to worship, to praise
               </p>
               <p style={{ fontSize: "var(--text-base)", lineHeight: 1.75, color: "var(--text-secondary)", marginBottom: 12 }}>
                 Vandana is a free, modern worship lyrics app built for the Indian church. Every song
                 is available in both <strong style={{ color: "var(--text-primary)" }}>Hinglish</strong>{" "}
                 (Roman transliteration) and{" "}
                 <strong style={{ color: "var(--text-primary)" }}>Hindi</strong> (Devanagari script),
-                so every member of a congregation — regardless of literacy in either script — can
+                so every member of a congregation â€” regardless of literacy in either script â€” can
                 follow along and worship together.
               </p>
               <p style={{ fontSize: "var(--text-base)", lineHeight: 1.75, color: "var(--text-secondary)" }}>
@@ -181,8 +181,8 @@ export default function AboutPage() {
                   lineHeight: 1.6,
                 }}
               >
-                <li><strong style={{ color: "var(--text-primary)" }}>Isus Christos Ministries (ICM)</strong> — Ps. Arul Thomas &amp; Dr. Mahima John Arul</li>
-                <li><strong style={{ color: "var(--text-primary)" }}>Ankit Sajwan Ministries</strong> — FOLJ Church</li>
+                <li><strong style={{ color: "var(--text-primary)" }}>Isus Christos Ministries (ICM)</strong> â€” Ps. Arul Thomas &amp; Dr. Mahima John Arul</li>
+                <li><strong style={{ color: "var(--text-primary)" }}>Ankit Sajwan Ministries</strong> â€” FOLJ Church</li>
                 <li><strong style={{ color: "var(--text-primary)" }}>Bridge Music</strong></li>
                 <li><strong style={{ color: "var(--text-primary)" }}>Nations of Worship</strong></li>
                 <li>Various Indian Christian worship artists</li>
@@ -213,8 +213,8 @@ export default function AboutPage() {
                 Indian worship community.
               </p>
               <p style={{ fontSize: "var(--text-base)", lineHeight: 1.75, color: "var(--text-secondary)" }}>
-                "Isus Christos" (ईसुस क्रिस्तोस) is the transliteration of "Jesus Christ" used in
-                Indian Christian traditions — a name declared over every song in this library.
+                "Isus Christos" (à¤ˆà¤¸à¥à¤¸ à¤•à¥à¤°à¤¿à¤¸à¥à¤¤à¥‹à¤¸) is the transliteration of "Jesus Christ" used in
+                Indian Christian traditions â€” a name declared over every song in this library.
               </p>
             </section>
 
@@ -239,10 +239,10 @@ export default function AboutPage() {
                   rel="noopener noreferrer"
                   style={{ color: "var(--accent)", fontWeight: 500, textDecoration: "none" }}
                 >
-                  Gaurav Kumar — The Algothrim
+                  Gaurav Kumar â€” The Algothrim
                 </a>
                 , a developer and church member. The app is a non-commercial, personal gift to the
-                Indian worship community — free to use, with no ads, no subscriptions, and no data
+                Indian worship community â€” free to use, with no ads, no subscriptions, and no data
                 collection.
               </p>
               <p style={{ fontSize: "var(--text-base)", lineHeight: 1.75, color: "var(--text-secondary)" }}>
@@ -275,17 +275,17 @@ export default function AboutPage() {
                   lineHeight: 1.6,
                 }}
               >
-                <li>Next.js 16 · React 19 · TypeScript</li>
-                <li>Tailwind CSS 4 · Sacred Noir design system</li>
+                <li>Next.js 16 Â· React 19 Â· TypeScript</li>
+                <li>Tailwind CSS 4 Â· Sacred Noir design system</li>
                 <li>Supabase (song database)</li>
                 <li>Deployed on Vercel</li>
-                <li>Progressive Web App (PWA) — installable on iOS and Android</li>
+                <li>Progressive Web App (PWA) â€” installable on iOS and Android</li>
               </ul>
             </section>
 
             {/* Back link */}
             <Link
-              href="/"
+              href="/app"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -296,7 +296,7 @@ export default function AboutPage() {
                 textDecoration: "none",
               }}
             >
-              ← Back to song library
+              â† Back to song library
             </Link>
 
           </main>
@@ -305,3 +305,4 @@ export default function AboutPage() {
     </>
   );
 }
+

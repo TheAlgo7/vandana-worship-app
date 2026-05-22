@@ -111,7 +111,7 @@ export default function SongView({ song }: SongViewProps) {
       <div className="song-topbar">
         {/* Back button */}
         <Link
-          href="/"
+          href="/app"
           className="song-back-link"
           style={{
             gap: 4,

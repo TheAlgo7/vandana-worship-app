@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect } from 'react';
 import Link from 'next/link';
@@ -27,7 +27,7 @@ export default function Error({
         paddingTop: 64,
       }}
     >
-      <div style={{ fontSize: '3rem', marginBottom: 16 }}>⚠️</div>
+      <div style={{ fontSize: '3rem', marginBottom: 16 }}>âš ï¸</div>
       <h1
         style={{
           fontSize: 'var(--text-xl)',
@@ -65,7 +65,7 @@ export default function Error({
           Try again
         </button>
         <Link
-          href="/"
+          href="/app"
           style={{
             display: 'inline-block',
             background: 'transparent',
@@ -78,9 +78,10 @@ export default function Error({
             border: '1px solid var(--border)',
           }}
         >
-          ← Back to home
+          â† Back to home
         </Link>
       </div>
     </div>
   );
 }
+

@@ -100,7 +100,7 @@ export default async function MinistryPage({
           }}
         >
           <Link
-            href="/"
+            href="/app"
             style={{
               display: "flex",
               alignItems: "center",

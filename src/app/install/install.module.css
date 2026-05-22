@@ -1,0 +1,570 @@
+/* ── Install page styles ── */
+
+.page {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.018) 1px, transparent 0);
+  background-size: 3px 3px;
+  mix-blend-mode: overlay;
+}
+
+/* ─── Topbar ─── */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 28px;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: linear-gradient(180deg, rgba(10,10,14,0.85) 0%, rgba(10,10,14,0.55) 100%);
+  border-bottom: 0.5px solid rgba(255,255,255,0.04);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-brand);
+  font-size: 22px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.brandDev {
+  font-family: var(--font-devanagari);
+  font-size: 16px;
+  opacity: 0.7;
+}
+
+.topbarNav {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.backLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 200ms ease;
+}
+.backLink:hover { color: var(--text-primary); }
+
+.navCta {
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: rgba(196,170,126,0.10);
+  border: 0.5px solid rgba(196,170,126,0.30);
+  transition: all 200ms ease;
+}
+.navCta:hover {
+  background: rgba(196,170,126,0.18);
+  border-color: rgba(196,170,126,0.45);
+}
+
+/* ─── Hero ─── */
+.hero {
+  position: relative;
+  z-index: 2;
+  padding: 80px 28px 60px;
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.heroGlow {
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(196,170,126,0.10) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.appIcon {
+  width: 100px;
+  height: 100px;
+  border-radius: 22%;
+  margin: 0 auto 28px;
+  display: block;
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 0 80px rgba(196,170,126,0.18);
+}
+
+.heroH1 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5.5vw, 64px);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 18px;
+  color: var(--text-primary);
+}
+
+.heroH1 em { font-style: italic; color: var(--accent); font-weight: 500; }
+
+.heroIntro {
+  color: var(--text-secondary);
+  font-size: 17px;
+  line-height: 1.6;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ─── Tabs ─── */
+.tabs {
+  position: relative;
+  z-index: 2;
+  margin: 48px auto 0;
+  display: flex;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.03);
+  border: 0.5px solid rgba(255,255,255,0.06);
+  gap: 4px;
+  width: fit-content;
+}
+
+.tabBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 999px;
+  transition: all 200ms ease;
+  letter-spacing: -0.005em;
+}
+.tabBtn:hover { color: var(--text-primary); }
+.tabBtn.active {
+  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+  color: #0A0A0E;
+  box-shadow:
+    0 4px 14px rgba(196,170,126,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    inset 0 -1px 0 rgba(0,0,0,0.15);
+}
+
+/* ─── Steps section ─── */
+.panel {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 56px auto 0;
+  padding: 0 28px;
+}
+
+.pane { display: none; }
+.pane.active {
+  display: block;
+  animation: fadeIn 260ms ease both;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.step {
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: border-color 240ms ease, background 240ms ease;
+}
+.step:hover {
+  border-color: rgba(196,170,126,0.18);
+  background: rgba(255,255,255,0.03);
+}
+
+.stepNum {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(196,170,126,0.12);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  border: 0.5px solid rgba(196,170,126,0.25);
+  flex-shrink: 0;
+}
+
+.stepH3 {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+  color: var(--text-primary);
+}
+
+.stepP {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Mini OS-chrome mockups ─── */
+.mock {
+  background: #1A1A1F;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 60px;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.mockUrl {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255,255,255,0.06);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.65);
+  font-family: ui-monospace, monospace;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mockIc {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  flex-shrink: 0;
+}
+
+.mockIcHi {
+  background: rgba(196,170,126,0.18);
+  color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(196,170,126,0.25);
+}
+
+.mock svg { width: 16px; height: 16px; }
+
+/* iOS share sheet */
+.shareSheet {
+  background: linear-gradient(180deg, #2A2A2E 0%, #1F1F23 100%);
+  border-radius: 14px;
+  padding: 14px;
+  border: 0.5px solid rgba(255,255,255,0.06);
+}
+
+.shareRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+.shareRow + .shareRow { border-top: 0.5px solid rgba(255,255,255,0.05); }
+
+.shareRowHi { background: rgba(196,170,126,0.10); }
+
+.shareLabel {
+  flex: 1;
+  font-size: 13px;
+  color: rgba(236,234,228,0.95);
+  font-weight: 500;
+}
+.shareRowHi .shareLabel { color: var(--accent); font-weight: 600; }
+
+/* Android menu */
+.androidMenu {
+  background: #1C1C20;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255,255,255,0.06);
+  padding: 6px 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.androidRow {
+  padding: 9px 16px;
+  font-size: 13px;
+  color: rgba(236,234,228,0.85);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.androidRowHi {
+  background: rgba(196,170,126,0.10);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Desktop browser bar */
+.desktopBar {
+  background: #1A1A1F;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  box-sizing: border-box;
+}
+
+.traffic {
+  display: inline-flex;
+  gap: 5px;
+  margin-right: 4px;
+}
+.trafficDot { width: 9px; height: 9px; border-radius: 50%; }
+.trafficR { background: #FF5F57; }
+.trafficY { background: #FEBC2E; }
+.trafficG { background: #28C840; }
+
+.addressPill {
+  flex: 1;
+  min-width: 0;
+  background: rgba(255,255,255,0.05);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-family: ui-monospace, monospace;
+  color: rgba(255,255,255,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.installIcon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(196,170,126,0.18);
+  color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(196,170,126,0.20);
+  flex-shrink: 0;
+}
+.installIcon svg { width: 13px; height: 13px; }
+
+/* Install confirm dialog */
+.dialog {
+  background: #232328;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+}
+
+.dialogIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.dialogText { flex: 1; min-width: 0; }
+.dialogTitle { font-size: 12px; font-weight: 600; color: var(--text-primary); letter-spacing: -0.01em; }
+.dialogSub { font-size: 11px; color: var(--text-muted); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+.dialogBtn {
+  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+  color: #0A0A0E;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.3);
+  flex-shrink: 0;
+}
+
+/* ─── Outro panel ─── */
+.outro {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 100px auto 0;
+  padding: 0 28px;
+}
+
+.outroCard {
+  background: rgba(255,255,255,0.02);
+  border: 0.5px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+}
+
+.outroH2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.outroP {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.outroList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+  text-align: left;
+}
+
+.outroItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.outroItemH {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.4;
+  margin-bottom: 2px;
+}
+
+.outroItemD {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ─── Open CTA ─── */
+.openCta {
+  margin: 64px auto 0;
+  text-align: center;
+  padding: 0 28px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 56px;
+  padding: 0 28px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
+  color: #0A0A0E;
+  box-shadow:
+    0 6px 24px rgba(196,170,126,0.30),
+    inset 0 1px 0 rgba(255,255,255,0.35);
+  transition: all 200ms ease;
+  letter-spacing: -0.005em;
+}
+.ctaBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 32px rgba(196,170,126,0.42), inset 0 1px 0 rgba(255,255,255,0.4);
+}
+
+.ctaNote {
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ─── Footer ─── */
+.footer {
+  border-top: 0.5px solid rgba(255,255,255,0.05);
+  padding: 28px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.footerLink {
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color 200ms ease;
+}
+.footerLink:hover { color: var(--text-primary); }
+
+/* Responsive */
+@media (max-width: 720px) {
+  .tabs { width: calc(100% - 40px); overflow-x: auto; }
+  .tabBtn { padding: 10px 16px; flex-shrink: 0; }
+  .hero { padding: 60px 20px 40px; }
+  .outroCard { padding: 28px 22px; }
+  .panel { padding: 0 20px; }
+  .topbar { padding: 14px 18px; }
+}

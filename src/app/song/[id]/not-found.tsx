@@ -35,7 +35,7 @@ export default function NotFound() {
         This song doesn&apos;t exist or may have been removed.
       </p>
       <Link
-        href="/"
+        href="/app"
         style={{
           display: "inline-block",
           background: "var(--accent)",

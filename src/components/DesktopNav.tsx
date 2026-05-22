@@ -17,7 +17,7 @@ const NAV_ITEMS: {
   badge?: "updates";
   feature?: "setlist";
 }[] = [
-  { href: "/",           label: "Home",       Icon: House,    exact: true  },
+  { href: "/app",        label: "Home",       Icon: House,    exact: true  },
   { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true,  badge: "updates" },
   { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false, feature: "setlist" },
   { href: "/favourites", label: "Favourites", Icon: Heart,    exact: false },
@@ -44,7 +44,7 @@ export default function DesktopNav() {
     });
   }, [pathname, isPresent]);
 
-  if (isPresent) return null;
+  if (isPresent || pathname === "/" || pathname === "/install") return null;
 
   const isActive = (href: string, exact: boolean) =>
     exact ? pathname === href : pathname.startsWith(href);
@@ -53,7 +53,7 @@ export default function DesktopNav() {
     <aside className={styles.sidebar} aria-label="Sidebar navigation">
       {/* Logo */}
       <div className={styles.logoArea}>
-        <Link href="/" className={styles.wordmark}>Vandana</Link>
+        <Link href="/app" className={styles.wordmark}>Vandana</Link>
         <span className={styles.wordmarkLine} aria-hidden="true" />
         <span className={styles.tagline}>Worship in your language</span>
       </div>

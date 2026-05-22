@@ -18,7 +18,7 @@ const NAV_ITEMS: {
   badge?: "updates";
   feature?: "setlist";
 }[] = [
-  { href: "/",           label: "Home",       Icon: House,    exact: true  },
+  { href: "/app",        label: "Home",       Icon: House,    exact: true  },
   { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true, badge: "updates" },
   { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false, feature: "setlist" },
   { href: "/favourites", label: "Favourites", shortLabel: "Saved", Icon: Heart, exact: false },

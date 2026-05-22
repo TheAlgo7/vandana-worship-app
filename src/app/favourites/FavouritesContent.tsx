@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useFavourites } from "@/contexts/FavouritesContext";
 import type { SongMeta } from "@/lib/getSongs";
@@ -69,7 +69,7 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
             Tap the heart beside any song to keep it ready for worship.
           </p>
           <Link
-            href="/"
+            href="/app"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -111,3 +111,4 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
     </>
   );
 }
+
