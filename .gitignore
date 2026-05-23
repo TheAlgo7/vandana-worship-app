@@ -45,11 +45,19 @@ codex-logs/
 !.env.example
 !.env.local.example
 
-# typescript
+# TypeScript
 *.tsbuildinfo
 next-env.d.ts
 
-# Personal
-.impeccable.md
+# Local design/staging
+new-pages-idea/
+AUDIT.md
+ACTION-PLAN.md
+FULL-AUDIT-REPORT.md
 
-.vercel
+# Import data
+imports/*.json
+!imports/*.example.json
+
+# Personal / agent files
+.impeccable.md
