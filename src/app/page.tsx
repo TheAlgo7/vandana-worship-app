@@ -137,7 +137,7 @@ export default function LandingPage() {
         <div className={styles.platformHint}>
           <StarSVG size={11} />
           <Link href="/install" className={styles.platformHintLink}>
-            Add to Home Screen — iOS, Android, Desktop
+            Add to Home Screen: iOS, Android, Desktop
           </Link>
         </div>
       </section>
@@ -211,7 +211,7 @@ export default function LandingPage() {
             <p className={styles.pillarP}>
               Full-screen, block-by-block lyrics for projection. Switch
               languages live, scroll on auto. Worship leaders project from
-              phones — we built for that.
+              phones. We built for that.
             </p>
           </div>
           <div className={styles.pillar}>
@@ -263,7 +263,7 @@ export default function LandingPage() {
           Come <em>worship</em>.
         </h2>
         <p className={styles.finalP}>
-          Open Vandana in any browser — it&rsquo;ll save itself to your phone
+          Open Vandana in any browser. It&rsquo;ll save itself to your phone
           or desktop. Then it works wherever you do.
         </p>
         <div className={styles.ctas}>
@@ -287,7 +287,7 @@ export default function LandingPage() {
       <footer className={styles.footer}>
         <span className={styles.footerLeft}>
           <StarSVG size={12} />
-          Vandana — to worship, to praise
+          Vandana: to worship, to praise
         </span>
         <div className={styles.footerRight}>
           <span>Made with <span style={{ color: "var(--accent)" }}>♥</span> by <a className={styles.footerLink} href="https://thealgothrim.com" target="_blank" rel="noopener noreferrer">Gaurav · The Algothrim</a></span>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import LandingNav from "@/components/LandingNav";
 import InstallTabs from "@/components/InstallTabs";
 import styles from "./install.module.css";
 
@@ -35,22 +37,6 @@ const ArrowRight = () => (
   </svg>
 );
 
-const ChevronLeftIcon = () => (
-  <svg
-    width="14"
-    height="14"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden
-  >
-    <polyline points="15 18 9 12 15 6" />
-  </svg>
-);
-
 export default function InstallPage() {
   return (
     <div className={styles.page}>
@@ -59,27 +45,21 @@ export default function InstallPage() {
       {/* Topbar */}
       <header className={styles.topbar}>
         <Link className={styles.brand} href="/">
-          Vandana<span className={styles.brandDev}>वंदना</span>
+          Vandana
         </Link>
-        <nav className={styles.topbarNav}>
-          <Link className={styles.backLink} href="/">
-            <ChevronLeftIcon />
-            Back
-          </Link>
-          <Link className={styles.navCta} href="/app">
-            Open app
-          </Link>
-        </nav>
+        <LandingNav />
       </header>
 
       {/* Hero */}
-      <section className={styles.hero}>
+      <section className={styles.hero} id="main-content">
         <div className={styles.heroGlow} aria-hidden />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           className={styles.appIcon}
           src="/icons/icon-512.png"
           alt="Vandana app icon"
+          width={100}
+          height={100}
+          priority
         />
         <h1 className={styles.heroH1}>
           Add Vandana to
@@ -87,7 +67,7 @@ export default function InstallPage() {
           your <em>home screen</em>.
         </h1>
         <p className={styles.heroIntro}>
-          Vandana is a Progressive Web App — no App Store, no Play Store, no
+          Vandana is a Progressive Web App: no App Store, no Play Store, no
           download. It installs straight from the browser and lives next to your
           other apps. Once installed, it works offline.
         </p>

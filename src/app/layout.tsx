@@ -142,9 +142,9 @@ export default function RootLayout({
         </a>
         <div className="app-frame">
           <DesktopNav />
-          <div className="app-main">
+          <main className="app-main">
             <Providers>{children}</Providers>
-          </div>
+          </main>
         </div>
       </body>
     </html>

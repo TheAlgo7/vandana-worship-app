@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import styles from "@/app/install/install.module.css";
 
 type Tab = "ios" | "android" | "desktop";
@@ -97,19 +98,17 @@ const CheckmarkIcon = () => (
 );
 const AppleIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M17.5 12.5c0-2.4 2-3.5 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.5-.2-2.9.9-3.6.9-.7 0-1.9-.8-3.1-.8-1.6 0-3.1 1-3.9 2.4-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.7 2.5 2.9 2.5 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.2 0 2-1.2 2.8-2.4.9-1.4 1.2-2.7 1.2-2.8 0 0-2.4-.9-2.4-3.6zm-2.6-6.6c.6-.8 1.1-1.9 1-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1.1.1 2.1-.5 2.7-1.3z" />
+    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
   </svg>
 );
 const AndroidIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-    <path d="M17.5 9c-.3 0-.6.3-.6.6v5.4c0 .3.3.6.6.6s.6-.3.6-.6V9.6c0-.3-.3-.6-.6-.6zm-11 0c-.3 0-.6.3-.6.6v5.4c0 .3.3.6.6.6s.6-.3.6-.6V9.6c0-.3-.3-.6-.6-.6zm9.7-1.5l.8-1.4c.1-.1 0-.2-.1-.3-.1-.1-.2 0-.3.1l-.8 1.4c-.7-.3-1.4-.5-2.2-.5h-3c-.8 0-1.6.2-2.2.5l-.8-1.4c-.1-.1-.2-.1-.3-.1-.1.1-.1.2-.1.3l.8 1.4c-1.4.8-2.3 2.2-2.3 3.9V15.5h12V11.4c0-1.7-.9-3.1-2.3-3.9zM10 10.5c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.3.6.6-.2.6-.6.6zm4 0c-.3 0-.6-.3-.6-.6s.3-.6.6-.6.6.3.6.6-.2.6-.6.6zM8 15.5c0 .6.4 1 1 1h.5v2c0 .3.3.6.6.6s.6-.3.6-.6v-2h1.6v2c0 .3.3.6.6.6s.6-.3.6-.6v-2h.5c.6 0 1-.4 1-1V15h-7v.5z" />
+    <path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5S11 23.33 11 22.5V19h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V19h1c.55 0 1-.45 1-1V9H6v9zM3.5 9C2.67 9 2 9.67 2 10.5v7c0 .83.67 1.5 1.5 1.5S5 18.33 5 17.5v-7C5 9.67 4.33 9 3.5 9zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5S22 18.33 22 17.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84 1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48A5.84 5.84 0 0 0 12 2c-.96 0-1.86.23-2.66.63L7.85 1.15c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31C7.08 4.04 6 5.65 6 7.5h12c0-1.85-1.08-3.46-2.47-4.34zM10 6H8V4h2v2zm6 0h-2V4h2v2z" />
   </svg>
 );
 const DesktopIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-    <rect x="2" y="4" width="20" height="13" rx="2" />
-    <line x1="8" y1="21" x2="16" y2="21" />
-    <line x1="12" y1="17" x2="12" y2="21" />
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+    <path d="M21 2H3a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7l-2 3v1h8v-1l-2-3h7a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 12H3V4h18v10z" />
   </svg>
 );
 
@@ -141,8 +140,10 @@ export default function InstallTabs() {
         {(["ios", "android", "desktop"] as Tab[]).map((tab) => (
           <button
             key={tab}
+            id={`tab-${tab}`}
             role="tab"
             aria-selected={active === tab}
+            aria-controls={`panel-${tab}`}
             className={`${styles.tabBtn}${active === tab ? ` ${styles.active}` : ""}`}
             onClick={() => switchTab(tab)}
           >
@@ -158,13 +159,19 @@ export default function InstallTabs() {
       <section className={styles.panel}>
 
         {/* iOS */}
-        <div className={`${styles.pane}${active === "ios" ? ` ${styles.active}` : ""}`}>
+        <div
+          id="panel-ios"
+          role="tabpanel"
+          aria-labelledby="tab-ios"
+          tabIndex={0}
+          className={`${styles.pane}${active === "ios" ? ` ${styles.active}` : ""}`}
+        >
           <div className={styles.steps}>
             <div className={styles.step}>
               <div className={styles.stepNum}>1</div>
               <h3 className={styles.stepH3}>Open in Safari</h3>
-              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Safari. Chrome, Edge and Firefox on iOS can&rsquo;t install PWAs — Apple only allows it from Safari.</p>
-              <div className={styles.mock}>
+              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Safari. Chrome, Edge and Firefox on iOS can&rsquo;t install PWAs; Apple only allows it from Safari.</p>
+              <div className={styles.mock} aria-hidden>
                 <div className={styles.mockIc}><ChevronLeft /></div>
                 <div className={styles.mockIc}><ChevronRight /></div>
                 <div className={styles.mockUrl}>vandanaapp.vercel.app</div>
@@ -175,8 +182,8 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>2</div>
               <h3 className={styles.stepH3}>Tap Share</h3>
-              <p className={styles.stepP}>Tap the <b style={{ color: "var(--text-primary)" }}>Share</b> button — the square with the arrow pointing up. It&rsquo;s in the bottom toolbar on iPhone, top toolbar on iPad.</p>
-              <div className={styles.mock}>
+              <p className={styles.stepP}>Tap the <b style={{ color: "var(--text-primary)" }}>Share</b> button (the square with the arrow pointing up). It&rsquo;s in the bottom toolbar on iPhone, top toolbar on iPad.</p>
+              <div className={styles.mock} aria-hidden>
                 <div className={styles.mockIc}><ChevronLeft /></div>
                 <div className={styles.mockIc}><ChevronRight /></div>
                 <div className={`${styles.mockIc} ${styles.mockIcHi}`}><ShareIcon /></div>
@@ -187,8 +194,8 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>3</div>
               <h3 className={styles.stepH3}>Add to Home Screen</h3>
-              <p className={styles.stepP}>Scroll down in the share sheet and tap <b style={{ color: "var(--text-primary)" }}>Add to Home Screen</b>. Confirm the name — the default <b style={{ color: "var(--text-primary)" }}>Vandana</b> is fine.</p>
-              <div className={styles.shareSheet}>
+              <p className={styles.stepP}>Scroll down in the share sheet and tap <b style={{ color: "var(--text-primary)" }}>Add to Home Screen</b>. Confirm the name; the default <b style={{ color: "var(--text-primary)" }}>Vandana</b> is fine.</p>
+              <div className={styles.shareSheet} aria-hidden>
                 <div className={styles.shareRow}><SendIcon /><span className={styles.shareLabel}>Send to…</span></div>
                 <div className={styles.shareRow}><CheckIcon /><span className={styles.shareLabel}>Add to Reading List</span></div>
                 <div className={`${styles.shareRow} ${styles.shareRowHi}`}><AddIcon /><span className={styles.shareLabel}>Add to Home Screen</span></div>
@@ -204,9 +211,9 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>4</div>
               <h3 className={styles.stepH3}>You&rsquo;re done</h3>
-              <p className={styles.stepP}>The Vandana icon appears on your home screen. Tap it like any app — it opens fullscreen, with no Safari address bar.</p>
-              <div className={styles.dialog}>
-                <img className={styles.dialogIcon} src="/icons/icon-192.png" alt="Vandana icon" />
+              <p className={styles.stepP}>The Vandana icon appears on your home screen. Tap it like any app: it opens fullscreen, with no Safari address bar.</p>
+              <div className={styles.dialog} aria-hidden>
+                <Image className={styles.dialogIcon} src="/icons/icon-192.png" alt="" aria-hidden width={36} height={36} />
                 <div className={styles.dialogText}>
                   <div className={styles.dialogTitle}>Vandana</div>
                   <div className={styles.dialogSub}>vandanaapp.vercel.app</div>
@@ -218,13 +225,19 @@ export default function InstallTabs() {
         </div>
 
         {/* Android */}
-        <div className={`${styles.pane}${active === "android" ? ` ${styles.active}` : ""}`}>
+        <div
+          id="panel-android"
+          role="tabpanel"
+          aria-labelledby="tab-android"
+          tabIndex={0}
+          className={`${styles.pane}${active === "android" ? ` ${styles.active}` : ""}`}
+        >
           <div className={styles.steps}>
             <div className={styles.step}>
               <div className={styles.stepNum}>1</div>
               <h3 className={styles.stepH3}>Open in Chrome</h3>
-              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Chrome (or another Chromium browser — Brave, Edge, Samsung Internet all work).</p>
-              <div className={styles.mock}>
+              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Chrome (or another Chromium browser: Brave, Edge, Samsung Internet all work).</p>
+              <div className={styles.mock} aria-hidden>
                 <div className={styles.mockIc}><ArrowRightLong /></div>
                 <div className={styles.mockUrl}>https://vandanaapp.vercel.app</div>
                 <div className={styles.mockIc}><ThreeDotsV /></div>
@@ -234,8 +247,8 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>2</div>
               <h3 className={styles.stepH3}>Open the menu</h3>
-              <p className={styles.stepP}>Tap the three-dot <b style={{ color: "var(--text-primary)" }}>⋮</b> menu in the top-right of Chrome. On some Androids you may see an install banner first — tap that instead and skip to step 4.</p>
-              <div className={styles.mock}>
+              <p className={styles.stepP}>Tap the three-dot <b style={{ color: "var(--text-primary)" }}>⋮</b> menu in the top-right of Chrome. On some Androids you may see an install banner first: tap that instead and skip to step 4.</p>
+              <div className={styles.mock} aria-hidden>
                 <div className={styles.mockUrl}>vandanaapp.vercel.app</div>
                 <div className={`${styles.mockIc} ${styles.mockIcHi}`}><ThreeDotsV hi /></div>
               </div>
@@ -245,7 +258,7 @@ export default function InstallTabs() {
               <div className={styles.stepNum}>3</div>
               <h3 className={styles.stepH3}>Add to Home screen</h3>
               <p className={styles.stepP}>Tap <b style={{ color: "var(--text-primary)" }}>Add to Home screen</b> (sometimes labelled <b style={{ color: "var(--text-primary)" }}>Install app</b>). Chrome will preview the icon and label.</p>
-              <div className={styles.androidMenu}>
+              <div className={styles.androidMenu} aria-hidden>
                 <div className={styles.androidRow}><PlayIcon />New tab</div>
                 <div className={styles.androidRow}><BookmarkIcon />Bookmarks</div>
                 <div className={`${styles.androidRow} ${styles.androidRowHi}`}><AddIcon />Add to Home screen</div>
@@ -257,8 +270,8 @@ export default function InstallTabs() {
               <div className={styles.stepNum}>4</div>
               <h3 className={styles.stepH3}>Confirm Install</h3>
               <p className={styles.stepP}>Tap <b style={{ color: "var(--text-primary)" }}>Install</b>. The icon lands in your app drawer and home screen. Opens fullscreen, runs offline, behaves like a real Android app.</p>
-              <div className={styles.dialog}>
-                <img className={styles.dialogIcon} src="/icons/icon-192.png" alt="Vandana icon" />
+              <div className={styles.dialog} aria-hidden>
+                <Image className={styles.dialogIcon} src="/icons/icon-192.png" alt="" aria-hidden width={36} height={36} />
                 <div className={styles.dialogText}>
                   <div className={styles.dialogTitle}>Install Vandana?</div>
                   <div className={styles.dialogSub}>Worship in your language</div>
@@ -270,13 +283,19 @@ export default function InstallTabs() {
         </div>
 
         {/* Desktop */}
-        <div className={`${styles.pane}${active === "desktop" ? ` ${styles.active}` : ""}`}>
+        <div
+          id="panel-desktop"
+          role="tabpanel"
+          aria-labelledby="tab-desktop"
+          tabIndex={0}
+          className={`${styles.pane}${active === "desktop" ? ` ${styles.active}` : ""}`}
+        >
           <div className={styles.steps}>
             <div className={styles.step}>
               <div className={styles.stepNum}>1</div>
               <h3 className={styles.stepH3}>Open in Chrome or Edge</h3>
-              <p className={styles.stepP}>Visit <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in <b style={{ color: "var(--text-primary)" }}>Chrome</b>, <b style={{ color: "var(--text-primary)" }}>Edge</b>, <b style={{ color: "var(--text-primary)" }}>Brave</b>, or <b style={{ color: "var(--text-primary)" }}>Arc</b>. Safari on macOS doesn&rsquo;t install PWAs — yet.</p>
-              <div className={styles.desktopBar}>
+              <p className={styles.stepP}>Visit <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in <b style={{ color: "var(--text-primary)" }}>Chrome</b>, <b style={{ color: "var(--text-primary)" }}>Edge</b>, <b style={{ color: "var(--text-primary)" }}>Brave</b>, or <b style={{ color: "var(--text-primary)" }}>Arc</b>. Safari on macOS doesn&rsquo;t install PWAs yet.</p>
+              <div className={styles.desktopBar} aria-hidden>
                 <div className={styles.traffic}>
                   <span className={`${styles.trafficDot} ${styles.trafficR}`} />
                   <span className={`${styles.trafficDot} ${styles.trafficY}`} />
@@ -294,7 +313,7 @@ export default function InstallTabs() {
               <div className={styles.stepNum}>2</div>
               <h3 className={styles.stepH3}>Click the install icon</h3>
               <p className={styles.stepP}>In the address bar (right side), look for a small icon: a monitor with a down-arrow, or a &ldquo;+&rdquo; inside a frame. Hover shows <b style={{ color: "var(--text-primary)" }}>Install Vandana</b>.</p>
-              <div className={styles.desktopBar}>
+              <div className={styles.desktopBar} aria-hidden>
                 <div className={styles.traffic}>
                   <span className={`${styles.trafficDot} ${styles.trafficR}`} />
                   <span className={`${styles.trafficDot} ${styles.trafficY}`} />
@@ -310,9 +329,9 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>3</div>
               <h3 className={styles.stepH3}>Click Install</h3>
-              <p className={styles.stepP}>A confirmation dialog appears. Click <b style={{ color: "var(--text-primary)" }}>Install</b>. Vandana opens in its own window — no browser chrome, just the app.</p>
-              <div className={styles.dialog}>
-                <img className={styles.dialogIcon} src="/icons/icon-192.png" alt="Vandana icon" />
+              <p className={styles.stepP}>A confirmation dialog appears. Click <b style={{ color: "var(--text-primary)" }}>Install</b>. Vandana opens in its own window: no browser chrome, just the app.</p>
+              <div className={styles.dialog} aria-hidden>
+                <Image className={styles.dialogIcon} src="/icons/icon-192.png" alt="" aria-hidden width={36} height={36} />
                 <div className={styles.dialogText}>
                   <div className={styles.dialogTitle}>Install app?</div>
                   <div className={styles.dialogSub}>Vandana · vandanaapp.vercel.app</div>

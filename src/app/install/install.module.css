@@ -37,8 +37,11 @@
   padding: 18px 28px;
   backdrop-filter: blur(18px) saturate(160%);
   -webkit-backdrop-filter: blur(18px) saturate(160%);
-  background: linear-gradient(180deg, rgba(10,10,14,0.85) 0%, rgba(10,10,14,0.55) 100%);
-  border-bottom: 0.5px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg,
+    color-mix(in srgb, var(--bg-base) 85%, transparent) 0%,
+    color-mix(in srgb, var(--bg-base) 55%, transparent) 100%
+  );
+  border-bottom: 0.5px solid var(--border-subtle);
 }
 
 .brand {
@@ -81,14 +84,17 @@
   font-size: 13px;
   font-weight: 600;
   padding: 7px 14px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
-  background: rgba(196,170,126,0.10);
-  border: 0.5px solid rgba(196,170,126,0.30);
+  background: var(--accent-dim);
+  border: 0.5px solid var(--accent-glow);
   transition: all 200ms ease;
 }
 .navCta:hover {
-  background: rgba(196,170,126,0.18);
-  border-color: rgba(196,170,126,0.45);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+  border-color: var(--accent-muted);
 }
 
 /* ─── Hero ─── */
@@ -109,7 +115,7 @@
   width: 700px;
   height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(196,170,126,0.10) 0%, transparent 60%);
+  background: radial-gradient(circle, var(--accent-dim) 0%, transparent 60%);
   pointer-events: none;
   z-index: -1;
 }
@@ -123,7 +129,7 @@
   box-shadow:
     0 30px 60px rgba(0,0,0,0.6),
     0 0 0 1px rgba(255,255,255,0.04),
-    0 0 80px rgba(196,170,126,0.18);
+    0 0 80px color-mix(in srgb, var(--accent) 18%, transparent);
 }
 
 .heroH1 {
@@ -165,6 +171,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 22px;
+  min-height: 44px;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -180,10 +187,10 @@
 .tabBtn svg { width: 16px; height: 16px; }
 
 .active.tabBtn {
-  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
-  color: #0A0A0E;
+  background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
+  color: var(--nav-active-text);
   box-shadow:
-    0 4px 14px rgba(196,170,126,0.30),
+    0 4px 14px var(--accent-glow),
     inset 0 1px 0 rgba(255,255,255,0.35),
     inset 0 -1px 0 rgba(0,0,0,0.15);
 }
@@ -192,7 +199,7 @@
 .panel {
   position: relative;
   z-index: 2;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 56px auto 0;
   padding: 0 28px;
 }
@@ -210,7 +217,7 @@
 
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 24px;
 }
 
@@ -226,7 +233,7 @@
   transition: border-color 240ms ease, background 240ms ease;
 }
 .step:hover {
-  border-color: rgba(196,170,126,0.18);
+  border-color: color-mix(in srgb, var(--accent) 18%, transparent);
   background: rgba(255,255,255,0.03);
 }
 
@@ -237,13 +244,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(196,170,126,0.12);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
   color: var(--accent);
   font-family: var(--font-display);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0;
-  border: 0.5px solid rgba(196,170,126,0.25);
+  border: 0.5px solid var(--accent-glow);
   flex-shrink: 0;
 }
 
@@ -321,9 +328,9 @@
 }
 
 .mockIcHi {
-  background: rgba(196,170,126,0.18);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
   color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(196,170,126,0.25);
+  box-shadow: 0 0 0 2px var(--accent-glow);
 }
 
 /* ─── iOS share sheet ─── */
@@ -345,7 +352,7 @@
 .shareRow + .shareRow { border-top: 0.5px solid rgba(255,255,255,0.05); }
 .shareRow svg { width: 18px; height: 18px; }
 
-.shareRowHi { background: rgba(196,170,126,0.10); }
+.shareRowHi { background: var(--accent-dim); }
 
 .shareLabel {
   flex: 1;
@@ -375,7 +382,7 @@
 .androidRow svg { width: 14px; height: 14px; flex-shrink: 0; }
 
 .androidRowHi {
-  background: rgba(196,170,126,0.10);
+  background: var(--accent-dim);
   color: var(--accent);
   font-weight: 600;
 }
@@ -425,9 +432,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(196,170,126,0.18);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
   color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(196,170,126,0.20);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
   flex-shrink: 0;
 }
 .installIcon svg { width: 13px; height: 13px; }
@@ -456,8 +463,8 @@
 .dialogSub { font-size: 11px; color: var(--text-muted); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .dialogBtn {
-  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
-  color: #0A0A0E;
+  background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
+  color: var(--nav-active-text);
   padding: 5px 12px;
   border-radius: 999px;
   font-size: 11px;
@@ -549,17 +556,17 @@
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  background: linear-gradient(180deg, #D4BC94 0%, #B89B70 100%);
-  color: #0A0A0E;
+  background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
+  color: var(--nav-active-text);
   box-shadow:
-    0 6px 24px rgba(196,170,126,0.30),
+    0 6px 24px var(--accent-glow),
     inset 0 1px 0 rgba(255,255,255,0.35);
   transition: all 200ms ease;
   letter-spacing: -0.005em;
 }
 .ctaBtn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 32px rgba(196,170,126,0.42), inset 0 1px 0 rgba(255,255,255,0.4);
+  box-shadow: 0 10px 32px var(--accent-muted), inset 0 1px 0 rgba(255,255,255,0.4);
 }
 
 .ctaNote {
@@ -588,7 +595,8 @@
 
 /* ─── Responsive ─── */
 @media (max-width: 720px) {
-  .tabs { left: auto; transform: none; width: calc(100% - 40px); box-sizing: border-box; overflow-x: auto; }
+  .tabs { left: auto; transform: none; width: calc(100% - 40px); box-sizing: border-box; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
   .tabBtn { padding: 10px 16px; flex-shrink: 0; }
   .hero { padding: 60px 20px 40px; }
   .outroCard { padding: 28px 22px; }

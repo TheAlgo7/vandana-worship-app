@@ -134,6 +134,11 @@
   --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
 
+  --nav-fill-top: #A8895A;
+  --nav-fill-bottom: #8C6F45;
+  --nav-active-text: #FEFCF8;
+  --nav-inactive: #5C5868;
+
   --nav-pill-bg: rgba(250, 248, 243, 0.82);
   --nav-pill-border: rgba(0, 0, 0, 0.08);
   --nav-pill-shadow:
