@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
             key: "Permissions-Policy",
             value: "camera=(), microphone=(), geolocation=()",
           },
-          { key: "Content-Security-Policy-Report-Only", value: CSP },
+          { key: "Content-Security-Policy", value: CSP },
         ],
       },
     ];

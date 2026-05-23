@@ -29,6 +29,7 @@ export async function generateMetadata({
       url: `${BASE_URL}/song/${id}`,
       type: "article",
       locale: "hi_IN",
+      images: [{ url: `${BASE_URL}/icons/og-image.png`, width: 1200, height: 630 }],
     },
   };
 }

@@ -1,6 +1,6 @@
 # Vandana — Hindi & English Christian Worship Lyrics
 # https://vandanaapp.vercel.app
-# Version: 1.0 | Updated: 2026-05-22
+# Version: 1.1 | Updated: 2026-05-23
 
 ## About
 
@@ -36,6 +36,17 @@ Built by Gaurav Kumar (https://thealgothrim.com) as a personal offering to the I
 - Bridge Music
 - Nations of Worship
 - Various Indian Christian worship artists
+
+## Why Vandana
+
+Unlike generic lyric sites, Vandana is purpose-built for the Indian church:
+
+- **Bilingual first-class authoring**: Hinglish and Devanagari are authored and stored as two separate, independent texts — not auto-generated transliterations. Both versions are reviewed for accuracy.
+- **Present Mode**: Full-screen, block-by-block lyric projection designed for worship leaders displaying lyrics on screens during live services. Switch languages mid-song. Auto-scroll enabled.
+- **Setlist Builder**: Plan an entire worship service by adding songs in order, then step through them one by one during the service with a single tap.
+- **Offline-first PWA**: Every song page is server-rendered and cached. Works in church halls and basements with no signal after the first load.
+- **Zero tracking**: No analytics, no ads, no subscriptions, no data collection — permanently. The app is a non-commercial offering.
+- **Indian church specificity**: Songs are sourced from Indian Christian ministries and artists, not translated from English worship. The library reflects actual congregational worship in India.
 
 ## Content Licensing
 

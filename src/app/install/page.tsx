@@ -17,7 +17,47 @@ export const metadata: Metadata = {
     description:
       "Step-by-step install guide for iOS Safari, Android Chrome, and desktop browsers. Free, offline-first Hindi worship lyrics app.",
     url: `${SITE_URL}/install`,
+    images: [{ url: `${SITE_URL}/icons/og-image.png`, width: 1200, height: 630 }],
   },
+};
+
+const installSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "How do I install Vandana on iPhone?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Open vandanaapp.vercel.app in Safari. Tap the Share button, then tap Add to Home Screen, then tap Add. Vandana will appear on your home screen like a native app.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I install Vandana on Android?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Open vandanaapp.vercel.app in Chrome. Tap the menu (three dots), then tap Add to Home screen, then tap Add. Vandana installs like a native app with no App Store required.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How do I install Vandana on desktop?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Open vandanaapp.vercel.app in Chrome or Edge. Click the install icon in the address bar and click Install. Vandana will open as a standalone desktop app.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "Does Vandana work offline after installing?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Yes. After the first load, Vandana works without an internet connection. It caches songs locally so you can use it in church halls or basements with no signal.",
+      },
+    },
+  ],
 };
 
 const ArrowRight = () => (
@@ -39,6 +79,11 @@ const ArrowRight = () => (
 
 export default function InstallPage() {
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(installSchema) }}
+    />
     <div className={styles.page}>
       <div className={styles.grain} aria-hidden />
 
@@ -108,5 +153,6 @@ export default function InstallPage() {
         </Link>
       </footer>
     </div>
+    </>
   );
 }

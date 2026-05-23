@@ -1,296 +1,312 @@
-# Vandana Worship App — Full SEO Audit Report
-
-**Site:** https://vandanaapp.vercel.app  
-**Audit Date:** 2026-05-22  
-**Auditor:** Claude SEO Audit System  
-**Stack:** Next.js 16.2.2 · React 19 · Tailwind CSS 4 · Supabase · Vercel  
-**App Type:** Hindi/Hinglish Christian worship lyrics PWA for Indian churches  
+# SEO Full Audit Report — Vandana Worship App
+**URL:** https://vandanaapp.vercel.app  
+**Audit Date:** 2026-05-23  
+**Auditor:** claude-seo (automated) via Claude Code
 
 ---
 
-## Overall SEO Health Score: 47 / 100
+## Executive Summary
 
-| Category | Weight | Score | Weighted |
+**SEO Health Score: 74 / 100** — Good. Foundation is strong; targeted fixes will push this into the 85+ range.
+
+| Category | Score | Weight | Weighted |
 |---|---|---|---|
-| Technical SEO | 22% | 54/100 | 11.9 |
-| Content Quality | 23% | 42/100 | 9.7 |
-| On-Page SEO | 20% | 50/100 | 10.0 |
-| Schema / Structured Data | 10% | 0/100 | 0.0 |
-| Performance (CWV) | 10% | 65/100 | 6.5 |
-| AI Search Readiness (GEO) | 10% | 41/100 | 4.1 |
-| Images | 5% | 60/100 | 3.0 |
+| Technical SEO | 82/100 | 22% | 18.0 |
+| Content Quality | 72/100 | 23% | 16.6 |
+| On-Page SEO | 68/100 | 20% | 13.6 |
+| Schema / Structured Data | 78/100 | 10% | 7.8 |
+| Performance (CWV) | 80/100 | 10% | 8.0 |
+| AI Search Readiness | 88/100 | 10% | 8.8 |
+| Images | 60/100 | 5% | 3.0 |
+| **Total** | | | **75.8 → 74** |
 
-> **Note:** Score reflects the state at time of audit, before fixes were applied. Post-fix estimated score: **~68/100**. Remaining delta is backlog items.
+**Top 5 Critical Issues:**
+1. `og:image` missing from homepage (unfurls broken on WhatsApp, Telegram, LinkedIn)
+2. H1 is brand wordmark "Vandana" only — no keyword signal to Googlebot
+3. Individual song pages missing from sitemap and likely lack structured data
+4. CSP is `Content-Security-Policy-Report-Only` — not enforced
+5. Organization schema missing `logo` and `sameAs` fields
 
----
-
-## Business Type Detected
-
-**Niche Content / Utility App — Religious / Worship**  
-- Target audience: Indian church worship teams and congregations  
-- Primary value proposition: Hindi + Hinglish lyrics with presentation mode  
-- No local service component (not brick-and-mortar)  
-- Not e-commerce  
-- Low competition niche with zero structured SEO foundations pre-audit  
-
----
-
-## Top 5 Critical Issues (Pre-Fix)
-
-1. **Missing sitemap** — robots.txt references `/sitemap.xml` but it 404'd. All 80+ song pages depended on link discovery.
-2. **Admin page indexable** — `/admin/import` had no `noindex` protection.
-3. **80+ duplicate /present/[id] pages** — identical lyrics to `/song/[id]` with no `noindex` or canonical.
-4. **Zero schema markup** — no structured data of any kind; MusicComposition, WebSite, Organization all absent.
-5. **22-character global description** — "Worship in your language" provided almost zero context for crawlers or AI.
-
-## Top 5 Quick Wins (Applied in This Audit)
-
-1. ✅ Created `src/app/sitemap.ts` — all 80+ songs now in sitemap
-2. ✅ Expanded global meta description to 155 chars with language, audience, org signals
-3. ✅ Added `noindex` to /present/[id], /favourites, /setlist, /settings, /admin
-4. ✅ Added WebSite + WebApplication + Organization JSON-LD to root layout
-5. ✅ Added MusicComposition + BreadcrumbList JSON-LD to all 80+ song pages
+**Top 5 Quick Wins:**
+1. Add `og:image` to layout.tsx metadata (30 min, high impact)
+2. Add "Hindi" to page title: "Vandana — Hindi Worship Lyrics App" (5 min)
+3. Add `logo` and `sameAs` to Organization schema (30 min)
+4. Add song pages to sitemap (2 hours, major crawlability win)
+5. Add `FAQPage` schema to /install (1 hour)
 
 ---
 
-## Section 1: Technical SEO
+## Technical SEO
 
-### Pre-Fix Score: 54/100
+### Crawlability
 
-#### CRITICAL
+| Check | Status | Notes |
+|---|---|---|
+| robots.txt | ✅ Pass | `Allow: /`, `Disallow: /admin/ /api/`, Sitemap declared |
+| Sitemap.xml | ✅ Pass | 20+ URLs, valid XML, dynamic lastmod, priority/changefreq set |
+| Canonical tags | ✅ Pass | All pages have canonical pointing to correct URL |
+| `lang` attribute | ✅ Pass | `<html lang="en-IN">` present |
+| Skip link | ✅ Pass | "Skip to main content" → `#main-content` |
+| `<main>` landmark | ✅ Pass | `<main class="app-main">` present |
+| Redirect chains | ✅ Pass | Vercel handles www → non-www |
+| Song pages in sitemap | ❌ Missing | `/song/[id]` pages not in sitemap — major gap |
 
-**C-1: Sitemap returned 404 [FIXED]**  
-`robots.txt` referenced `https://vandanaapp.vercel.app/sitemap.xml` but no sitemap existed anywhere in the project. Every crawler that reads `robots.txt` got a 404. Song pages depended entirely on link discovery.  
-*Fix:* `src/app/sitemap.ts` created using `getSongIds()` with Supabase/bundled fallback. Covers `/`, `/updates`, and all `/song/[id]` pages.
+**Robots.txt:**
+```
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+Sitemap: https://vandanaapp.vercel.app/sitemap.xml
+```
 
-**C-2: `/admin/import` was publicly indexable [FIXED]**  
-No `noindex` directive on the admin import page. While it calls `notFound()` in production, it still emitted a metadata-less response that crawlers could attempt to index.  
-*Fix:* Added `export const metadata: Metadata = { robots: { index: false, follow: false } }` to `src/app/admin/import/page.tsx`.
+**Sitemap coverage:** Landing, /app, /install, /about, /updates, 12 ministry pages. Correctly omits /favourites, /setlist, /present/* per llms.txt. But individual song pages (`/song/[id]`) are entirely absent.
 
-#### HIGH
+### Security Headers
 
-**H-1: `/present/[id]` pages were indexable duplicates [FIXED]**  
-80+ song pages at `/present/[id]` with identical lyrics to `/song/[id]`, no `noindex`, no canonical. Split link equity across 160+ pages instead of concentrating on the 80 that matter.  
-*Fix:* Added `robots: { index: false }` and `alternates: { canonical: /song/[id] }` to `generateMetadata` in `present/[id]/page.tsx`.
+| Header | Status | Value |
+|---|---|---|
+| Strict-Transport-Security | ✅ | `max-age=63072000; includeSubDomains; preload` (2yr HSTS) |
+| X-Content-Type-Options | ✅ | `nosniff` |
+| X-Frame-Options | ✅ | `DENY` |
+| Referrer-Policy | ✅ | `strict-origin-when-cross-origin` |
+| Permissions-Policy | ✅ | `camera=(), microphone=(), geolocation=()` |
+| Content-Security-Policy | ⚠️ | `Report-Only` — violations logged, not blocked. Not a ranking factor but weakens security trust. |
+| Cross-Origin-Opener-Policy | ❌ | Missing — good practice for process isolation |
 
-**H-2: Utility pages had no metadata or noindex [FIXED]**  
-`/favourites`, `/setlist`, `/settings`, `/present/[id]/favourites` had no metadata exports, inheriting the root generic title.  
-*Fix:* `noindex` added to all four. Settings required a `layout.tsx` since `page.tsx` is `"use client"`.
+### JavaScript Rendering
 
-**H-3: API routes not blocked in robots.txt [FIXED]**  
-`/api/*` and `/admin/*` were missing from `robots.txt` Disallow rules.  
-*Fix:* Added `Disallow: /admin/` and `Disallow: /api/` to `public/robots.txt`.
+The homepage is Next.js 15 App Router RSC. The raw HTML contains:
+- Full landing page content pre-rendered in `<div hidden id="S:0">` — React streams this in
+- The app shell at `/app` renders skeleton loaders in raw HTML only — actual song list requires JS
 
-**H-4: Security headers nearly absent [FIXED]**  
-`next.config.ts` only set `x-vercel-toolbar: 0`. No X-Frame-Options, X-Content-Type-Options, Referrer-Policy, or Permissions-Policy.  
-*Fix:* Added four security headers to `next.config.ts` for all routes. CSP deferred — requires testing before enforcement to avoid breaking Supabase/Google Fonts connections.
-
-#### MEDIUM
-
-**M-1: Song page metadata was minimal**  
-`generateMetadata` on `/song/[id]` only returned `title` and `description`. Missing OG fields, explicit canonical, Twitter card specifics.  
-*Fix:* Added `alternates.canonical`, `openGraph.title`, `openGraph.description`, `openGraph.type: "article"`, `openGraph.locale: "hi_IN"` to `generateMetadata`.
-
-**M-2: `lang="en-IN"` misleading for Hindi-primary content**  
-Root HTML `lang` declares English (Indian) but primary content is Hindi. Song lyrics do correctly use `lang="hi"` or `lang="en"` on the lyrics div — this is the most important fix.  
-*Recommendation:* Keep `lang="en-IN"` at root (UI is English) but ensure every Devanagari block has `lang="hi"`. Currently done in `SongView.tsx` — no change needed.
-
-**M-3: OG image in non-standard path**  
-`/icons/og-image.png` is functional but non-standard. All pages share one static OG image regardless of content.  
-*Recommendation (backlog):* Implement `src/app/song/[id]/opengraph-image.tsx` with `ImageResponse` for per-song dynamic OG images.
-
-#### LOW
-
-**L-1: `/updates` had no metadata [FIXED]**  
-Added `title: "Updates"` and a descriptive meta description.
-
-**L-2: Core Web Vitals — font metric mismatch**  
-Noto Sans Devanagari has significantly different metrics from system fallbacks, causing CLS on font-swap. Mitigate with `size-adjust`, `ascent-override`, `descent-override` CSS font descriptors on the fallback font definition.
-
-**L-3: Home page song list is client-rendered**  
-`HomeContent` is `"use client"`. Songs are passed as props from the server component (correct), but the rendered song cards with titles and links are injected by React in the browser. Crawlers that don't execute JS see a near-empty home page body.  
-*Recommendation (backlog):* Add a server-rendered `<noscript>` or static `<ul>` of song links below the fold as a crawler fallback.
+**Googlebot assessment:** The landing page at `/` is fully crawlable without JS. Individual song pages at `/song/[id]` should be SSR'd (pre-rendered) — this needs verification but is consistent with llms.txt stating "server-rendered, fully crawlable."
 
 ---
 
-## Section 2: Content Quality
+## Content Quality
 
-### Pre-Fix Score: 42/100
-
-#### E-E-A-T Assessment
+### E-E-A-T Assessment
 
 | Signal | Status | Notes |
 |---|---|---|
-| Experience | Weak | No creator bio page, no visible church community context on main pages |
-| Expertise | Partial | Song attribution (artist, church) is displayed per song — good |
-| Authoritativeness | Weak | No backlinks, no social presence, no Wikipedia entity for ICM |
-| Trustworthiness | Partial | HTTPS ✓, manifest ✓, about info in settings (client-rendered) |
+| Author identified | ✅ | "Gaurav Kumar — The Algothrim" on landing and About |
+| Creator website linked | ✅ | `https://thealgothrim.com` |
+| Ministry attribution | ✅ | 9 Indian Christian ministries named |
+| Content licensing disclosed | ✅ | llms.txt: "non-commercial, personal, congregational worship use" |
+| About page | ✅ | `/about` exists with description and attribution |
+| Contact information | ❌ | No contact email or form anywhere on the site |
+| User trust pledge | ✅ | "No ads, no popups, no tracking. Ever." — explicit |
+| Freshness signal | ✅ | Dynamic `lastmod` in sitemap; /updates changelog page |
 
-#### Global Meta Description [FIXED]
+### Content Depth
 
-**Before:** "Worship in your language" (22 chars)  
-**After:** "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 80+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. By Isus Christos Ministries (ICM)." (203 chars → truncated to ~155 in SERPs)
-
-The new description hits: language (Hindi/Hinglish), script (Devanagari), audience (Indian churches), feature (presentation mode), organization (ICM), count (80+ songs).
-
-#### Song Page seo_description Quality
-
-Songs source their descriptions from a `seo_description` field in Supabase. Quality is inconsistent:
-
-- **Good examples:** `"Yahweh Sabaoth Hindi worship cover lyrics in Hindi and Hinglish by Ps. Arul Thomas & Dr. Mahima John Arul from ICM Church - originally by Nathaniel Bassey"` — entity-rich, attribution, original artist reference
-- **Poor examples:** `"Hallelujah! Prabhu Mere lyrics in Hindi and Hinglish by Unknown Artist"` — thin, no entity signals, "Unknown Artist" provides no value
-
-**Recommendation:** Audit all songs with `artist = "Unknown Artist"` in Supabase and improve their `seo_description` values with genre, theme, or first-line lyric references.
-
-#### Heading Hierarchy
-
-- `/song/[id]`: `<h1>` for song title ✓ — correct
-- Homepage: No `<h1>` in crawlable HTML — the AppTitle component is mobile-only markup and the search input has an off-screen `<label>`. The song list `<main>` has no heading.
-- `/settings`: Has `<h1>Settings` inside the `"use client"` component ✓
-- Other pages: Rely on client-side rendering for headings
-
-#### Section Labels Use `<span>` Not Headings
-
-In `SongView.tsx`, lyric section labels (Verse 1, Chorus, Bridge) are `<span class="section-label">`. Semantically, these should be `<h2>` or carry `role="heading" aria-level="2"` for correct document outline parsing by search engines and screen readers.
-
-#### Thin / Missing Content on Utility Pages
-
-| Page | Content for Crawlers | Recommendation |
-|---|---|---|
-| `/favourites` | Empty shell | `noindex` ✓ (applied) |
-| `/setlist` | Empty shell | `noindex` ✓ (applied) |
-| `/settings` | Client-rendered UI | `noindex` ✓ (applied via layout) |
-| `/updates` | Real content (changelog) | Metadata added ✓ |
-
-#### Missing Content Opportunities
-
-1. **No `/about` page** — organizational identity (ICM, "Vandana means worship") is buried in `/settings` inside a client component. An SSR `/about` page would be the most citable entity page for AI.
-2. **No artist pages** — `/artist/[name]` or `/church/[name]` pages would create topical authority around ICM, Ankit Sajwan Ministries, etc.
-3. **Tags not rendered** — the `tags` array per song is in Supabase but never shown in the HTML. Adding tag chips to the song detail sidebar adds keyword density without harming readability.
+- **Landing page:** 5 sections, ~450 words of visible copy. Strong identity, thin on factual depth.
+- **llms.txt:** Excellent — covers About, Key Content, Site Structure, Ministries, Licensing. AI systems can cite this accurately.
+- **Individual song pages:** The SEO goldmine — each song title + lyrics is a long-tail keyword. Not audited here (client-side app).
+- **About page:** Good meta; actual page body is client-rendered (Google will see skeleton HTML only).
 
 ---
 
-## Section 3: Schema / Structured Data
+## On-Page SEO
 
-### Pre-Fix Score: 0/100 → Post-Fix: ~65/100
+### Homepage (`/`)
 
-#### Current Implementation (After Fixes Applied)
-
-| Schema | Location | Status |
+| Element | Content | Assessment |
 |---|---|---|
-| WebSite | `layout.tsx` | ✅ Added |
-| WebApplication | `layout.tsx` | ✅ Added |
-| Organization (ICM) | `layout.tsx` | ✅ Added |
-| MusicComposition | `song/[id]/page.tsx` | ✅ Added (per-song, dynamic) |
-| BreadcrumbList | `song/[id]/page.tsx` | ✅ Added (per-song) |
-| ItemList (song catalog) | `page.tsx` | ✅ Added |
+| `<title>` | "Vandana — Worship in your language" | ⚠️ 34 chars. Missing "Hindi" — primary keyword absent. |
+| Meta description | "A reverent worship lyrics app for Hindi-speaking Christians. 80+ songs in Hinglish and Devanagari. Free, offline-first, no tracking." | ✅ 131 chars, keyword-rich |
+| `<h1>` | "Vandana" | ⚠️ Brand wordmark, zero keyword signal to Googlebot |
+| First `<h2>` | "However you read, worship sounds the same." | ✅ "worship" present |
+| OG title | "Vandana — Hindi & Hinglish Worship Lyrics" | ✅ Better than page title |
+| og:image | **MISSING** | ❌ No `<meta property="og:image">` on homepage |
+| twitter:image | `/icons/og-image.png` | ✅ Twitter/X cards work |
+| Canonical | `https://vandanaapp.vercel.app` | ✅ |
+| GSC verification | Present | ✅ |
+| Bing verification | Present | ✅ |
 
-#### Remaining Schema Opportunities (Backlog)
+### Keyword Targeting
 
-- `BlogPosting` entries in `/updates` — map changelog entries to structured blog posts
-- `MusicGroup`/`Person` entities for artist disambiguation (when data quality allows)
-- Dynamic OG images via `ImageResponse` for social sharing
+**Primary target:** "Hindi worship lyrics app" / "Hinglish worship songs"
+
+| Field | "Hindi" | "worship" | "lyrics" |
+|---|---|---|---|
+| `<title>` | ❌ | ✅ | ❌ |
+| meta description | ✅ | ✅ | ✅ |
+| `<h1>` | ❌ | ❌ | ❌ |
+| OG title | ✅ | ✅ | ✅ |
+
+**Fix:** Change title to "Vandana — Hindi Worship Lyrics App" (36 chars). Consider adding a visually hidden subtitle to the H1 or restructuring the tagline into a proper heading.
+
+### Internal Linking
+
+- Landing links to `/app` (primary CTA, twice) and `/install` (secondary)
+- No links to individual song pages, ministry pages, or /updates from landing
+- **Gap:** PageRank doesn't flow to content pages from the landing page
 
 ---
 
-## Section 4: Performance (CWV)
+## Schema & Structured Data
 
-### Estimated Score: 65/100 (code-level analysis — no field data available)
+### Current Implementation
 
-#### Positive Signals
+```json
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebSite", "@id": ".../#website", "name": "Vandana", "inLanguage": "hi-IN" },
+    { "@type": "WebApplication", "@id": ".../#webapplication", "applicationCategory": "MusicApplication",
+      "offers": { "@type": "Offer", "price": "0" }, "inLanguage": ["hi", "en-IN"] },
+    { "@type": "Organization", "@id": ".../#organization", "name": "The Algothrim" }
+  ]
+}
+```
 
-- `font-display: swap` on all Google Fonts and custom Cathez font ✓
-- `generateStaticParams` on song pages — fully static at build time ✓
-- `revalidate = 3600` on homepage — ISR, avoids stale data ✓
-- React 19 concurrent rendering + Turbopack ✓
-- Service worker registered for offline/cache ✓
-
-#### Risk Areas
-
-| Metric | Risk | Detail |
+| Schema Type | Status | Notes |
 |---|---|---|
-| LCP | Medium | Noto Sans Devanagari (large font) loaded via Google Fonts. No explicit `<link rel="preload">` for the Devanagari font observed. |
-| CLS | Medium | `font-display: swap` with Devanagari fallback font causes metric mismatch. Add `size-adjust`/`ascent-override` to fallback. |
-| INP | Low–Medium | Search/filter on home page fires on each keystroke. Verify `useDeferredValue` or `startTransition` wraps the filtered list render. |
+| WebSite | ✅ | @id, name, url, description, inLanguage, publisher — complete |
+| WebApplication | ✅ | applicationCategory, operatingSystem, offers, inLanguage — excellent |
+| Organization | ⚠️ | Present but missing `logo` and `sameAs` |
+| MusicComposition / LyricsAction | ❌ | Individual song pages — high opportunity |
+| FAQPage | ❌ | /install has step-by-step content ideal for FAQ schema |
+| BreadcrumbList | ❌ | Ministry and song pages would benefit |
+
+### Organization Schema Fix
+
+Add to the Organization node:
+```json
+{
+  "logo": "https://vandanaapp.vercel.app/icons/icon-512.png",
+  "sameAs": [
+    "https://github.com/TheAlgo7/vandana-worship-app",
+    "https://thealgothrim.com"
+  ]
+}
+```
 
 ---
 
-## Section 5: AI Search Readiness (GEO)
+## Performance (Lab Estimates)
 
-### Pre-Fix Score: 41/100 → Post-Fix: ~62/100
+*No CrUX field data — Google API credentials not configured.*
 
-#### AI Crawler Access
-
-All major AI crawlers (GPTBot, ClaudeBot, PerplexityBot, anthropic-ai) are allowed via `User-agent: * / Allow: /`. No blocking needed.
-
-#### Files Added
-
-- `public/llms.txt` ✅ — site identity, content scope, licensing, ministry attribution
-- `src/app/sitemap.ts` ✅ — all 80+ song pages now discoverable without JS execution
-
-#### Citability Strengths
-
-- Song pages are fully SSG — lyrics are in the HTML, no JS required for crawlers
-- Per-song `seo_description` surfaces as `<meta name="description">` — the first AI-readable signal per song
-- Section labels (Verse / Chorus / Bridge) provide structural cues for passage extraction
-- `lang="hi"` on Devanagari lyrics blocks — correct multilingual signal
-
-#### Remaining GEO Gaps
-
-| Gap | Severity | Effort |
+| Metric | Estimate | Signal |
 |---|---|---|
-| ~30-40% of `seo_description` values are thin | High | Ongoing content work in Supabase |
-| No standalone `/about` server page | High | 1-2 hrs |
-| Section labels are `<span>` not headings | Medium | 1 hr |
-| Song tags not rendered in page HTML | Medium | 1 hr |
-| YouTube links mostly null — no authority chain | Medium | Content |
-| Home page song list requires JS for discovery | Low | 2-3 hrs |
+| LCP | ~1.5–2.5s | Logo SVG preloaded, fonts preloaded, Vercel CDN HIT |
+| CLS | < 0.05 | Skeleton loaders prevent shift; explicit img dimensions |
+| TTFB | ~50–150ms | Vercel Edge, Mumbai PoP (bom1 in x-vercel-id) |
+| INP | Unknown | SPA with React — depends on JS parse time on low-end devices |
 
-#### Platform-Specific Scores
+**Positive signals:**
+- `X-Vercel-Cache: HIT` — CDN serving from edge
+- 4 custom fonts preloaded (`<link rel="preload" as="font">`)
+- Logo SVG preloaded
+- `fetchPriority="low"` on deferred JS
+- Skeleton loaders eliminate CLS from lazy content
 
-| Platform | Estimated Score | Primary Gap |
-|---|---|---|
-| Google AI Overviews | 28/100 → ~55/100 | Schema (now added), sitemap (now added) |
-| ChatGPT / SearchGPT | 35/100 → ~55/100 | Thin seo_descriptions, no /about page |
-| Perplexity AI | 38/100 → ~60/100 | Best positioned for niche Hindi worship queries |
-| Bing Copilot | 30/100 → ~52/100 | Needs sitemap indexed + schema |
+**Risk:** The `/app` shell loads 10+ async JS chunks. On slow 3G (common in rural Indian church halls — the primary audience), this could push FCP past 3s. Consider measuring with WebPageTest on a 3G-Fast profile from an Indian server.
 
 ---
 
-## Section 6: Images
+## Images
 
-### Score: 60/100
+| Check | Status | Notes |
+|---|---|---|
+| og:image | ❌ Missing | Homepage has no `<meta property="og:image">` — WhatsApp/Telegram/LinkedIn show blank card |
+| twitter:image | ✅ | `/icons/og-image.png` — Twitter/X cards work |
+| Favicon | ✅ | 32px, 192px, 512px |
+| Apple touch icon | ✅ | 180×180 |
+| Maskable icon | ✅ | icon-512.png with `"purpose": "any maskable"` |
+| Alt text | ✅ | Decorative SVGs use `aria-hidden`; functional images have alt |
+| Next.js Image | ✅ | Automatic WebP/AVIF optimization |
 
-| Check | Status |
+**Critical:** `og:image` absent means every WhatsApp share from Indian worshippers (the primary sharing vector for this audience) shows a blank card. This directly suppresses organic sharing.
+
+---
+
+## AI Search Readiness
+
+| Check | Status | Notes |
+|---|---|---|
+| llms.txt | ✅ Present | Well-structured: About, Key Content, Site Structure, Ministries, Licensing |
+| Factual citability | ✅ Strong | "80+ songs", bilingual, 9 ministries, creator named |
+| Passage-level structure | ✅ Good | Sections delineated; individual facts are extractable |
+| AI crawler access | ✅ | robots.txt allows all crawlers |
+| Brand disambiguation | ✅ | Sanskrit etymology ("worship/praise") explained |
+| Structured data for AI | ✅ | WebApplication schema helps AI understand product category |
+| Content freshness | ✅ | Dynamic lastmod in sitemap |
+| Differentiator description | ⚠️ | llms.txt describes what the app is, not what makes it better than alternatives |
+
+**llms.txt improvement:** Add a "What makes Vandana different" section describing: bilingual first-class authoring (not auto-transliteration), Present mode for phone projection, setlist builder, offline-first PWA, no tracking. This helps AI systems write accurate comparisons.
+
+---
+
+## Backlinks (Common Crawl Estimate)
+
+| Metric | Estimate |
 |---|---|
-| OG image exists | ✅ `/icons/og-image.png` (1200×630) |
-| Apple touch icon | ✅ 180×180 |
-| PWA icons (192, 512) | ✅ Present |
-| Maskable icon | ✅ Present |
-| Per-page OG images | ❌ All pages share one static OG image |
-| Alt text on UI images | N/A — app uses SVG icons, no `<img>` tags |
-| Dynamic OG images | ❌ Not implemented |
+| Referring domains | < 10 (new site) |
+| Known inbound links | GitHub README, thealgothrim.com |
+| Domain Authority equivalent | Low (~DA 5–15) |
+| Toxic links | None expected |
 
-The app uses SVG icons from `lucide-react` — no `<img>` alt text issues. The single shared OG image is functional but all 80+ song pages show the same preview when shared to WhatsApp/social. Dynamic OG images via `src/app/song/[id]/opengraph-image.tsx` would significantly improve social sharing — high impact, medium effort.
+**Opportunity:** ICM and other listed ministries should link to Vandana from their "resources" pages. Each ministry page on Vandana (`/ministry/icm`) could become a reciprocal link target. A ProductHunt launch would also generate backlinks from tech audiences interested in PWAs.
 
 ---
 
-## Files Changed in This Audit
+## Issues by Priority
 
-| File | Change |
-|---|---|
-| `src/app/sitemap.ts` | **Created** — dynamic sitemap from getSongIds() |
-| `public/robots.txt` | Added `Disallow: /admin/` and `Disallow: /api/` |
-| `public/llms.txt` | **Created** — AI crawler guidance file |
-| `next.config.ts` | Added X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy headers |
-| `src/app/layout.tsx` | Expanded meta description · Added WebSite/WebApplication/Organization JSON-LD |
-| `src/app/page.tsx` | Added ItemList JSON-LD schema |
-| `src/lib/schema.ts` | **Created** — `buildSongSchema()` helper for MusicComposition + BreadcrumbList |
-| `src/app/song/[id]/page.tsx` | Enriched generateMetadata · Added MusicComposition + BreadcrumbList JSON-LD |
-| `src/app/present/[id]/page.tsx` | Added noindex + canonical to generateMetadata |
-| `src/app/present/[id]/favourites/page.tsx` | Added noindex metadata |
-| `src/app/favourites/page.tsx` | Added noindex metadata |
-| `src/app/setlist/page.tsx` | Added noindex metadata |
-| `src/app/settings/layout.tsx` | **Created** — noindex metadata for client-rendered settings page |
-| `src/app/updates/page.tsx` | Added title + description metadata |
-| `src/app/admin/import/page.tsx` | Added noindex metadata |
+### Critical
+
+| ID | Issue | Fix |
+|---|---|---|
+| C1 | `og:image` missing from homepage | Add to `layout.tsx` metadata: `openGraph: { images: [{ url: '/icons/og-image.png', width: 1200, height: 630 }] }` |
+| C2 | Song pages (`/song/[id]`) missing from sitemap | Add dynamic sitemap entries from Supabase song list |
+| C3 | Song pages likely lack structured data | Add `MusicComposition` or `LyricsAction` schema to song page template |
+
+### High
+
+| ID | Issue | Fix |
+|---|---|---|
+| H1 | Page `<title>` missing "Hindi" keyword | Change to "Vandana — Hindi Worship Lyrics App" |
+| H2 | H1 is brand wordmark only | Add subtitle or restructure tagline into heading |
+| H3 | CSP in Report-Only mode | Switch header to `Content-Security-Policy` in next.config |
+| H4 | Organization schema missing `logo` and `sameAs` | Add to JSON-LD in layout.tsx |
+
+### Medium
+
+| ID | Issue | Fix |
+|---|---|---|
+| M1 | No FAQPage schema on /install | Wrap install steps in FAQ schema |
+| M2 | No `hreflang` for Hindi content | Add `<link rel="alternate" hreflang="hi" href="...">` |
+| M3 | Landing has no links to content pages | Add "Recently added songs" or "Featured song" section |
+| M4 | About page content not SSR'd | Verify /about renders server-side or add SSR content |
+| M5 | No contact information | Add email or contact link in About or footer |
+| M6 | llms.txt missing differentiator description | Add "Why Vandana" section |
+
+### Low
+
+| ID | Issue | Fix |
+|---|---|---|
+| L1 | No BreadcrumbList schema | Add to ministry and song pages |
+| L2 | No directory listings | ProductHunt, Alternativeto, PWA directories |
+| L3 | Song sitemap lastmod static | Set lastmod per song from DB update timestamp |
+
+---
+
+## Positive Findings
+
+- **HSTS with preload:** 2-year duration, includeSubDomains — excellent security posture
+- **Vercel CDN:** Edge cache HIT, fast global TTFB
+- **Font preloading:** All 4 custom fonts have `<link rel="preload">` — no FOUT
+- **llms.txt:** Exceptionally well-written for an indie app
+- **PWA manifest:** Complete — icons (192, 512 maskable), standalone, start_url, orientation
+- **Schema graph:** Properly cross-referenced @id nodes
+- **Bilingual lang attributes:** `lang="hi"` on Hindi text blocks — correct HTML
+- **Skip link + main landmark:** Both present
+- **Dynamic sitemap:** Keeps lastmod current on each build
+- **robots.txt:** Clean — protects API without over-blocking
+
+---
+
+*Audit generated by claude-seo skill via Claude Code · vandanaapp.vercel.app · 2026-05-23*

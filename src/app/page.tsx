@@ -9,13 +9,21 @@ const DESC =
   "A reverent worship lyrics app for Hindi-speaking Christians. 80+ songs in Hinglish and Devanagari. Free, offline-first, no tracking.";
 
 export const metadata: Metadata = {
-  title: "Vandana — Worship in your language",
+  title: "Vandana — Hindi Worship Lyrics App",
   description: DESC,
-  alternates: { canonical: SITE_URL },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      "en-IN": SITE_URL,
+      "hi-IN": SITE_URL,
+      "x-default": SITE_URL,
+    },
+  },
   openGraph: {
     title: "Vandana — Hindi & Hinglish Worship Lyrics",
     description: DESC,
     url: SITE_URL,
+    images: [{ url: `${SITE_URL}/icons/og-image.png`, width: 1200, height: 630 }],
   },
 };
 

@@ -114,8 +114,13 @@ const siteSchema = {
       "@id": `${SITE_URL}/#organization`,
       name: "The Algothrim",
       url: "https://thealgothrim.com",
+      logo: `${SITE_URL}/icons/icon-512.png`,
       description:
         "Independent developer studio building Vandana, a free Hindi and Hinglish worship lyrics app for the Indian church.",
+      sameAs: [
+        "https://github.com/TheAlgo7/vandana-worship-app",
+        "https://thealgothrim.com",
+      ],
     },
   ],
 };
