@@ -593,6 +593,55 @@
 }
 .footerLink:hover { color: var(--text-primary); }
 
+/* ─── Light-mode overrides for OS-chrome mockups ─── */
+[data-theme="light"] .mock {
+  background: #F0EEE8;
+  border-color: rgba(0,0,0,0.10);
+}
+[data-theme="light"] .mockUrl {
+  background: rgba(0,0,0,0.06);
+  color: rgba(30,28,38,0.70);
+}
+[data-theme="light"] .mockIc {
+  background: rgba(0,0,0,0.06);
+  color: rgba(30,28,38,0.65);
+}
+[data-theme="light"] .shareSheet {
+  background: linear-gradient(180deg, #EDEAE2 0%, #E5E1D8 100%);
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .shareRow + .shareRow {
+  border-top-color: rgba(0,0,0,0.06);
+}
+[data-theme="light"] .shareLabel {
+  color: rgba(24,21,30,0.90);
+}
+[data-theme="light"] .androidMenu {
+  background: #EAE7DF;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .androidRow {
+  color: rgba(24,21,30,0.80);
+}
+[data-theme="light"] .desktopBar {
+  background: #F0EEE8;
+  border-color: rgba(0,0,0,0.10);
+}
+[data-theme="light"] .addressPill {
+  background: rgba(0,0,0,0.05);
+  color: rgba(30,28,38,0.65);
+}
+[data-theme="light"] .dialog {
+  background: #EDEAE2;
+  border-color: rgba(0,0,0,0.08);
+}
+[data-theme="light"] .dialogTitle {
+  color: var(--text-primary);
+}
+[data-theme="light"] .dialogSub {
+  color: var(--text-muted);
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 720px) {
   .tabs { left: auto; transform: none; width: calc(100% - 40px); box-sizing: border-box; overflow-x: auto; scrollbar-width: none; }

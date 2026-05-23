@@ -73,7 +73,7 @@
     inset 0 -1px 0 rgba(0, 0, 0, 0.40);
 
   /* ── Transitions ── */
-  --transition-fast: 200ms ease;
+  --transition-fast: 120ms ease;
   --transition-base: 200ms ease;
   --transition-theme: 350ms ease;
 
@@ -624,7 +624,7 @@ a:active {
   margin: 0;
   color: var(--text-secondary);
   font-size: var(--text-xs);
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.35;
   text-transform: uppercase;
