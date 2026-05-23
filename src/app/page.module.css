@@ -510,7 +510,7 @@
 
 /* ── Footer ── */
 .footer {
-  border-top: 0.5px solid rgba(255,255,255,0.05);
+  border-top: 0.5px solid var(--border-subtle);
   padding: 32px 28px;
   margin-top: 40px;
   display: flex;

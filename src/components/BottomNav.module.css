@@ -34,7 +34,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
+  padding: 0 14px;
+  min-width: 48px;
   flex: 0 0 auto;
   height: 44px;
   border-radius: 999px;
@@ -43,14 +44,12 @@
   -webkit-tap-highlight-color: transparent;
   overflow: hidden;
   transition:
-    width 240ms cubic-bezier(0.22, 1, 0.36, 1),
     color 180ms ease,
     background 180ms ease,
     transform 120ms ease;
 }
 
 .item.active {
-  width: 112px;
   color: var(--nav-active-text);
   background: linear-gradient(180deg, var(--nav-fill-top) 0%, var(--nav-fill-bottom) 100%);
   box-shadow:
@@ -129,11 +128,8 @@
   }
 
   .item {
-    width: 44px;
-  }
-
-  .item.active {
-    width: 104px;
+    padding: 0 12px;
+    min-width: 44px;
   }
 }
 

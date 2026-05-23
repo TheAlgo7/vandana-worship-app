@@ -266,7 +266,7 @@ export default function SongView({ song }: SongViewProps) {
         </h1>
         <p
           style={{
-            fontSize: "14px",
+            fontSize: "var(--text-sm)",
             color: "var(--text-muted)",
           }}
         >
