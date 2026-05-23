@@ -1,12 +1,8 @@
 <div align="center">
 
-<img src="public/icons/logo-tagline.svg" alt="Vandana Worship in your language" width="260" />
-
-<br /><br />
-
 [![Live](https://img.shields.io/badge/Live-vandanaapp.vercel.app-C4AA7E?style=flat-square&labelColor=111111)](https://vandanaapp.vercel.app)
 [![Version](https://img.shields.io/badge/Version-2.5.0_Public_Beta-C4AA7E?style=flat-square&labelColor=111111)](https://github.com/TheAlgo7/vandana-worship-app)
-[![Next.js](https://img.shields.io/badge/Next.js-16-C4AA7E?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=111111)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-15-C4AA7E?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=111111)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-C4AA7E?style=flat-square&logo=typescript&logoColor=white&labelColor=111111)](https://www.typescriptlang.org)
 [![PWA](https://img.shields.io/badge/PWA-Installable-C4AA7E?style=flat-square&labelColor=111111)](https://vandanaapp.vercel.app)
 [![Supabase](https://img.shields.io/badge/Supabase-C4AA7E?style=flat-square&logo=supabase&logoColor=white&labelColor=111111)](https://supabase.com)
@@ -17,36 +13,43 @@
   <img src="./docs/assets/hero.png" width="400" alt="Vandana Worship App" />
 </p>
 
-Vandana exists because the Indian church deserved better than a mobile website with bad fonts and missing songs. Every lyric lives in two forms - **Hinglish** (Roman script) and **Hindi** (Devanagari) - one tap to switch, zero friction. The UI is dark-first because worship happens in dim rooms. It installs like an app because it is one. Born out of ICM Church (Isus Christos Ministries) in New Delhi, built by **Gaurav Kumar - The Algothrim**.
+Vandana exists because the Indian church deserved better than a mobile website with bad fonts and missing songs. Every lyric lives in two forms: **Hinglish** (Roman script) and **Hindi** (Devanagari), one tap to switch, zero friction. The UI is dark by default because worship happens in dim rooms. A full parchment light mode ships for daylight use. It installs like an app because it is one. Built by **[Gaurav Kumar - The Algothrim](https://thealgothrim.com)**.
 
 ## Features
 
-- **Bilingual lyrics** - Hinglish and Hindi authored, stored, and rendered as first-class peers. Switch per song.
-- **Present Mode** - fullscreen lyric projection with auto-scroll, designed for worship leaders.
-- **Favourites + recently viewed** - persisted locally, surfaced immediately on the home screen.
-- **Daily verse** - a living home screen with a fresh Bible verse on every visit.
-- **Offline-ready PWA** - installs to home screen, works without WiFi after first load.
-- **Desktop layout** - sticky sidebar nav at ≥900px. Mobile pill nav below. Same codebase, both surfaces.
-- **Resilient data layer** - 4-tier fallback: Supabase -> fresh cache -> stale cache -> bundled songs. Survives free-tier pauses.
-- **Sacred Noir design system** - dark surfaces, desaturated gold accent, Lora display type. WCAG AA compliant.
+- **Bilingual lyrics** — Hinglish and Hindi authored, stored, and rendered as first-class peers. Switch per song.
+- **Present Mode** — fullscreen lyric projection with auto-scroll, designed for worship leaders projecting from a phone.
+- **Setlist** — build tonight's order from the library, then hit *Present setlist* when the band starts. Skip songs with one tap.
+- **Favourites + recently viewed** — persisted locally, surfaced immediately on the home screen.
+- **Daily verse** — a living home screen with a fresh Bible verse on every visit.
+- **Offline-ready PWA** — installs to home screen, works without WiFi after first load.
+- **Desktop layout** — sticky sidebar nav at 900px+. Mobile pill nav below. Same codebase, both surfaces.
+- **Resilient data layer** — 4-tier fallback: Supabase → fresh cache → stale cache → bundled songs. Survives free-tier pauses.
+- **Sacred Noir design system** — dual-theme (dark noir + light parchment), desaturated gold accent, Lora display type. WCAG AA compliant.
 
 ## Install to Home Screen
-
-**Android (Chrome):**
-1. Open [vandanaapp.vercel.app](https://vandanaapp.vercel.app) in Chrome
-2. Tap the **⋮** menu → **Add to Home screen**
-3. Tap **Add** - Vandana installs like a native app
 
 **iOS (Safari):**
 1. Open [vandanaapp.vercel.app](https://vandanaapp.vercel.app) in Safari
 2. Tap the **Share** button → **Add to Home Screen**
-3. Tap **Add** - the app appears on your home screen
+3. Tap **Add** — the app appears on your home screen
+
+**Android (Chrome):**
+1. Open [vandanaapp.vercel.app](https://vandanaapp.vercel.app) in Chrome
+2. Tap the **⋮** menu → **Add to Home screen**
+3. Tap **Add** — Vandana installs like a native app
+
+**Desktop:**
+1. Open [vandanaapp.vercel.app](https://vandanaapp.vercel.app) in Chrome or Edge
+2. Click the install icon in the address bar → **Install**
+
+Or visit [vandanaapp.vercel.app/install](https://vandanaapp.vercel.app/install) for a step-by-step guide with screenshots.
 
 ## Stack
 
 | Layer | Technology |
 | --- | --- |
-| Framework | Next.js 16 (App Router) |
+| Framework | Next.js 15 (App Router) |
 | Language | TypeScript (strict) |
 | Styling | Tailwind CSS v4 + CSS custom properties |
 | Database | Supabase (PostgreSQL) |
@@ -57,7 +60,11 @@ Vandana exists because the Indian church deserved better than a mobile website w
 
 ## Design Language
 
-**Sacred Noir.** Three-tier dark surface system - `#0A0A0E` base, `#141418` surface, `#1E1E26` elevated. A single desaturated gold accent (`#C4AA7E`) carries all interactive weight. No other hues. Typography is the interface - **Lora** for headings and song titles, **Plus Jakarta Sans** for body, **Noto Sans Devanagari** with increased line-height (2.15) for Devanagari matras to breathe.
+**Sacred Noir.** Three-tier dark surface system: `#0A0A0E` base, `#141418` surface, `#1E1E26` elevated. A single desaturated gold accent (`#C4AA7E`) carries all interactive weight. No other hues.
+
+**Parchment light mode.** `#F4F0E8` base, `#FEFCF8` surface, `#EDE8DD` elevated. The gold shifts to a darker olive (`#7A6340`) for contrast. One token set, two complete themes.
+
+Typography is the interface: **Lora** for headings and song titles, **Plus Jakarta Sans** for body, **Noto Sans Devanagari** with a 2.15 line-height so Devanagari matras breathe.
 
 <details>
 <summary>Quick Start</summary>
@@ -86,7 +93,7 @@ npm run build
 npm run lint
 ```
 
-> The app ships with 35 bundled fallback songs. Point `NEXT_PUBLIC_SUPABASE_URL` at a Supabase instance with the `songs` table for the full library.
+> The app ships with bundled fallback songs for offline use. Point `NEXT_PUBLIC_SUPABASE_URL` at a Supabase instance with the `songs` table for the full library.
 
 </details>
 
