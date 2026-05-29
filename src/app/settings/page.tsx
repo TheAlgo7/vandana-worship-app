@@ -13,6 +13,7 @@ import {
   getStoredDefaultLanguage,
   isLanguage,
 } from "@/lib/languagePreference";
+import { APP_VERSION_LABEL } from "@/lib/appInfo";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
@@ -365,7 +366,7 @@ function AboutCard() {
         </a>
       </p>
       <p style={{ textAlign: "center", color: "var(--text-muted)", fontSize: 11, marginTop: 16 }}>
-        v2.5.0 Public Beta
+        {APP_VERSION_LABEL}
       </p>
     </div>
   );

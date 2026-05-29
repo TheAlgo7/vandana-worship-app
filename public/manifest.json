@@ -1,13 +1,15 @@
 {
+  "id": "/app",
   "name": "Vandana: Worship in Your Language",
   "short_name": "Vandana",
-  "description": "Hindi & English worship lyrics for your church service",
+  "description": "Hindi & Hinglish worship lyrics for your church service",
   "start_url": "/app",
   "scope": "/",
   "display": "standalone",
+  "lang": "en-IN",
+  "categories": ["music", "lifestyle"],
   "background_color": "#0A0A0E",
   "theme_color": "#0A0A0E",
-  "orientation": "portrait",
   "icons": [
     {
       "src": "/icons/icon-192.png",
@@ -19,7 +21,13 @@
       "src": "/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }

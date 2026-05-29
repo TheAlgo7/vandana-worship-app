@@ -1,7 +1,8 @@
-const STATIC_CACHE = "vandana-static-v8";
-const RUNTIME_CACHE = "vandana-runtime-v5";
+const STATIC_CACHE = "vandana-static-v9";
+const RUNTIME_CACHE = "vandana-runtime-v6";
 const PRECACHE_URLS = [
   "/",
+  "/app",
   "/updates",
   "/favourites",
   "/setlist",
@@ -58,7 +59,10 @@ async function networkFirst(request) {
 
   try {
     const response = await fetch(request);
-    cache.put(request, response.clone());
+    // Only cache successful, basic responses — never a 404/500 or opaque error.
+    if (response.ok && response.type === "basic") {
+      cache.put(request, response.clone());
+    }
     return response;
   } catch {
     const cached = await cache.match(request);
@@ -103,7 +107,9 @@ async function staleWhileRevalidate(request) {
 
   const networkPromise = fetch(request)
     .then((response) => {
-      cache.put(request, response.clone());
+      if (response.ok && response.type === "basic") {
+        cache.put(request, response.clone());
+      }
       return response;
     })
     .catch(() => undefined);

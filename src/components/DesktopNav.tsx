@@ -7,6 +7,7 @@ import type { LucideIcon } from "lucide-react";
 import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
 import { useSetlistEnabled } from "@/lib/setlistPreference";
+import { APP_VERSION_LABEL } from "@/lib/appInfo";
 import styles from "./DesktopNav.module.css";
 
 const NAV_ITEMS: {
@@ -92,7 +93,7 @@ export default function DesktopNav() {
       {/* Footer */}
       <div className={styles.footer}>
         <Link href="/about" className={styles.aboutLink}>About</Link>
-        <p className={styles.version}>v2.5.0 Public Beta</p>
+        <p className={styles.version}>{APP_VERSION_LABEL}</p>
       </div>
     </aside>
   );

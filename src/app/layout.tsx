@@ -40,7 +40,7 @@ export const viewport: Viewport = {
 
 const SITE_URL = "https://vandanaapp.vercel.app";
 const SITE_DESCRIPTION =
-  "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 80+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. Built by The Algothrim.";
+  "Free Hindi and Hinglish Christian worship lyrics app for Indian churches. 2,800+ songs in Devanagari and Roman transliteration with presentation mode for worship teams. Built by The Algothrim.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

@@ -10,7 +10,7 @@ const BASE_URL = "https://vandanaapp.vercel.app";
 export const metadata: Metadata = {
   title: "Song Library",
   description:
-    "Browse 80+ Hindi and Hinglish Christian worship songs. Search by title, filter by language, and open any song to read lyrics in Devanagari or Roman script.",
+    "Browse 2,800+ Hindi and Hinglish Christian worship songs. Search by title, filter by language, and open any song to read lyrics in Devanagari or Roman script.",
   alternates: { canonical: `${BASE_URL}/app` },
 };
 

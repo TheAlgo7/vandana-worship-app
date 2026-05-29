@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import LandingNav from "@/components/LandingNav";
 import InstallTabs from "@/components/InstallTabs";
+import { APP_VERSION_LABEL } from "@/lib/appInfo";
 import styles from "./install.module.css";
 
 const SITE_URL = "https://vandanaapp.vercel.app";
@@ -128,7 +129,7 @@ export default function InstallPage() {
           <ArrowRight />
         </Link>
         <p className={styles.ctaNote}>
-          The browser will offer to install it when you&rsquo;re ready · v2.5.0 Public Beta
+          The browser will offer to install it when you&rsquo;re ready · {APP_VERSION_LABEL}
         </p>
       </section>
 

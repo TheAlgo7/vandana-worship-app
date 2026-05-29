@@ -30,7 +30,7 @@ export interface Song {
   added_by: string;
 }
 
-export type SongLibrarySource = "supabase" | "cache" | "bundled";
+export type SongLibrarySource = "supabase" | "bundled";
 
 export interface SongLibraryResult {
   songs: Song[];
@@ -97,46 +97,9 @@ function mapDbRowToSong(row: DbSongRow): Song {
   };
 }
 
-/* ── Offline cache (localStorage, client-side only) ── */
-
-const CACHE_KEY = "vandana-songs-cache-v3";
-const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 const SUPABASE_PAGE_SIZE = 1000;
 
-interface CacheEntry {
-  timestamp: number;
-  data: Song[];
-}
-
-/** Returns fresh cache (within TTL). Pass `acceptStale=true` to return expired cache too. */
-function getCachedSongs(acceptStale = false): Song[] | null {
-  if (typeof window === "undefined") return null;
-  try {
-    const raw = localStorage.getItem(CACHE_KEY);
-    if (!raw) return null;
-    const entry: CacheEntry = JSON.parse(raw);
-    const isExpired = Date.now() - entry.timestamp > CACHE_TTL;
-    if (isExpired && !acceptStale) {
-      localStorage.removeItem(CACHE_KEY);
-      return null;
-    }
-    return entry.data?.length > 0 ? entry.data : null;
-  } catch {
-    return null;
-  }
-}
-
-function setCachedSongs(data: Song[]): void {
-  if (typeof window === "undefined") return;
-  try {
-    const entry: CacheEntry = { timestamp: Date.now(), data };
-    localStorage.setItem(CACHE_KEY, JSON.stringify(entry));
-  } catch {
-    // localStorage full or unavailable - ignore
-  }
-}
-
-/** Queries Supabase with a 5-second timeout. Returns null on error or timeout. */
+/** Queries Supabase with a 12-second timeout. Returns null on error or timeout. */
 async function fetchFromSupabase(): Promise<Song[] | null> {
   try {
     const timeout = new Promise<null>((resolve) =>
@@ -149,6 +112,7 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
         const { data, error } = await supabase
           .from("songs")
           .select("*")
+          .eq("is_verified", true)
           .not("lyrics_hinglish", "is", null)
           .order("title")
           .range(from, to);
@@ -178,25 +142,14 @@ async function fetchFromSupabase(): Promise<Song[] | null> {
 /* ── Public API ── */
 
 export async function getSongLibrary(): Promise<SongLibraryResult> {
-  // 1. Try Supabase (5s timeout so SSR never hangs when project is paused)
+  // 1. Supabase (12s timeout so SSR never hangs when the project is paused).
+  //    Successful renders are held by Vercel ISR (see each page's `revalidate`),
+  //    which is what actually survives free-tier pauses for returning visitors.
   const fromDb = await fetchFromSupabase();
-  if (fromDb) {
-    setCachedSongs(fromDb);
-    return { songs: fromDb, source: "supabase" };
-  }
+  if (fromDb) return { songs: fromDb, source: "supabase" };
 
-  console.warn("[getSongs] Supabase unavailable - checking cache.");
-
-  // 2. Fresh localStorage cache (within 7-day TTL)
-  const fresh = getCachedSongs();
-  if (fresh) return { songs: fresh, source: "cache" };
-
-  // 3. Stale localStorage cache - 200+ songs from a past session beats 35 local files
-  const stale = getCachedSongs(true);
-  if (stale) return { songs: stale, source: "cache" };
-
-  // 4. Last resort: 35 bundled local songs
-  console.warn("[getSongs] No cache - falling back to bundled local songs.");
+  // 2. Floor: bundled curated songs, so the app is never empty (offline/paused).
+  console.warn("[getSongs] Supabase unavailable - falling back to bundled local songs.");
   return {
     songs: LOCAL_SONGS.slice().sort((a, b) => a.title.localeCompare(b.title)),
     source: "bundled",
@@ -214,6 +167,7 @@ export async function getSongById(id: string): Promise<Song | null> {
       .from("songs")
       .select("*")
       .eq("id", id)
+      .eq("is_verified", true)
       .single()
       .then(({ data, error }) => (error || !data ? null : mapDbRowToSong(data as DbSongRow)));
     const result = await Promise.race([query, timeout]);
@@ -232,6 +186,7 @@ export async function getSongsByMinistry(
     const query = supabase
       .from("songs")
       .select("*")
+      .eq("is_verified", true)
       .eq(filterBy === "church" ? "church" : "artist", filterValue)
       .order("title")
       .then(({ data, error }) =>
@@ -251,6 +206,7 @@ export async function getSongsByChurch(church: string): Promise<Song[]> {
     const query = supabase
       .from("songs")
       .select("*")
+      .eq("is_verified", true)
       .eq("church", church)
       .order("title")
       .then(({ data, error }) =>
@@ -297,6 +253,7 @@ export async function getSongIds(): Promise<string[]> {
         const { data, error } = await supabase
           .from("songs")
           .select("id")
+          .eq("is_verified", true)
           .not("lyrics_hinglish", "is", null)
           .order("id")
           .range(from, to);

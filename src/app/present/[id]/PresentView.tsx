@@ -16,6 +16,8 @@ import { useSetlist } from "@/contexts/SetlistContext";
 
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
 const FONT_LABELS = ["A", "A", "A"] as const;
+const SCROLL_SPEEDS = [18, 30, 48] as const; // px per second: slow, medium, fast
+const SCROLL_SPEED_LABELS = ["1×", "2×", "3×"] as const;
 
 export default function PresentView({ song }: { song: Song }) {
   const [languageState, setLanguageState] = useState<{ songId: string; lang: Language }>(() => ({
@@ -41,6 +43,7 @@ export default function PresentView({ song }: { song: Song }) {
   const [showControls, setShowControls] = useState(true);
   const [fontIdx, setFontIdx] = useState(0);
   const [autoScroll, setAutoScroll] = useState(false);
+  const [speedIdx, setSpeedIdx] = useState(1); // default to medium
   const scrollRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<number | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -91,20 +94,59 @@ export default function PresentView({ song }: { song: Song }) {
     setLang(langs[(i + 1) % langs.length]);
   }, [lang, setLang, song.languages_available]);
 
-  /* auto-scroll */
+  /* auto-scroll — frame-rate independent (px/second, accumulates sub-pixels) */
   useEffect(() => {
-    if (autoScroll && scrollRef.current) {
-      const el = scrollRef.current;
-      const tick = () => {
-        el.scrollTop += 1;
-        autoScrollRef.current = requestAnimationFrame(tick);
-      };
+    if (!autoScroll || !scrollRef.current) return;
+    const el = scrollRef.current;
+    const pxPerSec = SCROLL_SPEEDS[speedIdx];
+    let last = performance.now();
+    let remainder = 0;
+    const tick = (now: number) => {
+      const dt = now - last;
+      last = now;
+      remainder += (pxPerSec * dt) / 1000;
+      const whole = Math.floor(remainder);
+      if (whole > 0) {
+        el.scrollTop += whole;
+        remainder -= whole;
+      }
       autoScrollRef.current = requestAnimationFrame(tick);
-    }
+    };
+    autoScrollRef.current = requestAnimationFrame(tick);
     return () => {
       if (autoScrollRef.current) cancelAnimationFrame(autoScrollRef.current);
     };
-  }, [autoScroll, lang]);
+  }, [autoScroll, lang, speedIdx]);
+
+  /* keep the screen awake while projecting (re-acquire when tab refocuses) */
+  useEffect(() => {
+    type WakeLockSentinelLike = { release: () => Promise<void> };
+    let sentinel: WakeLockSentinelLike | null = null;
+    let cancelled = false;
+    const nav = navigator as Navigator & {
+      wakeLock?: { request: (type: "screen") => Promise<WakeLockSentinelLike> };
+    };
+    if (!nav.wakeLock) return;
+
+    const acquire = async () => {
+      try {
+        sentinel = await nav.wakeLock!.request("screen");
+      } catch {
+        /* denied (e.g. low battery) — silently continue */
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "visible" && !cancelled) void acquire();
+    };
+
+    void acquire();
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => {
+      cancelled = true;
+      document.removeEventListener("visibilitychange", onVisibility);
+      void sentinel?.release().catch(() => {});
+    };
+  }, []);
 
   /* stop auto-scroll on manual scroll */
   useEffect(() => {
@@ -345,6 +387,34 @@ export default function PresentView({ song }: { song: Song }) {
             <Play size={16} fill="currentColor" strokeWidth={0} />
           )}
         </button>
+
+        {/* Auto-scroll speed (only while scrolling) */}
+        {autoScroll && (
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSpeedIdx((i) => (i + 1) % SCROLL_SPEEDS.length);
+            }}
+            aria-label={`Scroll speed ${SCROLL_SPEED_LABELS[speedIdx]}`}
+            style={{
+              background: "var(--present-control-bg)",
+              border: "1px solid var(--present-control-border)",
+              borderRadius: "var(--radius-pill)",
+              color: "var(--present-text)",
+              minWidth: 44,
+              height: 44,
+              padding: "0 12px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              fontSize: "var(--text-sm)",
+              fontWeight: 700,
+            }}
+          >
+            {SCROLL_SPEED_LABELS[speedIdx]}
+          </button>
+        )}
 
         {setlistIndex >= 0 && (
           <>

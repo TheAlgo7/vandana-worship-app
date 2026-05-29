@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import LandingTagline from "@/components/LandingTagline";
 import LandingNav from "@/components/LandingNav";
+import { APP_VERSION_LABEL } from "@/lib/appInfo";
 import styles from "./page.module.css";
 
 const SITE_URL = "https://vandanaapp.vercel.app";
 const DESC =
-  "A reverent worship lyrics app for Hindi-speaking Christians. 80+ songs in Hinglish and Devanagari. Free, offline-first, no tracking.";
+  "A reverent worship lyrics app for Hindi-speaking Christians. 2,800+ songs in Hinglish and Devanagari. Free, offline-first, no tracking.";
 
 export const metadata: Metadata = {
   title: "Vandana — Hindi Worship Lyrics App",
@@ -115,7 +116,7 @@ export default function LandingPage() {
         <div className={styles.eyebrow}>
           <span className={styles.eyebrowDot} aria-hidden />
           <span>
-            <b>v2.5.0 Public Beta</b> · 80+ songs · Hindi · Hinglish · offline
+            <b>{APP_VERSION_LABEL}</b> · 2,800+ songs · Hindi · Hinglish · offline
           </span>
         </div>
 

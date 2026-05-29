@@ -724,3 +724,28 @@ a:active {
 .theme-flash {
   animation: themeFlash 0.45s ease-out forwards;
 }
+
+/* ══════════════════════════════════════════════
+   Reduced Motion — respect the OS preference
+   ══════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Stop the perpetual shimmer and the tactile press scale */
+  .skeleton-block::after {
+    animation: none !important;
+  }
+  button:active,
+  a:active {
+    transform: none !important;
+  }
+}

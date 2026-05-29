@@ -161,7 +161,7 @@ export default function AboutPage() {
                 The Song Library
               </h2>
               <p style={{ fontSize: "var(--text-base)", lineHeight: 1.75, color: "var(--text-secondary)", marginBottom: 12 }}>
-                The library contains <strong style={{ color: "var(--text-primary)" }}>80+ Hindi and
+                The library contains <strong style={{ color: "var(--text-primary)" }}>2,800+ Hindi and
                 Hinglish worship songs</strong> from Indian Christian ministries, including original
                 compositions and Hindi translations of internationally known worship songs. Songs span
                 themes of praise, intercession, declaration, and devotion.

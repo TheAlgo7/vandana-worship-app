@@ -318,8 +318,9 @@ export default function HomeContent({
     : hasSearch
     ? SEARCH_BATCH_SIZE
     : SONG_BATCH_SIZE;
-  const visibleSongs = hasActiveFilters ? filtered.slice(0, visibleCount) : filtered.slice(0, visibleCount);
-  const canShowMore = !hasActiveFilters && visibleSongs.length < filtered.length;
+  const visibleSongs = filtered.slice(0, visibleCount);
+  // Show "more" for plain browse AND church-filtered browse (not search — that has its own button)
+  const canShowMore = !hasSearch && visibleSongs.length < filtered.length;
   const visibleBestSongs = hasSearch ? searchGroups.best.slice(0, visibleCount) : [];
   const relatedBudget = Math.max(0, visibleCount - visibleBestSongs.length);
   const visibleRelatedSongs = hasSearch ? searchGroups.related.slice(0, relatedBudget) : [];
@@ -358,7 +359,7 @@ export default function HomeContent({
             whiteSpace: "nowrap",
           }}
         >
-          {librarySource === "cache" ? "Using cached library" : "Using offline library"}
+          Using offline library
         </div>
       )}
 
