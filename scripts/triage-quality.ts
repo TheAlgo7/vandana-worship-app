@@ -62,9 +62,10 @@ const BOILERPLATE_LINE = [
   /\bchords\s+and\s+lyrics\b/i,
   /^\[[^\]]*\]$/,                                    // whole line is a "[ Artist | Label ]" credit
   /^\|[^|]*\|$/,                                     // whole line is a "| Production |" credit
-  /\bchristian\s+song\b/i,                           // "X Christian Song", SEO blurbs (never appears in real lyrics)
+  /\bchristian\s+songs?\b/i,                          // "X Christian Song(s)", SEO/credit lines (never in real lyrics)
   /\bread\s+(the\s+)?full\s+lyrics\b/i,              // SEO description sentences
   /^[([]?\s*(verse|chorus|bridge|pre[\s-]?chorus|prechorus|intro|outro|tag|interlude|refrain|hook|coda)\s*:?\s*\d*\s*[)\]]?$/i, // inline "Verse : 1", "(Chorus)" labels
+  /^[-–—_=*•·\s]{3,}$/,                              // separator-only lines ("---------------")
 ] as const;
 
 const DEVANAGARI_RE = /[ऀ-ॿ]/;
