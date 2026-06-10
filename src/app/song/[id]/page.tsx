@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getSongById, getSongIds } from "@/lib/getSongs";
 import { buildSongSchema } from "@/lib/schema";
+import { jsonLdHtml } from "@/lib/jsonLd";
 import type { Metadata } from "next";
 import SongView from "./SongView";
 
@@ -49,7 +50,7 @@ export default async function SongPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(schema) }}
       />
       <SongView song={song} />
     </>

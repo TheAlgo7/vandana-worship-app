@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { MINISTRIES, MINISTRY_BY_SLUG } from "@/lib/ministries";
 import { getSongsByMinistry } from "@/lib/getSongs";
+import { jsonLdHtml } from "@/lib/jsonLd";
 
 export const revalidate = 3600;
 
@@ -81,7 +82,7 @@ export default async function MinistryPage({
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(ministrySchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(ministrySchema) }}
       />
       <div style={{ background: "var(--bg-base)", color: "var(--text-primary)", minHeight: "100vh", paddingBottom: 48 }}>
         {/* Header */}

@@ -6,6 +6,7 @@ import {
 } from "next/font/google";
 import Providers from "@/components/Providers";
 import DesktopNav from "@/components/DesktopNav";
+import { jsonLdHtml } from "@/lib/jsonLd";
 import "./globals.css";
 
 const heading = Lora({
@@ -140,7 +141,7 @@ export default function RootLayout({
       <body className="min-h-full">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteSchema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLdHtml(siteSchema) }}
         />
         <a href="#main-content" className="skip-link">
           Skip to main content

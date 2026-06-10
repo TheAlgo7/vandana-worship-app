@@ -4,6 +4,7 @@ import Link from "next/link";
 import LandingNav from "@/components/LandingNav";
 import InstallTabs from "@/components/InstallTabs";
 import { APP_VERSION_LABEL } from "@/lib/appInfo";
+import { jsonLdHtml } from "@/lib/jsonLd";
 import styles from "./install.module.css";
 
 const SITE_URL = "https://vandanaapp.vercel.app";
@@ -83,7 +84,7 @@ export default function InstallPage() {
     <>
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(installSchema) }}
+      dangerouslySetInnerHTML={{ __html: jsonLdHtml(installSchema) }}
     />
     <div className={styles.page}>
       <div className={styles.grain} aria-hidden />

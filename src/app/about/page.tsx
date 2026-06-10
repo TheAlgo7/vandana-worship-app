@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { jsonLdHtml } from "@/lib/jsonLd";
 
 const BASE_URL = "https://vandanaapp.vercel.app";
 
@@ -68,7 +69,7 @@ export default function AboutPage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(aboutSchema) }}
       />
       <div
         style={{

@@ -2,6 +2,7 @@ import { getAllSongMetasWithSource } from "@/lib/getSongs";
 import HomeContent from "@/components/HomeContent";
 import BottomNav from "@/components/BottomNav";
 import type { Metadata } from "next";
+import { jsonLdHtml } from "@/lib/jsonLd";
 
 export const revalidate = 3600;
 
@@ -36,7 +37,7 @@ export default async function AppHome() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+        dangerouslySetInnerHTML={{ __html: jsonLdHtml(itemListSchema) }}
       />
       <div style={{ minHeight: "100vh" }}>
         <HomeContent songs={library.songs} librarySource={library.source} />

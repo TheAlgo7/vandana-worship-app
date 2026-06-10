@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
-// CSP in report-only mode — monitor violations before enforcing.
-// Tighten script-src once you confirm no inline script violations in the report.
+// Enforced Content-Security-Policy (sent as Content-Security-Policy, not -Report-Only).
+// Next.js' inline bootstrap/hydration scripts still need 'unsafe-inline'; 'unsafe-eval'
+// is not required in a production build so it is omitted. Next step toward a strict
+// policy: switch script-src to a per-request nonce and drop 'unsafe-inline'.
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval'",
+  "script-src 'self' 'unsafe-inline'",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: https:",
