@@ -61,3 +61,7 @@ imports/*.json
 
 # Personal / agent files
 .impeccable.md
+
+# Generated review reports (regenerable by scripts/*.ts)
+docs/CONTENT-REVIEW.md
+docs/LYRIC-CREDIT-RESIDUE.md
