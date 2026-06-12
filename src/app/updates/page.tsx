@@ -9,12 +9,28 @@ export const metadata: Metadata = {
   description: "New songs, fixes, and improvements to the Vandana worship lyrics library.",
 };
 
+function normalizeSongName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 export default async function UpdatesPage() {
   const songs = await getAllSongMetas();
+  const updateSongNames = new Set(
+    updatesData.flatMap((update) => update.song_names).map(normalizeSongName),
+  );
+  const songLinks = Object.fromEntries(
+    songs
+      .filter((song) => updateSongNames.has(normalizeSongName(song.title)))
+      .map((song) => [normalizeSongName(song.title), song.id]),
+  );
 
   return (
     <div style={{ minHeight: "100vh" }}>
-      <UpdatesContent updates={updatesData} librarySongCount={songs.length} />
+      <UpdatesContent updates={updatesData} librarySongCount={songs.length} songLinks={songLinks} />
       <BottomNav />
     </div>
   );

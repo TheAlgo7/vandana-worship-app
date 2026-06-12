@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import {
   Bell,
   CheckCircle2,
@@ -49,12 +50,22 @@ function getTheme(type: string): UpdateTheme {
   return UPDATE_THEMES[type] ?? { label: "Update", icon: Bell };
 }
 
+function normalizeSongName(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
 export default function UpdatesContent({
   updates,
   librarySongCount,
+  songLinks,
 }: {
   updates: UpdateEntry[];
   librarySongCount: number;
+  songLinks: Record<string, string>;
 }) {
   useEffect(() => {
     localStorage.setItem("vandana-updates-last-read", new Date().toISOString());
@@ -311,26 +322,42 @@ export default function UpdatesContent({
                               marginTop: 12,
                             }}
                           >
-                            {update.song_names.map((name) => (
-                              <span
-                                key={name}
-                                style={{
-                                  maxWidth: "100%",
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis",
-                                  color: "var(--text-secondary)",
-                                  background: "var(--bg-elevated)",
-                                  border: "1px solid var(--border-subtle)",
-                                  borderRadius: "var(--radius-pill)",
-                                  padding: "4px 9px",
-                                  fontSize: "var(--text-xs)",
-                                  lineHeight: 1.35,
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                {name}
-                              </span>
-                            ))}
+                            {update.song_names.map((name) => {
+                              const songId = songLinks[normalizeSongName(name)];
+                              const chipStyle = {
+                                maxWidth: "100%",
+                                overflow: "hidden",
+                                textOverflow: "ellipsis",
+                                color: "var(--text-secondary)",
+                                background: "var(--bg-elevated)",
+                                border: "1px solid var(--border-subtle)",
+                                borderRadius: "var(--radius-pill)",
+                                padding: "4px 9px",
+                                fontSize: "var(--text-xs)",
+                                lineHeight: 1.35,
+                                whiteSpace: "nowrap",
+                                textDecoration: "none",
+                              } as const;
+
+                              return songId ? (
+                                <Link
+                                  key={name}
+                                  href={`/song/${songId}`}
+                                  aria-label={`Open ${name}`}
+                                  style={{
+                                    ...chipStyle,
+                                    transition:
+                                      "border-color 160ms ease, color 160ms ease, background 160ms ease",
+                                  }}
+                                >
+                                  {name}
+                                </Link>
+                              ) : (
+                                <span key={name} style={chipStyle}>
+                                  {name}
+                                </span>
+                              );
+                            })}
                           </div>
                         )}
                       </div>
