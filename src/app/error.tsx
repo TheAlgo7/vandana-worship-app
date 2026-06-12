@@ -2,13 +2,14 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import { AlertTriangle } from 'lucide-react';
 
 export default function Error({
   error,
-  unstable_retry,
+  reset,
 }: {
   error: Error & { digest?: string };
-  unstable_retry: () => void;
+  reset: () => void;
 }) {
   useEffect(() => {
     console.error(error);
@@ -27,7 +28,22 @@ export default function Error({
         paddingTop: 64,
       }}
     >
-      <div style={{ fontSize: '3rem', marginBottom: 16 }}>âš ï¸</div>
+      <div
+        aria-hidden="true"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 52,
+          height: 52,
+          borderRadius: 'var(--radius-pill)',
+          background: 'var(--accent-dim)',
+          color: 'var(--accent)',
+          marginBottom: 16,
+        }}
+      >
+        <AlertTriangle size={24} strokeWidth={1.7} />
+      </div>
       <h1
         style={{
           fontSize: 'var(--text-xl)',
@@ -49,7 +65,7 @@ export default function Error({
       </p>
       <div style={{ display: 'flex', gap: 8 }}>
         <button
-          onClick={() => unstable_retry()}
+          onClick={() => reset()}
           style={{
             display: 'inline-block',
             background: 'var(--accent)',
@@ -78,7 +94,7 @@ export default function Error({
             border: '1px solid var(--border)',
           }}
         >
-          â† Back to home
+          Back to home
         </Link>
       </div>
     </div>
