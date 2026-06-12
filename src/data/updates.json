@@ -1,5 +1,36 @@
 [
   {
+    "id": "update-030",
+    "date": "2026-06-12",
+    "title": "Safer Pages & Cleaner Song Review",
+    "body": "Improved page metadata safety and added stricter behind-the-scenes lyric review tools, so future song imports can be checked, cleaned, and sectioned more consistently before they reach the app.",
+    "type": "improvement",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
+    "id": "update-029",
+    "date": "2026-06-12",
+    "title": "Tareef Karo Stuti Karo Added",
+    "body": "Added Tareef Karo Stuti Karo with reviewed Hindi and Hinglish lyrics, cleaner Jehovah-name spelling, and source credits for Mahmad Sazid, BM Bhuiyan, and Santiraj Khosla.",
+    "type": "songs_added",
+    "song_count": 1,
+    "song_names": [
+      "Tareef Karo Stuti Karo"
+    ]
+  },
+  {
+    "id": "update-028",
+    "date": "2026-06-12",
+    "title": "Khudawand Ke Logo Taliyan Bajaao Added",
+    "body": "Added Khudawand Ke Logo Taliyan Bajaao by ADONAI Team with reviewed Hindi and Hinglish lyrics, cleaner worship sections, and the source video link.",
+    "type": "songs_added",
+    "song_count": 1,
+    "song_names": [
+      "Khudawand Ke Logo Taliyan Bajaao"
+    ]
+  },
+  {
     "id": "update-027",
     "date": "2026-05-21",
     "title": "Bridge Music Songs Refreshed",

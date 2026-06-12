@@ -3,7 +3,7 @@
  * tag via dangerouslySetInnerHTML.
  *
  * JSON.stringify does NOT escape `<`, `>`, or `&`, so a value containing
- * `</script>` would break out of the script element — a stored-XSS sink if the
+ * `</script>` would break out of the script element, a stored-XSS sink if the
  * serialized data is ever attacker-influenced. We escape those three characters
  * to their unicode escapes, which any JSON parser reads identically. (Inside an
  * ld+json block the body is parsed as JSON, so no other escaping is required.)

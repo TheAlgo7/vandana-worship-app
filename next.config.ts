@@ -1,12 +1,17 @@
 import type { NextConfig } from "next";
 
 // Enforced Content-Security-Policy (sent as Content-Security-Policy, not -Report-Only).
-// Next.js' inline bootstrap/hydration scripts still need 'unsafe-inline'; 'unsafe-eval'
-// is not required in a production build so it is omitted. Next step toward a strict
-// policy: switch script-src to a per-request nonce and drop 'unsafe-inline'.
+// Next.js' inline bootstrap/hydration scripts still need 'unsafe-inline'.
+// React dev tooling also needs 'unsafe-eval', but production keeps it omitted.
+// Next step toward a strict policy: switch script-src to a per-request nonce.
+const scriptSrc =
+  process.env.NODE_ENV === "development"
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval'"
+    : "script-src 'self' 'unsafe-inline'";
+
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline'",
+  scriptSrc,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: https:",

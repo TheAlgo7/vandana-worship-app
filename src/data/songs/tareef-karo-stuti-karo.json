@@ -1,0 +1,44 @@
+{
+  "id": "tareef-karo-stuti-karo",
+  "title": "Tareef Karo Stuti Karo",
+  "artist": "Mahmad Sazid",
+  "church": "Only for God",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "__order": "chorus|verse1|verse2",
+      "chorus": "Tareef karo, stuti karo, vandana karo, mahima karo\nTareef karo, stuti karo, vandana karo, mahima karo\nSrijanhaar ki prashansa karo, Paalanhaar ki stuti karo\nMahima karo, vandana karo Taaranhaar ki\nShukr guzaaro dil se, tareef karo",
+      "verse1": "Hey mere mann, mere praan\nKhudawand Yeshu ki tareef karo\nSaare mann aur praan se\nDayalu Prabhu ko prem karo\nPaapon se chhutkara deta hai\nRogon se changa woh karta hai\nPraan ko aaraam deta hai\nAnant jeevan deta hai",
+      "verse2": "Yehova Yireh kami-ghat mein\nYehova Rapha har rog mein\nYehova Nissi duniya mein\nYehova Rohi har jeevan mein\nYehova Shammah har pal mein\nMera sada hi Parmeshwar\nImmanuel, tareef ka haqdaar\nYehova hi Param Pradhan hai"
+    },
+    "hindi": {
+      "__order": "chorus|verse1|verse2",
+      "chorus": "तारीफ करो, स्तुति करो, वंदना करो, महिमा करो\nतारीफ करो, स्तुति करो, वंदना करो, महिमा करो\nसृजनहार की प्रशंसा करो, पालनहार की स्तुति करो\nमहिमा करो, वंदना करो तारणहार की\nशुक्र गुजारो दिल से, तारीफ करो",
+      "verse1": "हे मेरे मन, मेरे प्राण\nखुदावंद येशु की तारीफ करो\nसारे मन और प्राण से\nदयालु प्रभु को प्रेम करो\nपापों से छुटकारा देता है\nरोगों से चंगा वो करता है\nप्राण को आराम देता है\nअनंत जीवन देता है",
+      "verse2": "यहोवा यिरेह कमी-घाट में\nयहोवा राफा हर रोग में\nयहोवा निस्सी दुनिया में\nयहोवा रोही हर जीवन में\nयहोवा शम्मा हर पल में\nमेरा सदा ही परमेश्वर\nइम्मानुएल, तारीफ का हकदार\nयहोवा ही परम प्रधान है"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watch?v=8J3QVsWIwa0",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "only-for-god",
+    "hindi",
+    "hinglish",
+    "praise",
+    "jehovah-names",
+    "bm-bhuiyan",
+    "santiraj-khosla",
+    "2026"
+  ],
+  "seo_description": "Tareef Karo Stuti Karo lyrics in Hindi and Hinglish, sung by Mahmad Sazid with lyrics by BM Bhuiyan and music arrangement by Santiraj Khosla.",
+  "added_by": "Gaurav | Vandana"
+}

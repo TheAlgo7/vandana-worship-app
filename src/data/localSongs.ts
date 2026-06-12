@@ -75,6 +75,7 @@ import joKuchhWoTumSeKahe from "./songs/jo-kuchh-wo-tum-se-kahe.json";
 import jungliDarkhtonKeDarmiyan from "./songs/jungli-darkhton-ke-darmiyan.json";
 import kadoshKadosh from "./songs/kadosh-kadosh.json";
 import khazana from "./songs/khazana.json";
+import khudawandKeLogoTaliyanBajaao from "./songs/khudawand-ke-logo-taliyan-bajaao.json";
 import kuchNaya from "./songs/kuch-naya.json";
 import mainNachdaNahiKade from "./songs/main-nachda-nahi-kade.json";
 import oshimiriAtata from "./songs/oshimiri-atata.json";
@@ -86,6 +87,7 @@ import rangLiya from "./songs/rang-liya.json";
 import rehaai from "./songs/rehaai.json";
 import shaktishaali from "./songs/shaktishaali.json";
 import sangTere from "./songs/sang-tere.json";
+import tareefKaroStutiKaro from "./songs/tareef-karo-stuti-karo.json";
 import teriMarzi from "./songs/teri-marzi.json";
 import teriOreJabMasih from "./songs/teri-ore-jab-masih.json";
 import toreSiwa from "./songs/tore-siwa.json";
@@ -167,6 +169,7 @@ export const LOCAL_SONGS: Song[] = [
   jungliDarkhtonKeDarmiyan,
   kadoshKadosh,
   khazana,
+  khudawandKeLogoTaliyanBajaao,
   kuchNaya,
   mainNachdaNahiKade,
   oshimiriAtata,
@@ -178,6 +181,7 @@ export const LOCAL_SONGS: Song[] = [
   rehaai,
   shaktishaali,
   sangTere,
+  tareefKaroStutiKaro,
   teriMarzi,
   teriOreJabMasih,
   toreSiwa,
