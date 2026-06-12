@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description: "New songs, fixes, and improvements to the Vandana worship lyrics library.",
 };
 
+// Pick up newly added songs without a redeploy.
+export const revalidate = 3600;
+
 function normalizeSongName(name: string): string {
   return name
     .toLowerCase()

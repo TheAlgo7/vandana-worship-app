@@ -9,6 +9,8 @@ import {
   type ReactNode,
 } from "react";
 
+import { requestSongPrecache } from "@/lib/offlineCache";
+
 const STORAGE_KEY = "vandana-setlist";
 
 interface SetlistCtx {
@@ -49,6 +51,18 @@ export function SetlistProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(setlist));
+  }, [setlist, hydrated]);
+
+  // Pre-cache setlist songs (reading + present pages) so tonight's set
+  // survives church halls with no signal — even songs never opened before.
+  // Debounced so rapid add/remove taps batch into one pass.
+  useEffect(() => {
+    if (!hydrated || setlist.length === 0) return;
+    const timer = setTimeout(
+      () => requestSongPrecache(setlist, { includePresent: true }),
+      1500,
+    );
+    return () => clearTimeout(timer);
   }, [setlist, hydrated]);
 
   const addToSetlist = useCallback((id: string) => {

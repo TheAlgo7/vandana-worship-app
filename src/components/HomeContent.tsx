@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { Search as MagnifyingGlass, SearchX } from "lucide-react";
 import type { SongLibrarySource, SongMeta } from "@/lib/getSongs";
+import { normalizeSearch } from "@/lib/searchText";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
@@ -10,16 +11,6 @@ import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
 import { useSetlistEnabled } from "@/lib/setlistPreference";
 import Link from "next/link";
-
-function normalizeSearch(value: string): string {
-  return value
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9\s]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
 
 function levenshteinWithin(a: string, b: string, maxDistance: number): boolean {
   if (Math.abs(a.length - b.length) > maxDistance) return false;
@@ -51,13 +42,13 @@ function levenshteinWithin(a: string, b: string, maxDistance: number): boolean {
 type SearchIndexEntry = {
   song: SongMeta;
   title: string;
+  titleWords: string[];
   artist: string;
   church: string;
   churchKey: string;
   tags: string;
   metadata: string;
   metadataWords: string[];
-  lyrics: string;
 };
 
 function fuzzyIncludesPrepared(
@@ -112,13 +103,13 @@ function createSearchIndexEntry(song: SongMeta): SearchIndexEntry {
   return {
     song,
     title,
+    titleWords: title.split(" ").filter(Boolean),
     artist,
     church,
     churchKey: normalizeChurchKey(song.church ?? ""),
     tags,
     metadata,
     metadataWords: metadata.split(" ").filter(Boolean),
-    lyrics: normalizeSearch(song.lyrics_search),
   };
 }
 
@@ -126,6 +117,7 @@ function getSearchMatch(
   entry: SearchIndexEntry,
   normalizedQuery: string,
   queryWords: string[],
+  lyrics: string | undefined,
 ): SearchMatchKind | null {
   if (!normalizedQuery) return "title";
 
@@ -137,9 +129,15 @@ function getSearchMatch(
     return "title";
   }
 
+  // Close-spelling title matches ("Aag Meen" → "Aag Mein...") rank as titles
+  // too, after the exact/prefix/substring tiers.
+  if (fuzzyIncludesPrepared(entry.title, entry.titleWords, normalizedQuery, queryWords)) {
+    return "title";
+  }
+
   if (
     fuzzyIncludesPrepared(entry.metadata, entry.metadataWords, normalizedQuery, queryWords) ||
-    (normalizedQuery.length >= 3 && entry.lyrics.includes(normalizedQuery))
+    (lyrics !== undefined && normalizedQuery.length >= 3 && lyrics.includes(normalizedQuery))
   ) {
     return "related";
   }
@@ -180,6 +178,24 @@ export default function HomeContent({
     const id = setTimeout(() => setDebouncedQuery(query), 120);
     return () => clearTimeout(id);
   }, [query]);
+
+  /* Lyric search corpus — fetched once, lazily, the moment the user shows
+     search intent (focus or first keystroke). Keeps the page payload small
+     while lyric matches still appear within a beat of typing. */
+  const [lyricsIndex, setLyricsIndex] = useState<Map<string, string> | null>(null);
+  const [lyricsIndexFailed, setLyricsIndexFailed] = useState(false);
+  const lyricsFetchStartedRef = useRef(false);
+  const ensureLyricsIndex = useCallback(() => {
+    if (lyricsFetchStartedRef.current) return;
+    lyricsFetchStartedRef.current = true;
+    fetch("/api/search-index")
+      .then((res) => (res.ok ? res.json() : Promise.reject(new Error(String(res.status)))))
+      .then((entries: [string, string][]) => setLyricsIndex(new Map(entries)))
+      .catch(() => {
+        lyricsFetchStartedRef.current = false;
+        setLyricsIndexFailed(true);
+      });
+  }, []);
 
   /* Pull-to-Refresh */
   const pullStartRef = useRef<number | null>(null);
@@ -276,6 +292,12 @@ export default function HomeContent({
     [normalizedQuery],
   );
 
+  /* If a query arrives before the focus handler fired (e.g. paste, autofill),
+     still kick off the corpus fetch. */
+  useEffect(() => {
+    if (normalizedQuery) ensureLyricsIndex();
+  }, [normalizedQuery, ensureLyricsIndex]);
+
   const searchGroups = useMemo(() => {
     const scopedEntries = activeChurchKey
       ? searchIndex.filter((entry) => entry.churchKey === activeChurchKey)
@@ -292,7 +314,12 @@ export default function HomeContent({
     const related: SongMeta[] = [];
 
     for (const entry of scopedEntries) {
-      const matchKind = getSearchMatch(entry, normalizedQuery, queryWords);
+      const matchKind = getSearchMatch(
+        entry,
+        normalizedQuery,
+        queryWords,
+        lyricsIndex?.get(entry.song.id),
+      );
       if (matchKind === "title") best.push(entry);
       else if (matchKind === "related") related.push(entry.song);
     }
@@ -304,7 +331,7 @@ export default function HomeContent({
     });
 
     return { best: best.map((entry) => entry.song), related };
-  }, [searchIndex, normalizedQuery, queryWords, activeChurchKey]);
+  }, [searchIndex, normalizedQuery, queryWords, activeChurchKey, lyricsIndex]);
 
   const hasSearch = !!normalizedQuery;
   const hasActiveFilters = hasSearch || !!activeChurchKey;
@@ -392,6 +419,9 @@ export default function HomeContent({
                 type="search"
                 suppressHydrationWarning
                 placeholder="Search songs, lyrics..."
+                enterKeyHint="search"
+                autoComplete="off"
+                autoCorrect="off"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 style={{
@@ -413,6 +443,7 @@ export default function HomeContent({
                   transition: "border-color var(--transition-fast), box-shadow var(--transition-fast)",
                 }}
                 onFocus={(e) => {
+                  ensureLyricsIndex();
                   e.currentTarget.style.borderColor = "var(--accent)";
                   e.currentTarget.style.boxShadow = "0 0 0 3px var(--accent-dim)";
                 }}
@@ -450,6 +481,68 @@ export default function HomeContent({
               })}
             </div>
 
+            {/* Recently viewed — mobile only (desktop shows it in the side panel) */}
+            {!hasActiveFilters && recentSongs.length > 0 && (
+              <nav
+                className="mobile-only"
+                aria-label="Recently viewed songs"
+                style={{ maxWidth: "40rem", margin: "18px auto 0" }}
+              >
+                <p
+                  style={{
+                    margin: "0 0 8px",
+                    padding: "0 20px",
+                    fontSize: "var(--text-xs)",
+                    fontWeight: 700,
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                    color: "var(--text-muted)",
+                  }}
+                >
+                  Recently viewed
+                </p>
+                <div
+                  className="horizontal-fade-scroll"
+                  style={{
+                    display: "flex",
+                    gap: 8,
+                    padding: "0 20px",
+                    overflowX: "auto",
+                    scrollbarWidth: "none",
+                  }}
+                >
+                  {recentSongs.slice(0, 8).map((s) => (
+                    <Link
+                      key={s.id}
+                      href={`/song/${s.id}`}
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        flexShrink: 0,
+                        minHeight: 44,
+                        maxWidth: 220,
+                        padding: "0 16px",
+                        borderRadius: "var(--radius-pill)",
+                        border: "1px solid var(--border-subtle)",
+                        background: "var(--bg-surface)",
+                        color: "var(--text-secondary)",
+                        fontSize: "var(--text-xs)",
+                        fontWeight: 600,
+                        textDecoration: "none",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
+                      <span style={{ overflow: "hidden", textOverflow: "ellipsis" }}>
+                        {s.title}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </nav>
+            )}
+
             {/* Song List */}
             <main id="main-content" className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
               {filtered.length === 0 ? (
@@ -457,7 +550,9 @@ export default function HomeContent({
                   <SearchX size={48} strokeWidth={1.2} style={{ color: "var(--text-muted)", opacity: 0.4 }} />
                   <p style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.3, margin: 0 }}>
                     {query
-                      ? "No matching songs"
+                      ? hasSearch && !lyricsIndex && !lyricsIndexFailed
+                        ? "Searching lyrics…"
+                        : "No matching songs"
                       : activeChurchKey
                       ? "No songs in this filter"
                       : "No songs yet."}
@@ -533,6 +628,19 @@ export default function HomeContent({
                         onSetlistToggle={setlistEnabled ? () => toggleSetlist(song.id) : undefined}
                       />
                     ))
+                  )}
+                  {hasSearch && !lyricsIndex && !lyricsIndexFailed && (
+                    <p
+                      role="status"
+                      style={{
+                        margin: "12px 0 0",
+                        textAlign: "center",
+                        fontSize: "var(--text-xs)",
+                        color: "var(--text-muted)",
+                      }}
+                    >
+                      Searching inside lyrics…
+                    </p>
                   )}
                   {canShowMoreSearch && (
                     <button

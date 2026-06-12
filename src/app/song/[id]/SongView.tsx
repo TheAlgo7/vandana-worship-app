@@ -19,26 +19,32 @@ type SongViewProps = {
 };
 
 export default function SongView({ song }: SongViewProps) {
-  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language }>(() => ({
-    songId: song.id,
-    lang: pickPreferredLanguage(
-      song.languages_available,
-      getStoredDefaultLanguage(),
-      song.language_default,
-    ),
-  }));
+  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language } | null>(null);
   const lang =
-    languageState.songId === song.id && song.languages_available.includes(languageState.lang)
+    languageState && languageState.songId === song.id && song.languages_available.includes(languageState.lang)
       ? languageState.lang
-      : pickPreferredLanguage(
-          song.languages_available,
-          getStoredDefaultLanguage(),
-          song.language_default,
-        );
+      : pickPreferredLanguage(song.languages_available, song.language_default);
   const setLang = useCallback(
     (nextLang: Language) => setLanguageState({ songId: song.id, lang: nextLang }),
     [song.id],
   );
+
+  // Apply the stored language preference after hydration. Reading
+  // localStorage during the first render desyncs server and client markup
+  // (the server always renders the song's default language).
+  useEffect(() => {
+    setLanguageState((prev) => {
+      if (prev && prev.songId === song.id) return prev;
+      return {
+        songId: song.id,
+        lang: pickPreferredLanguage(
+          song.languages_available,
+          getStoredDefaultLanguage(),
+          song.language_default,
+        ),
+      };
+    });
+  }, [song]);
   const [scrolled, setScrolled] = useState(false);
   const [showCopied, setShowCopied] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);

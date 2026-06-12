@@ -1,5 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 
+// Override when something else occupies 3000: PW_PORT=3210 npx playwright test
+const PORT = process.env.PW_PORT ?? "3000";
+
 export default defineConfig({
   testDir: "./tests",
   fullyParallel: false,
@@ -7,8 +10,10 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: 1,
   reporter: "list",
+  // Dev-server first-compile of a route can exceed the 5s default
+  expect: { timeout: 15_000 },
   use: {
-    baseURL: "http://127.0.0.1:3000",
+    baseURL: `http://127.0.0.1:${PORT}`,
     trace: "on-first-retry",
   },
   projects: [
@@ -21,8 +26,8 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: "npm run dev",
-    url: "http://127.0.0.1:3000",
+    command: `npm run dev -- -p ${PORT}`,
+    url: `http://127.0.0.1:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     stdout: "ignore",

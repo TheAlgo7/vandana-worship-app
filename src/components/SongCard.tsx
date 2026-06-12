@@ -7,6 +7,15 @@ import type { SongMeta } from "@/lib/getSongs";
 
 const LONG_PRESS_MS = 500;
 
+/** One short tick on devices that support it (Android). No-op elsewhere. */
+function hapticTap() {
+  try {
+    navigator.vibrate?.(10);
+  } catch {
+    /* ignore */
+  }
+}
+
 function SongCardInner({
   song,
   isFavourite,
@@ -36,6 +45,7 @@ function SongCardInner({
     didLongPressRef.current = false;
     timerRef.current = setTimeout(() => {
       didLongPressRef.current = true;
+      hapticTap();
       onLongPress();
       showBadge(!isFavourite);
     }, LONG_PRESS_MS);
@@ -60,6 +70,7 @@ function SongCardInner({
       e.preventDefault();
       e.stopPropagation();
       cancelPress();
+      hapticTap();
       onFavouriteToggle?.();
       showBadge(!isFavourite);
     },
@@ -286,7 +297,12 @@ const SongCard = memo(SongCardInner, (prev, next) => (
   prev.song.artist === next.song.artist &&
   prev.song.church === next.song.church &&
   prev.isFavourite === next.isFavourite &&
-  prev.isInSetlist === next.isInSetlist
+  prev.isInSetlist === next.isInSetlist &&
+  // Handlers are inline arrows (identity always changes), but their
+  // presence toggles whole buttons — e.g. enabling the setlist feature.
+  !!prev.onSetlistToggle === !!next.onSetlistToggle &&
+  !!prev.onFavouriteToggle === !!next.onFavouriteToggle &&
+  !!prev.onLongPress === !!next.onLongPress
 ));
 
 export default SongCard;

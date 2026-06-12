@@ -2,7 +2,7 @@
 
 [![Live](https://img.shields.io/badge/Live-vandanaapp.vercel.app-C4AA7E?style=flat-square&labelColor=111111)](https://vandanaapp.vercel.app)
 [![Version](https://img.shields.io/badge/Version-2.5.3_Public_Beta-C4AA7E?style=flat-square&labelColor=111111)](https://github.com/TheAlgo7/vandana-worship-app)
-[![Next.js](https://img.shields.io/badge/Next.js-15-C4AA7E?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=111111)](https://nextjs.org)
+[![Next.js](https://img.shields.io/badge/Next.js-16-C4AA7E?style=flat-square&logo=nextdotjs&logoColor=white&labelColor=111111)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-C4AA7E?style=flat-square&logo=typescript&logoColor=white&labelColor=111111)](https://www.typescriptlang.org)
 [![PWA](https://img.shields.io/badge/PWA-Installable-C4AA7E?style=flat-square&labelColor=111111)](https://vandanaapp.vercel.app)
 [![Supabase](https://img.shields.io/badge/Supabase-C4AA7E?style=flat-square&logo=supabase&logoColor=white&labelColor=111111)](https://supabase.com)
@@ -49,7 +49,7 @@ Or visit [vandanaapp.vercel.app/install](https://vandanaapp.vercel.app/install) 
 
 | Layer | Technology |
 | --- | --- |
-| Framework | Next.js 15 (App Router) |
+| Framework | Next.js 16 (App Router) |
 | Language | TypeScript (strict) |
 | Styling | Tailwind CSS v4 + CSS custom properties |
 | Database | Supabase (PostgreSQL) |

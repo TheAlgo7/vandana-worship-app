@@ -9,7 +9,12 @@ import {
   type ReactNode,
 } from "react";
 
+import { requestSongPrecache } from "@/lib/offlineCache";
+
 const STORAGE_KEY = "vandana-favourites";
+
+/** Most-recent favourites to keep available offline (reading pages). */
+const OFFLINE_FAVOURITES_LIMIT = 24;
 
 interface FavouritesCtx {
   favourites: string[];
@@ -45,6 +50,17 @@ export function FavouritesProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!hydrated) return;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(favourites));
+  }, [favourites, hydrated]);
+
+  /* Keep the most recent favourites readable offline (late-night prayer
+     shouldn't depend on signal). Debounced so toggle bursts batch. */
+  useEffect(() => {
+    if (!hydrated || favourites.length === 0) return;
+    const timer = setTimeout(
+      () => requestSongPrecache(favourites.slice(-OFFLINE_FAVOURITES_LIMIT)),
+      1500,
+    );
+    return () => clearTimeout(timer);
   }, [favourites, hydrated]);
 
   const toggleFavourite = useCallback((id: string) => {

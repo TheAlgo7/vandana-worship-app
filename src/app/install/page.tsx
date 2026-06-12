@@ -32,7 +32,7 @@ const installSchema = {
       name: "How do I install Vandana on iPhone?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Open vandanaapp.vercel.app in Safari. Tap the Share button, then tap Add to Home Screen, then tap Add. Vandana will appear on your home screen like a native app.",
+        text: "Open vandanaapp.vercel.app in Safari, tap the Share button, then tap Add to Home Screen, then tap Add. On iOS 16.4 or newer the same option also appears in Chrome, Edge, and Firefox share menus. Vandana will appear on your home screen like a native app.",
       },
     },
     {
@@ -48,7 +48,7 @@ const installSchema = {
       name: "How do I install Vandana on desktop?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "Open vandanaapp.vercel.app in Chrome or Edge. Click the install icon in the address bar and click Install. Vandana will open as a standalone desktop app.",
+        text: "Open vandanaapp.vercel.app in Chrome or Edge and click the install icon in the address bar, then Install. In Safari on macOS, use File → Add to Dock. Vandana will open as a standalone desktop app.",
       },
     },
     {

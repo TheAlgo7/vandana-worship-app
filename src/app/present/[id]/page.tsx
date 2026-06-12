@@ -3,6 +3,9 @@ import { getSongById, getSongIds } from "@/lib/getSongs";
 import type { Metadata } from "next";
 import PresentView from "./PresentView";
 
+// Lyric fixes land in Supabase between deploys — refresh daily.
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   const ids = await getSongIds();
   return ids.map((id) => ({ id }));

@@ -170,7 +170,7 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>1</div>
               <h3 className={styles.stepH3}>Open in Safari</h3>
-              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Safari. Chrome, Edge and Firefox on iOS can&rsquo;t install PWAs; Apple only allows it from Safari.</p>
+              <p className={styles.stepP}>Go to <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in Safari — it gives the smoothest install. On iOS 16.4 or newer, Chrome, Edge and Firefox can also add Vandana to your Home Screen from their share menus.</p>
               <div className={styles.mock} aria-hidden>
                 <div className={styles.mockIc}><ChevronLeft /></div>
                 <div className={styles.mockIc}><ChevronRight /></div>
@@ -294,7 +294,7 @@ export default function InstallTabs() {
             <div className={styles.step}>
               <div className={styles.stepNum}>1</div>
               <h3 className={styles.stepH3}>Open in Chrome or Edge</h3>
-              <p className={styles.stepP}>Visit <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in <b style={{ color: "var(--text-primary)" }}>Chrome</b>, <b style={{ color: "var(--text-primary)" }}>Edge</b>, <b style={{ color: "var(--text-primary)" }}>Brave</b>, or <b style={{ color: "var(--text-primary)" }}>Arc</b>. Safari on macOS doesn&rsquo;t install PWAs yet.</p>
+              <p className={styles.stepP}>Visit <b style={{ color: "var(--text-primary)" }}>vandanaapp.vercel.app</b> in <b style={{ color: "var(--text-primary)" }}>Chrome</b>, <b style={{ color: "var(--text-primary)" }}>Edge</b>, <b style={{ color: "var(--text-primary)" }}>Brave</b>, or <b style={{ color: "var(--text-primary)" }}>Arc</b>. In Safari on macOS, use <b style={{ color: "var(--text-primary)" }}>File → Add to Dock</b> instead.</p>
               <div className={styles.desktopBar} aria-hidden>
                 <div className={styles.traffic}>
                   <span className={`${styles.trafficDot} ${styles.trafficR}`} />

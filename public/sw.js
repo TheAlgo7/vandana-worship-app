@@ -1,5 +1,5 @@
-const STATIC_CACHE = "vandana-static-v9";
-const RUNTIME_CACHE = "vandana-runtime-v6";
+const STATIC_CACHE = "vandana-static-v10";
+const RUNTIME_CACHE = "vandana-runtime-v7";
 const PRECACHE_URLS = [
   "/",
   "/app",
@@ -37,7 +37,33 @@ self.addEventListener("message", (event) => {
   if (event.data && event.data.type === "SKIP_WAITING") {
     self.skipWaiting();
   }
+  // Pre-cache pages the user will need without signal (e.g. tonight's setlist).
+  if (event.data && event.data.type === "CACHE_URLS" && Array.isArray(event.data.urls)) {
+    event.waitUntil(cacheUrls(event.data.urls));
+  }
 });
+
+const CACHE_URLS_MAX = 80;
+
+async function cacheUrls(urls) {
+  const cache = await caches.open(RUNTIME_CACHE);
+  await Promise.all(
+    urls.slice(0, CACHE_URLS_MAX).map(async (url) => {
+      try {
+        const resolved = new URL(url, self.location.origin);
+        if (resolved.origin !== self.location.origin) return;
+        const existing = await cache.match(resolved.href);
+        if (existing) return;
+        const response = await fetch(resolved.href);
+        if (response.ok && response.type === "basic") {
+          await cache.put(resolved.href, response);
+        }
+      } catch {
+        /* offline right now — the page will cache on a later visit */
+      }
+    })
+  );
+}
 
 self.addEventListener("fetch", (event) => {
   const { request } = event;
@@ -114,5 +140,6 @@ async function staleWhileRevalidate(request) {
     })
     .catch(() => undefined);
 
-  return cached || networkPromise || Response.error();
+  if (cached) return cached;
+  return (await networkPromise) || Response.error();
 }

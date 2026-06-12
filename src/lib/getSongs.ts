@@ -1,5 +1,6 @@
 import { supabase } from "./supabase";
 import { LOCAL_SONGS, LOCAL_SONGS_BY_ID } from "@/data/localSongs";
+import { normalizeSearch } from "./searchText";
 
 /* ── Types ── */
 
@@ -37,7 +38,9 @@ export interface SongLibraryResult {
   source: SongLibrarySource;
 }
 
-/** Minimal info for listing / cards. */
+/** Minimal info for listing / cards. Lyrics intentionally excluded — the
+ * lyric search corpus is served separately via /api/search-index so list
+ * pages stay small. */
 export interface SongMeta {
   id: string;
   title: string;
@@ -45,7 +48,6 @@ export interface SongMeta {
   church: string | null;
   languages_available: Language[];
   tags: string[];
-  lyrics_search: string;
 }
 
 export interface SongMetaLibraryResult {
@@ -228,19 +230,32 @@ export async function getAllSongMetas(): Promise<SongMeta[]> {
 
 export async function getAllSongMetasWithSource(): Promise<SongMetaLibraryResult> {
   const library = await getSongLibrary();
-  const songs = library.songs.map(({ id, title, artist, church, languages_available, tags, lyrics }) => ({
+  const songs = library.songs.map(({ id, title, artist, church, languages_available, tags }) => ({
     id,
     title,
     artist,
     church,
     languages_available,
     tags,
-    lyrics_search: Object.values(lyrics)
-      .flatMap((sections) => Object.values(sections))
-      .join("\n"),
   }));
 
   return { songs, source: library.source };
+}
+
+/** [songId, normalizedLyrics] pairs for client-side lyric search.
+ * Normalization strips Devanagari (queries are normalized the same way), so
+ * only the Hinglish corpus is shipped — roughly half the raw lyric bytes. */
+export async function getLyricsSearchIndex(): Promise<[string, string][]> {
+  const library = await getSongLibrary();
+  const entries: [string, string][] = [];
+  for (const song of library.songs) {
+    const raw = Object.values(song.lyrics)
+      .flatMap((sections) => Object.values(sections))
+      .join("\n");
+    const normalized = normalizeSearch(raw);
+    if (normalized) entries.push([song.id, normalized]);
+  }
+  return entries;
 }
 
 export async function getSongIds(): Promise<string[]> {

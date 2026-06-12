@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
+// Pick up newly added songs without a redeploy.
+export const revalidate = 3600;
+
 export default async function SetlistPage() {
   const songs = await getAllSongMetas();
 

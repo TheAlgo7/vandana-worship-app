@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { ChevronLeft, ChevronRight, Play, Pause, X } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
@@ -20,26 +21,32 @@ const SCROLL_SPEEDS = [18, 30, 48] as const; // px per second: slow, medium, fas
 const SCROLL_SPEED_LABELS = ["1×", "2×", "3×"] as const;
 
 export default function PresentView({ song }: { song: Song }) {
-  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language }>(() => ({
-    songId: song.id,
-    lang: pickPreferredLanguage(
-      song.languages_available,
-      getStoredDefaultLanguage(),
-      song.language_default,
-    ),
-  }));
+  const [languageState, setLanguageState] = useState<{ songId: string; lang: Language } | null>(null);
   const lang =
-    languageState.songId === song.id && song.languages_available.includes(languageState.lang)
+    languageState && languageState.songId === song.id && song.languages_available.includes(languageState.lang)
       ? languageState.lang
-      : pickPreferredLanguage(
-          song.languages_available,
-          getStoredDefaultLanguage(),
-          song.language_default,
-        );
+      : pickPreferredLanguage(song.languages_available, song.language_default);
   const setLang = useCallback(
     (nextLang: Language) => setLanguageState({ songId: song.id, lang: nextLang }),
     [song.id],
   );
+
+  // Apply the stored language preference after hydration. Reading
+  // localStorage during the first render desyncs server and client markup
+  // (the server always renders the song's default language).
+  useEffect(() => {
+    setLanguageState((prev) => {
+      if (prev && prev.songId === song.id) return prev;
+      return {
+        songId: song.id,
+        lang: pickPreferredLanguage(
+          song.languages_available,
+          getStoredDefaultLanguage(),
+          song.language_default,
+        ),
+      };
+    });
+  }, [song]);
   const [showControls, setShowControls] = useState(true);
   const [fontIdx, setFontIdx] = useState(0);
   const [autoScroll, setAutoScroll] = useState(false);
@@ -73,7 +80,9 @@ export default function PresentView({ song }: { song: Song }) {
     setShowControls((prev) => !prev);
   }, []);
 
-  /* keyboard: Escape to exit */
+  /* keyboard: Escape exits, Space toggles controls, arrows walk the setlist
+     (worship leaders often present from a laptop hooked to a projector) */
+  const router = useRouter();
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape") window.history.back();
@@ -81,10 +90,16 @@ export default function PresentView({ song }: { song: Song }) {
         e.preventDefault();
         setShowControls((p) => !p);
       }
+      if (e.key === "ArrowRight" && nextSetlistId) {
+        router.push(`/present/${nextSetlistId}`);
+      }
+      if (e.key === "ArrowLeft" && prevSetlistId) {
+        router.push(`/present/${prevSetlistId}`);
+      }
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [router, nextSetlistId, prevSetlistId]);
 
   /* cycle language */
   const cycleLang = useCallback(() => {
