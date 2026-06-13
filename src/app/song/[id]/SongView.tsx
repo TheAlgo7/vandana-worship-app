@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
-import { ChevronLeft, Heart, ListPlus, ListX, Share2 } from "lucide-react";
+import { ChevronLeft, Flag, Heart, Image as ImageIcon, Link2, ListPlus, ListX, Share2 } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
+import { shareCard } from "@/lib/shareCard";
+import { useUIStrings } from "@/lib/uiStrings";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import { getStoredDefaultLanguage, pickPreferredLanguage } from "@/lib/languagePreference";
 import LanguageToggle from "@/components/LanguageToggle";
@@ -46,11 +48,18 @@ export default function SongView({ song }: SongViewProps) {
     });
   }, [song]);
   const [scrolled, setScrolled] = useState(false);
-  const [showCopied, setShowCopied] = useState(false);
+  const [toast, setToast] = useState<string | null>(null);
+  const [shareMenuOpen, setShareMenuOpen] = useState(false);
   const sentinelRef = useRef<HTMLDivElement | null>(null);
   const { favourites, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
   const [setlistEnabled] = useSetlistEnabled();
+  const { t } = useUIStrings();
+
+  const showToast = useCallback((message: string) => {
+    setToast(message);
+    setTimeout(() => setToast(null), 2000);
+  }, []);
   const isFavourite = favourites.includes(song.id);
   const queued = isInSetlist(song.id);
 
@@ -81,8 +90,9 @@ export default function SongView({ song }: SongViewProps) {
     return () => obs.disconnect();
   }, []);
 
-  // Share handler
-  const handleShare = useCallback(async () => {
+  // Share handlers
+  const handleShareLink = useCallback(async () => {
+    setShareMenuOpen(false);
     const songCredit = [song.artist, song.church].filter(Boolean).join(", ");
     const shareText = [
       `${song.title} lyrics`,
@@ -103,13 +113,37 @@ export default function SongView({ song }: SongViewProps) {
       if (navigator.share) await navigator.share(shareData);
       else {
         await navigator.clipboard.writeText(shareText);
-        setShowCopied(true);
-        setTimeout(() => setShowCopied(false), 2000);
+        showToast(t.linkCopied);
       }
     } catch {
       // user cancelled or unsupported
     }
-  }, [languageLabel, song.artist, song.church, song.title]);
+  }, [languageLabel, song.artist, song.church, song.title, showToast, t.linkCopied]);
+
+  const handleShareImage = useCallback(async () => {
+    setShareMenuOpen(false);
+    const firstSection = sectionEntries[0];
+    if (!firstSection) return;
+    const lines = firstSection[1]
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .slice(0, 8);
+    const result = await shareCard({
+      lines,
+      title: song.title,
+      subtitle: song.artist !== "Unknown Artist" ? song.artist : undefined,
+      isDevanagari: lang === "hindi",
+      filename: `vandana-${song.id}`,
+    });
+    if (result === "downloaded") showToast(t.imageShared);
+  }, [sectionEntries, song.title, song.artist, song.id, lang, showToast, t.imageShared]);
+
+  const reportMailto = `mailto:gauravtiger60@gmail.com?subject=${encodeURIComponent(
+    `Lyric correction: ${song.title}`,
+  )}&body=${encodeURIComponent(
+    `Song: ${song.title} (${song.id})\nLanguage: ${languageLabel}\n\nWhat needs fixing:\n`,
+  )}`;
 
   return (
     <div className="song-view-shell">
@@ -128,7 +162,7 @@ export default function SongView({ song }: SongViewProps) {
           }}
         >
           <ChevronLeft size={18} />
-          Back
+          {t.back}
         </Link>
 
         {/* Song title in top bar when scrolled */}
@@ -171,26 +205,102 @@ export default function SongView({ song }: SongViewProps) {
           <Heart size={20} fill={isFavourite ? "var(--accent)" : "none"} color={isFavourite ? "var(--accent)" : undefined} />
         </button>
 
-        {/* Share button */}
-        <button
-          onClick={handleShare}
-          aria-label="Share song"
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 44,
-            height: 44,
-            background: "none",
-            border: "none",
-            cursor: "pointer",
-            padding: 0,
-            flexShrink: 0,
-            color: "var(--text-secondary)",
-          }}
-        >
-          <Share2 size={18} />
-        </button>
+        {/* Share button + menu */}
+        <div style={{ position: "relative", flexShrink: 0 }}>
+          <button
+            onClick={() => setShareMenuOpen((open) => !open)}
+            aria-label="Share song"
+            aria-expanded={shareMenuOpen}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 44,
+              height: 44,
+              background: shareMenuOpen ? "var(--accent-dim)" : "none",
+              border: "none",
+              borderRadius: "var(--radius-pill)",
+              cursor: "pointer",
+              padding: 0,
+              color: shareMenuOpen ? "var(--accent)" : "var(--text-secondary)",
+            }}
+          >
+            <Share2 size={18} />
+          </button>
+          {shareMenuOpen && (
+            <>
+              {/* click-away layer */}
+              <div
+                aria-hidden="true"
+                onClick={() => setShareMenuOpen(false)}
+                style={{ position: "fixed", inset: 0, zIndex: 90 }}
+              />
+              <div
+                role="menu"
+                className="fade-up"
+                style={{
+                  position: "absolute",
+                  top: 48,
+                  right: 0,
+                  zIndex: 95,
+                  minWidth: 200,
+                  padding: 6,
+                  background: "var(--bg-elevated)",
+                  border: "1px solid var(--border)",
+                  borderRadius: "var(--radius-md)",
+                  boxShadow: "var(--shadow)",
+                }}
+              >
+                <button
+                  role="menuitem"
+                  onClick={handleShareLink}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    width: "100%",
+                    minHeight: 44,
+                    padding: "0 12px",
+                    border: "none",
+                    borderRadius: "var(--radius-sm)",
+                    background: "transparent",
+                    color: "var(--text-primary)",
+                    fontSize: "var(--text-sm)",
+                    fontWeight: 500,
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  <Link2 size={16} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
+                  {t.shareLink}
+                </button>
+                <button
+                  role="menuitem"
+                  onClick={handleShareImage}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    width: "100%",
+                    minHeight: 44,
+                    padding: "0 12px",
+                    border: "none",
+                    borderRadius: "var(--radius-sm)",
+                    background: "transparent",
+                    color: "var(--text-primary)",
+                    fontSize: "var(--text-sm)",
+                    fontWeight: 500,
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                >
+                  <ImageIcon size={16} aria-hidden="true" style={{ color: "var(--text-muted)" }} />
+                  {t.shareImage}
+                </button>
+              </div>
+            </>
+          )}
+        </div>
 
         {setlistEnabled && (
           <button
@@ -230,7 +340,7 @@ export default function SongView({ song }: SongViewProps) {
             lineHeight: 1,
           }}
         >
-          Present
+          {t.present}
         </Link>
       </div>
 
@@ -370,6 +480,24 @@ export default function SongView({ song }: SongViewProps) {
         </div>
       )}
 
+      {/* Lyric correction loop — the congregation knows when a line is wrong */}
+      <a
+        href={reportMailto}
+        style={{
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 8,
+          minHeight: 44,
+          marginTop: 28,
+          fontSize: "var(--text-xs)",
+          color: "var(--text-muted)",
+          textDecoration: "none",
+        }}
+      >
+        <Flag size={13} aria-hidden="true" style={{ opacity: 0.7 }} />
+        <span style={{ borderBottom: "1px dotted var(--border)" }}>{t.reportMistake}</span>
+      </a>
+
         </div>
 
         <aside className="song-side-panel" aria-label="Song details">
@@ -461,8 +589,8 @@ export default function SongView({ song }: SongViewProps) {
         </aside>
       </div>
 
-      {/* Clipboard toast */}
-      {showCopied && (
+      {/* Toast */}
+      {toast && (
         <div
           style={{
             position: "fixed",
@@ -481,7 +609,7 @@ export default function SongView({ song }: SongViewProps) {
             animation: "fadeUp 200ms ease",
           }}
         >
-          Link copied!
+          {toast}
         </div>
       )}
     </div>

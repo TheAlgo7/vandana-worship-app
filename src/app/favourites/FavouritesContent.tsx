@@ -5,10 +5,12 @@ import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import Link from "next/link";
 import { HeartOff, Search } from "lucide-react";
+import { useUIStrings } from "@/lib/uiStrings";
 import DailyVerse from "@/components/DailyVerse";
 
 export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
   const { favourites, toggleFavourite, isFavourite } = useFavourites();
+  const { t } = useUIStrings();
 
   const favSongs = favourites
     .map((id) => songs.find((s) => s.id === id))
@@ -32,11 +34,11 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
         }}
       >
         <h1 style={{ fontSize: "var(--text-lg)", fontWeight: 600, letterSpacing: "-0.01em", margin: 0 }}>
-          Favourites
+          {t.favouritesTitle}
         </h1>
         {favSongs.length > 0 && (
           <span style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 500 }}>
-            {favSongs.length} {favSongs.length === 1 ? "song" : "songs"}
+            {favSongs.length} {favSongs.length === 1 ? t.songWord : t.songsWord}
           </span>
         )}
       </header>
@@ -63,10 +65,10 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
               fontWeight: 600,
             }}
           >
-            No favourites yet
+            {t.favouritesEmptyTitle}
           </p>
           <p style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", marginTop: 8, lineHeight: 1.5 }}>
-            Tap the heart beside any song to keep it ready for worship.
+            {t.favouritesEmptyBody}
           </p>
           <Link
             href="/app"
@@ -86,7 +88,7 @@ export default function FavouritesContent({ songs }: { songs: SongMeta[] }) {
             }}
           >
             <Search size={16} aria-hidden="true" />
-            Browse songs
+            {t.browseSongs}
           </Link>
         </div>
       ) : (

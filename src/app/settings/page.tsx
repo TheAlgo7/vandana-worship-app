@@ -14,16 +14,25 @@ import {
   isLanguage,
 } from "@/lib/languagePreference";
 import { APP_VERSION_LABEL } from "@/lib/appInfo";
+import { useUIStrings, type UILanguage } from "@/lib/uiStrings";
 
 const LANG_OPTIONS = [
   { value: "hinglish", label: "Hinglish" },
   { value: "hindi", label: "हिंदी (Hindi)" },
 ];
 
+const UI_LANG_OPTIONS: { value: UILanguage; label: string }[] = [
+  { value: "en", label: "English" },
+  { value: "hi", label: "हिंदी" },
+];
+
 export default function SettingsPage() {
   const { theme, setTheme } = useTheme();
-  const isDark = theme !== "light";
   const [setlistEnabled, setSetlistEnabled] = useSetlistEnabled();
+  const { uiLang, setUILang, t } = useUIStrings();
+
+  // `theme` is undefined on the server; render the default until mounted.
+  const themeChoice = theme ?? "dark";
 
   const [lang, setLang] = useState<string>(() => {
     return getStoredDefaultLanguage();
@@ -34,6 +43,12 @@ export default function SettingsPage() {
     setLang(val);
     localStorage.setItem(DEFAULT_LANGUAGE_STORAGE_KEY, val);
   }, []);
+
+  const THEME_OPTIONS = [
+    { value: "dark", label: t.themeDark },
+    { value: "light", label: t.themeLight },
+    { value: "system", label: t.themeAuto },
+  ];
 
   return (
     <div
@@ -65,7 +80,7 @@ export default function SettingsPage() {
             letterSpacing: "-0.01em",
           }}
         >
-          Settings
+          {t.settingsTitle}
         </h1>
       </header>
 
@@ -73,76 +88,93 @@ export default function SettingsPage() {
       <main id="main-content" className="settings-main" style={{ padding: "24px 20px" }}>
         {/* ── Appearance ── */}
         <section style={{ marginBottom: 36 }}>
-          <p className="section-label">Appearance</p>
+          <p className="section-label">{t.appearance}</p>
           <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "14px 16px",
-              background: "var(--bg-surface)",
-              borderRadius: "var(--radius-md)",
-              border: "1px solid var(--border)",
-            }}
+            role="radiogroup"
+            aria-label={t.appearance}
+            style={{ display: "flex", gap: 10 }}
           >
-            <div>
-              <p style={{ fontSize: "var(--text-base)", fontWeight: 500 }}>
-                Dark Mode
-              </p>
-            </div>
-            {/* pill toggle - outer button is the 44px tap zone */}
-            <button
-              onClick={() => setTheme(isDark ? "light" : "dark")}
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 48,
-                minHeight: 44,
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                flexShrink: 0,
-                padding: 0,
-              }}
-            >
-              <span
-                style={{
-                  position: "relative",
-                  display: "block",
-                  width: 48,
-                  height: 28,
-                  borderRadius: "var(--radius-pill)",
-                  background: isDark ? "var(--accent)" : "var(--border)",
-                  transition: "background var(--transition-fast)",
-                  flexShrink: 0,
-                }}
-              >
-                <span
+            {THEME_OPTIONS.map((opt) => {
+              const active = themeChoice === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => setTheme(opt.value)}
                   style={{
-                    position: "absolute",
-                    top: 3,
-                    left: isDark ? 23 : 3,
-                    width: 22,
-                    height: 22,
-                    borderRadius: "50%",
-                    background: isDark ? "var(--bg-base)" : "var(--bg-surface)",
-                    transition: "left var(--transition-fast)",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.18)",
+                    flex: 1,
+                    minHeight: 44,
+                    padding: "12px 0",
+                    borderRadius: "var(--radius-md)",
+                    border: "1px solid",
+                    borderColor: active ? "var(--accent)" : "var(--border)",
+                    background: active ? "var(--accent-dim)" : "transparent",
+                    color: active ? "var(--accent)" : "var(--text-secondary)",
+                    fontSize: "var(--text-sm)",
+                    fontWeight: active ? 600 : 400,
+                    cursor: "pointer",
+                    transition:
+                      "border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast)",
                   }}
-                />
-              </span>
-            </button>
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
+          </div>
+          <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", marginTop: 8, lineHeight: 1.5 }}>
+            {t.themeAutoHint}
+          </p>
+        </section>
+
+        {/* ── App Language (UI chrome) ── */}
+        <section style={{ marginBottom: 36 }}>
+          <p className="section-label">{t.appLanguage}</p>
+          <div
+            role="radiogroup"
+            aria-label={t.appLanguage}
+            style={{ display: "flex", gap: 10 }}
+          >
+            {UI_LANG_OPTIONS.map((opt) => {
+              const active = uiLang === opt.value;
+              return (
+                <button
+                  key={opt.value}
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => setUILang(opt.value)}
+                  lang={opt.value}
+                  style={{
+                    flex: 1,
+                    minHeight: 44,
+                    padding: "12px 0",
+                    borderRadius: "var(--radius-md)",
+                    border: "1px solid",
+                    borderColor: active ? "var(--accent)" : "var(--border)",
+                    background: active ? "var(--accent-dim)" : "transparent",
+                    color: active ? "var(--accent)" : "var(--text-secondary)",
+                    fontSize: "var(--text-sm)",
+                    fontWeight: active ? 600 : 400,
+                    fontFamily: opt.value === "hi" ? "var(--font-devanagari)" : undefined,
+                    cursor: "pointer",
+                    transition:
+                      "border-color var(--transition-fast), background var(--transition-fast), color var(--transition-fast)",
+                  }}
+                >
+                  {opt.label}
+                </button>
+              );
+            })}
           </div>
         </section>
 
         {/* ── Default Language ── */}
         <section style={{ marginBottom: 36 }}>
-          <p className="section-label">Default Language</p>
+          <p className="section-label">{t.defaultLanguage}</p>
           <div
             role="radiogroup"
-            aria-label="Default language"
+            aria-label={t.defaultLanguage}
             style={{
               display: "flex",
               gap: 10,
@@ -180,7 +212,7 @@ export default function SettingsPage() {
 
         {/* ── Lyrics Font Size ── */}
         <section style={{ marginBottom: 36 }}>
-          <p className="section-label">Lyrics Font Size</p>
+          <p className="section-label">{t.lyricsFontSize}</p>
           <div
             style={{
               display: "flex",
@@ -193,7 +225,7 @@ export default function SettingsPage() {
             }}
           >
             <p style={{ fontSize: "var(--text-sm)", color: "var(--text-secondary)", margin: 0 }}>
-              Default size for all songs
+              {t.lyricsFontSizeHint}
             </p>
             <FontSizeControl />
           </div>

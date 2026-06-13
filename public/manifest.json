@@ -10,6 +10,26 @@
   "categories": ["music", "lifestyle"],
   "background_color": "#0A0A0E",
   "theme_color": "#0A0A0E",
+  "shortcuts": [
+    {
+      "name": "Song Library",
+      "short_name": "Library",
+      "url": "/app",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Setlist",
+      "short_name": "Setlist",
+      "url": "/setlist",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Favourites",
+      "short_name": "Favourites",
+      "url": "/favourites",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ],
   "icons": [
     {
       "src": "/icons/icon-192.png",

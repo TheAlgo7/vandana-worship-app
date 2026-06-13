@@ -1,0 +1,42 @@
+{
+  "id": "zindagi-ka-badshah-aane-wala-hai",
+  "title": "Zindagi Ka Badshah Aane Wala Hai",
+  "artist": "Yeshu Bhakti Geet Official",
+  "church": "Yeshu Bhakti Geet Official",
+  "album": null,
+  "language_default": "hinglish",
+  "languages_available": [
+    "hinglish",
+    "hindi"
+  ],
+  "lyrics": {
+    "hinglish": {
+      "__order": "chorus|verse1|verse2",
+      "chorus": "Zindagi ka Badshah aane wala hai\nZindagi ka Badshah aane wala hai\nJaago sone walo, Yeshu aane wala hai\nJaago sone walo, Yeshu aane wala hai",
+      "verse1": "Maile daaman khoon se jab dhul jayenge\nUska istiqbaal tab hi kar payenge\nMaile daaman khoon se jab dhul jayenge\nUska istiqbaal tab hi kar payenge\nBaadalon pe Yeshu Raja aane wala hai\nJaago sone walo, Yeshu aane wala hai",
+      "verse2": "Pyara Yeshu zindagi se aisa hai bharpoor\nJo andhera door kare, woh hai sachcha noor\nPyara Yeshu zindagi se aisa hai bharpoor\nJo andhera door kare, woh hai sachcha noor\nChehra saare jag ko dikhane wala hai\nJaago sone walo, Yeshu aane wala hai"
+    },
+    "hindi": {
+      "__order": "chorus|verse1|verse2",
+      "chorus": "ज़िंदगी का बादशाह आने वाला है\nज़िंदगी का बादशाह आने वाला है\nजागो सोने वालों, येशु आने वाला है\nजागो सोने वालों, येशु आने वाला है",
+      "verse1": "मैले दामन खून से जब धुल जाएंगे\nउसका इस्तकबाल तब ही कर पाएंगे\nमैले दामन खून से जब धुल जाएंगे\nउसका इस्तकबाल तब ही कर पाएंगे\nबादलों पे येशु राजा आने वाला है\nजागो सोने वालों, येशु आने वाला है",
+      "verse2": "प्यारा येशु ज़िंदगी से ऐसा है भरपूर\nजो अंधेरा दूर करे, वो है सच्चा नूर\nप्यारा येशु ज़िंदगी से ऐसा है भरपूर\nजो अंधेरा दूर करे, वो है सच्चा नूर\nचेहरा सारे जग को दिखाने वाला है\nजागो सोने वालों, येशु आने वाला है"
+    }
+  },
+  "links": {
+    "youtube": "https://www.youtube.com/watch?v=UoScnNO8PFA",
+    "spotify": null,
+    "apple_music": null
+  },
+  "tags": [
+    "worship",
+    "yeshu-bhakti-geet-official",
+    "hindi",
+    "hinglish",
+    "second-coming",
+    "hope",
+    "2026"
+  ],
+  "seo_description": "Zindagi Ka Badshah Aane Wala Hai lyrics in Hindi and Hinglish by Yeshu Bhakti Geet Official.",
+  "added_by": "Gaurav | Vandana"
+}

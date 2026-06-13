@@ -20,6 +20,7 @@ interface SetlistCtx {
   toggleSetlist: (id: string) => void;
   clearSetlist: () => void;
   isInSetlist: (id: string) => boolean;
+  moveInSetlist: (id: string, direction: -1 | 1) => void;
 }
 
 const SetlistContext = createContext<SetlistCtx>({
@@ -29,6 +30,7 @@ const SetlistContext = createContext<SetlistCtx>({
   toggleSetlist: () => {},
   clearSetlist: () => {},
   isInSetlist: () => false,
+  moveInSetlist: () => {},
 });
 
 export function SetlistProvider({ children }: { children: ReactNode }) {
@@ -94,6 +96,18 @@ export function SetlistProvider({ children }: { children: ReactNode }) {
     setSetlist([]);
   }, []);
 
+  const moveInSetlist = useCallback((id: string, direction: -1 | 1) => {
+    setSetlist((prev) => {
+      const index = prev.indexOf(id);
+      const target = index + direction;
+      if (index < 0 || target < 0 || target >= prev.length) return prev;
+      const next = [...prev];
+      [next[index], next[target]] = [next[target], next[index]];
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      return next;
+    });
+  }, []);
+
   const isInSetlist = useCallback(
     (id: string) => setlist.includes(id),
     [setlist],
@@ -108,6 +122,7 @@ export function SetlistProvider({ children }: { children: ReactNode }) {
         toggleSetlist,
         clearSetlist,
         isInSetlist,
+        moveInSetlist,
       }}
     >
       {children}

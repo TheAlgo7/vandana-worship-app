@@ -23,6 +23,8 @@ function SongCardInner({
   onFavouriteToggle,
   isInSetlist,
   onSetlistToggle,
+  snippet,
+  snippetHighlight,
 }: {
   song: SongMeta;
   isFavourite?: boolean;
@@ -30,6 +32,10 @@ function SongCardInner({
   onFavouriteToggle?: () => void;
   isInSetlist?: boolean;
   onSetlistToggle?: () => void;
+  /** Matched lyric line shown under the artist (search results). */
+  snippet?: string;
+  /** The query substring inside `snippet` to highlight. */
+  snippetHighlight?: string;
 }) {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPressRef = useRef(false);
@@ -158,6 +164,7 @@ function SongCardInner({
           >
             {song.artist}
           </p>
+          {snippet && <SnippetLine snippet={snippet} highlight={snippetHighlight} />}
         </div>
 
         <div
@@ -291,6 +298,36 @@ function SongCardInner({
   );
 }
 
+/** Matched lyric line with the query emphasised in accent gold. */
+function SnippetLine({ snippet, highlight }: { snippet: string; highlight?: string }) {
+  const idx = highlight ? snippet.indexOf(highlight) : -1;
+  return (
+    <p
+      style={{
+        fontSize: "var(--text-xs)",
+        color: "var(--text-muted)",
+        fontStyle: "italic",
+        marginTop: 3,
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        whiteSpace: "nowrap",
+      }}
+    >
+      {idx >= 0 && highlight ? (
+        <>
+          {snippet.slice(0, idx)}
+          <span style={{ color: "var(--accent)", fontWeight: 600, fontStyle: "normal" }}>
+            {snippet.slice(idx, idx + highlight.length)}
+          </span>
+          {snippet.slice(idx + highlight.length)}
+        </>
+      ) : (
+        snippet
+      )}
+    </p>
+  );
+}
+
 const SongCard = memo(SongCardInner, (prev, next) => (
   prev.song.id === next.song.id &&
   prev.song.title === next.song.title &&
@@ -298,6 +335,8 @@ const SongCard = memo(SongCardInner, (prev, next) => (
   prev.song.church === next.song.church &&
   prev.isFavourite === next.isFavourite &&
   prev.isInSetlist === next.isInSetlist &&
+  prev.snippet === next.snippet &&
+  prev.snippetHighlight === next.snippetHighlight &&
   // Handlers are inline arrows (identity always changes), but their
   // presence toggles whole buttons — e.g. enabling the setlist feature.
   !!prev.onSetlistToggle === !!next.onSetlistToggle &&

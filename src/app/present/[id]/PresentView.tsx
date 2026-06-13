@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ChevronLeft, ChevronRight, Play, Pause, X } from "lucide-react";
+import { ChevronLeft, ChevronRight, Moon, Play, Pause, X } from "lucide-react";
 import type { Song, Language } from "@/lib/getSongs";
 import { formatSectionLabel, getOrderedSectionEntries } from "@/lib/lyricsSections";
 import {
@@ -18,7 +18,7 @@ import { useSetlist } from "@/contexts/SetlistContext";
 const FONT_SIZES = [1.25, 1.75, 2.5] as const; // small, medium, large (rem)
 const FONT_LABELS = ["A", "A", "A"] as const;
 const SCROLL_SPEEDS = [18, 30, 48] as const; // px per second: slow, medium, fast
-const SCROLL_SPEED_LABELS = ["1×", "2×", "3×"] as const;
+const SCROLL_SPEED_LABELS = ["1x", "2x", "3x"] as const;
 
 export default function PresentView({ song }: { song: Song }) {
   const [languageState, setLanguageState] = useState<{ songId: string; lang: Language } | null>(null);
@@ -51,9 +51,12 @@ export default function PresentView({ song }: { song: Song }) {
   const [fontIdx, setFontIdx] = useState(0);
   const [autoScroll, setAutoScroll] = useState(false);
   const [speedIdx, setSpeedIdx] = useState(1); // default to medium
+  const [blanked, setBlanked] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const autoScrollRef = useRef<number | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const swipeStartRef = useRef<{ x: number; y: number } | null>(null);
+  const didSwipeRef = useRef(false);
   const { setlist } = useSetlist();
 
   const sections = song.lyrics[lang] ?? song.lyrics[song.language_default];
@@ -75,20 +78,34 @@ export default function PresentView({ song }: { song: Song }) {
     };
   }, [showControls, scheduleHide]);
 
-  /* tap to toggle controls */
+  /* tap to toggle controls (skipped right after a swipe navigation) */
   const handleTap = useCallback(() => {
+    if (didSwipeRef.current) {
+      didSwipeRef.current = false;
+      return;
+    }
     setShowControls((prev) => !prev);
   }, []);
 
-  /* keyboard: Escape exits, Space toggles controls, arrows walk the setlist
-     (worship leaders often present from a laptop hooked to a projector) */
+  /* keyboard: Escape exits, Space toggles controls, arrows walk the setlist,
+     B blanks the screen (worship leaders often present from a laptop) */
   const router = useRouter();
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") window.history.back();
+      if (e.key === "Escape") {
+        if (blanked) {
+          setBlanked(false);
+          return;
+        }
+        window.history.back();
+      }
       if (e.key === " ") {
         e.preventDefault();
         setShowControls((p) => !p);
+      }
+      if (e.key.toLowerCase() === "b") {
+        setBlanked((p) => !p);
+        setAutoScroll(false);
       }
       if (e.key === "ArrowRight" && nextSetlistId) {
         router.push(`/present/${nextSetlistId}`);
@@ -99,7 +116,31 @@ export default function PresentView({ song }: { song: Song }) {
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [router, nextSetlistId, prevSetlistId]);
+  }, [router, nextSetlistId, prevSetlistId, blanked]);
+
+  /* swipe horizontally to walk the setlist (touch equivalent of the arrows) */
+  const onTouchStartSwipe = useCallback((e: React.TouchEvent) => {
+    swipeStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+  }, []);
+  const onTouchEndSwipe = useCallback(
+    (e: React.TouchEvent) => {
+      const start = swipeStartRef.current;
+      swipeStartRef.current = null;
+      if (!start) return;
+      const dx = e.changedTouches[0].clientX - start.x;
+      const dy = e.changedTouches[0].clientY - start.y;
+      if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+        if (dx < 0 && nextSetlistId) {
+          didSwipeRef.current = true;
+          router.push(`/present/${nextSetlistId}`);
+        } else if (dx > 0 && prevSetlistId) {
+          didSwipeRef.current = true;
+          router.push(`/present/${prevSetlistId}`);
+        }
+      }
+    },
+    [router, nextSetlistId, prevSetlistId],
+  );
 
   /* cycle language */
   const cycleLang = useCallback(() => {
@@ -109,7 +150,7 @@ export default function PresentView({ song }: { song: Song }) {
     setLang(langs[(i + 1) % langs.length]);
   }, [lang, setLang, song.languages_available]);
 
-  /* auto-scroll — frame-rate independent (px/second, accumulates sub-pixels) */
+  /* auto-scroll, frame-rate independent (px/second, accumulates sub-pixels) */
   useEffect(() => {
     if (!autoScroll || !scrollRef.current) return;
     const el = scrollRef.current;
@@ -184,6 +225,8 @@ export default function PresentView({ song }: { song: Song }) {
     <div
       ref={scrollRef}
       onClick={handleTap}
+      onTouchStart={onTouchStartSwipe}
+      onTouchEnd={onTouchEndSwipe}
       style={{
         background: "var(--present-bg)",
         color: "var(--present-text)",
@@ -193,6 +236,26 @@ export default function PresentView({ song }: { song: Song }) {
         position: "relative",
       }}
     >
+      {/* Blank screen — for prayer and spontaneous moments */}
+      {blanked && (
+        <div
+          role="button"
+          tabIndex={0}
+          aria-label="Resume lyrics"
+          onClick={(e) => {
+            e.stopPropagation();
+            setBlanked(false);
+            setShowControls(true);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              setBlanked(false);
+              setShowControls(true);
+            }
+          }}
+          style={{ position: "fixed", inset: 0, background: "#000", zIndex: 60, cursor: "pointer" }}
+        />
+      )}
       {/* Screen-reader announcement for auto-scroll state */}
       <div
         role="status"
@@ -401,6 +464,30 @@ export default function PresentView({ song }: { song: Song }) {
           ) : (
             <Play size={16} fill="currentColor" strokeWidth={0} />
           )}
+        </button>
+
+        {/* Blank screen — black out lyrics during prayer */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            setBlanked(true);
+            setAutoScroll(false);
+          }}
+          aria-label="Blank screen"
+          style={{
+            background: "var(--present-control-bg)",
+            border: "1px solid var(--present-control-border)",
+            borderRadius: "var(--radius-pill)",
+            color: "var(--present-text)",
+            width: 44,
+            height: 44,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            cursor: "pointer",
+          }}
+        >
+          <Moon size={16} strokeWidth={1.8} aria-hidden="true" />
         </button>
 
         {/* Auto-scroll speed (only while scrolling) */}

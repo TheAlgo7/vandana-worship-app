@@ -7,28 +7,30 @@ import type { LucideIcon } from "lucide-react";
 import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
 import { useSetlistEnabled } from "@/lib/setlistPreference";
+import { useUIStrings, type UIStrings } from "@/lib/uiStrings";
 import styles from "./BottomNav.module.css";
 
 const NAV_ITEMS: {
   href: string;
-  label: string;
-  shortLabel?: string;
+  labelKey: keyof UIStrings;
+  shortLabelKey?: keyof UIStrings;
   Icon: LucideIcon;
   exact: boolean;
   badge?: "updates";
   feature?: "setlist";
 }[] = [
-  { href: "/app",        label: "Home",       Icon: House,    exact: true  },
-  { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true, badge: "updates" },
-  { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false, feature: "setlist" },
-  { href: "/favourites", label: "Favourites", shortLabel: "Saved", Icon: Heart, exact: false },
-  { href: "/settings",   label: "Settings",   Icon: Settings, exact: false },
+  { href: "/app",        labelKey: "navHome",       Icon: House,    exact: true  },
+  { href: "/updates",    labelKey: "navUpdates",    Icon: Bell,     exact: true, badge: "updates" },
+  { href: "/setlist",    labelKey: "navSetlist",    Icon: ListMusic, exact: false, feature: "setlist" },
+  { href: "/favourites", labelKey: "navFavourites", shortLabelKey: "navSaved", Icon: Heart, exact: false },
+  { href: "/settings",   labelKey: "navSettings",   Icon: Settings, exact: false },
 ];
 
 export default function BottomNav() {
   const pathname = usePathname();
   const [hasUnread, setHasUnread] = useState(false);
   const [setlistEnabled, , setlistRevealPulse] = useSetlistEnabled();
+  const { t, uiLang } = useUIStrings();
 
   useEffect(() => {
     queueMicrotask(() => {
@@ -51,9 +53,10 @@ export default function BottomNav() {
       <nav aria-label="Main navigation" className={styles.pill}>
         {NAV_ITEMS
           .filter((item) => item.feature !== "setlist" || setlistEnabled)
-          .map(({ href, label, shortLabel, Icon, exact, badge, feature }) => {
+          .map(({ href, labelKey, shortLabelKey, Icon, exact, badge, feature }) => {
           const active = isActive(href, exact);
           const showDot = badge === "updates" && hasUnread && !active;
+          const label = t[labelKey];
 
           return (
             <Link
@@ -61,6 +64,7 @@ export default function BottomNav() {
               href={href}
               aria-label={label}
               aria-current={active ? "page" : undefined}
+              lang={uiLang === "hi" ? "hi" : undefined}
               className={[
                 styles.item,
                 active ? styles.active : "",
@@ -73,7 +77,7 @@ export default function BottomNav() {
                   <span aria-label="Unread updates" className={styles.dot} />
                 )}
               </span>
-              <span className={styles.label}>{shortLabel ?? label}</span>
+              <span className={styles.label}>{shortLabelKey ? t[shortLabelKey] : label}</span>
             </Link>
           );
         })}

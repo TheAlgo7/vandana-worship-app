@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { Share2 } from "lucide-react";
 import verses from "@/data/verses.json";
+import { shareCard } from "@/lib/shareCard";
 
 type Period = "morning" | "afternoon" | "evening" | "night";
 
@@ -52,23 +54,26 @@ export default function DailyVerse() {
         margin: "0 auto",
       }}
     >
-      {/* ── Label ── */}
-      <p
-        style={{
-          fontFamily: verse.isHindi
-            ? "var(--font-devanagari)"
-            : "var(--font-body)",
-          fontSize: "var(--text-xs)",
-          fontWeight: 700,
-          letterSpacing: verse.isHindi ? "0.05em" : "var(--tracking-widest)",
-          color: "var(--accent)",
-          opacity: 0.65,
-          margin: "0 0 10px 0",
-          textTransform: verse.isHindi ? "none" : "uppercase" as React.CSSProperties["textTransform"],
-        }}
-      >
-        {verse.isHindi ? "दिन का वचन" : "Verse of the Day"}
-      </p>
+      {/* ── Label + share ── */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, margin: "0 0 10px 0" }}>
+        <p
+          style={{
+            fontFamily: verse.isHindi
+              ? "var(--font-devanagari)"
+              : "var(--font-body)",
+            fontSize: "var(--text-xs)",
+            fontWeight: 700,
+            letterSpacing: verse.isHindi ? "0.05em" : "var(--tracking-widest)",
+            color: "var(--accent)",
+            opacity: 0.65,
+            margin: 0,
+            textTransform: verse.isHindi ? "none" : "uppercase" as React.CSSProperties["textTransform"],
+          }}
+        >
+          {verse.isHindi ? "दिन का वचन" : "Verse of the Day"}
+        </p>
+        <VerseShareButton verse={verse} />
+      </div>
 
       {/* Verse text: typography only, no nested box */}
       <blockquote style={{ margin: 0 }}>
@@ -102,5 +107,44 @@ export default function DailyVerse() {
         </p>
       </blockquote>
     </section>
+  );
+}
+
+function VerseShareButton({
+  verse,
+}: {
+  verse: { text: string; reference: string; isHindi: boolean };
+}) {
+  const handleShare = useCallback(() => {
+    void shareCard({
+      lines: [`“${verse.text}”`],
+      title: verse.reference,
+      isDevanagari: verse.isHindi,
+      filename: "vandana-verse",
+    });
+  }, [verse]);
+
+  return (
+    <button
+      type="button"
+      onClick={handleShare}
+      aria-label="Share verse as image"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 40,
+        height: 40,
+        marginRight: -10,
+        border: "none",
+        borderRadius: "var(--radius-pill)",
+        background: "transparent",
+        color: "var(--text-muted)",
+        cursor: "pointer",
+        flexShrink: 0,
+      }}
+    >
+      <Share2 size={15} aria-hidden="true" />
+    </button>
   );
 }

@@ -7,6 +7,7 @@ import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import SplashScreen from "@/components/SplashScreen";
 import { FavouritesProvider } from "@/contexts/FavouritesContext";
 import { SetlistProvider } from "@/contexts/SetlistContext";
+import { UILanguageProvider } from "@/lib/uiStrings";
 
 const THEME_BAR_COLORS: Record<string, string> = {
   dark: "#0A0A0E",
@@ -54,15 +55,17 @@ function ThemeFadeOverlay() {
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem={false}>
-      <FavouritesProvider>
-        <SetlistProvider>
-          <ServiceWorkerRegistration />
-          <SplashScreen />
-          <RouteTransition>{children}</RouteTransition>
-          <ThemeFadeOverlay />
-        </SetlistProvider>
-      </FavouritesProvider>
+    <ThemeProvider attribute="data-theme" defaultTheme="dark" enableSystem>
+      <UILanguageProvider>
+        <FavouritesProvider>
+          <SetlistProvider>
+            <ServiceWorkerRegistration />
+            <SplashScreen />
+            <RouteTransition>{children}</RouteTransition>
+            <ThemeFadeOverlay />
+          </SetlistProvider>
+        </FavouritesProvider>
+      </UILanguageProvider>
     </ThemeProvider>
   );
 }

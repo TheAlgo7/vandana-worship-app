@@ -11,6 +11,7 @@
   ],
   "lyrics": {
     "hinglish": {
+      "__order": "pre_chorus|chorus|verse1|verse2|bridge",
       "pre_chorus": "Deewana, main Yeshu ka\nMere honton pe uska hi naam\nDeewana, main Yeshu ka\nUske pyaar mein dooba hua\nDeewana, main Yeshu ka\nMere honton pe uska hi naam\nDeewana, main Yeshu ka\nUske pyaar mein dooba\nMain khoya, main zinda rahun",
       "chorus": "Yeshu ka aa aa aa aa,\nMain deewana aa aa aa aa\nYeshu ka aa aa aa aa,\nMain deewana -2",
       "verse1": "Teri baaton ko sunta rahun,\nApni manmaani ab na karun\nAb na daaye, na baaye mudun,\nTere pyaar mein dooba rahun -2\nDeewana, main Yeshu ka...",
@@ -18,6 +19,7 @@
       "bridge": "Khoya tha main, bhatka tha main\nMaaf karke, ghar le aaya\nApni pehchaan, mujhko dekar\nApna beta, mujhko kehlaya -2\nDeewana, main Yeshu ka..."
     },
     "hindi": {
+      "__order": "pre_chorus|chorus|verse1|verse2|bridge",
       "pre_chorus": "दीवाना, मैं यीशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं यीशु का\nउसके प्यार में डूबा हुआ\nदीवाना, मैं यीशु का\nमेरे होंठों पे उसका ही नाम\nदीवाना, मैं यीशु का\nउसके प्यार में डूबा\nमैं खोया, मैं जिंदा रहूँ",
       "chorus": "यीशु का आ आ आ आ,\nमैं दीवाना आ आ आ आ\nयीशु का आ आ आ आ,\nमैं दीवाना",
       "verse1": "तेरी बातों को सुनता रहूँ,\nअपनी मनमानी अब न करूँ\nअब न दाएँ, न बाएँ मुड़ूँ,\nतेरे प्यार में डूबा रहूँ",

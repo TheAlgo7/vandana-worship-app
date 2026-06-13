@@ -99,6 +99,7 @@ import yahwehSabaoth from "./songs/yahweh-sabaoth.json";
 import yeshuGharana from "./songs/yeshu-gharana.json";
 import yeshuNaamMila from "./songs/yeshu-naam-mila.json";
 import yeshuaHamashiach from "./songs/yeshua-hamashiach.json";
+import zindagiKaBadshahAaneWalaHai from "./songs/zindagi-ka-badshah-aane-wala-hai.json";
 import zindaHoonMain from "./songs/zinda-hoon-main.json";
 import zindaKhuda from "./songs/zinda-khuda.json";
 
@@ -193,6 +194,7 @@ export const LOCAL_SONGS: Song[] = [
   yeshuGharana,
   yeshuNaamMila,
   yeshuaHamashiach,
+  zindagiKaBadshahAaneWalaHai,
   zindaHoonMain,
   zindaKhuda,
 ] as Song[];

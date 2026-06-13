@@ -1,16 +1,18 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { ListMusic, Play, Trash2 } from "lucide-react";
+import { ChevronDown, ChevronUp, ListMusic, Play, Trash2 } from "lucide-react";
 import type { SongMeta } from "@/lib/getSongs";
 import SongCard from "@/components/SongCard";
 import { useFavourites } from "@/contexts/FavouritesContext";
 import { useSetlist } from "@/contexts/SetlistContext";
+import { useUIStrings } from "@/lib/uiStrings";
 import DailyVerse from "@/components/DailyVerse";
 
 export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
   const { isFavourite, toggleFavourite } = useFavourites();
-  const { setlist, isInSetlist, toggleSetlist, clearSetlist } = useSetlist();
+  const { setlist, isInSetlist, toggleSetlist, clearSetlist, moveInSetlist } = useSetlist();
+  const { t } = useUIStrings();
 
   const setlistSongs = setlist
     .map((id) => songs.find((song) => song.id === id))
@@ -34,11 +36,11 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
         }}
       >
         <h1 style={{ fontSize: "var(--text-lg)", fontWeight: 600, letterSpacing: 0, margin: 0 }}>
-          Setlist
+          {t.setlistTitle}
         </h1>
         {setlistSongs.length > 0 && (
           <span style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 500 }}>
-            {setlistSongs.length} {setlistSongs.length === 1 ? "song" : "songs"}
+            {setlistSongs.length} {setlistSongs.length === 1 ? t.songWord : t.songsWord}
           </span>
         )}
       </header>
@@ -65,10 +67,10 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
               fontWeight: 600,
             }}
           >
-            Build tonight&apos;s flow
+            {t.setlistEmptyTitle}
           </p>
           <p style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", marginTop: 8, lineHeight: 1.55, maxWidth: 300 }}>
-            Add songs from the library, then present them in order during worship.
+            {t.setlistEmptyBody}
           </p>
           <Link
             href="/app"
@@ -88,7 +90,7 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
             }}
           >
             <ListMusic size={16} aria-hidden="true" />
-            Browse songs
+            {t.browseSongs}
           </Link>
         </div>
       ) : (
@@ -114,13 +116,13 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
                 }}
               >
                 <Play size={16} fill="currentColor" strokeWidth={0} aria-hidden="true" />
-                Present setlist
+                {t.presentSetlist}
               </Link>
             )}
             <button
               type="button"
               onClick={clearSetlist}
-              aria-label="Clear setlist"
+              aria-label={t.clearSetlist}
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -138,15 +140,64 @@ export default function SetlistContent({ songs }: { songs: SongMeta[] }) {
             </button>
           </div>
 
-          {setlistSongs.map((song) => (
-            <SongCard
-              key={song.id}
-              song={song}
-              isFavourite={isFavourite(song.id)}
-              onFavouriteToggle={() => toggleFavourite(song.id)}
-              isInSetlist={isInSetlist(song.id)}
-              onSetlistToggle={() => toggleSetlist(song.id)}
-            />
+          {setlistSongs.map((song, index) => (
+            <div key={song.id} style={{ display: "flex", alignItems: "center", gap: 2 }}>
+              {/* Reorder column — worship sets have an order */}
+              <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 40 }}>
+                <button
+                  type="button"
+                  onClick={() => moveInSetlist(song.id, -1)}
+                  disabled={index === 0}
+                  aria-label={`${t.moveUp}: ${song.title}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 40,
+                    height: 30,
+                    border: "none",
+                    background: "transparent",
+                    color: index === 0 ? "var(--border)" : "var(--text-secondary)",
+                    cursor: index === 0 ? "default" : "pointer",
+                    padding: 0,
+                  }}
+                >
+                  <ChevronUp size={17} aria-hidden="true" />
+                </button>
+                <span aria-hidden="true" style={{ fontSize: "var(--text-xs)", fontWeight: 700, color: "var(--text-muted)", lineHeight: 1 }}>
+                  {index + 1}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => moveInSetlist(song.id, 1)}
+                  disabled={index === setlistSongs.length - 1}
+                  aria-label={`${t.moveDown}: ${song.title}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 40,
+                    height: 30,
+                    border: "none",
+                    background: "transparent",
+                    color: index === setlistSongs.length - 1 ? "var(--border)" : "var(--text-secondary)",
+                    cursor: index === setlistSongs.length - 1 ? "default" : "pointer",
+                    padding: 0,
+                  }}
+                >
+                  <ChevronDown size={17} aria-hidden="true" />
+                </button>
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <SongCard
+                  song={song}
+                  isFavourite={isFavourite(song.id)}
+                  onFavouriteToggle={() => toggleFavourite(song.id)}
+                  isInSetlist={isInSetlist(song.id)}
+                  onSetlistToggle={() => toggleSetlist(song.id)}
+                />
+              </div>
+            </div>
           ))}
         </main>
         <aside className="page-aside-col" aria-label="Daily verse">

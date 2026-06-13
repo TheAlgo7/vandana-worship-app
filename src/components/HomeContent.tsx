@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
-import { Search as MagnifyingGlass, SearchX } from "lucide-react";
+import { Search as MagnifyingGlass, SearchX, Heart, X } from "lucide-react";
 import type { SongLibrarySource, SongMeta } from "@/lib/getSongs";
 import { normalizeSearch } from "@/lib/searchText";
+import { useUIStrings } from "@/lib/uiStrings";
 import SongCard from "@/components/SongCard";
 import DailyVerse from "@/components/DailyVerse";
 import AppTitle from "@/components/AppTitle";
@@ -93,6 +94,22 @@ function formatChurchLabel(value: string): string {
 
 type SearchMatchKind = "title" | "related";
 
+type RelatedMatch = { song: SongMeta; snippet: string | null };
+
+/** Pulls the matched phrase with a little context from the normalized lyric
+ * corpus, so search results can show *why* a song matched. */
+function extractLyricSnippet(lyrics: string, query: string): string | null {
+  const idx = lyrics.indexOf(query);
+  if (idx < 0) return null;
+  const start = idx <= 24 ? 0 : lyrics.lastIndexOf(" ", idx - 24) + 1;
+  const endBase = idx + query.length + 36;
+  const spaceAfter = endBase >= lyrics.length ? -1 : lyrics.indexOf(" ", endBase);
+  const end = spaceAfter === -1 ? lyrics.length : spaceAfter;
+  return (
+    (start > 0 ? "…" : "") + lyrics.slice(start, end) + (end < lyrics.length ? "…" : "")
+  );
+}
+
 function createSearchIndexEntry(song: SongMeta): SearchIndexEntry {
   const title = normalizeSearch(song.title);
   const artist = normalizeSearch(song.artist);
@@ -167,11 +184,13 @@ export default function HomeContent({
   const [query, setQuery] = useState("");
   const [debouncedQuery, setDebouncedQuery] = useState("");
   const [activeChurchKey, setActiveChurchKey] = useState<string | null>(null);
+  const [activeLetter, setActiveLetter] = useState<string | null>(null);
   const [visibleState, setVisibleState] = useState({ key: "", count: SONG_BATCH_SIZE });
   const searchRef = useRef<HTMLInputElement>(null);
-  const { isFavourite, toggleFavourite } = useFavourites();
+  const { favourites, isFavourite, toggleFavourite } = useFavourites();
   const { isInSetlist, toggleSetlist } = useSetlist();
   const [setlistEnabled] = useSetlistEnabled();
+  const { t } = useUIStrings();
 
   /* Debounce query for expensive fuzzy search */
   useEffect(() => {
@@ -286,6 +305,40 @@ export default function HomeContent({
   }, [songs]);
 
   const searchIndex = useMemo(() => songs.map(createSearchIndexEntry), [songs]);
+
+  /* Letters available for the browse-by-letter strip */
+  const letters = useMemo(() => {
+    const present = new Set<string>();
+    for (const entry of searchIndex) {
+      const first = entry.title.charAt(0);
+      if (first >= "a" && first <= "z") present.add(first.toUpperCase());
+    }
+    return Array.from(present).sort();
+  }, [searchIndex]);
+
+  /* One-time long-press tip: appears after a couple of songs viewed,
+     disappears forever once dismissed or once the first favourite exists. */
+  const [hintState, setHintState] = useState<"unknown" | "show" | "hidden">("unknown");
+  useEffect(() => {
+    queueMicrotask(() => {
+      try {
+        setHintState(localStorage.getItem("vandana-hint-longpress") === "1" ? "hidden" : "show");
+      } catch {
+        setHintState("hidden");
+      }
+    });
+  }, []);
+  const dismissHint = useCallback(() => {
+    setHintState("hidden");
+    try {
+      localStorage.setItem("vandana-hint-longpress", "1");
+    } catch {
+      /* ignore */
+    }
+  }, []);
+  useEffect(() => {
+    if (hintState === "show" && favourites.length > 0) dismissHint();
+  }, [hintState, favourites, dismissHint]);
   const normalizedQuery = useMemo(() => normalizeSearch(debouncedQuery), [debouncedQuery]);
   const queryWords = useMemo(
     () => normalizedQuery.split(" ").filter(Boolean),
@@ -299,29 +352,36 @@ export default function HomeContent({
   }, [normalizedQuery, ensureLyricsIndex]);
 
   const searchGroups = useMemo(() => {
-    const scopedEntries = activeChurchKey
+    let scopedEntries = activeChurchKey
       ? searchIndex.filter((entry) => entry.churchKey === activeChurchKey)
       : searchIndex;
 
     if (!normalizedQuery) {
+      if (activeLetter) {
+        const letterLower = activeLetter.toLowerCase();
+        scopedEntries = scopedEntries.filter((entry) => entry.title.startsWith(letterLower));
+      }
       return {
         best: scopedEntries.map((entry) => entry.song),
-        related: [] as SongMeta[],
+        related: [] as RelatedMatch[],
       };
     }
 
     const best: SearchIndexEntry[] = [];
-    const related: SongMeta[] = [];
+    const related: RelatedMatch[] = [];
 
     for (const entry of scopedEntries) {
-      const matchKind = getSearchMatch(
-        entry,
-        normalizedQuery,
-        queryWords,
-        lyricsIndex?.get(entry.song.id),
-      );
-      if (matchKind === "title") best.push(entry);
-      else if (matchKind === "related") related.push(entry.song);
+      const lyrics = lyricsIndex?.get(entry.song.id);
+      const matchKind = getSearchMatch(entry, normalizedQuery, queryWords, lyrics);
+      if (matchKind === "title") {
+        best.push(entry);
+      } else if (matchKind === "related") {
+        const snippet =
+          lyrics && normalizedQuery.length >= 3
+            ? extractLyricSnippet(lyrics, normalizedQuery)
+            : null;
+        related.push({ song: entry.song, snippet });
+      }
     }
 
     best.sort((a, b) => {
@@ -331,15 +391,18 @@ export default function HomeContent({
     });
 
     return { best: best.map((entry) => entry.song), related };
-  }, [searchIndex, normalizedQuery, queryWords, activeChurchKey, lyricsIndex]);
+  }, [searchIndex, normalizedQuery, queryWords, activeChurchKey, activeLetter, lyricsIndex]);
 
   const hasSearch = !!normalizedQuery;
-  const hasActiveFilters = hasSearch || !!activeChurchKey;
+  const hasActiveFilters = hasSearch || !!activeChurchKey || !!activeLetter;
   const filtered = useMemo(
-    () => hasSearch ? [...searchGroups.best, ...searchGroups.related] : searchGroups.best,
+    () =>
+      hasSearch
+        ? [...searchGroups.best, ...searchGroups.related.map((r) => r.song)]
+        : searchGroups.best,
     [hasSearch, searchGroups],
   );
-  const visibleKey = `${normalizedQuery}|${activeChurchKey ?? ""}`;
+  const visibleKey = `${normalizedQuery}|${activeChurchKey ?? ""}|${activeLetter ?? ""}`;
   const visibleCount = visibleState.key === visibleKey
     ? visibleState.count
     : hasSearch
@@ -386,7 +449,7 @@ export default function HomeContent({
             whiteSpace: "nowrap",
           }}
         >
-          Using offline library
+          {t.offlineLibrary}
         </div>
       )}
 
@@ -411,14 +474,14 @@ export default function HomeContent({
             {/* Search Bar */}
             <div className="home-search-wrap" style={{ maxWidth: "40rem", margin: "6px auto 0", padding: "0 20px", position: "relative" }}>
               <label htmlFor="search-input" style={{ position: "absolute", width: 1, height: 1, overflow: "hidden", clip: "rect(0,0,0,0)", whiteSpace: "nowrap" }}>
-                Search songs, artists, and lyrics
+                {t.searchAriaLabel}
               </label>
               <input
                 ref={searchRef}
                 id="search-input"
                 type="search"
                 suppressHydrationWarning
-                placeholder="Search songs, lyrics..."
+                placeholder={t.searchPlaceholder}
                 enterKeyHint="search"
                 autoComplete="off"
                 autoCorrect="off"
@@ -464,7 +527,7 @@ export default function HomeContent({
                 aria-pressed={!activeChurchKey}
                 style={{ flexShrink: 0, minHeight: 44, padding: "0 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid", borderColor: !activeChurchKey ? "var(--accent)" : "var(--border)", cursor: "pointer", transition: "all var(--transition-fast)", background: !activeChurchKey ? "var(--accent)" : "transparent", color: !activeChurchKey ? "var(--bg-base)" : "var(--text-secondary)" }}
               >
-                All
+                {t.filterAll}
               </button>
               {churches.map((ch) => {
                 const active = activeChurchKey === ch.key;
@@ -480,6 +543,44 @@ export default function HomeContent({
                 );
               })}
             </div>
+
+            {/* A–Z letter strip — browse mode only */}
+            {!hasSearch && letters.length > 1 && (
+              <div
+                role="group"
+                aria-label={t.browseByLetter}
+                className="horizontal-fade-scroll"
+                style={{ display: "flex", gap: 4, margin: "10px auto 0", padding: "0 20px", maxWidth: "40rem", overflowX: "auto", scrollbarWidth: "none" }}
+              >
+                {letters.map((letter) => {
+                  const active = activeLetter === letter;
+                  return (
+                    <button
+                      key={letter}
+                      onClick={() => setActiveLetter(active ? null : letter)}
+                      aria-pressed={active}
+                      style={{
+                        flexShrink: 0,
+                        minWidth: 38,
+                        minHeight: 40,
+                        padding: 0,
+                        fontSize: "var(--text-xs)",
+                        fontWeight: active ? 700 : 500,
+                        borderRadius: "var(--radius-sm)",
+                        border: "1px solid",
+                        borderColor: active ? "var(--accent)" : "transparent",
+                        cursor: "pointer",
+                        transition: "all var(--transition-fast)",
+                        background: active ? "var(--accent-dim)" : "transparent",
+                        color: active ? "var(--accent)" : "var(--text-muted)",
+                      }}
+                    >
+                      {letter}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
 
             {/* Recently viewed — mobile only (desktop shows it in the side panel) */}
             {!hasActiveFilters && recentSongs.length > 0 && (
@@ -499,7 +600,7 @@ export default function HomeContent({
                     color: "var(--text-muted)",
                   }}
                 >
-                  Recently viewed
+                  {t.recentlyViewed}
                 </p>
                 <div
                   className="horizontal-fade-scroll"
@@ -543,6 +644,48 @@ export default function HomeContent({
               </nav>
             )}
 
+            {/* One-time long-press tip */}
+            {hintState === "show" && favourites.length === 0 && recentIds.length >= 2 && !hasActiveFilters && (
+              <div className="fade-up" style={{ maxWidth: "40rem", margin: "16px auto 0", padding: "0 20px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    padding: "6px 6px 6px 14px",
+                    background: "var(--accent-dim)",
+                    border: "1px solid color-mix(in srgb, var(--accent) 20%, transparent)",
+                    borderRadius: "var(--radius-md)",
+                  }}
+                >
+                  <Heart size={14} aria-hidden="true" style={{ color: "var(--accent)", flexShrink: 0 }} />
+                  <p style={{ flex: 1, margin: 0, fontSize: "var(--text-xs)", color: "var(--text-secondary)", lineHeight: 1.5 }}>
+                    {t.longPressHint}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={dismissHint}
+                    aria-label={t.dismissHint}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: 40,
+                      height: 40,
+                      border: "none",
+                      borderRadius: "var(--radius-pill)",
+                      background: "transparent",
+                      color: "var(--text-muted)",
+                      cursor: "pointer",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <X size={15} aria-hidden="true" />
+                  </button>
+                </div>
+              </div>
+            )}
+
             {/* Song List */}
             <main id="main-content" className="home-song-list" style={{ maxWidth: "40rem", margin: "0 auto", padding: "0 20px", paddingBottom: "calc(var(--nav-clearance) + 16px)" }}>
               {filtered.length === 0 ? (
@@ -551,25 +694,25 @@ export default function HomeContent({
                   <p style={{ fontFamily: "var(--font-display)", color: "var(--text-primary)", fontSize: "var(--text-xl)", fontWeight: 600, lineHeight: 1.3, margin: 0 }}>
                     {query
                       ? hasSearch && !lyricsIndex && !lyricsIndexFailed
-                        ? "Searching lyrics…"
-                        : "No matching songs"
-                      : activeChurchKey
-                      ? "No songs in this filter"
-                      : "No songs yet."}
+                        ? t.searchingLyricsTitle
+                        : t.noMatchingSongs
+                      : activeChurchKey || activeLetter
+                      ? t.noSongsInFilter
+                      : t.emptyNoSongsTitle}
                   </p>
                   <p style={{ color: "var(--text-muted)", fontSize: "var(--text-sm)", lineHeight: 1.55, maxWidth: 280, margin: 0 }}>
                     {query
-                      ? `Try a shorter lyric phrase, artist name, or clear filters for "${query}". Fuzzy search catches close spellings too.`
-                      : activeChurchKey
-                      ? "No songs are available for this ministry filter yet."
-                      : "The bundled library did not return songs."}
+                      ? t.emptySearchDesc.replace("{query}", query)
+                      : activeChurchKey || activeLetter
+                      ? t.emptyFilterDesc
+                      : t.emptyNoSongsDesc}
                   </p>
                   {hasActiveFilters && (
                     <button
-                      onClick={() => { setQuery(""); setActiveChurchKey(null); }}
-                      style={{ padding: "6px 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", cursor: "pointer" }}
+                      onClick={() => { setQuery(""); setActiveChurchKey(null); setActiveLetter(null); }}
+                      style={{ minHeight: 44, padding: "6px 16px", fontSize: "var(--text-xs)", fontWeight: 500, borderRadius: "var(--radius-pill)", border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", cursor: "pointer" }}
                     >
-                      Clear filters
+                      {t.clearFilters}
                     </button>
                   )}
                 </div>
@@ -580,7 +723,7 @@ export default function HomeContent({
                       {searchGroups.best.length > 0 && (
                         <section className="home-search-section" aria-label="Best song matches">
                           <div className="home-search-section-header">
-                            <p className="home-search-section-label">Songs</p>
+                            <p className="home-search-section-label">{t.sectionSongs}</p>
                             <span>{searchGroups.best.length}</span>
                           </div>
                           {visibleBestSongs.map((song) => (
@@ -599,13 +742,15 @@ export default function HomeContent({
                       {visibleRelatedSongs.length > 0 && (
                         <section className="home-search-section" aria-label="Related search matches">
                           <div className="home-search-section-header">
-                            <p className="home-search-section-label">More Results</p>
+                            <p className="home-search-section-label">{t.sectionMoreResults}</p>
                             <span>{searchGroups.related.length}</span>
                           </div>
-                          {visibleRelatedSongs.map((song) => (
+                          {visibleRelatedSongs.map(({ song, snippet }) => (
                             <SongCard
                               key={song.id}
                               song={song}
+                              snippet={snippet ?? undefined}
+                              snippetHighlight={snippet ? normalizedQuery : undefined}
                               isFavourite={isFavourite(song.id)}
                               onLongPress={() => toggleFavourite(song.id)}
                               onFavouriteToggle={() => toggleFavourite(song.id)}
@@ -639,7 +784,7 @@ export default function HomeContent({
                         color: "var(--text-muted)",
                       }}
                     >
-                      Searching inside lyrics…
+                      {t.searchingLyrics}
                     </p>
                   )}
                   {canShowMoreSearch && (
@@ -662,7 +807,7 @@ export default function HomeContent({
                         cursor: "pointer",
                       }}
                     >
-                      Show more results
+                      {t.showMoreResults}
                     </button>
                   )}
                   {canShowMore && (
@@ -685,7 +830,7 @@ export default function HomeContent({
                         cursor: "pointer",
                       }}
                     >
-                      Show more songs
+                      {t.showMoreSongs}
                     </button>
                   )}
                 </>
@@ -705,14 +850,14 @@ export default function HomeContent({
               <div>
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
                   <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em", margin: 0 }}>
-                    Recently Viewed
+                    {t.recentlyViewed}
                   </p>
                   <button
                     type="button"
                     onClick={clearRecentSongs}
                     style={{ border: "none", background: "transparent", color: "var(--accent)", fontSize: "var(--text-xs)", fontWeight: 600, cursor: "pointer", minHeight: 44, padding: "0 4px" }}
                   >
-                    Clear
+                    {t.clear}
                   </button>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
@@ -736,10 +881,10 @@ export default function HomeContent({
             {/* Library count */}
             <div style={{ padding: "14px 16px", background: "var(--bg-surface)", borderRadius: "var(--radius-md)", border: "1px solid var(--border-subtle)" }}>
               <p style={{ fontSize: "var(--text-xs)", color: "var(--text-muted)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>
-                Library
+                {t.libraryLabel}
               </p>
               <p style={{ fontFamily: "var(--font-display)", fontSize: "var(--text-xl)", fontWeight: 600, color: "var(--text-primary)", lineHeight: 1, margin: 0 }}>
-                {songs.length} <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", fontWeight: 400, color: "var(--text-muted)" }}>songs</span>
+                {songs.length} <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--text-xs)", fontWeight: 400, color: "var(--text-muted)" }}>{t.songsWord}</span>
               </p>
             </div>
           </aside>

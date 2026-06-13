@@ -8,27 +8,29 @@ import { House, Bell, Heart, ListMusic, Settings } from "lucide-react";
 import updatesData from "@/data/updates.json";
 import { useSetlistEnabled } from "@/lib/setlistPreference";
 import { APP_VERSION_LABEL } from "@/lib/appInfo";
+import { useUIStringsStandalone, type UIStrings } from "@/lib/uiStrings";
 import styles from "./DesktopNav.module.css";
 
 const NAV_ITEMS: {
   href: string;
-  label: string;
+  labelKey: keyof UIStrings;
   Icon: LucideIcon;
   exact: boolean;
   badge?: "updates";
   feature?: "setlist";
 }[] = [
-  { href: "/app",        label: "Home",       Icon: House,    exact: true  },
-  { href: "/updates",    label: "Updates",    Icon: Bell,     exact: true,  badge: "updates" },
-  { href: "/setlist",    label: "Setlist",    Icon: ListMusic, exact: false, feature: "setlist" },
-  { href: "/favourites", label: "Favourites", Icon: Heart,    exact: false },
-  { href: "/settings",   label: "Settings",   Icon: Settings, exact: false },
+  { href: "/app",        labelKey: "navHome",       Icon: House,    exact: true  },
+  { href: "/updates",    labelKey: "navUpdates",    Icon: Bell,     exact: true,  badge: "updates" },
+  { href: "/setlist",    labelKey: "navSetlist",    Icon: ListMusic, exact: false, feature: "setlist" },
+  { href: "/favourites", labelKey: "navFavourites", Icon: Heart,    exact: false },
+  { href: "/settings",   labelKey: "navSettings",   Icon: Settings, exact: false },
 ];
 
 export default function DesktopNav() {
   const pathname = usePathname();
   const [hasUnread, setHasUnread] = useState(false);
   const [setlistEnabled, , setlistRevealPulse] = useSetlistEnabled();
+  const { t, uiLang } = useUIStringsStandalone();
   const isPresent = pathname.startsWith("/present");
 
   useEffect(() => {
@@ -63,7 +65,7 @@ export default function DesktopNav() {
       <nav aria-label="Main navigation" className={styles.nav}>
         {NAV_ITEMS
           .filter((item) => item.feature !== "setlist" || setlistEnabled)
-          .map(({ href, label, Icon, exact, badge, feature }) => {
+          .map(({ href, labelKey, Icon, exact, badge, feature }) => {
           const active = isActive(href, exact);
           const showDot = badge === "updates" && hasUnread && !active;
 
@@ -72,6 +74,7 @@ export default function DesktopNav() {
               key={href}
               href={href}
               aria-current={active ? "page" : undefined}
+              lang={uiLang === "hi" ? "hi" : undefined}
               className={[
                 styles.item,
                 active ? styles.active : "",
@@ -81,7 +84,7 @@ export default function DesktopNav() {
               <span className={styles.icon} aria-hidden="true">
                 <Icon size={18} strokeWidth={active ? 2.1 : 1.7} />
               </span>
-              <span className={styles.label}>{label}</span>
+              <span className={styles.label}>{t[labelKey]}</span>
               {showDot && (
                 <span aria-label="Unread updates" className={styles.dot} />
               )}

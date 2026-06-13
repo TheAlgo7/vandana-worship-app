@@ -54,12 +54,14 @@ test("setlist can queue a song and expose present flow", async ({ page }) => {
   await expect(page.getByText(/^Aa Prabhu Yeshu Aa$/i).first()).toBeVisible();
 });
 
-test("settings theme toggle updates the app theme", async ({ page }) => {
+test("settings theme control switches to light and offers auto", async ({ page }) => {
   await page.goto("/settings");
 
-  await page.getByRole("button", { name: "Switch to light mode" }).click();
+  await expect(page.getByRole("radio", { name: "Auto" })).toBeVisible();
+  await page.getByRole("radio", { name: "Light" }).click();
 
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+  await expect(page.getByRole("radio", { name: "Light" })).toHaveAttribute("aria-checked", "true");
 });
 
 test("present mode opens and keeps core controls available", async ({ page }) => {
@@ -68,6 +70,25 @@ test("present mode opens and keeps core controls available", async ({ page }) =>
   await expect(page.getByText(/^Aa Prabhu Yeshu Aa$/i).first()).toBeVisible();
   await expect(page.getByRole("link", { name: /Exit/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Start auto-scroll" })).toBeVisible();
+});
+
+test("share menu offers link and image options", async ({ page }) => {
+  await page.goto("/song/aa-prabhu-yeshu-aa");
+
+  await page.getByRole("button", { name: "Share song" }).click();
+
+  await expect(page.getByRole("menuitem", { name: "Share link" })).toBeVisible();
+  await expect(page.getByRole("menuitem", { name: "Share as image" })).toBeVisible();
+});
+
+test("report-a-mistake link is a prefilled email", async ({ page }) => {
+  await page.goto("/song/aa-prabhu-yeshu-aa");
+
+  const report = page.getByRole("link", { name: /Spotted a lyric mistake/i });
+  const href = await report.getAttribute("href");
+
+  expect(href).toContain("mailto:gauravtiger60@gmail.com");
+  expect(href).toContain(encodeURIComponent("Lyric correction: Aa Prabhu Yeshu Aa"));
 });
 
 test("song sections keep worship order", async ({ page }) => {
