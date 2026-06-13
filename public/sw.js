@@ -1,4 +1,4 @@
-const STATIC_CACHE = "vandana-static-v10";
+const STATIC_CACHE = "vandana-static-v11";
 const RUNTIME_CACHE = "vandana-runtime-v7";
 const PRECACHE_URLS = [
   "/",
