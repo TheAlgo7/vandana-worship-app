@@ -41,6 +41,11 @@ function formatDate(iso: string): string {
   return d.toLocaleString("en-US", { day: "2-digit", month: "short" });
 }
 
+function formatFullDate(iso: string): string {
+  const d = new Date(`${iso}T00:00:00`);
+  return d.toLocaleString("en-US", { day: "numeric", month: "long", year: "numeric" });
+}
+
 function formatMonth(iso: string): string {
   const d = new Date(`${iso}T00:00:00`);
   return d.toLocaleString("en-US", { month: "long", year: "numeric" });
@@ -58,6 +63,18 @@ function normalizeSongName(name: string): string {
     .trim();
 }
 
+/** Split the timeline into month chapters, preserving newest-first order. */
+function groupByMonth(items: UpdateEntry[]): { month: string; items: UpdateEntry[] }[] {
+  const groups: { month: string; items: UpdateEntry[] }[] = [];
+  for (const item of items) {
+    const month = formatMonth(item.date);
+    const last = groups[groups.length - 1];
+    if (last && last.month === month) last.items.push(item);
+    else groups.push({ month, items: [item] });
+  }
+  return groups;
+}
+
 export default function UpdatesContent({
   updates,
   librarySongCount,
@@ -72,6 +89,8 @@ export default function UpdatesContent({
   }, []);
 
   const latestUpdate = updates[0]?.date ? formatDate(updates[0].date) : "None";
+  const featured = updates[0];
+  const monthGroups = groupByMonth(updates.slice(1));
 
   return (
     <div
@@ -154,7 +173,6 @@ export default function UpdatesContent({
           </div>
         ) : (
           <>
-            <p className="section-label updates-summary-mobile">Library Notes</p>
             <section
               className="updates-summary-mobile"
               aria-label="Updates summary"
@@ -163,7 +181,7 @@ export default function UpdatesContent({
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: 12,
-                marginBottom: 28,
+                marginBottom: 24,
                 padding: "14px 16px",
                 background: "var(--bg-surface)",
                 borderRadius: "var(--radius-md)",
@@ -174,198 +192,64 @@ export default function UpdatesContent({
               <SummaryStat label="Latest update" value={latestUpdate} />
             </section>
 
-            <p className="section-label">Recent Changes</p>
-            <section
-              style={{
-                overflow: "hidden",
-                background: "var(--bg-surface)",
-                borderRadius: "var(--radius-md)",
-                border: "1px solid var(--border)",
-              }}
-            >
-              {updates.map((update, index) => {
-                const theme = getTheme(update.type);
-                const Icon = theme.icon;
-                const showMonth =
-                  index === 0 || formatMonth(update.date) !== formatMonth(updates[index - 1].date);
-                const isLast = index === updates.length - 1;
+            {featured && (
+              <FeaturedUpdate update={featured} songLinks={songLinks} />
+            )}
 
-                return (
-                  <div key={update.id} style={{ padding: showMonth ? "14px 16px 0" : "0 16px" }}>
-                    {showMonth && (
-                      <p
-                        style={{
-                          color: "var(--text-muted)",
-                          fontSize: "var(--text-xs)",
-                          fontWeight: 700,
-                          letterSpacing: "0.08em",
-                          textTransform: "uppercase",
-                          margin: 0,
-                        }}
-                      >
-                        {formatMonth(update.date)}
-                      </p>
-                    )}
-                    <article
-                      style={{
-                        position: "relative",
-                        display: "grid",
-                        gridTemplateColumns: "30px 1fr",
-                        gap: 13,
-                        padding: showMonth ? "12px 0 16px" : "16px 0",
-                        borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
-                      }}
-                    >
-                      <div
-                        aria-hidden="true"
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          width: 30,
-                          height: 30,
-                          borderRadius: "var(--radius-pill)",
-                          background: "var(--accent-dim)",
-                          border: "1px solid color-mix(in srgb, var(--accent) 18%, transparent)",
-                          color: "var(--accent)",
-                        }}
-                      >
-                        <Icon size={15} strokeWidth={1.75} />
-                      </div>
+            {monthGroups.map((group) => (
+              <section key={group.month} style={{ marginBottom: 22 }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    padding: "0 2px 10px",
+                  }}
+                >
+                  <h2
+                    style={{
+                      color: "var(--text-secondary)",
+                      fontSize: "var(--text-xs)",
+                      fontWeight: 700,
+                      letterSpacing: "0.09em",
+                      textTransform: "uppercase",
+                      margin: 0,
+                    }}
+                  >
+                    {group.month}
+                  </h2>
+                  <span
+                    style={{
+                      color: "var(--text-muted)",
+                      fontSize: "var(--text-xs)",
+                      fontWeight: 600,
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {group.items.length} {group.items.length === 1 ? "update" : "updates"}
+                  </span>
+                </div>
 
-                      <div style={{ minWidth: 0 }}>
-                        <div
-                          style={{
-                            display: "flex",
-                            alignItems: "flex-start",
-                            justifyContent: "space-between",
-                            gap: 10,
-                            marginBottom: 6,
-                          }}
-                        >
-                          <div style={{ minWidth: 0 }}>
-                            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
-                              <span
-                                style={{
-                                  color: "var(--accent)",
-                                  fontSize: "var(--text-xs)",
-                                  fontWeight: 700,
-                                  lineHeight: 1,
-                                  letterSpacing: "0.05em",
-                                  textTransform: "uppercase",
-                                }}
-                              >
-                                {theme.label}
-                              </span>
-                              {update.song_count > 0 && (
-                                <span
-                                  style={{
-                                    color: "var(--text-secondary)",
-                                    background: "transparent",
-                                    border: "1px solid var(--border)",
-                                    borderRadius: "var(--radius-pill)",
-                                    padding: "2px 7px",
-                                    fontSize: "var(--text-xs)",
-                                    fontWeight: 600,
-                                    lineHeight: 1.35,
-                                  }}
-                                >
-                                  {update.song_count} songs
-                                </span>
-                              )}
-                            </div>
-                            <h2
-                              style={{
-                                color: "var(--text-primary)",
-                                fontFamily: "var(--font-body)",
-                                fontSize: "var(--text-base)",
-                                fontWeight: 700,
-                                lineHeight: 1.35,
-                                letterSpacing: 0,
-                                marginTop: 6,
-                              }}
-                            >
-                              {update.title}
-                            </h2>
-                          </div>
-                          <time
-                            dateTime={update.date}
-                            style={{
-                              color: "var(--text-muted)",
-                              fontSize: "var(--text-xs)",
-                              whiteSpace: "nowrap",
-                              flexShrink: 0,
-                              paddingTop: 2,
-                            }}
-                          >
-                            {formatDate(update.date)}
-                          </time>
-                        </div>
-
-                        <p
-                          style={{
-                            color: "var(--text-secondary)",
-                            fontSize: "var(--text-sm)",
-                            lineHeight: 1.6,
-                            margin: 0,
-                          }}
-                        >
-                          {update.body}
-                        </p>
-
-                        {update.song_names.length > 0 && (
-                          <div
-                            style={{
-                              display: "flex",
-                              flexWrap: "wrap",
-                              gap: 6,
-                              marginTop: 12,
-                            }}
-                          >
-                            {update.song_names.map((name) => {
-                              const songId = songLinks[normalizeSongName(name)];
-                              const chipStyle = {
-                                maxWidth: "100%",
-                                overflow: "hidden",
-                                textOverflow: "ellipsis",
-                                color: "var(--text-secondary)",
-                                background: "var(--bg-elevated)",
-                                border: "1px solid var(--border-subtle)",
-                                borderRadius: "var(--radius-pill)",
-                                padding: "4px 9px",
-                                fontSize: "var(--text-xs)",
-                                lineHeight: 1.35,
-                                whiteSpace: "nowrap",
-                                textDecoration: "none",
-                              } as const;
-
-                              return songId ? (
-                                <Link
-                                  key={name}
-                                  href={`/song/${songId}`}
-                                  aria-label={`Open ${name}`}
-                                  style={{
-                                    ...chipStyle,
-                                    transition:
-                                      "border-color 160ms ease, color 160ms ease, background 160ms ease",
-                                  }}
-                                >
-                                  {name}
-                                </Link>
-                              ) : (
-                                <span key={name} style={chipStyle}>
-                                  {name}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    </article>
-                  </div>
-                );
-              })}
-            </section>
+                <div
+                  style={{
+                    overflow: "hidden",
+                    background: "var(--bg-surface)",
+                    borderRadius: "var(--radius-md)",
+                    border: "1px solid var(--border)",
+                  }}
+                >
+                  {group.items.map((update, index) => (
+                    <UpdateRow
+                      key={update.id}
+                      update={update}
+                      songLinks={songLinks}
+                      isLast={index === group.items.length - 1}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
           </>
         )}
       </main>
@@ -400,6 +284,298 @@ export default function UpdatesContent({
         </div>
       </aside>
       </div>
+    </div>
+  );
+}
+
+function FeaturedUpdate({
+  update,
+  songLinks,
+}: {
+  update: UpdateEntry;
+  songLinks: Record<string, string>;
+}) {
+  const theme = getTheme(update.type);
+  const Icon = theme.icon;
+
+  return (
+    <section
+      aria-label="Latest update"
+      style={{
+        position: "relative",
+        overflow: "hidden",
+        marginBottom: 28,
+        padding: "20px 18px",
+        borderRadius: "var(--radius-lg)",
+        border: "1px solid color-mix(in srgb, var(--accent) 34%, transparent)",
+        background:
+          "linear-gradient(155deg, var(--accent-dim) 0%, var(--bg-surface) 62%)",
+      }}
+    >
+      <div
+        aria-hidden="true"
+        style={{
+          position: "absolute",
+          top: -70,
+          right: -50,
+          width: 180,
+          height: 180,
+          borderRadius: "50%",
+          background:
+            "radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 70%)",
+          pointerEvents: "none",
+        }}
+      />
+      <div style={{ position: "relative" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 9, marginBottom: 12 }}>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 28,
+              height: 28,
+              borderRadius: "var(--radius-pill)",
+              background: "var(--accent)",
+              color: "var(--bg-base)",
+            }}
+          >
+            <Icon size={15} strokeWidth={2} />
+          </span>
+          <span
+            style={{
+              color: "var(--accent)",
+              fontSize: "var(--text-xs)",
+              fontWeight: 800,
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+            }}
+          >
+            Latest · {theme.label}
+          </span>
+        </div>
+
+        <h2
+          style={{
+            color: "var(--text-primary)",
+            fontFamily: "var(--font-display)",
+            fontSize: "var(--text-xl)",
+            fontWeight: 600,
+            lineHeight: 1.25,
+            letterSpacing: "-0.01em",
+            margin: "0 0 6px",
+          }}
+        >
+          {update.title}
+        </h2>
+        <time
+          dateTime={update.date}
+          style={{
+            display: "block",
+            color: "var(--text-muted)",
+            fontSize: "var(--text-xs)",
+            marginBottom: 12,
+          }}
+        >
+          {formatFullDate(update.date)}
+        </time>
+
+        <p
+          style={{
+            color: "var(--text-secondary)",
+            fontSize: "var(--text-sm)",
+            lineHeight: 1.65,
+            margin: 0,
+          }}
+        >
+          {update.body}
+        </p>
+
+        <SongChips names={update.song_names} songLinks={songLinks} />
+      </div>
+    </section>
+  );
+}
+
+function UpdateRow({
+  update,
+  songLinks,
+  isLast,
+}: {
+  update: UpdateEntry;
+  songLinks: Record<string, string>;
+  isLast: boolean;
+}) {
+  const theme = getTheme(update.type);
+  const Icon = theme.icon;
+
+  return (
+    <article
+      style={{
+        display: "grid",
+        gridTemplateColumns: "30px 1fr",
+        gap: 13,
+        padding: "16px",
+        borderBottom: isLast ? "none" : "1px solid var(--border-subtle)",
+      }}
+    >
+      <div
+        aria-hidden="true"
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          width: 30,
+          height: 30,
+          borderRadius: "var(--radius-pill)",
+          background: "var(--accent-dim)",
+          border: "1px solid color-mix(in srgb, var(--accent) 18%, transparent)",
+          color: "var(--accent)",
+        }}
+      >
+        <Icon size={15} strokeWidth={1.75} />
+      </div>
+
+      <div style={{ minWidth: 0 }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            justifyContent: "space-between",
+            gap: 10,
+            marginBottom: 6,
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
+              <span
+                style={{
+                  color: "var(--accent)",
+                  fontSize: "var(--text-xs)",
+                  fontWeight: 700,
+                  lineHeight: 1,
+                  letterSpacing: "0.05em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {theme.label}
+              </span>
+              {update.song_count > 0 && (
+                <span
+                  style={{
+                    color: "var(--text-secondary)",
+                    background: "transparent",
+                    border: "1px solid var(--border)",
+                    borderRadius: "var(--radius-pill)",
+                    padding: "2px 7px",
+                    fontSize: "var(--text-xs)",
+                    fontWeight: 600,
+                    lineHeight: 1.35,
+                  }}
+                >
+                  {update.song_count} songs
+                </span>
+              )}
+            </div>
+            <h3
+              style={{
+                color: "var(--text-primary)",
+                fontFamily: "var(--font-body)",
+                fontSize: "var(--text-base)",
+                fontWeight: 700,
+                lineHeight: 1.35,
+                letterSpacing: 0,
+                marginTop: 6,
+              }}
+            >
+              {update.title}
+            </h3>
+          </div>
+          <time
+            dateTime={update.date}
+            style={{
+              color: "var(--text-muted)",
+              fontSize: "var(--text-xs)",
+              whiteSpace: "nowrap",
+              flexShrink: 0,
+              paddingTop: 2,
+            }}
+          >
+            {formatDate(update.date)}
+          </time>
+        </div>
+
+        <p
+          style={{
+            color: "var(--text-secondary)",
+            fontSize: "var(--text-sm)",
+            lineHeight: 1.6,
+            margin: 0,
+          }}
+        >
+          {update.body}
+        </p>
+
+        <SongChips names={update.song_names} songLinks={songLinks} />
+      </div>
+    </article>
+  );
+}
+
+function SongChips({
+  names,
+  songLinks,
+}: {
+  names: string[];
+  songLinks: Record<string, string>;
+}) {
+  if (names.length === 0) return null;
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        gap: 6,
+        marginTop: 12,
+      }}
+    >
+      {names.map((name) => {
+        const songId = songLinks[normalizeSongName(name)];
+        const chipStyle = {
+          maxWidth: "100%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          color: "var(--text-secondary)",
+          background: "var(--bg-elevated)",
+          border: "1px solid var(--border-subtle)",
+          borderRadius: "var(--radius-pill)",
+          padding: "4px 9px",
+          fontSize: "var(--text-xs)",
+          lineHeight: 1.35,
+          whiteSpace: "nowrap",
+          textDecoration: "none",
+        } as const;
+
+        return songId ? (
+          <Link
+            key={name}
+            href={`/song/${songId}`}
+            aria-label={`Open ${name}`}
+            style={{
+              ...chipStyle,
+              transition:
+                "border-color 160ms ease, color 160ms ease, background 160ms ease",
+            }}
+          >
+            {name}
+          </Link>
+        ) : (
+          <span key={name} style={chipStyle}>
+            {name}
+          </span>
+        );
+      })}
     </div>
   );
 }

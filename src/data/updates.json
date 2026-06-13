@@ -1,5 +1,14 @@
 [
   {
+    "id": "update-032",
+    "date": "2026-06-13",
+    "title": "v3.0.0: Share Cards, Hindi App & Worship Tools",
+    "body": "The biggest Vandana update yet. Share any song section or the daily verse as a beautiful image — made for WhatsApp. Switch the whole app to Hindi (हिंदी) from Settings, or let the new Auto theme follow your phone's light or dark mode. Browse faster with the A–Z letter strip, reorder songs within a setlist, and during worship blank the Present Mode screen for prayer or swipe between setlist songs. Spotted a wrong lyric? Report it right from the song page. Installed app icons now open straight to Setlist, Favourites, or the Library.",
+    "type": "feature",
+    "song_count": 0,
+    "song_names": []
+  },
+  {
     "id": "update-031",
     "date": "2026-06-13",
     "title": "Zindagi Ka Badshah Aane Wala Hai Added",
