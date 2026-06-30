@@ -7,8 +7,12 @@ import SongView from "./SongView";
 
 const BASE_URL = "https://vandanaapp.vercel.app";
 
-// Lyric fixes land in Supabase between deploys — refresh daily.
-export const revalidate = 86400;
+// Lyric fixes land in Supabase between deploys. These pages are prerendered at
+// build (SEO), so a deploy already refreshes every song; weekly time-based
+// revalidation is just a safety net for edits made without a redeploy. Daily
+// revalidation across ~3k songs was the bulk of the project's ISR writes, so
+// this is weekly (604800s) — a redeploy still propagates fixes immediately.
+export const revalidate = 604800;
 
 export async function generateStaticParams() {
   const ids = await getSongIds();
