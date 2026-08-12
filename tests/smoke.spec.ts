@@ -87,7 +87,7 @@ test("report-a-mistake link is a prefilled email", async ({ page }) => {
   const report = page.getByRole("link", { name: /Spotted a lyric mistake/i });
   const href = await report.getAttribute("href");
 
-  expect(href).toContain("mailto:gauravtiger60@gmail.com");
+  expect(href).toContain("mailto:gaurav@thealgothrim.com");
   expect(href).toContain(encodeURIComponent("Lyric correction: Aa Prabhu Yeshu Aa"));
 });
 

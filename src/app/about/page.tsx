@@ -301,10 +301,10 @@ export default function AboutPage() {
                 For song requests, corrections, or feedback:
               </p>
               <a
-                href="mailto:gauravtiger60@gmail.com"
+                href="mailto:gaurav@thealgothrim.com"
                 style={{ color: "var(--accent)", fontWeight: 500, textDecoration: "none", fontSize: "var(--text-base)" }}
               >
-                gauravtiger60@gmail.com
+                gaurav@thealgothrim.com
               </a>
               <p style={{ fontSize: "var(--text-sm)", color: "var(--text-muted)", marginTop: 8 }}>
                 Or open an issue on{" "}

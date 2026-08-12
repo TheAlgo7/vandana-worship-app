@@ -139,7 +139,7 @@ export default function SongView({ song }: SongViewProps) {
     if (result === "downloaded") showToast(t.imageShared);
   }, [sectionEntries, song.title, song.artist, song.id, lang, showToast, t.imageShared]);
 
-  const reportMailto = `mailto:gauravtiger60@gmail.com?subject=${encodeURIComponent(
+  const reportMailto = `mailto:gaurav@thealgothrim.com?subject=${encodeURIComponent(
     `Lyric correction: ${song.title}`,
   )}&body=${encodeURIComponent(
     `Song: ${song.title} (${song.id})\nLanguage: ${languageLabel}\n\nWhat needs fixing:\n`,
