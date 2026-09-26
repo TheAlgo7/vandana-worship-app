@@ -67,6 +67,12 @@ export default function SongView({ song }: SongViewProps) {
   const sections = song.lyrics[lang] || {};
   const sectionEntries = getOrderedSectionEntries(sections);
   const languageLabel = lang === "hindi" ? "Hindi" : "Hinglish";
+  // Artist, then the church or ministry, unless the artist already names it
+  // ("Bridge Music ft. ..." was followed by ", Bridge Music").
+  const songCredit =
+    song.church && !song.artist?.toLowerCase().includes(song.church.toLowerCase())
+      ? [song.artist, song.church].filter(Boolean).join(", ")
+      : song.artist;
 
   // Track recently viewed
   useEffect(() => {
@@ -93,7 +99,6 @@ export default function SongView({ song }: SongViewProps) {
   // Share handlers
   const handleShareLink = useCallback(async () => {
     setShareMenuOpen(false);
-    const songCredit = [song.artist, song.church].filter(Boolean).join(", ");
     const shareText = [
       `${song.title} lyrics`,
       songCredit ? `By ${songCredit}` : null,
@@ -118,7 +123,7 @@ export default function SongView({ song }: SongViewProps) {
     } catch {
       // user cancelled or unsupported
     }
-  }, [languageLabel, song.artist, song.church, song.title, showToast, t.linkCopied]);
+  }, [languageLabel, songCredit, song.title, showToast, t.linkCopied]);
 
   const handleShareImage = useCallback(async () => {
     setShareMenuOpen(false);
@@ -386,8 +391,7 @@ export default function SongView({ song }: SongViewProps) {
             color: "var(--text-muted)",
           }}
         >
-          {song.artist}
-          {song.church ? `, ${song.church}` : ""}
+          {songCredit}
         </p>
         <hr
           style={{
