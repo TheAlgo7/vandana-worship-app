@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="docs/readme/hero.png" alt="Vandana: every song in two scripts, one worship" width="100%">
+  <picture>
+    <source media="(max-width: 600px)" srcset="docs/readme/hero-mobile.webp">
+    <img src="docs/readme/hero.webp" alt="Vandana: every song in two scripts, one worship. The library, a song in Hindi, and the light theme on three phones" width="100%">
+  </picture>
 </p>
 
 <p align="center">
@@ -8,20 +11,14 @@
 </p>
 
 <p align="center">
-  <a href="https://vandanaapp.vercel.app"><strong>Open Vandana</strong></a>
-  &nbsp;·&nbsp;
-  <a href="#features">Features</a>
-  &nbsp;·&nbsp;
-  <a href="#how-it-works">How it works</a>
-  &nbsp;·&nbsp;
-  <a href="#run-it-locally">Run it locally</a>
+  <a href="https://vandanaapp.vercel.app"><img alt="Vandana: Open the app" src="https://img.shields.io/badge/Vandana-Open%20the%20app-9c7c45?style=for-the-badge"></a>
 </p>
 
 <p align="center">
-  <img alt="Version 3.0 public beta" src="https://img.shields.io/badge/version-3.0%20public%20beta-C4AA7E?style=flat-square&labelColor=111111">
-  <img alt="Next.js 16" src="https://img.shields.io/badge/Next.js-16-C4AA7E?style=flat-square&labelColor=111111">
-  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-Postgres-C4AA7E?style=flat-square&labelColor=111111">
-  <img alt="Installable PWA" src="https://img.shields.io/badge/PWA-offline-C4AA7E?style=flat-square&labelColor=111111">
+  <a href="#what-it-looks-like">What it looks like</a> ·
+  <a href="#features">Features</a> ·
+  <a href="#how-it-works">How it works</a> ·
+  <a href="#run-it-locally">Run it locally</a>
 </p>
 
 ## Why Vandana
@@ -30,22 +27,29 @@ Worship in Hindi-speaking churches happens in two scripts. Some people read Deva
 
 Vandana stores every song in both, as equals, and switches with one tap. It is dark by default because worship happens in dim rooms, it has a parchment theme for daylight, and it installs like an app and keeps working when the church WiFi does not.
 
-## Screenshots
 
-<table>
-  <tr>
-    <td align="center"><img src="docs/readme/home.png" width="160" alt="The library"><br><sub>The library and today's verse</sub></td>
-    <td align="center"><img src="docs/readme/song.png" width="160" alt="A song in Hinglish"><br><sub>A song in Hinglish</sub></td>
-    <td align="center"><img src="docs/readme/hindi.png" width="160" alt="The same song in Hindi"><br><sub>The same song in Hindi</sub></td>
-    <td align="center"><img src="docs/readme/setlist.png" width="160" alt="A setlist"><br><sub>Tonight's setlist</sub></td>
-    <td align="center"><img src="docs/readme/present.png" width="160" alt="Present mode"><br><sub>Present mode</sub></td>
-  </tr>
-</table>
+## What it looks like
 
-<p align="center">
-  <img src="docs/readme/desktop.png" width="100%" alt="Vandana on a laptop">
-  <br><sub>On a laptop: a sidebar, the lyrics, and the song's details beside them</sub>
-</p>
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/readme/scripts-mobile.webp">
+  <img src="docs/readme/scripts.webp" alt="Hinglish or Hindi, one tap apart: the same song in Devanagari and in Hinglish on two phones" width="100%">
+</picture>
+
+**Hinglish or Hindi, one tap apart.** Both scripts are written and stored as equals, not machine-converted, with the text size to suit the room.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/readme/present-mobile.webp">
+  <img src="docs/readme/present.webp" alt="Present mode, setlists for Sunday: full-screen lyrics on one phone and a four-song setlist on another" width="100%">
+</picture>
+
+**Present mode, setlists for Sunday.** Full-screen lyrics for projecting from a phone, and tonight's order built from the library.
+
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/readme/desktop-mobile.webp">
+  <img src="docs/readme/desktop.webp" alt="On the big screen too: the laptop layout with the sidebar, the song and its details, beside the phone" width="100%">
+</picture>
+
+**On the big screen too.** Above 900 px the app becomes a sidebar, the song and a details panel; on phones, a floating nav.
 
 ## Features
 
@@ -54,11 +58,17 @@ Vandana stores every song in both, as equals, and switches with one tap. It is d
 - **Setlists.** Build tonight's order from the library, reorder it, then present the whole set.
 - **Find anything.** Search titles and lyrics in either script, filter by ministry, or jump through the A to Z index.
 - **Verse of the day.** A verse on the home screen that changes with the time of day, shareable as an image, and an optional morning notification.
+- **Works offline.** An installable PWA that caches the pages you use, so Sunday morning does not depend on the signal.
+
+<details>
+<summary><strong>Everything else it does</strong></summary>
+
 - **Favourites and recents,** kept on the device, with favourites saved for offline reading.
 - **Parchment light theme.** A designed daylight theme, not an inverted dark one.
 - **Laptop layout.** A sidebar and a details panel above 900 px; a floating nav on phones.
 - **Hindi or English interface.** The app's own words follow your choice, separately from the lyrics.
-- **Works offline.** An installable PWA that caches the pages you use, so Sunday morning does not depend on the signal.
+
+</details>
 
 ## How it works
 
@@ -77,6 +87,7 @@ flowchart LR
 - **Offline by intent.** The service worker pre-caches your favourites, and every setlist song with its present-mode page, so what you planned to sing is already on the phone.
 - **Morning verse.** A daily cron sends the verse through Web Push (VAPID) to everyone who opted in.
 
+
 ## Built with
 
 | Layer | Choice |
@@ -88,7 +99,11 @@ flowchart LR
 | Notifications | Web Push with VAPID, sent by a Vercel cron |
 | Hosting | Vercel, with incremental static regeneration |
 
+
 ## Run it locally
+
+<details>
+<summary><strong>Setup, environment and commands</strong></summary>
 
 You need Node 20 or newer.
 
@@ -117,7 +132,10 @@ VAPID_PRIVATE_KEY=
 | `npm run lint` | ESLint |
 | `python scripts/readme-shots.py` | Rebuilds the screenshots in this README from the live app |
 
-## Project structure
+</details>
+
+<details>
+<summary><strong>Project structure</strong></summary>
 
 ```text
 src/
@@ -129,6 +147,10 @@ src/
 public/sw.js      the service worker
 scripts/          import, quality triage and README screenshots
 ```
+
+The pictures on this page come from `scripts/readme-shots.py` (captures in `docs/readme/src/assets`) and `docs/readme/src/readme.js`, drawn by The Algothrim's README Kit.
+
+</details>
 
 ## Licence
 
