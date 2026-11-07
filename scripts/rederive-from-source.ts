@@ -1,6 +1,6 @@
 /**
  * Re-derive clean lyrics from the original scraped source .txt files
- * (C:\Users\Gaurav\Desktop\Work\Lyrics) and match them back to Supabase rows.
+ * (C:\Users\Gaurav\Desktop\Work\Ongoing Apps Assets\Vandana\Lyrics) and match them back to Supabase rows.
  *
  * The source has clean structure (Hinglish Lyrics / Hindi Lyrics sections,
  * real line breaks) that the original import mangled. There is NO shared key
@@ -22,7 +22,7 @@ import * as path from "path";
 config({ path: ".env.local" });
 const APPLY = process.argv.includes("--apply");
 
-const SRC_ROOT = "C:/Users/Gaurav/Desktop/Work/Lyrics";
+const SRC_ROOT = "C:/Users/Gaurav/Desktop/Work/Ongoing Apps Assets/Vandana/Lyrics";
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 const db = createClient(url, key);
